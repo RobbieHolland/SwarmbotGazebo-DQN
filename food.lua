@@ -6,6 +6,7 @@ function food.create(id, nodehandle, x, y, z, value)
 	os.execute('rosrun gazebo_ros spawn_model -x ' .. x .. ' -y ' .. y .. ' -z ' .. z .. ' -file `rospack find swarm_simulator`/sdf/food.sdf' .. 
 						 ' -sdf -model food' .. id .. ' -robot_namespace food' .. id)	
 	-- .. ' > /dev/null 2>&1'
+
   local fd = {}
   setmetatable(fd,food)
 	fd.id = id
@@ -47,5 +48,7 @@ function food.relocate(self, new_position)
 	m.pose.position.z = new_position[3]
 	self.relocation_publisher:publish(m)
 
+	--Spin required here, food position in Gazebo was not updating quickly enough so could be consumed multiple times
+	ros.spinOnce()
 	self.position = new_position
 end
