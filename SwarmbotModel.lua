@@ -17,13 +17,12 @@ function Body:createBody()
   local histLen = self.recurrent and 1 or self.histLen
 
   local net = nn.Sequential()
-  net:add(nn.View(self.histLen, 1, 15, 2)) -- Concatenate history in channel dimension
-  --net:add(nn.SpatialConvolution(4, 32, 8, 8, 4, 4, 1, 1))
-  --net:add(nn.SpatialConvolution(32, 4, 4, 4, 2, 2))
-
-	--For testing purposes
-	net:add(nn.View(120))
-	net:add(nn.Linear(120, 4))
+	--Concatenate history in channel dimension
+	--2D input tensor for temporal convolution
+  net:add(nn.View(self.histLen, 1*15*2))
+	--Each frame has size 1*15*2, outputFrameSize is 4 (is this the number of outputs of the network?), kernel size is 4, kernel step is 1
+  net:add(nn.TemporalConvolution(1*15*2, 4, 4, 1))
+  net:add(nn.ReLU(true))
 
   return net
 	
