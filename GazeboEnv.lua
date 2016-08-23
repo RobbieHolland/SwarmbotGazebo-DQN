@@ -21,20 +21,24 @@ function GazeboEnv:_init(opts)
   opts = opts or {}
 	
   --Constants
+	self.number_of_food = 100
 	self.number_of_colour_channels = 3
 	self.number_of_cameras = 2
 	self.camera_size = 15
 	self.min_reward = 0
 	self.max_reward = 1e5
 	self.energy_level = 0
-	self.action_magnitude = 0.8
+	self.action_magnitude = 1.5
 	self.command_message = ros.Message(msgs.twist_spec)
 	self.current_observation = torch.Tensor(1, self.camera_size, self.number_of_cameras):zero()
-	--self.current_position = torch.Tensor(3):zero()
+	self.frequency = opts.threads
+	self.updated = false
 
 	--Setup ros node and spinner (processes queued send and receive topics)
 	self.spinner = ros.AsyncSpinner()
 	self.nodehandle = ros.NodeHandle()
+
+	ros.Duration(1 + 0.6 * self.number_of_food / opts.threads):sleep()
 end
 
 --Swarmbot cameras form greyscale Vector with values between 0 and 1
@@ -75,13 +79,17 @@ function GazeboEnv:start()
 			self.input_subscribers[i] 
 			= self.nodehandle:subscribe("/swarmbot" .. self.id .. "/front_colour_sensor_" .. i .. "/image_raw", 
 																		msgs.image_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
-
 			self.input_subscribers[i]:registerCallback(function(msg, header)
 				--input is taken from msg published by swarmbot
 				sensor_input = torch.reshape(msg.data,msg.height*self.number_of_colour_channels*msg.width)
 				--Is there a way for torch.reshape to return a DoubleTensor?
 				sensor_input = (1/255) * sensor_input:double()
-			
+				self.updated = true
+				--[[
+				if self.id == 1 then
+					print('Sensor')
+				end
+				--]]
 				--Green channel
 				for j=1, self.camera_size do
 					self.current_observation[1][j][i] = sensor_input[2 + self.number_of_colour_channels * (j - 1)]
@@ -102,6 +110,17 @@ function GazeboEnv:step(action)
 	old_energy = self.energy_level
 	ros.spinOnce()
 	reward = self.energy_level - old_energy
+	--[[
+	if self.id == 1 then
+		print('Step')
+	end
+	--]]
+	--Time adjustment
+	while self.id == 1 and not self.updated do
+		ros.spinOnce()
+	end
+	self.updated = false
+	--ros.Duration(1/self.frequency):sleep()
 
 	--Find corresponding action (change this to binary version?)
 	action_taken = torch.Tensor(2):zero()

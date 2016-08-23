@@ -11,5 +11,6 @@ msgs.link_spec = ros.MsgSpec('gazebo_msgs/LinkStates')
 msgs.twist_spec = ros.MsgSpec('geometry_msgs/Twist')
 msgs.odom_spec = ros.MsgSpec('nav_msgs/Odometry')
 msgs.model_state_spec = ros.MsgSpec('gazebo_msgs/ModelState')
+msgs.bool_spec = ros.MsgSpec('std_msgs/Bool')
 
 return msgs

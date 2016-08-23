@@ -8,8 +8,8 @@ require 'async/SwarmbotGazebo-DQN/swarmbot'
 arena_width = 20
 frequency = 10
 eat_distance = 0.4
-number_of_food = 5
-number_of_bots = 2
+number_of_food = 100
+number_of_bots = 20
 
 --setup ros node and spinner (processes queued send and receive topics)
 ros.init('GazeboDQN_rewards')
