@@ -24,7 +24,7 @@ function GazeboEnv:_init(opts)
 	self.number_of_colour_channels = 3
 	self.number_of_used_colour_channels = 3
 	self.number_of_cameras = 2
-	self.camera_size = 15
+	self.camera_size = 30
 	self.min_reward = -1e5
 	self.max_reward = 1e5
 	self.energy_level = 0
