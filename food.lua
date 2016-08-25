@@ -14,8 +14,8 @@ function food.create(id, nodehandle, x, y, z, value)
 	fd.relocation_message = ros.Message(msgs.model_state_spec)
 
 	--Spawn food in gazebo
-	os.execute('rosrun gazebo_ros spawn_model -x ' .. fd.position[1] .. ' -y ' .. fd.position[2] .. ' -z ' .. fd.position[3] .. 
-						 ' -file `rospack find swarm_simulator`/sdf/food.sdf' .. ' -sdf -model food' .. fd.id .. ' -robot_namespace food' .. fd.id)	
+	--os.execute('rosrun gazebo_ros spawn_model -x ' .. fd.position[1] .. ' -y ' .. fd.position[2] .. ' -z ' .. fd.position[3] .. 
+	--					 ' -file `rospack find swarm_simulator`/sdf/food.sdf' .. ' -sdf -model food' .. fd.id .. ' -robot_namespace food' .. fd.id)	
 	--To suppress output:  .. ' > /dev/null 2>&1'
 
 	--Subscriber to receive position updates

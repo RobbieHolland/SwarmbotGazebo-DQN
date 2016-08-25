@@ -7,7 +7,7 @@ local GazeboEnv, super = classic.class('GazeboEnv', Env)
 resp_ready = false
 
 function connect_cb(name, topic)
-  print("subscriber connected: " .. name .. " (topic: '" .. topic .. "')")
+  --print("subscriber connected: " .. name .. " (topic: '" .. topic .. "')")
 end
 
 
@@ -21,32 +21,33 @@ function GazeboEnv:_init(opts)
   opts = opts or {}
 	
   --Constants
-	self.number_of_food = 100
 	self.number_of_colour_channels = 3
+	self.number_of_used_colour_channels = 3
 	self.number_of_cameras = 2
 	self.camera_size = 15
-	self.min_reward = 0
+	self.min_reward = -1e5
 	self.max_reward = 1e5
 	self.energy_level = 0
-	self.action_magnitude = 1.5
+	self.action_magnitude = 8
+	self.brake_coefficient = 0.75
 	self.command_message = ros.Message(msgs.twist_spec)
-	self.current_observation = torch.Tensor(1, self.camera_size, self.number_of_cameras):zero()
+	self.current_observation = torch.Tensor(self.number_of_used_colour_channels, self.camera_size, self.number_of_cameras):zero()
 	self.frequency = opts.threads
+	self.step_count = 0
+	self.number_steps_in_episode = 27000 --assuming 150 step/s for 180 seconds
 	self.updated = false
 
 	--Setup ros node and spinner (processes queued send and receive topics)
 	self.spinner = ros.AsyncSpinner()
 	self.nodehandle = ros.NodeHandle()
-
-	ros.Duration(1 + 0.6 * self.number_of_food / opts.threads):sleep()
 end
 
 --Swarmbot cameras form greyscale Vector with values between 0 and 1
 function GazeboEnv:getStateSpec()
-	return {'real', {1, self.camera_size, self.number_of_cameras}, {0, 1}}
+	return {'real', {self.number_of_used_colour_channels, self.camera_size, self.number_of_cameras}, {0, 1}}
 end
 
---4 actions required 0:[Neither wheel] 1:[Right Wheel only] 2:[Left wheel only] 3:[Both wheels]
+--4 actions required 0:[Both wheels backwards] 1:[Right Wheel forward only] 2:[Left wheel forward only] 3:[Both wheels forwards]
 function GazeboEnv:getActionSpec()
   return {'int', 1, {0, 3}}
 end
@@ -58,45 +59,44 @@ end
 
 --Starts GazeboEnv and spawns all models? Or is that done by individual agents?
 function GazeboEnv:start()
-	--if not validation agent
-	if __threadid ~= 0 then
-		--Setup agent's ID (identical to ID of thread)
-		self.id = __threadid
 
-		--Configure robot control
-	  self.command_publisher = self.nodehandle:advertise("/swarmbot" .. self.id .. "/cmd_vel", msgs.twist_spec, 100, false, connect_cb, disconnect_cb)
+	--Setup agent's ID (identical to ID of thread)
+	self.id = __threadid
+	print('[Robot ' .. self.id .. ' finished episode with ' .. self.energy_level .. ' energy]')
 
-		--Configure subscriber to receive robots current energy
-	  self.energy_subscriber = self.nodehandle:subscribe("/swarmbot" .. self.id .. "/energy_level", msgs.float_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
-		self.energy_subscriber:registerCallback(function(msg, header)
-				--Update current energy level
-				self.energy_level = msg.data
-		end)
+	--Configure robot control
+  self.command_publisher = self.nodehandle:advertise("/swarmbot" .. self.id .. "/cmd_vel", msgs.twist_spec, 100, false, connect_cb, disconnect_cb)
 
-		--Configure sensors
-		self.input_subscribers = {}
-		for i=1, self.number_of_cameras do
-			self.input_subscribers[i] 
-			= self.nodehandle:subscribe("/swarmbot" .. self.id .. "/front_colour_sensor_" .. i .. "/image_raw", 
-																		msgs.image_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
-			self.input_subscribers[i]:registerCallback(function(msg, header)
-				--input is taken from msg published by swarmbot
-				sensor_input = torch.reshape(msg.data,msg.height*self.number_of_colour_channels*msg.width)
-				--Is there a way for torch.reshape to return a DoubleTensor?
-				sensor_input = (1/255) * sensor_input:double()
-				self.updated = true
-				--[[
-				if self.id == 1 then
-					print('Sensor')
-				end
-				--]]
-				--Green channel
+	--Configure subscriber to receive robots current energy
+  self.energy_subscriber = self.nodehandle:subscribe("/swarmbot" .. self.id .. "/energy_level", msgs.float_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
+	self.energy_subscriber:registerCallback(function(msg, header)
+			--Update current energy level
+			self.energy_level = msg.data
+	end)
+
+	--Configure sensors
+	self.input_subscribers = {}
+	for i=1, self.number_of_cameras do
+		self.input_subscribers[i] 
+		= self.nodehandle:subscribe("/swarmbot" .. self.id .. "/front_colour_sensor_" .. i .. "/image_raw", 
+																	msgs.image_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
+		self.input_subscribers[i]:registerCallback(function(msg, header)
+			--input is taken from msg published by swarmbot
+			sensor_input = torch.reshape(msg.data,msg.height*self.number_of_colour_channels*msg.width)
+			--Is there a way for torch.reshape to return a DoubleTensor?
+			sensor_input = (1/255) * sensor_input:double()
+			self.updated = true
+
+			--Colour channels
+			for c=1, self.number_of_used_colour_channels do
 				for j=1, self.camera_size do
-					self.current_observation[1][j][i] = sensor_input[2 + self.number_of_colour_channels * (j - 1)]
+					self.current_observation[c][j][i] = sensor_input[c + self.number_of_colour_channels * (j - 1)]
 				end
-			end)
-		end
-	else
+			end
+		end)
+	end
+
+	if __threadid == 0 then
 		--Only need to start the spinner once
 		self.spinner:start()
 	end
@@ -106,26 +106,24 @@ function GazeboEnv:start()
 end
 
 function GazeboEnv:step(action)
+	--Increment step counter
+	self.step_count = self.step_count + 1
+	terminal = false
+
 	--Calculate reward
 	old_energy = self.energy_level
 	ros.spinOnce()
 	reward = self.energy_level - old_energy
-	--[[
-	if self.id == 1 then
-		print('Step')
-	end
-	--]]
-	--Time adjustment
+
+	--Wait for Gazebo
 	while self.id == 1 and not self.updated do
 		ros.spinOnce()
 	end
 	self.updated = false
-	--ros.Duration(1/self.frequency):sleep()
 
-	--Find corresponding action (change this to binary version?)
 	action_taken = torch.Tensor(2):zero()
 	if 		 action == 0 then
-		action_taken[1] = 0
+		action_taken[1] = -self.action_magnitude * self.brake_coefficient
 		action_taken[2] = 0
 	elseif action == 1 then
 		action_taken[1] = 0
@@ -143,8 +141,12 @@ function GazeboEnv:step(action)
 	self.command_message.angular.z = action_taken[2];
 	self.command_publisher:publish(self.command_message)
 
-	--Return reward, observation, terminal flag
-	terminal = false
+	--Check if end of episode
+	if self.step_count >= self.number_steps_in_episode then
+		terminal = true
+		self.step_count = 0
+	end
+
   return reward, self.current_observation, terminal
 end
 

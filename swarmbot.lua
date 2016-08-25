@@ -16,7 +16,7 @@ function swarmbot.create(id, nodehandle, HUs, x, y, z)
 	sbot.max_turn = 1.0
 
 	--Spawn swarmbot.sdf in gazebo
-	os.execute('rosrun gazebo_ros spawn_model -x ' .. sbot.position[1] .. ' -y ' .. sbot.position[2] .. ' -z ' .. sbot.position[3] .. ' -file `rospack find 		      		          swarm_simulator`/sdf/swarm_robot_v2.sdf' .. ' -sdf -model swarmbot' .. sbot.id .. ' -robot_namespace swarmbot' .. sbot.id)
+	--os.execute('rosrun gazebo_ros spawn_model -x ' .. sbot.position[1] .. ' -y ' .. sbot.position[2] .. ' -z ' .. sbot.position[3] .. ' -file `rospack find 		      	--	          swarm_simulator`/sdf/swarm_robot_v2.sdf' .. ' -sdf -model swarmbot' .. sbot.id .. ' -robot_namespace swarmbot' .. sbot.id)
 	--To suppress output: .. ' > /dev/null 2>&1'
 
 	--Publisher to publish position updates
@@ -57,8 +57,13 @@ function swarmbot.relocate(self, new_position)
 	self.position = new_position
 end
 
-function swarmbot.consume(self, food)
-	self.energy = self.energy + food.value
+function swarmbot:consume(food)
+	self:update_energy(food.value)
+end
+
+function swarmbot:update_energy(value)
+	self.energy = self.energy + value
+	self:publish_energy()
 end
 
 function swarmbot:publish_energy()
