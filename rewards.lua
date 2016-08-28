@@ -9,7 +9,7 @@ frequency = 10
 eat_distance = 0.4
 number_of_food = arg[1]
 number_of_bots = arg[2]
-arena_width = 15
+arena_width = 16
 
 --setup ros node and spinner (processes queued send and receive topics)
 ros.init('GazeboDQN_rewards')
@@ -54,11 +54,11 @@ while not ros.isShuttingDown() do
 		end
 	end
 
-	--Penalise robots that are outside arena
+	--Constant health depletion
 	for i=0, number_of_bots do
-		if torch.abs(swarmbots[i].position[1]) > arena_width / 2 or torch.abs(swarmbots[i].position[2]) > arena_width / 2 then
+		--if torch.abs(swarmbots[i].position[1]) > arena_width / 2 or torch.abs(swarmbots[i].position[2]) > arena_width / 2 then
 			swarmbots[i]:update_energy(-1/frequency)
-		end
+		--end
 	end
 
 	ros.spinOnce()
