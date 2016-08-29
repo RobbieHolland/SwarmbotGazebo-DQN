@@ -29,9 +29,9 @@ function GazeboEnv:_init(opts)
 	self.min_reward = -1
 	self.max_reward = 100
 	self.energy_level = 0
-	self.action_magnitude = 5
-	self.brake_coefficient = 1
-	self.turning_coefficient = 0.2
+	self.action_magnitude = 1.25
+	self.brake_coefficient = 0.5
+	self.turning_coefficient = 0.125
 	self.command_message = ros.Message(msgs.twist_spec)
 	self.current_observation = torch.Tensor(self.number_of_used_colour_channels, self.camera_size, self.number_of_cameras):zero()
 	self.frequency = opts.threads
@@ -103,8 +103,8 @@ function GazeboEnv:start()
 		end
 
 		--Publisher to publish position updates
-		self.relocation_publisher = self.nodehandle:advertise("/gazebo/set_model_state", msgs.model_state_spec, 100, false, connect_cb, disconnect_cb)
-		self.relocation_message = ros.Message(msgs.model_state_spec)
+		--self.relocation_publisher = self.nodehandle:advertise("/gazebo/set_model_state", msgs.model_state_spec, 100, false, connect_cb, disconnect_cb)
+		--self.relocation_message = ros.Message(msgs.model_state_spec)
 
 		if __threadid == 0 then
 			--Only need to start the spinner once
@@ -114,7 +114,7 @@ function GazeboEnv:start()
 	end
 
 	print('[Robot ' .. self.id .. ' finished episode with ' .. self.energy_level .. ' energy]')
-	self:random_relocate(self.arena_width)
+	--self:random_relocate(self.arena_width)
 
 	--Return first observation
   return self.current_observation
@@ -153,19 +153,19 @@ function GazeboEnv:step(action)
 		ros.spinOnce()
 	end
 	self.updated = false
-
+action = 0
 	action_taken = torch.Tensor(2):zero()
 	if 		 action == 0 then
 		action_taken[1] = self.action_magnitude
 		action_taken[2] = 0
 	elseif action == 1 then
 		action_taken[1] = 0
-		action_taken[2] = self.turning_coefficient * self.action_magnitude
+		action_taken[2] = self.turning_coefficient
 	elseif action == 2 then
 		action_taken[1] = 0
-		action_taken[2] = -self.turning_coefficient * self.action_magnitude
+		action_taken[2] = -self.turning_coefficient
 	elseif action == 3 then
-		action_taken[1] = -self.action_magnitude
+		action_taken[1] = -self.action_magnitude * self.brake_coefficient
 		action_taken[2] = 0
 	end
 

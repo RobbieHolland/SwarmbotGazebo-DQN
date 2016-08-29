@@ -1,0 +1,11 @@
+Parameters:
+  th main.lua -threads $NUM_BOTS -zoom 4 -env async/SwarmbotGazebo-DQN/GazeboEnv -modelBody async/SwarmbotGazebo-DQN/SwarmbotModel -histLen 4 -async A3C -entropyBeta 0 -eta 0.0001 -bootstraps 0 -rewardClip 0 -hiddenSize 32 -doubleQ false -duel false -optimiser sharedRmsProp -steps 1000000000 -valFreq 60000 -valSteps 40000 -PALpha 0 "$@"
+
+Bots: 12
+Food: 90
+Time: ~10 hours
+
+Notes:
+Slowing down after time error fixed so was able to go to ~450 epochs (12*10e6 steps)
+Vs were rising but score of Validation agent was not increasing
+

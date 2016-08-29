@@ -1,0 +1,10 @@
+parameters:
+  th main.lua -threads $NUM_BOTS -zoom 4 -env async/SwarmbotGazebo-DQN/GazeboEnv -modelBody async/SwarmbotGazebo-DQN/SwarmbotModel -histLen 4 -async A3C -entropyBeta 0 -eta 0.0001 -bootstraps 0 -rewardClip 0 -hiddenSize 32 -doubleQ false -duel false -optimiser sharedRmsProp -steps 1000000000 -valFreq 180000 -valSteps 36000 -PALpha 0 "$@"
+
+Food: 90
+Bots: 12
+Time ~7-8 hours
+
+notes:
+Crashed for same reason as before even when only plotting 1/8 th of the points (so can't be that png graph is too big)
+Going to try validating stats infrequently

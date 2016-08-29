@@ -4,6 +4,8 @@ msgs = require 'async/SwarmbotGazebo-DQN/msgs'
 require 'async/SwarmbotGazebo-DQN/food'
 require 'async/SwarmbotGazebo-DQN/swarmbot'
 
+print('Handling Rewards...')
+
 --Constants
 frequency = 10
 eat_distance = 0.4

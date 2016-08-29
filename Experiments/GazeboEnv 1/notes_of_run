@@ -1,0 +1,9 @@
+Parameters:
+  th main.lua -threads $NUM_BOTS -zoom 4 -env async/SwarmbotGazebo-DQN/GazeboEnv -modelBody async/SwarmbotGazebo-DQN/SwarmbotModel -histLen 4 -async A3C -entropyBeta 0.001 -eta 0.0007 -momentum 0.99 -bootstraps 0 -rewardClip 0 -batchSize 5 -hiddenSize 32 -doubleQ false -duel false -optimiser adam -steps 1000000000 -tau 7250 -memSize 20000 -epsilonSteps 10000 -valFreq 60000 -valSteps 40000 -bootstraps 0 -PALpha 0 -network experiments/GazeboEnv/last.weights.t7 "$@"
+
+Bots: 12
+Food: 90
+Time: ~10 hours
+
+Notes:
+Program crashed (bug now fixed)

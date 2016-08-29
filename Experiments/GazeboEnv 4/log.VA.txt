@@ -1,0 +1,2411 @@
+[INFO - 2016_08_27_16:05:15] - "Setting up Torch7"
+[INFO - 2016_08_27_16:05:15] - "creating ValidationAgent"
+[INFO - 2016_08_27_16:05:15] - "Setting up async/SwarmbotGazebo-DQN/GazeboEnv"
+[INFO - 2016_08_27_16:05:15] - "Setting up async/SwarmbotGazebo-DQN/SwarmbotModel"
+[INFO - 2016_08_27_16:05:18] - "ValidationAgent | filling ValMemory "
+[INFO - 2016_08_27_16:05:18] - "ValidationAgent | ValMemory filled"
+[INFO - 2016_08_27_16:06:12] - starting validation after 181001 steps
+[INFO - 2016_08_27_16:07:01] - "Validated @ 335512"
+[INFO - 2016_08_27_16:07:01] - "Total Score: 45.5"
+[INFO - 2016_08_27_16:07:01] - "Average Score: 45.5"
+[INFO - 2016_08_27_16:07:02] - "Average V: -0.028829079389572"
+[INFO - 2016_08_27_16:07:02] - "New best average score"
+[INFO - 2016_08_27_16:07:02] - "Saving weights"
+[INFO - 2016_08_27_16:07:10] - starting validation after 182671 steps
+[INFO - 2016_08_27_16:07:56] - "Validated @ 513151"
+[INFO - 2016_08_27_16:07:56] - "Total Score: 50.800003051758"
+[INFO - 2016_08_27_16:07:56] - "Average Score: 50.800003051758"
+[INFO - 2016_08_27_16:07:57] - "Average V: -0.030657510533929"
+[INFO - 2016_08_27_16:07:57] - "New best average score"
+[INFO - 2016_08_27_16:07:57] - "Saving weights"
+[INFO - 2016_08_27_16:08:06] - starting validation after 181821 steps
+[INFO - 2016_08_27_16:08:53] - "Validated @ 695222"
+[INFO - 2016_08_27_16:08:53] - "Total Score: 33.400001525879"
+[INFO - 2016_08_27_16:08:53] - "Average Score: 33.400001525879"
+[INFO - 2016_08_27_16:08:54] - "Average V: -0.027582826480269"
+[INFO - 2016_08_27_16:09:03] - starting validation after 180037 steps
+[INFO - 2016_08_27_16:09:51] - "Validated @ 880607"
+[INFO - 2016_08_27_16:09:51] - "Total Score: 24"
+[INFO - 2016_08_27_16:09:51] - "Average Score: 24"
+[INFO - 2016_08_27_16:09:52] - "Average V: -0.030998017147183"
+[INFO - 2016_08_27_16:09:59] - starting validation after 180902 steps
+[INFO - 2016_08_27_16:10:45] - "Validated @ 1056050"
+[INFO - 2016_08_27_16:10:45] - "Total Score: 53.5"
+[INFO - 2016_08_27_16:10:45] - "Average Score: 53.5"
+[INFO - 2016_08_27_16:10:46] - "Average V: -0.014302634842694"
+[INFO - 2016_08_27_16:10:46] - "New best average score"
+[INFO - 2016_08_27_16:10:46] - "Saving weights"
+[INFO - 2016_08_27_16:10:55] - starting validation after 182685 steps
+[INFO - 2016_08_27_16:11:42] - "Validated @ 1239246"
+[INFO - 2016_08_27_16:11:42] - "Total Score: 30"
+[INFO - 2016_08_27_16:11:42] - "Average Score: 30"
+[INFO - 2016_08_27_16:11:42] - "Average V: -0.019683657333255"
+[INFO - 2016_08_27_16:11:51] - starting validation after 182965 steps
+[INFO - 2016_08_27_16:12:40] - "Validated @ 1428909"
+[INFO - 2016_08_27_16:12:40] - "Total Score: 4.1000061035156"
+[INFO - 2016_08_27_16:12:40] - "Average Score: 4.1000061035156"
+[INFO - 2016_08_27_16:12:41] - "Average V: -0.027312597997487"
+[INFO - 2016_08_27_16:12:48] - starting validation after 182028 steps
+[INFO - 2016_08_27_16:13:36] - "Validated @ 1609366"
+[INFO - 2016_08_27_16:13:36] - "Total Score: 6.6999969482422"
+[INFO - 2016_08_27_16:13:36] - "Average Score: 6.6999969482422"
+[INFO - 2016_08_27_16:13:37] - "Average V: -0.018203279025853"
+[INFO - 2016_08_27_16:13:44] - starting validation after 181067 steps
+[INFO - 2016_08_27_16:14:31] - "Validated @ 1790424"
+[INFO - 2016_08_27_16:14:31] - "Total Score: 17.499984741211"
+[INFO - 2016_08_27_16:14:31] - "Average Score: 17.499984741211"
+[INFO - 2016_08_27_16:14:31] - "Average V: -0.013637542337179"
+[INFO - 2016_08_27_16:14:38] - starting validation after 181307 steps
+[INFO - 2016_08_27_16:15:26] - "Validated @ 1972613"
+[INFO - 2016_08_27_16:15:26] - "Total Score: 44.600006103516"
+[INFO - 2016_08_27_16:15:26] - "Average Score: 44.600006103516"
+[INFO - 2016_08_27_16:15:27] - "Average V: -0.010980106510222"
+[INFO - 2016_08_27_16:15:34] - starting validation after 182016 steps
+[INFO - 2016_08_27_16:16:22] - "Validated @ 2154044"
+[INFO - 2016_08_27_16:16:22] - "Total Score: 30"
+[INFO - 2016_08_27_16:16:22] - "Average Score: 30"
+[INFO - 2016_08_27_16:16:22] - "Average V: -0.022866234704852"
+[INFO - 2016_08_27_16:16:29] - starting validation after 181075 steps
+[INFO - 2016_08_27_16:17:17] - "Validated @ 2334612"
+[INFO - 2016_08_27_16:17:17] - "Total Score: 20"
+[INFO - 2016_08_27_16:17:17] - "Average Score: 20"
+[INFO - 2016_08_27_16:17:18] - "Average V: -0.0055208501964808"
+[INFO - 2016_08_27_16:17:26] - starting validation after 183379 steps
+[INFO - 2016_08_27_16:18:13] - "Validated @ 2517735"
+[INFO - 2016_08_27_16:18:13] - "Total Score: 19.200012207031"
+[INFO - 2016_08_27_16:18:13] - "Average Score: 19.200012207031"
+[INFO - 2016_08_27_16:18:14] - "Average V: 0.00026932726800442"
+[INFO - 2016_08_27_16:18:22] - starting validation after 183073 steps
+[INFO - 2016_08_27_16:19:09] - "Validated @ 2698664"
+[INFO - 2016_08_27_16:19:09] - "Total Score: 66.5"
+[INFO - 2016_08_27_16:19:09] - "Average Score: 66.5"
+[INFO - 2016_08_27_16:19:09] - "Average V: -0.0020384117513895"
+[INFO - 2016_08_27_16:19:09] - "New best average score"
+[INFO - 2016_08_27_16:19:09] - "Saving weights"
+[INFO - 2016_08_27_16:19:17] - starting validation after 180826 steps
+[INFO - 2016_08_27_16:20:04] - "Validated @ 2880397"
+[INFO - 2016_08_27_16:20:04] - "Total Score: 20"
+[INFO - 2016_08_27_16:20:04] - "Average Score: 20"
+[INFO - 2016_08_27_16:20:05] - "Average V: -0.020266556210816"
+[INFO - 2016_08_27_16:20:13] - starting validation after 182833 steps
+[INFO - 2016_08_27_16:21:01] - "Validated @ 3065539"
+[INFO - 2016_08_27_16:21:01] - "Total Score: 6.7000122070312"
+[INFO - 2016_08_27_16:21:01] - "Average Score: 6.7000122070312"
+[INFO - 2016_08_27_16:21:02] - "Average V: -0.0065816141590476"
+[INFO - 2016_08_27_16:21:09] - starting validation after 181164 steps
+[INFO - 2016_08_27_16:21:57] - "Validated @ 3243605"
+[INFO - 2016_08_27_16:21:57] - "Total Score: 23.5"
+[INFO - 2016_08_27_16:21:57] - "Average Score: 23.5"
+[INFO - 2016_08_27_16:21:57] - "Average V: -0.011549369938672"
+[INFO - 2016_08_27_16:22:05] - starting validation after 180571 steps
+[INFO - 2016_08_27_16:22:52] - "Validated @ 3424433"
+[INFO - 2016_08_27_16:22:52] - "Total Score: 44.800018310547"
+[INFO - 2016_08_27_16:22:52] - "Average Score: 44.800018310547"
+[INFO - 2016_08_27_16:22:53] - "Average V: 0.0054378455728292"
+[INFO - 2016_08_27_16:23:01] - starting validation after 181636 steps
+[INFO - 2016_08_27_16:23:49] - "Validated @ 3605168"
+[INFO - 2016_08_27_16:23:49] - "Total Score: 18.799987792969"
+[INFO - 2016_08_27_16:23:49] - "Average Score: 18.799987792969"
+[INFO - 2016_08_27_16:23:49] - "Average V: 0.0040025993511081"
+[INFO - 2016_08_27_16:23:57] - starting validation after 181600 steps
+[INFO - 2016_08_27_16:24:45] - "Validated @ 3787961"
+[INFO - 2016_08_27_16:24:45] - "Total Score: 37.799987792969"
+[INFO - 2016_08_27_16:24:45] - "Average Score: 37.799987792969"
+[INFO - 2016_08_27_16:24:45] - "Average V: 0.0056714251339436"
+[INFO - 2016_08_27_16:24:53] - starting validation after 181234 steps
+[INFO - 2016_08_27_16:25:41] - "Validated @ 3970440"
+[INFO - 2016_08_27_16:25:41] - "Total Score: 52"
+[INFO - 2016_08_27_16:25:41] - "Average Score: 52"
+[INFO - 2016_08_27_16:25:42] - "Average V: -0.0076079904139042"
+[INFO - 2016_08_27_16:25:50] - starting validation after 183328 steps
+[INFO - 2016_08_27_16:26:38] - "Validated @ 4151574"
+[INFO - 2016_08_27_16:26:38] - "Total Score: -10"
+[INFO - 2016_08_27_16:26:38] - "Average Score: -10"
+[INFO - 2016_08_27_16:26:38] - "Average V: 0.0031435288563371"
+[INFO - 2016_08_27_16:26:46] - starting validation after 182113 steps
+[INFO - 2016_08_27_16:27:34] - "Validated @ 4335238"
+[INFO - 2016_08_27_16:27:34] - "Total Score: 0.5999755859375"
+[INFO - 2016_08_27_16:27:34] - "Average Score: 0.5999755859375"
+[INFO - 2016_08_27_16:27:34] - "Average V: -0.0049670923054218"
+[INFO - 2016_08_27_16:27:42] - starting validation after 182675 steps
+[INFO - 2016_08_27_16:28:29] - "Validated @ 4517487"
+[INFO - 2016_08_27_16:28:29] - "Total Score: 4.1000366210938"
+[INFO - 2016_08_27_16:28:29] - "Average Score: 4.1000366210938"
+[INFO - 2016_08_27_16:28:30] - "Average V: -0.0030909258425236"
+[INFO - 2016_08_27_16:28:38] - starting validation after 182513 steps
+[INFO - 2016_08_27_16:29:25] - "Validated @ 4703053"
+[INFO - 2016_08_27_16:29:25] - "Total Score: 39.099975585938"
+[INFO - 2016_08_27_16:29:25] - "Average Score: 39.099975585938"
+[INFO - 2016_08_27_16:29:25] - "Average V: -0.016014730542898"
+[INFO - 2016_08_27_16:29:32] - starting validation after 183002 steps
+[INFO - 2016_08_27_16:30:20] - "Validated @ 4886024"
+[INFO - 2016_08_27_16:30:20] - "Total Score: -1.0999755859375"
+[INFO - 2016_08_27_16:30:20] - "Average Score: -1.0999755859375"
+[INFO - 2016_08_27_16:30:20] - "Average V: 0.0033741190806031"
+[INFO - 2016_08_27_16:30:27] - starting validation after 182642 steps
+[INFO - 2016_08_27_16:31:14] - "Validated @ 5066060"
+[INFO - 2016_08_27_16:31:14] - "Total Score: 34.700012207031"
+[INFO - 2016_08_27_16:31:14] - "Average Score: 34.700012207031"
+[INFO - 2016_08_27_16:31:14] - "Average V: -0.0081182288378477"
+[INFO - 2016_08_27_16:31:22] - starting validation after 182771 steps
+[INFO - 2016_08_27_16:32:10] - "Validated @ 5249749"
+[INFO - 2016_08_27_16:32:10] - "Total Score: -17.5"
+[INFO - 2016_08_27_16:32:10] - "Average Score: -17.5"
+[INFO - 2016_08_27_16:32:10] - "Average V: 0.0079496809989214"
+[INFO - 2016_08_27_16:32:17] - starting validation after 181203 steps
+[INFO - 2016_08_27_16:33:04] - "Validated @ 5434003"
+[INFO - 2016_08_27_16:33:04] - "Total Score: -12.200012207031"
+[INFO - 2016_08_27_16:33:04] - "Average Score: -12.200012207031"
+[INFO - 2016_08_27_16:33:05] - "Average V: -0.017950637161732"
+[INFO - 2016_08_27_16:33:11] - starting validation after 180478 steps
+[INFO - 2016_08_27_16:33:58] - "Validated @ 5610834"
+[INFO - 2016_08_27_16:33:58] - "Total Score: 68.5"
+[INFO - 2016_08_27_16:33:58] - "Average Score: 68.5"
+[INFO - 2016_08_27_16:33:58] - "Average V: -0.00066898813098669"
+[INFO - 2016_08_27_16:33:58] - "New best average score"
+[INFO - 2016_08_27_16:33:58] - "Saving weights"
+[INFO - 2016_08_27_16:34:06] - starting validation after 183345 steps
+[INFO - 2016_08_27_16:34:52] - "Validated @ 5792809"
+[INFO - 2016_08_27_16:34:52] - "Total Score: 55.5"
+[INFO - 2016_08_27_16:34:52] - "Average Score: 55.5"
+[INFO - 2016_08_27_16:34:53] - "Average V: -0.0082439726442099"
+[INFO - 2016_08_27_16:35:01] - starting validation after 182255 steps
+[INFO - 2016_08_27_16:35:48] - "Validated @ 5977000"
+[INFO - 2016_08_27_16:35:48] - "Total Score: -10.799987792969"
+[INFO - 2016_08_27_16:35:48] - "Average Score: -10.799987792969"
+[INFO - 2016_08_27_16:35:48] - "Average V: -0.002465002566576"
+[INFO - 2016_08_27_16:35:55] - starting validation after 181333 steps
+[INFO - 2016_08_27_16:36:40] - "Validated @ 6156045"
+[INFO - 2016_08_27_16:36:40] - "Total Score: 19"
+[INFO - 2016_08_27_16:36:40] - "Average Score: 19"
+[INFO - 2016_08_27_16:36:41] - "Average V: -0.0065401170700788"
+[INFO - 2016_08_27_16:36:49] - starting validation after 182162 steps
+[INFO - 2016_08_27_16:37:35] - "Validated @ 6339083"
+[INFO - 2016_08_27_16:37:35] - "Total Score: -5.800048828125"
+[INFO - 2016_08_27_16:37:35] - "Average Score: -5.800048828125"
+[INFO - 2016_08_27_16:37:35] - "Average V: -0.0033876368924975"
+[INFO - 2016_08_27_16:37:42] - starting validation after 180656 steps
+[INFO - 2016_08_27_16:38:29] - "Validated @ 6519776"
+[INFO - 2016_08_27_16:38:29] - "Total Score: -19"
+[INFO - 2016_08_27_16:38:29] - "Average Score: -19"
+[INFO - 2016_08_27_16:38:30] - "Average V: -0.0041501712948084"
+[INFO - 2016_08_27_16:38:38] - starting validation after 182597 steps
+[INFO - 2016_08_27_16:39:24] - "Validated @ 6700966"
+[INFO - 2016_08_27_16:39:24] - "Total Score: 44.5"
+[INFO - 2016_08_27_16:39:24] - "Average Score: 44.5"
+[INFO - 2016_08_27_16:39:25] - "Average V: 0.0034206163659692"
+[INFO - 2016_08_27_16:39:33] - starting validation after 182481 steps
+[INFO - 2016_08_27_16:40:19] - "Validated @ 6886032"
+[INFO - 2016_08_27_16:40:19] - "Total Score: 17.600036621094"
+[INFO - 2016_08_27_16:40:19] - "Average Score: 17.600036621094"
+[INFO - 2016_08_27_16:40:20] - "Average V: -0.0098698074445128"
+[INFO - 2016_08_27_16:40:27] - starting validation after 180745 steps
+[INFO - 2016_08_27_16:41:14] - "Validated @ 7069549"
+[INFO - 2016_08_27_16:41:14] - "Total Score: -3.4000244140625"
+[INFO - 2016_08_27_16:41:14] - "Average Score: -3.4000244140625"
+[INFO - 2016_08_27_16:41:15] - "Average V: -0.0017595330551267"
+[INFO - 2016_08_27_16:41:22] - starting validation after 183363 steps
+[INFO - 2016_08_27_16:42:08] - "Validated @ 7250063"
+[INFO - 2016_08_27_16:42:08] - "Total Score: 74.599975585938"
+[INFO - 2016_08_27_16:42:08] - "Average Score: 74.599975585938"
+[INFO - 2016_08_27_16:42:08] - "Average V: -0.022022795267403"
+[INFO - 2016_08_27_16:42:08] - "New best average score"
+[INFO - 2016_08_27_16:42:08] - "Saving weights"
+[INFO - 2016_08_27_16:42:15] - starting validation after 180993 steps
+[INFO - 2016_08_27_16:43:03] - "Validated @ 7432762"
+[INFO - 2016_08_27_16:43:03] - "Total Score: 61.600036621094"
+[INFO - 2016_08_27_16:43:03] - "Average Score: 61.600036621094"
+[INFO - 2016_08_27_16:43:04] - "Average V: 0.001491934902966"
+[INFO - 2016_08_27_16:43:11] - starting validation after 182808 steps
+[INFO - 2016_08_27_16:43:57] - "Validated @ 7614769"
+[INFO - 2016_08_27_16:43:57] - "Total Score: 3.699951171875"
+[INFO - 2016_08_27_16:43:57] - "Average Score: 3.699951171875"
+[INFO - 2016_08_27_16:43:58] - "Average V: -0.0073015419989824"
+[INFO - 2016_08_27_16:44:05] - starting validation after 181721 steps
+[INFO - 2016_08_27_16:44:51] - "Validated @ 7793553"
+[INFO - 2016_08_27_16:44:51] - "Total Score: 2.3999633789062"
+[INFO - 2016_08_27_16:44:51] - "Average Score: 2.3999633789062"
+[INFO - 2016_08_27_16:44:52] - "Average V: -0.0024602208584547"
+[INFO - 2016_08_27_16:45:00] - starting validation after 182214 steps
+[INFO - 2016_08_27_16:45:46] - "Validated @ 7978957"
+[INFO - 2016_08_27_16:45:46] - "Total Score: 39.300048828125"
+[INFO - 2016_08_27_16:45:46] - "Average Score: 39.300048828125"
+[INFO - 2016_08_27_16:45:47] - "Average V: -0.026001064099371"
+[INFO - 2016_08_27_16:45:54] - starting validation after 181895 steps
+[INFO - 2016_08_27_16:46:41] - "Validated @ 8159569"
+[INFO - 2016_08_27_16:46:41] - "Total Score: 29.900024414062"
+[INFO - 2016_08_27_16:46:41] - "Average Score: 29.900024414062"
+[INFO - 2016_08_27_16:46:41] - "Average V: -0.0011099557206035"
+[INFO - 2016_08_27_16:46:49] - starting validation after 183199 steps
+[INFO - 2016_08_27_16:47:35] - "Validated @ 8342640"
+[INFO - 2016_08_27_16:47:35] - "Total Score: 5.0999755859375"
+[INFO - 2016_08_27_16:47:35] - "Average Score: 5.0999755859375"
+[INFO - 2016_08_27_16:47:36] - "Average V: -0.014037733249366"
+[INFO - 2016_08_27_16:47:44] - starting validation after 181876 steps
+[INFO - 2016_08_27_16:48:30] - "Validated @ 8522042"
+[INFO - 2016_08_27_16:48:30] - "Total Score: 10"
+[INFO - 2016_08_27_16:48:30] - "Average Score: 10"
+[INFO - 2016_08_27_16:48:31] - "Average V: 0.0020717859640718"
+[INFO - 2016_08_27_16:48:39] - starting validation after 181346 steps
+[INFO - 2016_08_27_16:49:26] - "Validated @ 8706488"
+[INFO - 2016_08_27_16:49:26] - "Total Score: 20.5"
+[INFO - 2016_08_27_16:49:26] - "Average Score: 20.5"
+[INFO - 2016_08_27_16:49:26] - "Average V: 0.0056182377412915"
+[INFO - 2016_08_27_16:49:33] - starting validation after 181340 steps
+[INFO - 2016_08_27_16:50:18] - "Validated @ 8884061"
+[INFO - 2016_08_27_16:50:18] - "Total Score: -16.299926757812"
+[INFO - 2016_08_27_16:50:18] - "Average Score: -16.299926757812"
+[INFO - 2016_08_27_16:50:19] - "Average V: -0.0048470660373569"
+[INFO - 2016_08_27_16:50:27] - starting validation after 180423 steps
+[INFO - 2016_08_27_16:51:14] - "Validated @ 9069555"
+[INFO - 2016_08_27_16:51:14] - "Total Score: 33.900024414062"
+[INFO - 2016_08_27_16:51:14] - "Average Score: 33.900024414062"
+[INFO - 2016_08_27_16:51:14] - "Average V: -0.013730063699186"
+[INFO - 2016_08_27_16:51:21] - starting validation after 182550 steps
+[INFO - 2016_08_27_16:52:08] - "Validated @ 9252042"
+[INFO - 2016_08_27_16:52:08] - "Total Score: 109.80004882812"
+[INFO - 2016_08_27_16:52:08] - "Average Score: 109.80004882812"
+[INFO - 2016_08_27_16:52:09] - "Average V: -0.0016892849802971"
+[INFO - 2016_08_27_16:52:09] - "New best average score"
+[INFO - 2016_08_27_16:52:09] - "Saving weights"
+[INFO - 2016_08_27_16:52:16] - starting validation after 183168 steps
+[INFO - 2016_08_27_16:53:02] - "Validated @ 9432266"
+[INFO - 2016_08_27_16:53:02] - "Total Score: -3.300048828125"
+[INFO - 2016_08_27_16:53:02] - "Average Score: -3.300048828125"
+[INFO - 2016_08_27_16:53:03] - "Average V: -0.013536123588681"
+[INFO - 2016_08_27_16:53:10] - starting validation after 180051 steps
+[INFO - 2016_08_27_16:53:56] - "Validated @ 9612345"
+[INFO - 2016_08_27_16:53:56] - "Total Score: -8.0999755859375"
+[INFO - 2016_08_27_16:53:56] - "Average Score: -8.0999755859375"
+[INFO - 2016_08_27_16:53:57] - "Average V: -0.004141502507031"
+[INFO - 2016_08_27_16:54:04] - starting validation after 180164 steps
+[INFO - 2016_08_27_16:54:51] - "Validated @ 9796941"
+[INFO - 2016_08_27_16:54:51] - "Total Score: 31.400024414062"
+[INFO - 2016_08_27_16:54:51] - "Average Score: 31.400024414062"
+[INFO - 2016_08_27_16:54:52] - "Average V: 0.010466841906309"
+[INFO - 2016_08_27_16:54:58] - starting validation after 181099 steps
+[INFO - 2016_08_27_16:55:44] - "Validated @ 9973820"
+[INFO - 2016_08_27_16:55:44] - "Total Score: 48.10009765625"
+[INFO - 2016_08_27_16:55:44] - "Average Score: 48.10009765625"
+[INFO - 2016_08_27_16:55:45] - "Average V: -0.00037612953782082"
+[INFO - 2016_08_27_16:55:52] - starting validation after 180090 steps
+[INFO - 2016_08_27_16:56:39] - "Validated @ 10154804"
+[INFO - 2016_08_27_16:56:39] - "Total Score: 38.89990234375"
+[INFO - 2016_08_27_16:56:39] - "Average Score: 38.89990234375"
+[INFO - 2016_08_27_16:56:39] - "Average V: -0.00179770809412"
+[INFO - 2016_08_27_16:56:46] - starting validation after 180336 steps
+[INFO - 2016_08_27_16:57:33] - "Validated @ 10336567"
+[INFO - 2016_08_27_16:57:33] - "Total Score: 14.699951171875"
+[INFO - 2016_08_27_16:57:33] - "Average Score: 14.699951171875"
+[INFO - 2016_08_27_16:57:34] - "Average V: 0.0073016767650843"
+[INFO - 2016_08_27_16:57:41] - starting validation after 182197 steps
+[INFO - 2016_08_27_16:58:27] - "Validated @ 10516503"
+[INFO - 2016_08_27_16:58:27] - "Total Score: 3.0999755859375"
+[INFO - 2016_08_27_16:58:27] - "Average Score: 3.0999755859375"
+[INFO - 2016_08_27_16:58:28] - "Average V: -0.012435514941812"
+[INFO - 2016_08_27_16:58:35] - starting validation after 180725 steps
+[INFO - 2016_08_27_16:59:22] - "Validated @ 10697902"
+[INFO - 2016_08_27_16:59:22] - "Total Score: 60"
+[INFO - 2016_08_27_16:59:22] - "Average Score: 60"
+[INFO - 2016_08_27_16:59:22] - "Average V: 0.0039905375093222"
+[INFO - 2016_08_27_16:59:29] - starting validation after 180309 steps
+[INFO - 2016_08_27_17:00:16] - "Validated @ 10878234"
+[INFO - 2016_08_27_17:00:16] - "Total Score: 30"
+[INFO - 2016_08_27_17:00:16] - "Average Score: 30"
+[INFO - 2016_08_27_17:00:16] - "Average V: -0.013023388162255"
+[INFO - 2016_08_27_17:00:23] - starting validation after 180799 steps
+[INFO - 2016_08_27_17:01:10] - "Validated @ 11056567"
+[INFO - 2016_08_27_17:01:10] - "Total Score: -8"
+[INFO - 2016_08_27_17:01:10] - "Average Score: -8"
+[INFO - 2016_08_27_17:01:10] - "Average V: -0.0052150220423937"
+[INFO - 2016_08_27_17:01:18] - starting validation after 182132 steps
+[INFO - 2016_08_27_17:02:05] - "Validated @ 11242615"
+[INFO - 2016_08_27_17:02:05] - "Total Score: -11.300048828125"
+[INFO - 2016_08_27_17:02:05] - "Average Score: -11.300048828125"
+[INFO - 2016_08_27_17:02:05] - "Average V: -0.021649150013924"
+[INFO - 2016_08_27_17:02:12] - starting validation after 182598 steps
+[INFO - 2016_08_27_17:03:00] - "Validated @ 11424137"
+[INFO - 2016_08_27_17:03:00] - "Total Score: 47.200073242188"
+[INFO - 2016_08_27_17:03:00] - "Average Score: 47.200073242188"
+[INFO - 2016_08_27_17:03:00] - "Average V: 0.0045385433882475"
+[INFO - 2016_08_27_17:03:07] - starting validation after 180686 steps
+[INFO - 2016_08_27_17:03:53] - "Validated @ 11602751"
+[INFO - 2016_08_27_17:03:53] - "Total Score: 14.5"
+[INFO - 2016_08_27_17:03:53] - "Average Score: 14.5"
+[INFO - 2016_08_27_17:03:54] - "Average V: -0.020327374905348"
+[INFO - 2016_08_27_17:04:02] - starting validation after 182489 steps
+[INFO - 2016_08_27_17:04:47] - "Validated @ 11784563"
+[INFO - 2016_08_27_17:04:47] - "Total Score: 26.099975585938"
+[INFO - 2016_08_27_17:04:47] - "Average Score: 26.099975585938"
+[INFO - 2016_08_27_17:04:48] - "Average V: -0.0013825207054615"
+[INFO - 2016_08_27_17:04:56] - starting validation after 181858 steps
+[INFO - 2016_08_27_17:05:42] - "Validated @ 11966383"
+[INFO - 2016_08_27_17:05:42] - "Total Score: -6.39990234375"
+[INFO - 2016_08_27_17:05:42] - "Average Score: -6.39990234375"
+[INFO - 2016_08_27_17:05:42] - "Average V: -0.011833522289991"
+[INFO - 2016_08_27_17:05:50] - starting validation after 181086 steps
+[INFO - 2016_08_27_17:06:37] - "Validated @ 12151254"
+[INFO - 2016_08_27_17:06:37] - "Total Score: 44.199951171875"
+[INFO - 2016_08_27_17:06:37] - "Average Score: 44.199951171875"
+[INFO - 2016_08_27_17:06:37] - "Average V: 0.00041274297237396"
+[INFO - 2016_08_27_17:06:44] - starting validation after 182193 steps
+[INFO - 2016_08_27_17:07:31] - "Validated @ 12333174"
+[INFO - 2016_08_27_17:07:31] - "Total Score: -12.400024414062"
+[INFO - 2016_08_27_17:07:31] - "Average Score: -12.400024414062"
+[INFO - 2016_08_27_17:07:32] - "Average V: -0.012285375609994"
+[INFO - 2016_08_27_17:07:39] - starting validation after 181379 steps
+[INFO - 2016_08_27_17:08:26] - "Validated @ 12516873"
+[INFO - 2016_08_27_17:08:26] - "Total Score: -4.9000244140625"
+[INFO - 2016_08_27_17:08:26] - "Average Score: -4.9000244140625"
+[INFO - 2016_08_27_17:08:27] - "Average V: 0.0076567403376102"
+[INFO - 2016_08_27_17:08:33] - starting validation after 180035 steps
+[INFO - 2016_08_27_17:09:18] - "Validated @ 12692906"
+[INFO - 2016_08_27_17:09:18] - "Total Score: 5.5"
+[INFO - 2016_08_27_17:09:18] - "Average Score: 5.5"
+[INFO - 2016_08_27_17:09:19] - "Average V: -0.01166576859355"
+[INFO - 2016_08_27_17:09:26] - starting validation after 180237 steps
+[INFO - 2016_08_27_17:10:12] - "Validated @ 12873116"
+[INFO - 2016_08_27_17:10:12] - "Total Score: -3"
+[INFO - 2016_08_27_17:10:12] - "Average Score: -3"
+[INFO - 2016_08_27_17:10:13] - "Average V: 0.0017794566005468"
+[INFO - 2016_08_27_17:10:21] - starting validation after 183018 steps
+[INFO - 2016_08_27_17:11:08] - "Validated @ 13057834"
+[INFO - 2016_08_27_17:11:08] - "Total Score: 53.799926757812"
+[INFO - 2016_08_27_17:11:08] - "Average Score: 53.799926757812"
+[INFO - 2016_08_27_17:11:08] - "Average V: -0.018862874984741"
+[INFO - 2016_08_27_17:11:15] - starting validation after 182477 steps
+[INFO - 2016_08_27_17:12:02] - "Validated @ 13238916"
+[INFO - 2016_08_27_17:12:02] - "Total Score: 50"
+[INFO - 2016_08_27_17:12:02] - "Average Score: 50"
+[INFO - 2016_08_27_17:12:03] - "Average V: -0.0039296611994505"
+[INFO - 2016_08_27_17:12:10] - starting validation after 181689 steps
+[INFO - 2016_08_27_17:12:56] - "Validated @ 13421191"
+[INFO - 2016_08_27_17:12:56] - "Total Score: -12.5"
+[INFO - 2016_08_27_17:12:56] - "Average Score: -12.5"
+[INFO - 2016_08_27_17:12:57] - "Average V: -0.017246586099267"
+[INFO - 2016_08_27_17:13:04] - starting validation after 180921 steps
+[INFO - 2016_08_27_17:13:50] - "Validated @ 13600665"
+[INFO - 2016_08_27_17:13:50] - "Total Score: -5.4000244140625"
+[INFO - 2016_08_27_17:13:50] - "Average Score: -5.4000244140625"
+[INFO - 2016_08_27_17:13:51] - "Average V: -0.010069578647614"
+[INFO - 2016_08_27_17:13:59] - starting validation after 183072 steps
+[INFO - 2016_08_27_17:14:45] - "Validated @ 13785027"
+[INFO - 2016_08_27_17:14:45] - "Total Score: -8"
+[INFO - 2016_08_27_17:14:45] - "Average Score: -8"
+[INFO - 2016_08_27_17:14:46] - "Average V: -0.021183324053884"
+[INFO - 2016_08_27_17:14:53] - starting validation after 180779 steps
+[INFO - 2016_08_27_17:15:39] - "Validated @ 13965268"
+[INFO - 2016_08_27_17:15:39] - "Total Score: -13.299926757812"
+[INFO - 2016_08_27_17:15:39] - "Average Score: -13.299926757812"
+[INFO - 2016_08_27_17:15:40] - "Average V: -0.0053578355759382"
+[INFO - 2016_08_27_17:15:47] - starting validation after 180636 steps
+[INFO - 2016_08_27_17:16:33] - "Validated @ 14147580"
+[INFO - 2016_08_27_17:16:33] - "Total Score: 20.099975585938"
+[INFO - 2016_08_27_17:16:33] - "Average Score: 20.099975585938"
+[INFO - 2016_08_27_17:16:34] - "Average V: -0.01371365955472"
+[INFO - 2016_08_27_17:16:41] - starting validation after 181080 steps
+[INFO - 2016_08_27_17:17:26] - "Validated @ 14324567"
+[INFO - 2016_08_27_17:17:26] - "Total Score: -3.5"
+[INFO - 2016_08_27_17:17:26] - "Average Score: -3.5"
+[INFO - 2016_08_27_17:17:27] - "Average V: -0.0053922757655382"
+[INFO - 2016_08_27_17:17:35] - starting validation after 182067 steps
+[INFO - 2016_08_27_17:18:21] - "Validated @ 14510448"
+[INFO - 2016_08_27_17:18:21] - "Total Score: 2.800048828125"
+[INFO - 2016_08_27_17:18:21] - "Average Score: 2.800048828125"
+[INFO - 2016_08_27_17:18:22] - "Average V: -0.0086136146485806"
+[INFO - 2016_08_27_17:18:29] - starting validation after 181474 steps
+[INFO - 2016_08_27_17:19:15] - "Validated @ 14690313"
+[INFO - 2016_08_27_17:19:15] - "Total Score: -4.5999755859375"
+[INFO - 2016_08_27_17:19:15] - "Average Score: -4.5999755859375"
+[INFO - 2016_08_27_17:19:16] - "Average V: -0.00092699736356735"
+[INFO - 2016_08_27_17:19:23] - starting validation after 180636 steps
+[INFO - 2016_08_27_17:20:09] - "Validated @ 14872476"
+[INFO - 2016_08_27_17:20:09] - "Total Score: 28.400024414062"
+[INFO - 2016_08_27_17:20:09] - "Average Score: 28.400024414062"
+[INFO - 2016_08_27_17:20:10] - "Average V: -0.010098716601729"
+[INFO - 2016_08_27_17:20:17] - starting validation after 181098 steps
+[INFO - 2016_08_27_17:21:02] - "Validated @ 15051133"
+[INFO - 2016_08_27_17:21:02] - "Total Score: 54.5"
+[INFO - 2016_08_27_17:21:02] - "Average Score: 54.5"
+[INFO - 2016_08_27_17:21:03] - "Average V: -0.0010321462601423"
+[INFO - 2016_08_27_17:21:11] - starting validation after 182499 steps
+[INFO - 2016_08_27_17:21:58] - "Validated @ 15237828"
+[INFO - 2016_08_27_17:21:58] - "Total Score: 32.800048828125"
+[INFO - 2016_08_27_17:21:58] - "Average Score: 32.800048828125"
+[INFO - 2016_08_27_17:21:59] - "Average V: -0.0098006616532803"
+[INFO - 2016_08_27_17:22:06] - starting validation after 182827 steps
+[INFO - 2016_08_27_17:22:52] - "Validated @ 15420373"
+[INFO - 2016_08_27_17:22:52] - "Total Score: 3.4000244140625"
+[INFO - 2016_08_27_17:22:52] - "Average Score: 3.4000244140625"
+[INFO - 2016_08_27_17:22:53] - "Average V: 0.001983981102705"
+[INFO - 2016_08_27_17:23:00] - starting validation after 183016 steps
+[INFO - 2016_08_27_17:23:48] - "Validated @ 15604797"
+[INFO - 2016_08_27_17:23:48] - "Total Score: 5.0999755859375"
+[INFO - 2016_08_27_17:23:48] - "Average Score: 5.0999755859375"
+[INFO - 2016_08_27_17:23:48] - "Average V: -0.0072994226664305"
+[INFO - 2016_08_27_17:23:54] - starting validation after 180408 steps
+[INFO - 2016_08_27_17:24:41] - "Validated @ 15784381"
+[INFO - 2016_08_27_17:24:41] - "Total Score: 20"
+[INFO - 2016_08_27_17:24:41] - "Average Score: 20"
+[INFO - 2016_08_27_17:24:42] - "Average V: -0.013421281293035"
+[INFO - 2016_08_27_17:24:48] - starting validation after 180261 steps
+[INFO - 2016_08_27_17:25:35] - "Validated @ 15961560"
+[INFO - 2016_08_27_17:25:35] - "Total Score: 0"
+[INFO - 2016_08_27_17:25:35] - "Average Score: 0"
+[INFO - 2016_08_27_17:25:35] - "Average V: -0.0069801051020622"
+[INFO - 2016_08_27_17:25:42] - starting validation after 180849 steps
+[INFO - 2016_08_27_17:26:29] - "Validated @ 16144098"
+[INFO - 2016_08_27_17:26:29] - "Total Score: 10"
+[INFO - 2016_08_27_17:26:29] - "Average Score: 10"
+[INFO - 2016_08_27_17:26:30] - "Average V: 0.0012631251960993"
+[INFO - 2016_08_27_17:26:37] - starting validation after 182646 steps
+[INFO - 2016_08_27_17:27:23] - "Validated @ 16325169"
+[INFO - 2016_08_27_17:27:23] - "Total Score: 11.5"
+[INFO - 2016_08_27_17:27:23] - "Average Score: 11.5"
+[INFO - 2016_08_27_17:27:24] - "Average V: 0.0019223366379738"
+[INFO - 2016_08_27_17:27:31] - starting validation after 180568 steps
+[INFO - 2016_08_27_17:28:17] - "Validated @ 16506123"
+[INFO - 2016_08_27_17:28:17] - "Total Score: -5.0999755859375"
+[INFO - 2016_08_27_17:28:17] - "Average Score: -5.0999755859375"
+[INFO - 2016_08_27_17:28:18] - "Average V: -0.008780837148428"
+[INFO - 2016_08_27_17:28:25] - starting validation after 181112 steps
+[INFO - 2016_08_27_17:29:12] - "Validated @ 16690443"
+[INFO - 2016_08_27_17:29:12] - "Total Score: 16.900024414062"
+[INFO - 2016_08_27_17:29:12] - "Average Score: 16.900024414062"
+[INFO - 2016_08_27_17:29:12] - "Average V: -0.0064652803242207"
+[INFO - 2016_08_27_17:29:18] - starting validation after 180344 steps
+[INFO - 2016_08_27_17:30:05] - "Validated @ 16870271"
+[INFO - 2016_08_27_17:30:05] - "Total Score: 74.5"
+[INFO - 2016_08_27_17:30:05] - "Average Score: 74.5"
+[INFO - 2016_08_27_17:30:06] - "Average V: -0.0037996644973755"
+[INFO - 2016_08_27_17:30:13] - starting validation after 182973 steps
+[INFO - 2016_08_27_17:30:59] - "Validated @ 17051693"
+[INFO - 2016_08_27_17:30:59] - "Total Score: -22.299926757812"
+[INFO - 2016_08_27_17:30:59] - "Average Score: -22.299926757812"
+[INFO - 2016_08_27_17:31:00] - "Average V: -0.010305566057563"
+[INFO - 2016_08_27_17:31:07] - starting validation after 182158 steps
+[INFO - 2016_08_27_17:31:53] - "Validated @ 17232366"
+[INFO - 2016_08_27_17:31:53] - "Total Score: 4.699951171875"
+[INFO - 2016_08_27_17:31:53] - "Average Score: 4.699951171875"
+[INFO - 2016_08_27_17:31:54] - "Average V: 0.0057279748171568"
+[INFO - 2016_08_27_17:32:01] - starting validation after 180323 steps
+[INFO - 2016_08_27_17:32:48] - "Validated @ 17415918"
+[INFO - 2016_08_27_17:32:48] - "Total Score: 44.300048828125"
+[INFO - 2016_08_27_17:32:48] - "Average Score: 44.300048828125"
+[INFO - 2016_08_27_17:32:49] - "Average V: -0.011841063171625"
+[INFO - 2016_08_27_17:32:56] - starting validation after 183567 steps
+[INFO - 2016_08_27_17:33:42] - "Validated @ 17597408"
+[INFO - 2016_08_27_17:33:42] - "Total Score: -7.7999267578125"
+[INFO - 2016_08_27_17:33:42] - "Average Score: -7.7999267578125"
+[INFO - 2016_08_27_17:33:43] - "Average V: -0.0065966753959656"
+[INFO - 2016_08_27_17:33:50] - starting validation after 182391 steps
+[INFO - 2016_08_27_17:34:36] - "Validated @ 17779527"
+[INFO - 2016_08_27_17:34:36] - "Total Score: 23.199951171875"
+[INFO - 2016_08_27_17:34:36] - "Average Score: 23.199951171875"
+[INFO - 2016_08_27_17:34:37] - "Average V: -0.0052212452739477"
+[INFO - 2016_08_27_17:34:44] - starting validation after 181155 steps
+[INFO - 2016_08_27_17:35:31] - "Validated @ 17961752"
+[INFO - 2016_08_27_17:35:31] - "Total Score: 17.300048828125"
+[INFO - 2016_08_27_17:35:31] - "Average Score: 17.300048828125"
+[INFO - 2016_08_27_17:35:31] - "Average V: -0.0067069885581732"
+[INFO - 2016_08_27_17:35:38] - starting validation after 183958 steps
+[INFO - 2016_08_27_17:36:24] - "Validated @ 18144659"
+[INFO - 2016_08_27_17:36:24] - "Total Score: 22.199951171875"
+[INFO - 2016_08_27_17:36:24] - "Average Score: 22.199951171875"
+[INFO - 2016_08_27_17:36:25] - "Average V: -0.024386009216309"
+[INFO - 2016_08_27_17:36:32] - starting validation after 182044 steps
+[INFO - 2016_08_27_17:37:20] - "Validated @ 18330416"
+[INFO - 2016_08_27_17:37:20] - "Total Score: 48.300048828125"
+[INFO - 2016_08_27_17:37:20] - "Average Score: 48.300048828125"
+[INFO - 2016_08_27_17:37:20] - "Average V: -0.0050632006973028"
+[INFO - 2016_08_27_17:37:26] - starting validation after 182002 steps
+[INFO - 2016_08_27_17:38:13] - "Validated @ 18510172"
+[INFO - 2016_08_27_17:38:13] - "Total Score: 22.599975585938"
+[INFO - 2016_08_27_17:38:13] - "Average Score: 22.599975585938"
+[INFO - 2016_08_27_17:38:14] - "Average V: -0.025187396079302"
+[INFO - 2016_08_27_17:38:21] - starting validation after 183018 steps
+[INFO - 2016_08_27_17:39:07] - "Validated @ 18691302"
+[INFO - 2016_08_27_17:39:07] - "Total Score: 101.00012207031"
+[INFO - 2016_08_27_17:39:07] - "Average Score: 101.00012207031"
+[INFO - 2016_08_27_17:39:08] - "Average V: 0.0019528085440397"
+[INFO - 2016_08_27_17:39:15] - starting validation after 181337 steps
+[INFO - 2016_08_27_17:40:01] - "Validated @ 18873802"
+[INFO - 2016_08_27_17:40:01] - "Total Score: 44.800048828125"
+[INFO - 2016_08_27_17:40:01] - "Average Score: 44.800048828125"
+[INFO - 2016_08_27_17:40:02] - "Average V: -0.012474661558867"
+[INFO - 2016_08_27_17:40:09] - starting validation after 183139 steps
+[INFO - 2016_08_27_17:40:56] - "Validated @ 19058216"
+[INFO - 2016_08_27_17:40:56] - "Total Score: 43.699951171875"
+[INFO - 2016_08_27_17:40:56] - "Average Score: 43.699951171875"
+[INFO - 2016_08_27_17:40:57] - "Average V: -0.011897010847926"
+[INFO - 2016_08_27_17:41:03] - starting validation after 180357 steps
+[INFO - 2016_08_27_17:41:50] - "Validated @ 19233139"
+[INFO - 2016_08_27_17:41:50] - "Total Score: 20"
+[INFO - 2016_08_27_17:41:50] - "Average Score: 20"
+[INFO - 2016_08_27_17:41:50] - "Average V: -0.010059400632977"
+[INFO - 2016_08_27_17:41:58] - starting validation after 181299 steps
+[INFO - 2016_08_27_17:42:44] - "Validated @ 19418302"
+[INFO - 2016_08_27_17:42:44] - "Total Score: 30"
+[INFO - 2016_08_27_17:42:44] - "Average Score: 30"
+[INFO - 2016_08_27_17:42:45] - "Average V: -0.011755487278104"
+[INFO - 2016_08_27_17:42:52] - starting validation after 182172 steps
+[INFO - 2016_08_27_17:43:38] - "Validated @ 19598079"
+[INFO - 2016_08_27_17:43:38] - "Total Score: 5.599853515625"
+[INFO - 2016_08_27_17:43:38] - "Average Score: 5.599853515625"
+[INFO - 2016_08_27_17:43:39] - "Average V: -0.017974722266197"
+[INFO - 2016_08_27_17:43:47] - starting validation after 182413 steps
+[INFO - 2016_08_27_17:44:33] - "Validated @ 19782759"
+[INFO - 2016_08_27_17:44:33] - "Total Score: 4.39990234375"
+[INFO - 2016_08_27_17:44:33] - "Average Score: 4.39990234375"
+[INFO - 2016_08_27_17:44:34] - "Average V: -0.0060109348446131"
+[INFO - 2016_08_27_17:44:41] - starting validation after 183002 steps
+[INFO - 2016_08_27_17:45:26] - "Validated @ 19961229"
+[INFO - 2016_08_27_17:45:26] - "Total Score: 56.699951171875"
+[INFO - 2016_08_27_17:45:26] - "Average Score: 56.699951171875"
+[INFO - 2016_08_27_17:45:27] - "Average V: -0.0074553314298391"
+[INFO - 2016_08_27_17:45:35] - starting validation after 180849 steps
+[INFO - 2016_08_27_17:46:21] - "Validated @ 20143390"
+[INFO - 2016_08_27_17:46:21] - "Total Score: 40"
+[INFO - 2016_08_27_17:46:21] - "Average Score: 40"
+[INFO - 2016_08_27_17:46:21] - "Average V: -0.0029837071448565"
+[INFO - 2016_08_27_17:46:29] - starting validation after 182504 steps
+[INFO - 2016_08_27_17:47:15] - "Validated @ 20325620"
+[INFO - 2016_08_27_17:47:15] - "Total Score: -15"
+[INFO - 2016_08_27_17:47:15] - "Average Score: -15"
+[INFO - 2016_08_27_17:47:15] - "Average V: -0.0076267470568419"
+[INFO - 2016_08_27_17:47:23] - starting validation after 181913 steps
+[INFO - 2016_08_27_17:48:09] - "Validated @ 20506209"
+[INFO - 2016_08_27_17:48:09] - "Total Score: 45.2001953125"
+[INFO - 2016_08_27_17:48:09] - "Average Score: 45.2001953125"
+[INFO - 2016_08_27_17:48:09] - "Average V: -0.004123145416379"
+[INFO - 2016_08_27_17:48:17] - starting validation after 180609 steps
+[INFO - 2016_08_27_17:49:03] - "Validated @ 20689889"
+[INFO - 2016_08_27_17:49:03] - "Total Score: 24.199951171875"
+[INFO - 2016_08_27_17:49:03] - "Average Score: 24.199951171875"
+[INFO - 2016_08_27_17:49:04] - "Average V: 0.0028657315671444"
+[INFO - 2016_08_27_17:49:11] - starting validation after 180114 steps
+[INFO - 2016_08_27_17:49:57] - "Validated @ 20871415"
+[INFO - 2016_08_27_17:49:57] - "Total Score: 32.699951171875"
+[INFO - 2016_08_27_17:49:57] - "Average Score: 32.699951171875"
+[INFO - 2016_08_27_17:49:58] - "Average V: 0.0084139310121536"
+[INFO - 2016_08_27_17:50:05] - starting validation after 182862 steps
+[INFO - 2016_08_27_17:50:50] - "Validated @ 21052699"
+[INFO - 2016_08_27_17:50:50] - "Total Score: -3.2998046875"
+[INFO - 2016_08_27_17:50:50] - "Average Score: -3.2998046875"
+[INFO - 2016_08_27_17:50:51] - "Average V: -0.0048711139112711"
+[INFO - 2016_08_27_17:50:59] - starting validation after 183349 steps
+[INFO - 2016_08_27_17:51:46] - "Validated @ 21237673"
+[INFO - 2016_08_27_17:51:46] - "Total Score: 13.199951171875"
+[INFO - 2016_08_27_17:51:46] - "Average Score: 13.199951171875"
+[INFO - 2016_08_27_17:51:47] - "Average V: 0.0023665356040001"
+[INFO - 2016_08_27_17:51:54] - starting validation after 181513 steps
+[INFO - 2016_08_27_17:52:41] - "Validated @ 21420094"
+[INFO - 2016_08_27_17:52:41] - "Total Score: 9.60009765625"
+[INFO - 2016_08_27_17:52:41] - "Average Score: 9.60009765625"
+[INFO - 2016_08_27_17:52:42] - "Average V: 0.00051141929626465"
+[INFO - 2016_08_27_17:52:49] - starting validation after 182118 steps
+[INFO - 2016_08_27_17:53:34] - "Validated @ 21599984"
+[INFO - 2016_08_27_17:53:34] - "Total Score: 7.699951171875"
+[INFO - 2016_08_27_17:53:34] - "Average Score: 7.699951171875"
+[INFO - 2016_08_27_17:53:35] - "Average V: -0.00019441395998001"
+[INFO - 2016_08_27_17:53:43] - starting validation after 183346 steps
+[INFO - 2016_08_27_17:54:31] - "Validated @ 21787628"
+[INFO - 2016_08_27_17:54:31] - "Total Score: -6"
+[INFO - 2016_08_27_17:54:31] - "Average Score: -6"
+[INFO - 2016_08_27_17:54:31] - "Average V: -0.0086579585373402"
+[INFO - 2016_08_27_17:54:37] - starting validation after 181340 steps
+[INFO - 2016_08_27_17:55:24] - "Validated @ 21966054"
+[INFO - 2016_08_27_17:55:24] - "Total Score: 13.699951171875"
+[INFO - 2016_08_27_17:55:24] - "Average Score: 13.699951171875"
+[INFO - 2016_08_27_17:55:24] - "Average V: -0.0087689101994038"
+[INFO - 2016_08_27_17:55:31] - starting validation after 181901 steps
+[INFO - 2016_08_27_17:56:17] - "Validated @ 22146329"
+[INFO - 2016_08_27_17:56:17] - "Total Score: -2.5"
+[INFO - 2016_08_27_17:56:17] - "Average Score: -2.5"
+[INFO - 2016_08_27_17:56:18] - "Average V: -0.00053285056352615"
+[INFO - 2016_08_27_17:56:26] - starting validation after 182924 steps
+[INFO - 2016_08_27_17:57:13] - "Validated @ 22330334"
+[INFO - 2016_08_27_17:57:13] - "Total Score: -30"
+[INFO - 2016_08_27_17:57:13] - "Average Score: -30"
+[INFO - 2016_08_27_17:57:14] - "Average V: 0.0048224455714226"
+[INFO - 2016_08_27_17:57:21] - starting validation after 181444 steps
+[INFO - 2016_08_27_17:58:07] - "Validated @ 22513089"
+[INFO - 2016_08_27_17:58:07] - "Total Score: 126.59985351562"
+[INFO - 2016_08_27_17:58:07] - "Average Score: 126.59985351562"
+[INFO - 2016_08_27_17:58:08] - "Average V: -0.013252461671829"
+[INFO - 2016_08_27_17:58:08] - "New best average score"
+[INFO - 2016_08_27_17:58:08] - "Saving weights"
+[INFO - 2016_08_27_17:58:15] - starting validation after 182665 steps
+[INFO - 2016_08_27_17:59:01] - "Validated @ 22695971"
+[INFO - 2016_08_27_17:59:01] - "Total Score: 24.800048828125"
+[INFO - 2016_08_27_17:59:01] - "Average Score: 24.800048828125"
+[INFO - 2016_08_27_17:59:01] - "Average V: 0.01030006557703"
+[INFO - 2016_08_27_17:59:08] - starting validation after 182162 steps
+[INFO - 2016_08_27_17:59:55] - "Validated @ 22876761"
+[INFO - 2016_08_27_17:59:55] - "Total Score: 26"
+[INFO - 2016_08_27_17:59:55] - "Average Score: 26"
+[INFO - 2016_08_27_17:59:55] - "Average V: -0.0012652697861195"
+[INFO - 2016_08_27_18:00:02] - starting validation after 181062 steps
+[INFO - 2016_08_27_18:00:49] - "Validated @ 23059754"
+[INFO - 2016_08_27_18:00:49] - "Total Score: 1.300048828125"
+[INFO - 2016_08_27_18:00:49] - "Average Score: 1.300048828125"
+[INFO - 2016_08_27_18:00:49] - "Average V: -0.0039911220669746"
+[INFO - 2016_08_27_18:00:56] - starting validation after 183094 steps
+[INFO - 2016_08_27_18:01:43] - "Validated @ 23242755"
+[INFO - 2016_08_27_18:01:43] - "Total Score: 14.900146484375"
+[INFO - 2016_08_27_18:01:43] - "Average Score: 14.900146484375"
+[INFO - 2016_08_27_18:01:44] - "Average V: -0.0057368132323027"
+[INFO - 2016_08_27_18:01:51] - starting validation after 182691 steps
+[INFO - 2016_08_27_18:02:36] - "Validated @ 23419910"
+[INFO - 2016_08_27_18:02:36] - "Total Score: 80"
+[INFO - 2016_08_27_18:02:36] - "Average Score: 80"
+[INFO - 2016_08_27_18:02:37] - "Average V: -0.0007350606918335"
+[INFO - 2016_08_27_18:02:45] - starting validation after 180695 steps
+[INFO - 2016_08_27_18:03:31] - "Validated @ 23603761"
+[INFO - 2016_08_27_18:03:31] - "Total Score: 37.89990234375"
+[INFO - 2016_08_27_18:03:31] - "Average Score: 37.89990234375"
+[INFO - 2016_08_27_18:03:32] - "Average V: -0.00262201179564"
+[INFO - 2016_08_27_18:03:39] - starting validation after 181032 steps
+[INFO - 2016_08_27_18:04:26] - "Validated @ 23784748"
+[INFO - 2016_08_27_18:04:26] - "Total Score: 57.5"
+[INFO - 2016_08_27_18:04:26] - "Average Score: 57.5"
+[INFO - 2016_08_27_18:04:27] - "Average V: 0.004789784565568"
+[INFO - 2016_08_27_18:04:34] - starting validation after 180742 steps
+[INFO - 2016_08_27_18:05:21] - "Validated @ 23966396"
+[INFO - 2016_08_27_18:05:21] - "Total Score: 24"
+[INFO - 2016_08_27_18:05:21] - "Average Score: 24"
+[INFO - 2016_08_27_18:05:21] - "Average V: -0.0036286093890667"
+[INFO - 2016_08_27_18:05:28] - starting validation after 180637 steps
+[INFO - 2016_08_27_18:06:15] - "Validated @ 24146237"
+[INFO - 2016_08_27_18:06:15] - "Total Score: -10.400146484375"
+[INFO - 2016_08_27_18:06:15] - "Average Score: -10.400146484375"
+[INFO - 2016_08_27_18:06:16] - "Average V: -0.0032416988611221"
+[INFO - 2016_08_27_18:06:24] - starting validation after 183450 steps
+[INFO - 2016_08_27_18:07:11] - "Validated @ 24332033"
+[INFO - 2016_08_27_18:07:11] - "Total Score: -2.800048828125"
+[INFO - 2016_08_27_18:07:11] - "Average Score: -2.800048828125"
+[INFO - 2016_08_27_18:07:12] - "Average V: -0.0035427272170782"
+[INFO - 2016_08_27_18:07:19] - starting validation after 182515 steps
+[INFO - 2016_08_27_18:08:06] - "Validated @ 24513271"
+[INFO - 2016_08_27_18:08:06] - "Total Score: 25.39990234375"
+[INFO - 2016_08_27_18:08:06] - "Average Score: 25.39990234375"
+[INFO - 2016_08_27_18:08:06] - "Average V: -0.0037709859758615"
+[INFO - 2016_08_27_18:08:13] - starting validation after 182117 steps
+[INFO - 2016_08_27_18:09:00] - "Validated @ 24693280"
+[INFO - 2016_08_27_18:09:00] - "Total Score: 60.60009765625"
+[INFO - 2016_08_27_18:09:00] - "Average Score: 60.60009765625"
+[INFO - 2016_08_27_18:09:00] - "Average V: 0.0047222373485565"
+[INFO - 2016_08_27_18:09:07] - starting validation after 180178 steps
+[INFO - 2016_08_27_18:09:55] - "Validated @ 24876481"
+[INFO - 2016_08_27_18:09:55] - "Total Score: 45"
+[INFO - 2016_08_27_18:09:55] - "Average Score: 45"
+[INFO - 2016_08_27_18:09:55] - "Average V: -0.0023616218864918"
+[INFO - 2016_08_27_18:10:02] - starting validation after 181995 steps
+[INFO - 2016_08_27_18:10:48] - "Validated @ 25056909"
+[INFO - 2016_08_27_18:10:48] - "Total Score: 1.599853515625"
+[INFO - 2016_08_27_18:10:48] - "Average Score: 1.599853515625"
+[INFO - 2016_08_27_18:10:49] - "Average V: -0.0083159323781729"
+[INFO - 2016_08_27_18:10:56] - starting validation after 180841 steps
+[INFO - 2016_08_27_18:11:41] - "Validated @ 25236230"
+[INFO - 2016_08_27_18:11:41] - "Total Score: 14.800048828125"
+[INFO - 2016_08_27_18:11:41] - "Average Score: 14.800048828125"
+[INFO - 2016_08_27_18:11:42] - "Average V: -0.011447004109621"
+[INFO - 2016_08_27_18:11:50] - starting validation after 183332 steps
+[INFO - 2016_08_27_18:12:36] - "Validated @ 25418839"
+[INFO - 2016_08_27_18:12:36] - "Total Score: 8.699951171875"
+[INFO - 2016_08_27_18:12:36] - "Average Score: 8.699951171875"
+[INFO - 2016_08_27_18:12:37] - "Average V: -0.0021738655418158"
+[INFO - 2016_08_27_18:12:45] - starting validation after 181850 steps
+[INFO - 2016_08_27_18:13:33] - "Validated @ 25604844"
+[INFO - 2016_08_27_18:13:33] - "Total Score: 49.699951171875"
+[INFO - 2016_08_27_18:13:33] - "Average Score: 49.699951171875"
+[INFO - 2016_08_27_18:13:34] - "Average V: -0.00049681979417801"
+[INFO - 2016_08_27_18:13:41] - starting validation after 182772 steps
+[INFO - 2016_08_27_18:14:28] - "Validated @ 25786371"
+[INFO - 2016_08_27_18:14:28] - "Total Score: -26.10009765625"
+[INFO - 2016_08_27_18:14:28] - "Average Score: -26.10009765625"
+[INFO - 2016_08_27_18:14:28] - "Average V: 0.0027415063530207"
+[INFO - 2016_08_27_18:14:35] - starting validation after 181886 steps
+[INFO - 2016_08_27_18:15:21] - "Validated @ 25964381"
+[INFO - 2016_08_27_18:15:21] - "Total Score: 0.2001953125"
+[INFO - 2016_08_27_18:15:21] - "Average Score: 0.2001953125"
+[INFO - 2016_08_27_18:15:21] - "Average V: -0.0029480330944061"
+[INFO - 2016_08_27_18:15:29] - starting validation after 181632 steps
+[INFO - 2016_08_27_18:16:16] - "Validated @ 26148404"
+[INFO - 2016_08_27_18:16:16] - "Total Score: 62.699951171875"
+[INFO - 2016_08_27_18:16:16] - "Average Score: 62.699951171875"
+[INFO - 2016_08_27_18:16:17] - "Average V: 0.0056282963305712"
+[INFO - 2016_08_27_18:16:24] - starting validation after 180960 steps
+[INFO - 2016_08_27_18:17:10] - "Validated @ 26332946"
+[INFO - 2016_08_27_18:17:10] - "Total Score: 32.10009765625"
+[INFO - 2016_08_27_18:17:10] - "Average Score: 32.10009765625"
+[INFO - 2016_08_27_18:17:11] - "Average V: -0.015617548719048"
+[INFO - 2016_08_27_18:17:17] - starting validation after 180564 steps
+[INFO - 2016_08_27_18:18:03] - "Validated @ 26510137"
+[INFO - 2016_08_27_18:18:03] - "Total Score: 24.39990234375"
+[INFO - 2016_08_27_18:18:03] - "Average Score: 24.39990234375"
+[INFO - 2016_08_27_18:18:03] - "Average V: -0.0075645505040884"
+[INFO - 2016_08_27_18:18:11] - starting validation after 183639 steps
+[INFO - 2016_08_27_18:18:58] - "Validated @ 26696853"
+[INFO - 2016_08_27_18:18:58] - "Total Score: 84.39990234375"
+[INFO - 2016_08_27_18:18:58] - "Average Score: 84.39990234375"
+[INFO - 2016_08_27_18:18:58] - "Average V: 0.011050653085113"
+[INFO - 2016_08_27_18:19:05] - starting validation after 182262 steps
+[INFO - 2016_08_27_18:19:52] - "Validated @ 26876070"
+[INFO - 2016_08_27_18:19:52] - "Total Score: 50"
+[INFO - 2016_08_27_18:19:52] - "Average Score: 50"
+[INFO - 2016_08_27_18:19:52] - "Average V: -3.2082080841064e-05"
+[INFO - 2016_08_27_18:19:59] - starting validation after 180925 steps
+[INFO - 2016_08_27_18:20:46] - "Validated @ 27059318"
+[INFO - 2016_08_27_18:20:46] - "Total Score: 37.60009765625"
+[INFO - 2016_08_27_18:20:46] - "Average Score: 37.60009765625"
+[INFO - 2016_08_27_18:20:47] - "Average V: -0.0074131931215525"
+[INFO - 2016_08_27_18:20:54] - starting validation after 183940 steps
+[INFO - 2016_08_27_18:21:40] - "Validated @ 27240065"
+[INFO - 2016_08_27_18:21:40] - "Total Score: -7.5"
+[INFO - 2016_08_27_18:21:40] - "Average Score: -7.5"
+[INFO - 2016_08_27_18:21:40] - "Average V: -0.00025919802486897"
+[INFO - 2016_08_27_18:21:47] - starting validation after 180514 steps
+[INFO - 2016_08_27_18:22:34] - "Validated @ 27421977"
+[INFO - 2016_08_27_18:22:34] - "Total Score: -4.199951171875"
+[INFO - 2016_08_27_18:22:34] - "Average Score: -4.199951171875"
+[INFO - 2016_08_27_18:22:35] - "Average V: -0.0012988320142031"
+[INFO - 2016_08_27_18:22:42] - starting validation after 180412 steps
+[INFO - 2016_08_27_18:23:28] - "Validated @ 27603203"
+[INFO - 2016_08_27_18:23:28] - "Total Score: -5.300048828125"
+[INFO - 2016_08_27_18:23:28] - "Average Score: -5.300048828125"
+[INFO - 2016_08_27_18:23:29] - "Average V: -0.0040501514971256"
+[INFO - 2016_08_27_18:23:36] - starting validation after 181483 steps
+[INFO - 2016_08_27_18:24:22] - "Validated @ 27784421"
+[INFO - 2016_08_27_18:24:22] - "Total Score: 67.400146484375"
+[INFO - 2016_08_27_18:24:22] - "Average Score: 67.400146484375"
+[INFO - 2016_08_27_18:24:23] - "Average V: -0.0069353366196156"
+[INFO - 2016_08_27_18:24:30] - starting validation after 181459 steps
+[INFO - 2016_08_27_18:25:16] - "Validated @ 27967944"
+[INFO - 2016_08_27_18:25:16] - "Total Score: 19.300048828125"
+[INFO - 2016_08_27_18:25:16] - "Average Score: 19.300048828125"
+[INFO - 2016_08_27_18:25:17] - "Average V: -0.0040452056080103"
+[INFO - 2016_08_27_18:25:23] - starting validation after 180010 steps
+[INFO - 2016_08_27_18:26:10] - "Validated @ 28146740"
+[INFO - 2016_08_27_18:26:10] - "Total Score: -4.60009765625"
+[INFO - 2016_08_27_18:26:10] - "Average Score: -4.60009765625"
+[INFO - 2016_08_27_18:26:10] - "Average V: 0.0027965154200792"
+[INFO - 2016_08_27_18:26:17] - starting validation after 182369 steps
+[INFO - 2016_08_27_18:27:04] - "Validated @ 28326787"
+[INFO - 2016_08_27_18:27:04] - "Total Score: -14.5"
+[INFO - 2016_08_27_18:27:04] - "Average Score: -14.5"
+[INFO - 2016_08_27_18:27:05] - "Average V: -0.0043265526145697"
+[INFO - 2016_08_27_18:27:12] - starting validation after 180342 steps
+[INFO - 2016_08_27_18:27:58] - "Validated @ 28508232"
+[INFO - 2016_08_27_18:27:58] - "Total Score: -11.199951171875"
+[INFO - 2016_08_27_18:27:58] - "Average Score: -11.199951171875"
+[INFO - 2016_08_27_18:27:59] - "Average V: -0.010460401788354"
+[INFO - 2016_08_27_18:28:06] - starting validation after 180594 steps
+[INFO - 2016_08_27_18:28:53] - "Validated @ 28691019"
+[INFO - 2016_08_27_18:28:53] - "Total Score: 31.400146484375"
+[INFO - 2016_08_27_18:28:53] - "Average Score: 31.400146484375"
+[INFO - 2016_08_27_18:28:54] - "Average V: 0.010308417990804"
+[INFO - 2016_08_27_18:29:00] - starting validation after 180125 steps
+[INFO - 2016_08_27_18:29:46] - "Validated @ 28868597"
+[INFO - 2016_08_27_18:29:46] - "Total Score: 8.39990234375"
+[INFO - 2016_08_27_18:29:46] - "Average Score: 8.39990234375"
+[INFO - 2016_08_27_18:29:47] - "Average V: -0.010116859644651"
+[INFO - 2016_08_27_18:29:54] - starting validation after 180924 steps
+[INFO - 2016_08_27_18:30:40] - "Validated @ 29050325"
+[INFO - 2016_08_27_18:30:40] - "Total Score: 35.60009765625"
+[INFO - 2016_08_27_18:30:40] - "Average Score: 35.60009765625"
+[INFO - 2016_08_27_18:30:41] - "Average V: -0.0072434964776039"
+[INFO - 2016_08_27_18:30:48] - starting validation after 181766 steps
+[INFO - 2016_08_27_18:31:36] - "Validated @ 29233541"
+[INFO - 2016_08_27_18:31:36] - "Total Score: 40"
+[INFO - 2016_08_27_18:31:36] - "Average Score: 40"
+[INFO - 2016_08_27_18:31:36] - "Average V: 0.005937656223774"
+[INFO - 2016_08_27_18:31:42] - starting validation after 180177 steps
+[INFO - 2016_08_27_18:32:29] - "Validated @ 29412527"
+[INFO - 2016_08_27_18:32:29] - "Total Score: 44.599853515625"
+[INFO - 2016_08_27_18:32:29] - "Average Score: 44.599853515625"
+[INFO - 2016_08_27_18:32:30] - "Average V: -0.0052852678000927"
+[INFO - 2016_08_27_18:32:37] - starting validation after 182025 steps
+[INFO - 2016_08_27_18:33:23] - "Validated @ 29591759"
+[INFO - 2016_08_27_18:33:23] - "Total Score: -2.599853515625"
+[INFO - 2016_08_27_18:33:23] - "Average Score: -2.599853515625"
+[INFO - 2016_08_27_18:33:24] - "Average V: -0.019425085946918"
+[INFO - 2016_08_27_18:33:32] - starting validation after 182272 steps
+[INFO - 2016_08_27_18:34:19] - "Validated @ 29778432"
+[INFO - 2016_08_27_18:34:19] - "Total Score: 71.5"
+[INFO - 2016_08_27_18:34:19] - "Average Score: 71.5"
+[INFO - 2016_08_27_18:34:20] - "Average V: 0.0053254621624947"
+[INFO - 2016_08_27_18:34:26] - starting validation after 180086 steps
+[INFO - 2016_08_27_18:35:11] - "Validated @ 29953140"
+[INFO - 2016_08_27_18:35:11] - "Total Score: 100"
+[INFO - 2016_08_27_18:35:11] - "Average Score: 100"
+[INFO - 2016_08_27_18:35:12] - "Average V: -0.0064387777745724"
+[INFO - 2016_08_27_18:35:20] - starting validation after 182723 steps
+[INFO - 2016_08_27_18:36:07] - "Validated @ 30137327"
+[INFO - 2016_08_27_18:36:07] - "Total Score: 40"
+[INFO - 2016_08_27_18:36:07] - "Average Score: 40"
+[INFO - 2016_08_27_18:36:07] - "Average V: -0.017097484216094"
+[INFO - 2016_08_27_18:36:15] - starting validation after 183347 steps
+[INFO - 2016_08_27_18:37:02] - "Validated @ 30321446"
+[INFO - 2016_08_27_18:37:02] - "Total Score: 53.699951171875"
+[INFO - 2016_08_27_18:37:02] - "Average Score: 53.699951171875"
+[INFO - 2016_08_27_18:37:02] - "Average V: -0.00086892123520374"
+[INFO - 2016_08_27_18:37:09] - starting validation after 180541 steps
+[INFO - 2016_08_27_18:37:56] - "Validated @ 30503630"
+[INFO - 2016_08_27_18:37:56] - "Total Score: 19.599853515625"
+[INFO - 2016_08_27_18:37:56] - "Average Score: 19.599853515625"
+[INFO - 2016_08_27_18:37:57] - "Average V: -0.0075880194604397"
+[INFO - 2016_08_27_18:38:04] - starting validation after 181685 steps
+[INFO - 2016_08_27_18:38:50] - "Validated @ 30683071"
+[INFO - 2016_08_27_18:38:50] - "Total Score: 52.900146484375"
+[INFO - 2016_08_27_18:38:50] - "Average Score: 52.900146484375"
+[INFO - 2016_08_27_18:38:50] - "Average V: -0.0025953856855631"
+[INFO - 2016_08_27_18:38:57] - starting validation after 180151 steps
+[INFO - 2016_08_27_18:39:44] - "Validated @ 30866290"
+[INFO - 2016_08_27_18:39:44] - "Total Score: 4.199951171875"
+[INFO - 2016_08_27_18:39:44] - "Average Score: 4.199951171875"
+[INFO - 2016_08_27_18:39:44] - "Average V: 0.0070037144422531"
+[INFO - 2016_08_27_18:39:51] - starting validation after 181653 steps
+[INFO - 2016_08_27_18:40:38] - "Validated @ 31048388"
+[INFO - 2016_08_27_18:40:38] - "Total Score: -7.099853515625"
+[INFO - 2016_08_27_18:40:38] - "Average Score: -7.099853515625"
+[INFO - 2016_08_27_18:40:39] - "Average V: -0.0051447091549635"
+[INFO - 2016_08_27_18:40:45] - starting validation after 180994 steps
+[INFO - 2016_08_27_18:41:31] - "Validated @ 31228457"
+[INFO - 2016_08_27_18:41:31] - "Total Score: 33.2998046875"
+[INFO - 2016_08_27_18:41:31] - "Average Score: 33.2998046875"
+[INFO - 2016_08_27_18:41:32] - "Average V: -0.006114598095417"
+[INFO - 2016_08_27_18:41:39] - starting validation after 182774 steps
+[INFO - 2016_08_27_18:42:25] - "Validated @ 31410360"
+[INFO - 2016_08_27_18:42:25] - "Total Score: 17.400146484375"
+[INFO - 2016_08_27_18:42:25] - "Average Score: 17.400146484375"
+[INFO - 2016_08_27_18:42:26] - "Average V: -0.0059681515395641"
+[INFO - 2016_08_27_18:42:33] - starting validation after 181517 steps
+[INFO - 2016_08_27_18:43:19] - "Validated @ 31589686"
+[INFO - 2016_08_27_18:43:19] - "Total Score: 60"
+[INFO - 2016_08_27_18:43:19] - "Average Score: 60"
+[INFO - 2016_08_27_18:43:19] - "Average V: 0.004616342484951"
+[INFO - 2016_08_27_18:43:27] - starting validation after 182775 steps
+[INFO - 2016_08_27_18:44:15] - "Validated @ 31778013"
+[INFO - 2016_08_27_18:44:15] - "Total Score: 49.099853515625"
+[INFO - 2016_08_27_18:44:15] - "Average Score: 49.099853515625"
+[INFO - 2016_08_27_18:44:15] - "Average V: -0.011574824571609"
+[INFO - 2016_08_27_18:44:21] - starting validation after 181560 steps
+[INFO - 2016_08_27_18:45:07] - "Validated @ 31952493"
+[INFO - 2016_08_27_18:45:07] - "Total Score: -15.699951171875"
+[INFO - 2016_08_27_18:45:07] - "Average Score: -15.699951171875"
+[INFO - 2016_08_27_18:45:07] - "Average V: -0.0049869613945484"
+[INFO - 2016_08_27_18:45:16] - starting validation after 181421 steps
+[INFO - 2016_08_27_18:46:02] - "Validated @ 32138206"
+[INFO - 2016_08_27_18:46:02] - "Total Score: -7.39990234375"
+[INFO - 2016_08_27_18:46:02] - "Average Score: -7.39990234375"
+[INFO - 2016_08_27_18:46:03] - "Average V: 0.012353925257921"
+[INFO - 2016_08_27_18:46:10] - starting validation after 181563 steps
+[INFO - 2016_08_27_18:46:57] - "Validated @ 32319325"
+[INFO - 2016_08_27_18:46:57] - "Total Score: -2.39990234375"
+[INFO - 2016_08_27_18:46:57] - "Average Score: -2.39990234375"
+[INFO - 2016_08_27_18:46:57] - "Average V: -0.0070818826407194"
+[INFO - 2016_08_27_18:47:04] - starting validation after 181890 steps
+[INFO - 2016_08_27_18:47:51] - "Validated @ 32502576"
+[INFO - 2016_08_27_18:47:51] - "Total Score: 38.199951171875"
+[INFO - 2016_08_27_18:47:51] - "Average Score: 38.199951171875"
+[INFO - 2016_08_27_18:47:52] - "Average V: 0.0005998015999794"
+[INFO - 2016_08_27_18:47:59] - starting validation after 182725 steps
+[INFO - 2016_08_27_18:48:47] - "Validated @ 32686980"
+[INFO - 2016_08_27_18:48:47] - "Total Score: 17.7998046875"
+[INFO - 2016_08_27_18:48:47] - "Average Score: 17.7998046875"
+[INFO - 2016_08_27_18:48:48] - "Average V: -0.0011217078864574"
+[INFO - 2016_08_27_18:48:54] - starting validation after 180120 steps
+[INFO - 2016_08_27_18:49:41] - "Validated @ 32865663"
+[INFO - 2016_08_27_18:49:41] - "Total Score: -1.5"
+[INFO - 2016_08_27_18:49:41] - "Average Score: -1.5"
+[INFO - 2016_08_27_18:49:42] - "Average V: -0.001412491902709"
+[INFO - 2016_08_27_18:49:48] - starting validation after 180196 steps
+[INFO - 2016_08_27_18:50:35] - "Validated @ 33046152"
+[INFO - 2016_08_27_18:50:35] - "Total Score: 30"
+[INFO - 2016_08_27_18:50:35] - "Average Score: 30"
+[INFO - 2016_08_27_18:50:36] - "Average V: -0.015105874866247"
+[INFO - 2016_08_27_18:50:42] - starting validation after 180315 steps
+[INFO - 2016_08_27_18:51:28] - "Validated @ 33222949"
+[INFO - 2016_08_27_18:51:28] - "Total Score: 18.7998046875"
+[INFO - 2016_08_27_18:51:28] - "Average Score: 18.7998046875"
+[INFO - 2016_08_27_18:51:28] - "Average V: -0.006950073197484"
+[INFO - 2016_08_27_18:51:35] - starting validation after 180682 steps
+[INFO - 2016_08_27_18:52:23] - "Validated @ 33409938"
+[INFO - 2016_08_27_18:52:23] - "Total Score: 41.60009765625"
+[INFO - 2016_08_27_18:52:23] - "Average Score: 41.60009765625"
+[INFO - 2016_08_27_18:52:23] - "Average V: -0.0037367514073849"
+[INFO - 2016_08_27_18:52:29] - starting validation after 182143 steps
+[INFO - 2016_08_27_18:53:16] - "Validated @ 33588615"
+[INFO - 2016_08_27_18:53:16] - "Total Score: 15.2001953125"
+[INFO - 2016_08_27_18:53:16] - "Average Score: 15.2001953125"
+[INFO - 2016_08_27_18:53:16] - "Average V: -0.0083990230709314"
+[INFO - 2016_08_27_18:53:23] - starting validation after 182556 steps
+[INFO - 2016_08_27_18:54:11] - "Validated @ 33772223"
+[INFO - 2016_08_27_18:54:11] - "Total Score: -12.10009765625"
+[INFO - 2016_08_27_18:54:11] - "Average Score: -12.10009765625"
+[INFO - 2016_08_27_18:54:11] - "Average V: -0.011066480830312"
+[INFO - 2016_08_27_18:54:17] - starting validation after 180548 steps
+[INFO - 2016_08_27_18:55:04] - "Validated @ 33951057"
+[INFO - 2016_08_27_18:55:04] - "Total Score: 25.60009765625"
+[INFO - 2016_08_27_18:55:04] - "Average Score: 25.60009765625"
+[INFO - 2016_08_27_18:55:05] - "Average V: 0.0065516767650843"
+[INFO - 2016_08_27_18:55:12] - starting validation after 182573 steps
+[INFO - 2016_08_27_18:55:59] - "Validated @ 34134171"
+[INFO - 2016_08_27_18:55:59] - "Total Score: 5.2998046875"
+[INFO - 2016_08_27_18:55:59] - "Average Score: 5.2998046875"
+[INFO - 2016_08_27_18:55:59] - "Average V: -0.007120846554637"
+[INFO - 2016_08_27_18:56:06] - starting validation after 180114 steps
+[INFO - 2016_08_27_18:56:52] - "Validated @ 34313489"
+[INFO - 2016_08_27_18:56:52] - "Total Score: 30"
+[INFO - 2016_08_27_18:56:52] - "Average Score: 30"
+[INFO - 2016_08_27_18:56:53] - "Average V: -0.0020597116202116"
+[INFO - 2016_08_27_18:57:00] - starting validation after 181510 steps
+[INFO - 2016_08_27_18:57:47] - "Validated @ 34494918"
+[INFO - 2016_08_27_18:57:47] - "Total Score: 75.900390625"
+[INFO - 2016_08_27_18:57:47] - "Average Score: 75.900390625"
+[INFO - 2016_08_27_18:57:47] - "Average V: 0.0019117682427168"
+[INFO - 2016_08_27_18:57:54] - starting validation after 181769 steps
+[INFO - 2016_08_27_18:58:41] - "Validated @ 34677613"
+[INFO - 2016_08_27_18:58:41] - "Total Score: 2"
+[INFO - 2016_08_27_18:58:41] - "Average Score: 2"
+[INFO - 2016_08_27_18:58:42] - "Average V: -0.0084207102656364"
+[INFO - 2016_08_27_18:58:49] - starting validation after 182689 steps
+[INFO - 2016_08_27_18:59:36] - "Validated @ 34860938"
+[INFO - 2016_08_27_18:59:36] - "Total Score: 28.39990234375"
+[INFO - 2016_08_27_18:59:36] - "Average Score: 28.39990234375"
+[INFO - 2016_08_27_18:59:37] - "Average V: -0.0025686390250921"
+[INFO - 2016_08_27_18:59:43] - starting validation after 180107 steps
+[INFO - 2016_08_27_19:00:31] - "Validated @ 35043171"
+[INFO - 2016_08_27_19:00:31] - "Total Score: 80"
+[INFO - 2016_08_27_19:00:31] - "Average Score: 80"
+[INFO - 2016_08_27_19:00:31] - "Average V: -0.001827879846096"
+[INFO - 2016_08_27_19:00:37] - starting validation after 182285 steps
+[INFO - 2016_08_27_19:01:25] - "Validated @ 35222386"
+[INFO - 2016_08_27_19:01:25] - "Total Score: 20"
+[INFO - 2016_08_27_19:01:25] - "Average Score: 20"
+[INFO - 2016_08_27_19:01:26] - "Average V: -0.0058563537299633"
+[INFO - 2016_08_27_19:01:33] - starting validation after 182959 steps
+[INFO - 2016_08_27_19:02:18] - "Validated @ 35403143"
+[INFO - 2016_08_27_19:02:18] - "Total Score: 38.80029296875"
+[INFO - 2016_08_27_19:02:18] - "Average Score: 38.80029296875"
+[INFO - 2016_08_27_19:02:19] - "Average V: -0.023756720632315"
+[INFO - 2016_08_27_19:02:26] - starting validation after 180312 steps
+[INFO - 2016_08_27_19:03:13] - "Validated @ 35586939"
+[INFO - 2016_08_27_19:03:13] - "Total Score: -10.10009765625"
+[INFO - 2016_08_27_19:03:13] - "Average Score: -10.10009765625"
+[INFO - 2016_08_27_19:03:14] - "Average V: -0.0093506685197353"
+[INFO - 2016_08_27_19:03:20] - starting validation after 180480 steps
+[INFO - 2016_08_27_19:04:06] - "Validated @ 35764913"
+[INFO - 2016_08_27_19:04:06] - "Total Score: 69.80029296875"
+[INFO - 2016_08_27_19:04:06] - "Average Score: 69.80029296875"
+[INFO - 2016_08_27_19:04:07] - "Average V: -0.012294822454453"
+[INFO - 2016_08_27_19:04:14] - starting validation after 180583 steps
+[INFO - 2016_08_27_19:05:01] - "Validated @ 35946836"
+[INFO - 2016_08_27_19:05:01] - "Total Score: 18.89990234375"
+[INFO - 2016_08_27_19:05:01] - "Average Score: 18.89990234375"
+[INFO - 2016_08_27_19:05:02] - "Average V: -0.0064522241503"
+[INFO - 2016_08_27_19:05:09] - starting validation after 183062 steps
+[INFO - 2016_08_27_19:05:56] - "Validated @ 36129149"
+[INFO - 2016_08_27_19:05:56] - "Total Score: 70"
+[INFO - 2016_08_27_19:05:56] - "Average Score: 70"
+[INFO - 2016_08_27_19:05:57] - "Average V: -0.010413250640035"
+[INFO - 2016_08_27_19:06:04] - starting validation after 181134 steps
+[INFO - 2016_08_27_19:06:51] - "Validated @ 36312148"
+[INFO - 2016_08_27_19:06:51] - "Total Score: 56.10009765625"
+[INFO - 2016_08_27_19:06:51] - "Average Score: 56.10009765625"
+[INFO - 2016_08_27_19:06:52] - "Average V: -0.0011613385379314"
+[INFO - 2016_08_27_19:06:58] - starting validation after 180346 steps
+[INFO - 2016_08_27_19:07:45] - "Validated @ 36491226"
+[INFO - 2016_08_27_19:07:45] - "Total Score: 15.60009765625"
+[INFO - 2016_08_27_19:07:45] - "Average Score: 15.60009765625"
+[INFO - 2016_08_27_19:07:45] - "Average V: -0.017475197762251"
+[INFO - 2016_08_27_19:07:52] - starting validation after 182435 steps
+[INFO - 2016_08_27_19:08:40] - "Validated @ 36673147"
+[INFO - 2016_08_27_19:08:40] - "Total Score: 62.39990234375"
+[INFO - 2016_08_27_19:08:40] - "Average Score: 62.39990234375"
+[INFO - 2016_08_27_19:08:40] - "Average V: -0.0016691135913134"
+[INFO - 2016_08_27_19:08:47] - starting validation after 181373 steps
+[INFO - 2016_08_27_19:09:35] - "Validated @ 36855198"
+[INFO - 2016_08_27_19:09:35] - "Total Score: 45.19970703125"
+[INFO - 2016_08_27_19:09:35] - "Average Score: 45.19970703125"
+[INFO - 2016_08_27_19:09:36] - "Average V: -0.011782926037908"
+[INFO - 2016_08_27_19:09:43] - starting validation after 182555 steps
+[INFO - 2016_08_27_19:10:30] - "Validated @ 37039001"
+[INFO - 2016_08_27_19:10:30] - "Total Score: 32.39990234375"
+[INFO - 2016_08_27_19:10:30] - "Average Score: 32.39990234375"
+[INFO - 2016_08_27_19:10:31] - "Average V: 0.015413074165583"
+[INFO - 2016_08_27_19:10:38] - starting validation after 182788 steps
+[INFO - 2016_08_27_19:11:25] - "Validated @ 37219244"
+[INFO - 2016_08_27_19:11:25] - "Total Score: 4.10009765625"
+[INFO - 2016_08_27_19:11:25] - "Average Score: 4.10009765625"
+[INFO - 2016_08_27_19:11:26] - "Average V: -0.0019872188419104"
+[INFO - 2016_08_27_19:11:33] - starting validation after 181749 steps
+[INFO - 2016_08_27_19:12:19] - "Validated @ 37400901"
+[INFO - 2016_08_27_19:12:19] - "Total Score: 11.30029296875"
+[INFO - 2016_08_27_19:12:19] - "Average Score: 11.30029296875"
+[INFO - 2016_08_27_19:12:20] - "Average V: -0.0088793524652719"
+[INFO - 2016_08_27_19:12:27] - starting validation after 180988 steps
+[INFO - 2016_08_27_19:13:14] - "Validated @ 37583269"
+[INFO - 2016_08_27_19:13:14] - "Total Score: 2.5"
+[INFO - 2016_08_27_19:13:14] - "Average Score: 2.5"
+[INFO - 2016_08_27_19:13:15] - "Average V: -0.016317688822746"
+[INFO - 2016_08_27_19:13:22] - starting validation after 183274 steps
+[INFO - 2016_08_27_19:14:08] - "Validated @ 37766770"
+[INFO - 2016_08_27_19:14:08] - "Total Score: 20"
+[INFO - 2016_08_27_19:14:08] - "Average Score: 20"
+[INFO - 2016_08_27_19:14:09] - "Average V: -0.0098779990971088"
+[INFO - 2016_08_27_19:14:15] - starting validation after 180041 steps
+[INFO - 2016_08_27_19:15:02] - "Validated @ 37946615"
+[INFO - 2016_08_27_19:15:02] - "Total Score: 64.7998046875"
+[INFO - 2016_08_27_19:15:02] - "Average Score: 64.7998046875"
+[INFO - 2016_08_27_19:15:03] - "Average V: -0.007276805639267"
+[INFO - 2016_08_27_19:15:10] - starting validation after 182249 steps
+[INFO - 2016_08_27_19:15:57] - "Validated @ 38128368"
+[INFO - 2016_08_27_19:15:57] - "Total Score: 9"
+[INFO - 2016_08_27_19:15:57] - "Average Score: 9"
+[INFO - 2016_08_27_19:15:57] - "Average V: -0.00081923146545887"
+[INFO - 2016_08_27_19:16:04] - starting validation after 181447 steps
+[INFO - 2016_08_27_19:16:50] - "Validated @ 38309162"
+[INFO - 2016_08_27_19:16:50] - "Total Score: -1.7001953125"
+[INFO - 2016_08_27_19:16:50] - "Average Score: -1.7001953125"
+[INFO - 2016_08_27_19:16:51] - "Average V: -0.0066710926890373"
+[INFO - 2016_08_27_19:16:58] - starting validation after 180727 steps
+[INFO - 2016_08_27_19:17:43] - "Validated @ 38488482"
+[INFO - 2016_08_27_19:17:43] - "Total Score: 58.099609375"
+[INFO - 2016_08_27_19:17:43] - "Average Score: 58.099609375"
+[INFO - 2016_08_27_19:17:44] - "Average V: -0.0025073709338903"
+[INFO - 2016_08_27_19:17:52] - starting validation after 181989 steps
+[INFO - 2016_08_27_19:18:39] - "Validated @ 38674861"
+[INFO - 2016_08_27_19:18:39] - "Total Score: 12.2001953125"
+[INFO - 2016_08_27_19:18:39] - "Average Score: 12.2001953125"
+[INFO - 2016_08_27_19:18:39] - "Average V: 0.0021329942047596"
+[INFO - 2016_08_27_19:18:45] - starting validation after 181704 steps
+[INFO - 2016_08_27_19:19:32] - "Validated @ 38852419"
+[INFO - 2016_08_27_19:19:32] - "Total Score: 49.60009765625"
+[INFO - 2016_08_27_19:19:32] - "Average Score: 49.60009765625"
+[INFO - 2016_08_27_19:19:32] - "Average V: -0.0020191439837217"
+[INFO - 2016_08_27_19:19:39] - starting validation after 180895 steps
+[INFO - 2016_08_27_19:20:26] - "Validated @ 39035542"
+[INFO - 2016_08_27_19:20:26] - "Total Score: -5.80029296875"
+[INFO - 2016_08_27_19:20:26] - "Average Score: -5.80029296875"
+[INFO - 2016_08_27_19:20:27] - "Average V: -0.0072923304289579"
+[INFO - 2016_08_27_19:20:34] - starting validation after 181566 steps
+[INFO - 2016_08_27_19:21:21] - "Validated @ 39218678"
+[INFO - 2016_08_27_19:21:21] - "Total Score: 19.900390625"
+[INFO - 2016_08_27_19:21:21] - "Average Score: 19.900390625"
+[INFO - 2016_08_27_19:21:21] - "Average V: 0.0040976060032845"
+[INFO - 2016_08_27_19:21:27] - starting validation after 180345 steps
+[INFO - 2016_08_27_19:22:15] - "Validated @ 39400242"
+[INFO - 2016_08_27_19:22:15] - "Total Score: 1.7998046875"
+[INFO - 2016_08_27_19:22:15] - "Average Score: 1.7998046875"
+[INFO - 2016_08_27_19:22:16] - "Average V: -0.007187720939517"
+[INFO - 2016_08_27_19:22:22] - starting validation after 182945 steps
+[INFO - 2016_08_27_19:23:08] - "Validated @ 39579983"
+[INFO - 2016_08_27_19:23:08] - "Total Score: -4.39990234375"
+[INFO - 2016_08_27_19:23:08] - "Average Score: -4.39990234375"
+[INFO - 2016_08_27_19:23:09] - "Average V: -0.00092678572237492"
+[INFO - 2016_08_27_19:23:16] - starting validation after 181421 steps
+[INFO - 2016_08_27_19:24:02] - "Validated @ 39760690"
+[INFO - 2016_08_27_19:24:02] - "Total Score: -1.7998046875"
+[INFO - 2016_08_27_19:24:02] - "Average Score: -1.7998046875"
+[INFO - 2016_08_27_19:24:03] - "Average V: 0.003770179733634"
+[INFO - 2016_08_27_19:24:10] - starting validation after 181082 steps
+[INFO - 2016_08_27_19:24:56] - "Validated @ 39942316"
+[INFO - 2016_08_27_19:24:56] - "Total Score: 38.19970703125"
+[INFO - 2016_08_27_19:24:56] - "Average Score: 38.19970703125"
+[INFO - 2016_08_27_19:24:57] - "Average V: 0.0024181955754757"
+[INFO - 2016_08_27_19:25:04] - starting validation after 181439 steps
+[INFO - 2016_08_27_19:25:50] - "Validated @ 40124715"
+[INFO - 2016_08_27_19:25:50] - "Total Score: 10"
+[INFO - 2016_08_27_19:25:50] - "Average Score: 10"
+[INFO - 2016_08_27_19:25:51] - "Average V: -0.0049663451910019"
+[INFO - 2016_08_27_19:25:58] - starting validation after 182627 steps
+[INFO - 2016_08_27_19:26:44] - "Validated @ 40306663"
+[INFO - 2016_08_27_19:26:44] - "Total Score: 30"
+[INFO - 2016_08_27_19:26:44] - "Average Score: 30"
+[INFO - 2016_08_27_19:26:45] - "Average V: 0.0017934705466032"
+[INFO - 2016_08_27_19:26:52] - starting validation after 182025 steps
+[INFO - 2016_08_27_19:27:37] - "Validated @ 40488133"
+[INFO - 2016_08_27_19:27:37] - "Total Score: 16.80029296875"
+[INFO - 2016_08_27_19:27:37] - "Average Score: 16.80029296875"
+[INFO - 2016_08_27_19:27:38] - "Average V: 0.0010269932895899"
+[INFO - 2016_08_27_19:27:45] - starting validation after 181676 steps
+[INFO - 2016_08_27_19:28:32] - "Validated @ 40669846"
+[INFO - 2016_08_27_19:28:32] - "Total Score: -5.19970703125"
+[INFO - 2016_08_27_19:28:32] - "Average Score: -5.19970703125"
+[INFO - 2016_08_27_19:28:32] - "Average V: -0.0087270421087742"
+[INFO - 2016_08_27_19:28:39] - starting validation after 182083 steps
+[INFO - 2016_08_27_19:29:26] - "Validated @ 40852229"
+[INFO - 2016_08_27_19:29:26] - "Total Score: -15"
+[INFO - 2016_08_27_19:29:26] - "Average Score: -15"
+[INFO - 2016_08_27_19:29:27] - "Average V: -3.6436975002289e-05"
+[INFO - 2016_08_27_19:29:34] - starting validation after 181860 steps
+[INFO - 2016_08_27_19:30:20] - "Validated @ 41031530"
+[INFO - 2016_08_27_19:30:20] - "Total Score: 74.7001953125"
+[INFO - 2016_08_27_19:30:20] - "Average Score: 74.7001953125"
+[INFO - 2016_08_27_19:30:21] - "Average V: 0.0006094233840704"
+[INFO - 2016_08_27_19:30:29] - starting validation after 182408 steps
+[INFO - 2016_08_27_19:31:15] - "Validated @ 41214529"
+[INFO - 2016_08_27_19:31:15] - "Total Score: 14.7998046875"
+[INFO - 2016_08_27_19:31:15] - "Average Score: 14.7998046875"
+[INFO - 2016_08_27_19:31:16] - "Average V: -0.00088939854502678"
+[INFO - 2016_08_27_19:31:23] - starting validation after 180612 steps
+[INFO - 2016_08_27_19:32:10] - "Validated @ 41398510"
+[INFO - 2016_08_27_19:32:10] - "Total Score: 16.89990234375"
+[INFO - 2016_08_27_19:32:10] - "Average Score: 16.89990234375"
+[INFO - 2016_08_27_19:32:10] - "Average V: -0.0038740119934082"
+[INFO - 2016_08_27_19:32:17] - starting validation after 183278 steps
+[INFO - 2016_08_27_19:33:04] - "Validated @ 41579366"
+[INFO - 2016_08_27_19:33:04] - "Total Score: 15.2998046875"
+[INFO - 2016_08_27_19:33:04] - "Average Score: 15.2998046875"
+[INFO - 2016_08_27_19:33:05] - "Average V: -0.0064822627604008"
+[INFO - 2016_08_27_19:33:12] - starting validation after 180821 steps
+[INFO - 2016_08_27_19:33:58] - "Validated @ 41760877"
+[INFO - 2016_08_27_19:33:58] - "Total Score: 20.5"
+[INFO - 2016_08_27_19:33:58] - "Average Score: 20.5"
+[INFO - 2016_08_27_19:33:59] - "Average V: 0.00054045248031616"
+[INFO - 2016_08_27_19:34:06] - starting validation after 182353 steps
+[INFO - 2016_08_27_19:34:52] - "Validated @ 41941598"
+[INFO - 2016_08_27_19:34:52] - "Total Score: 34.7998046875"
+[INFO - 2016_08_27_19:34:52] - "Average Score: 34.7998046875"
+[INFO - 2016_08_27_19:34:53] - "Average V: -0.0001743146777153"
+[INFO - 2016_08_27_19:35:00] - starting validation after 180431 steps
+[INFO - 2016_08_27_19:35:45] - "Validated @ 42121040"
+[INFO - 2016_08_27_19:35:45] - "Total Score: 30"
+[INFO - 2016_08_27_19:35:45] - "Average Score: 30"
+[INFO - 2016_08_27_19:35:46] - "Average V: -0.0038110236078501"
+[INFO - 2016_08_27_19:35:54] - starting validation after 182342 steps
+[INFO - 2016_08_27_19:36:41] - "Validated @ 42307883"
+[INFO - 2016_08_27_19:36:41] - "Total Score: 5.5"
+[INFO - 2016_08_27_19:36:41] - "Average Score: 5.5"
+[INFO - 2016_08_27_19:36:42] - "Average V: 0.001431593850255"
+[INFO - 2016_08_27_19:36:49] - starting validation after 183431 steps
+[INFO - 2016_08_27_19:37:35] - "Validated @ 42490122"
+[INFO - 2016_08_27_19:37:35] - "Total Score: 57.10009765625"
+[INFO - 2016_08_27_19:37:35] - "Average Score: 57.10009765625"
+[INFO - 2016_08_27_19:37:36] - "Average V: -0.0039063904583454"
+[INFO - 2016_08_27_19:37:43] - starting validation after 182593 steps
+[INFO - 2016_08_27_19:38:29] - "Validated @ 42671353"
+[INFO - 2016_08_27_19:38:29] - "Total Score: 11"
+[INFO - 2016_08_27_19:38:29] - "Average Score: 11"
+[INFO - 2016_08_27_19:38:29] - "Average V: 4.9372583627701e-05"
+[INFO - 2016_08_27_19:38:36] - starting validation after 181106 steps
+[INFO - 2016_08_27_19:39:23] - "Validated @ 42853228"
+[INFO - 2016_08_27_19:39:23] - "Total Score: 16.19970703125"
+[INFO - 2016_08_27_19:39:23] - "Average Score: 16.19970703125"
+[INFO - 2016_08_27_19:39:24] - "Average V: -0.0047173071503639"
+[INFO - 2016_08_27_19:39:31] - starting validation after 181117 steps
+[INFO - 2016_08_27_19:40:18] - "Validated @ 43035404"
+[INFO - 2016_08_27_19:40:18] - "Total Score: 19"
+[INFO - 2016_08_27_19:40:18] - "Average Score: 19"
+[INFO - 2016_08_27_19:40:19] - "Average V: -0.0086685045659542"
+[INFO - 2016_08_27_19:40:26] - starting validation after 182548 steps
+[INFO - 2016_08_27_19:41:13] - "Validated @ 43216286"
+[INFO - 2016_08_27_19:41:13] - "Total Score: 40"
+[INFO - 2016_08_27_19:41:13] - "Average Score: 40"
+[INFO - 2016_08_27_19:41:13] - "Average V: -0.0048297812789679"
+[INFO - 2016_08_27_19:41:20] - starting validation after 181155 steps
+[INFO - 2016_08_27_19:42:06] - "Validated @ 43396790"
+[INFO - 2016_08_27_19:42:06] - "Total Score: -3.900390625"
+[INFO - 2016_08_27_19:42:06] - "Average Score: -3.900390625"
+[INFO - 2016_08_27_19:42:07] - "Average V: -0.0073680704236031"
+[INFO - 2016_08_27_19:42:14] - starting validation after 180484 steps
+[INFO - 2016_08_27_19:43:01] - "Validated @ 43579849"
+[INFO - 2016_08_27_19:43:01] - "Total Score: 19.19970703125"
+[INFO - 2016_08_27_19:43:01] - "Average Score: 19.19970703125"
+[INFO - 2016_08_27_19:43:02] - "Average V: -0.0091187872737646"
+[INFO - 2016_08_27_19:43:09] - starting validation after 182333 steps
+[INFO - 2016_08_27_19:43:56] - "Validated @ 43761822"
+[INFO - 2016_08_27_19:43:56] - "Total Score: 5.099609375"
+[INFO - 2016_08_27_19:43:56] - "Average Score: 5.099609375"
+[INFO - 2016_08_27_19:43:56] - "Average V: 0.0073452531695366"
+[INFO - 2016_08_27_19:44:03] - starting validation after 182178 steps
+[INFO - 2016_08_27_19:44:50] - "Validated @ 43942420"
+[INFO - 2016_08_27_19:44:50] - "Total Score: 10"
+[INFO - 2016_08_27_19:44:50] - "Average Score: 10"
+[INFO - 2016_08_27_19:44:51] - "Average V: -0.00067714458703995"
+[INFO - 2016_08_27_19:44:58] - starting validation after 181190 steps
+[INFO - 2016_08_27_19:45:44] - "Validated @ 44123743"
+[INFO - 2016_08_27_19:45:44] - "Total Score: 58.7001953125"
+[INFO - 2016_08_27_19:45:44] - "Average Score: 58.7001953125"
+[INFO - 2016_08_27_19:45:45] - "Average V: -0.010674925819039"
+[INFO - 2016_08_27_19:45:52] - starting validation after 181040 steps
+[INFO - 2016_08_27_19:46:40] - "Validated @ 44307362"
+[INFO - 2016_08_27_19:46:40] - "Total Score: 49"
+[INFO - 2016_08_27_19:46:40] - "Average Score: 49"
+[INFO - 2016_08_27_19:46:40] - "Average V: 0.0035694431364536"
+[INFO - 2016_08_27_19:46:47] - starting validation after 182267 steps
+[INFO - 2016_08_27_19:47:34] - "Validated @ 44490263"
+[INFO - 2016_08_27_19:47:34] - "Total Score: 1.5"
+[INFO - 2016_08_27_19:47:34] - "Average Score: 1.5"
+[INFO - 2016_08_27_19:47:35] - "Average V: -0.013868330538273"
+[INFO - 2016_08_27_19:47:41] - starting validation after 180741 steps
+[INFO - 2016_08_27_19:48:27] - "Validated @ 44667377"
+[INFO - 2016_08_27_19:48:27] - "Total Score: 64"
+[INFO - 2016_08_27_19:48:27] - "Average Score: 64"
+[INFO - 2016_08_27_19:48:28] - "Average V: 0.010385880663991"
+[INFO - 2016_08_27_19:48:35] - starting validation after 181302 steps
+[INFO - 2016_08_27_19:49:21] - "Validated @ 44850498"
+[INFO - 2016_08_27_19:49:21] - "Total Score: -30.39990234375"
+[INFO - 2016_08_27_19:49:21] - "Average Score: -30.39990234375"
+[INFO - 2016_08_27_19:49:22] - "Average V: -0.00071921987831593"
+[INFO - 2016_08_27_19:49:29] - starting validation after 182912 steps
+[INFO - 2016_08_27_19:50:16] - "Validated @ 45032426"
+[INFO - 2016_08_27_19:50:16] - "Total Score: 58.60009765625"
+[INFO - 2016_08_27_19:50:16] - "Average Score: 58.60009765625"
+[INFO - 2016_08_27_19:50:17] - "Average V: 0.0053007863163948"
+[INFO - 2016_08_27_19:50:24] - starting validation after 181481 steps
+[INFO - 2016_08_27_19:51:10] - "Validated @ 45212704"
+[INFO - 2016_08_27_19:51:10] - "Total Score: 40"
+[INFO - 2016_08_27_19:51:10] - "Average Score: 40"
+[INFO - 2016_08_27_19:51:11] - "Average V: -0.011325039222836"
+[INFO - 2016_08_27_19:51:18] - starting validation after 181454 steps
+[INFO - 2016_08_27_19:52:04] - "Validated @ 45395288"
+[INFO - 2016_08_27_19:52:04] - "Total Score: 30"
+[INFO - 2016_08_27_19:52:04] - "Average Score: 30"
+[INFO - 2016_08_27_19:52:05] - "Average V: 0.0059993756115437"
+[INFO - 2016_08_27_19:52:12] - starting validation after 182513 steps
+[INFO - 2016_08_27_19:52:58] - "Validated @ 45579646"
+[INFO - 2016_08_27_19:52:58] - "Total Score: -11.2001953125"
+[INFO - 2016_08_27_19:52:58] - "Average Score: -11.2001953125"
+[INFO - 2016_08_27_19:52:59] - "Average V: 0.0058308854848146"
+[INFO - 2016_08_27_19:53:05] - starting validation after 180445 steps
+[INFO - 2016_08_27_19:53:52] - "Validated @ 45760980"
+[INFO - 2016_08_27_19:53:52] - "Total Score: 48.900390625"
+[INFO - 2016_08_27_19:53:52] - "Average Score: 48.900390625"
+[INFO - 2016_08_27_19:53:53] - "Average V: 0.0090668037682772"
+[INFO - 2016_08_27_19:53:59] - starting validation after 180649 steps
+[INFO - 2016_08_27_19:54:46] - "Validated @ 45941609"
+[INFO - 2016_08_27_19:54:46] - "Total Score: 50"
+[INFO - 2016_08_27_19:54:46] - "Average Score: 50"
+[INFO - 2016_08_27_19:54:46] - "Average V: -0.010591205149889"
+[INFO - 2016_08_27_19:54:52] - starting validation after 180490 steps
+[INFO - 2016_08_27_19:55:39] - "Validated @ 46120032"
+[INFO - 2016_08_27_19:55:39] - "Total Score: 29.099609375"
+[INFO - 2016_08_27_19:55:39] - "Average Score: 29.099609375"
+[INFO - 2016_08_27_19:55:39] - "Average V: 0.0039660411328077"
+[INFO - 2016_08_27_19:55:46] - starting validation after 183228 steps
+[INFO - 2016_08_27_19:56:33] - "Validated @ 46304167"
+[INFO - 2016_08_27_19:56:33] - "Total Score: -11.900390625"
+[INFO - 2016_08_27_19:56:33] - "Average Score: -11.900390625"
+[INFO - 2016_08_27_19:56:34] - "Average V: 0.0010815327763557"
+[INFO - 2016_08_27_19:56:41] - starting validation after 182203 steps
+[INFO - 2016_08_27_19:57:28] - "Validated @ 46486251"
+[INFO - 2016_08_27_19:57:28] - "Total Score: 6.60009765625"
+[INFO - 2016_08_27_19:57:28] - "Average Score: 6.60009765625"
+[INFO - 2016_08_27_19:57:28] - "Average V: 0.013277537152171"
+[INFO - 2016_08_27_19:57:35] - starting validation after 183268 steps
+[INFO - 2016_08_27_19:58:21] - "Validated @ 46668218"
+[INFO - 2016_08_27_19:58:21] - "Total Score: 64.7998046875"
+[INFO - 2016_08_27_19:58:21] - "Average Score: 64.7998046875"
+[INFO - 2016_08_27_19:58:22] - "Average V: -0.0037230062037706"
+[INFO - 2016_08_27_19:58:29] - starting validation after 181511 steps
+[INFO - 2016_08_27_19:59:14] - "Validated @ 46845716"
+[INFO - 2016_08_27_19:59:14] - "Total Score: 65.900390625"
+[INFO - 2016_08_27_19:59:14] - "Average Score: 65.900390625"
+[INFO - 2016_08_27_19:59:15] - "Average V: 0.0074590145647526"
+[INFO - 2016_08_27_19:59:23] - starting validation after 181008 steps
+[INFO - 2016_08_27_20:00:09] - "Validated @ 47029949"
+[INFO - 2016_08_27_20:00:09] - "Total Score: 2.7998046875"
+[INFO - 2016_08_27_20:00:09] - "Average Score: 2.7998046875"
+[INFO - 2016_08_27_20:00:10] - "Average V: 0.0032166621088982"
+[INFO - 2016_08_27_20:00:17] - starting validation after 182066 steps
+[INFO - 2016_08_27_20:01:04] - "Validated @ 47212584"
+[INFO - 2016_08_27_20:01:04] - "Total Score: 8.5"
+[INFO - 2016_08_27_20:01:04] - "Average Score: 8.5"
+[INFO - 2016_08_27_20:01:04] - "Average V: 0.012498683482409"
+[INFO - 2016_08_27_20:01:11] - starting validation after 181645 steps
+[INFO - 2016_08_27_20:01:57] - "Validated @ 47392450"
+[INFO - 2016_08_27_20:01:57] - "Total Score: 4.2998046875"
+[INFO - 2016_08_27_20:01:57] - "Average Score: 4.2998046875"
+[INFO - 2016_08_27_20:01:58] - "Average V: 0.0082490843087435"
+[INFO - 2016_08_27_20:02:05] - starting validation after 180340 steps
+[INFO - 2016_08_27_20:02:51] - "Validated @ 47571911"
+[INFO - 2016_08_27_20:02:51] - "Total Score: 61"
+[INFO - 2016_08_27_20:02:51] - "Average Score: 61"
+[INFO - 2016_08_27_20:02:51] - "Average V: 0.00032718938589096"
+[INFO - 2016_08_27_20:02:59] - starting validation after 182413 steps
+[INFO - 2016_08_27_20:03:46] - "Validated @ 47759228"
+[INFO - 2016_08_27_20:03:46] - "Total Score: -22.30029296875"
+[INFO - 2016_08_27_20:03:46] - "Average Score: -22.30029296875"
+[INFO - 2016_08_27_20:03:47] - "Average V: 0.00012984497845173"
+[INFO - 2016_08_27_20:03:53] - starting validation after 181203 steps
+[INFO - 2016_08_27_20:04:39] - "Validated @ 47939894"
+[INFO - 2016_08_27_20:04:39] - "Total Score: -11"
+[INFO - 2016_08_27_20:04:39] - "Average Score: -11"
+[INFO - 2016_08_27_20:04:40] - "Average V: 0.0099998276084661"
+[INFO - 2016_08_27_20:04:47] - starting validation after 182834 steps
+[INFO - 2016_08_27_20:05:33] - "Validated @ 48121980"
+[INFO - 2016_08_27_20:05:33] - "Total Score: 9.5"
+[INFO - 2016_08_27_20:05:33] - "Average Score: 9.5"
+[INFO - 2016_08_27_20:05:34] - "Average V: 0.0011465020775795"
+[INFO - 2016_08_27_20:05:40] - starting validation after 180241 steps
+[INFO - 2016_08_27_20:06:26] - "Validated @ 48300477"
+[INFO - 2016_08_27_20:06:26] - "Total Score: 3.900390625"
+[INFO - 2016_08_27_20:06:26] - "Average Score: 3.900390625"
+[INFO - 2016_08_27_20:06:27] - "Average V: -0.0034604037851095"
+[INFO - 2016_08_27_20:06:34] - starting validation after 181252 steps
+[INFO - 2016_08_27_20:07:20] - "Validated @ 48484191"
+[INFO - 2016_08_27_20:07:20] - "Total Score: 7.7001953125"
+[INFO - 2016_08_27_20:07:20] - "Average Score: 7.7001953125"
+[INFO - 2016_08_27_20:07:21] - "Average V: -0.0017822178453207"
+[INFO - 2016_08_27_20:07:28] - starting validation after 182688 steps
+[INFO - 2016_08_27_20:08:13] - "Validated @ 48663598"
+[INFO - 2016_08_27_20:08:13] - "Total Score: 63.10009765625"
+[INFO - 2016_08_27_20:08:13] - "Average Score: 63.10009765625"
+[INFO - 2016_08_27_20:08:14] - "Average V: -0.0013687931001186"
+[INFO - 2016_08_27_20:08:21] - starting validation after 180652 steps
+[INFO - 2016_08_27_20:09:08] - "Validated @ 48848192"
+[INFO - 2016_08_27_20:09:08] - "Total Score: 40"
+[INFO - 2016_08_27_20:09:08] - "Average Score: 40"
+[INFO - 2016_08_27_20:09:09] - "Average V: 0.011525134846568"
+[INFO - 2016_08_27_20:09:16] - starting validation after 183405 steps
+[INFO - 2016_08_27_20:10:02] - "Validated @ 49029382"
+[INFO - 2016_08_27_20:10:02] - "Total Score: 50"
+[INFO - 2016_08_27_20:10:02] - "Average Score: 50"
+[INFO - 2016_08_27_20:10:03] - "Average V: -0.00266629332304"
+[INFO - 2016_08_27_20:10:10] - starting validation after 181796 steps
+[INFO - 2016_08_27_20:10:57] - "Validated @ 49211526"
+[INFO - 2016_08_27_20:10:57] - "Total Score: 36.099609375"
+[INFO - 2016_08_27_20:10:57] - "Average Score: 36.099609375"
+[INFO - 2016_08_27_20:10:58] - "Average V: 0.0069436366558075"
+[INFO - 2016_08_27_20:11:05] - starting validation after 183341 steps
+[INFO - 2016_08_27_20:11:52] - "Validated @ 49396475"
+[INFO - 2016_08_27_20:11:52] - "Total Score: 39.599609375"
+[INFO - 2016_08_27_20:11:52] - "Average Score: 39.599609375"
+[INFO - 2016_08_27_20:11:53] - "Average V: 0.0021675512641668"
+[INFO - 2016_08_27_20:11:59] - starting validation after 180829 steps
+[INFO - 2016_08_27_20:12:45] - "Validated @ 49575954"
+[INFO - 2016_08_27_20:12:45] - "Total Score: -3"
+[INFO - 2016_08_27_20:12:45] - "Average Score: -3"
+[INFO - 2016_08_27_20:12:46] - "Average V: 0.0086431676745415"
+[INFO - 2016_08_27_20:12:53] - starting validation after 182158 steps
+[INFO - 2016_08_27_20:13:40] - "Validated @ 49757729"
+[INFO - 2016_08_27_20:13:40] - "Total Score: 7.69970703125"
+[INFO - 2016_08_27_20:13:40] - "Average Score: 7.69970703125"
+[INFO - 2016_08_27_20:13:40] - "Average V: 0.0024052495807409"
+[INFO - 2016_08_27_20:13:47] - starting validation after 182307 steps
+[INFO - 2016_08_27_20:14:34] - "Validated @ 49941134"
+[INFO - 2016_08_27_20:14:34] - "Total Score: 20"
+[INFO - 2016_08_27_20:14:34] - "Average Score: 20"
+[INFO - 2016_08_27_20:14:35] - "Average V: 0.0070979445427656"
+[INFO - 2016_08_27_20:14:41] - starting validation after 180127 steps
+[INFO - 2016_08_27_20:15:29] - "Validated @ 50125165"
+[INFO - 2016_08_27_20:15:29] - "Total Score: 0"
+[INFO - 2016_08_27_20:15:29] - "Average Score: 0"
+[INFO - 2016_08_27_20:15:30] - "Average V: 0.00087907133996487"
+[INFO - 2016_08_27_20:15:36] - starting validation after 183452 steps
+[INFO - 2016_08_27_20:16:22] - "Validated @ 50303218"
+[INFO - 2016_08_27_20:16:22] - "Total Score: 89.30029296875"
+[INFO - 2016_08_27_20:16:22] - "Average Score: 89.30029296875"
+[INFO - 2016_08_27_20:16:23] - "Average V: 0.015354198977351"
+[INFO - 2016_08_27_20:16:30] - starting validation after 181320 steps
+[INFO - 2016_08_27_20:17:17] - "Validated @ 50484947"
+[INFO - 2016_08_27_20:17:17] - "Total Score: 15.5"
+[INFO - 2016_08_27_20:17:17] - "Average Score: 15.5"
+[INFO - 2016_08_27_20:17:18] - "Average V: 0.0072929663658142"
+[INFO - 2016_08_27_20:17:25] - starting validation after 181818 steps
+[INFO - 2016_08_27_20:18:12] - "Validated @ 50667540"
+[INFO - 2016_08_27_20:18:12] - "Total Score: 7.60009765625"
+[INFO - 2016_08_27_20:18:12] - "Average Score: 7.60009765625"
+[INFO - 2016_08_27_20:18:12] - "Average V: 0.0030329430997372"
+[INFO - 2016_08_27_20:18:19] - starting validation after 182938 steps
+[INFO - 2016_08_27_20:19:06] - "Validated @ 50848451"
+[INFO - 2016_08_27_20:19:06] - "Total Score: -1.60009765625"
+[INFO - 2016_08_27_20:19:06] - "Average Score: -1.60009765625"
+[INFO - 2016_08_27_20:19:07] - "Average V: 0.0036924510449171"
+[INFO - 2016_08_27_20:19:14] - starting validation after 181452 steps
+[INFO - 2016_08_27_20:20:01] - "Validated @ 51032314"
+[INFO - 2016_08_27_20:20:01] - "Total Score: -10"
+[INFO - 2016_08_27_20:20:01] - "Average Score: -10"
+[INFO - 2016_08_27_20:20:02] - "Average V: 0.0016914245337248"
+[INFO - 2016_08_27_20:20:09] - starting validation after 182778 steps
+[INFO - 2016_08_27_20:20:57] - "Validated @ 51216255"
+[INFO - 2016_08_27_20:20:57] - "Total Score: 27.39990234375"
+[INFO - 2016_08_27_20:20:57] - "Average Score: 27.39990234375"
+[INFO - 2016_08_27_20:20:57] - "Average V: -0.0017992806732655"
+[INFO - 2016_08_27_20:21:03] - starting validation after 180879 steps
+[INFO - 2016_08_27_20:21:50] - "Validated @ 51393298"
+[INFO - 2016_08_27_20:21:50] - "Total Score: 0"
+[INFO - 2016_08_27_20:21:50] - "Average Score: 0"
+[INFO - 2016_08_27_20:21:50] - "Average V: -0.0013881385922432"
+[INFO - 2016_08_27_20:21:58] - starting validation after 183546 steps
+[INFO - 2016_08_27_20:22:45] - "Validated @ 51578308"
+[INFO - 2016_08_27_20:22:45] - "Total Score: 37.10009765625"
+[INFO - 2016_08_27_20:22:45] - "Average Score: 37.10009765625"
+[INFO - 2016_08_27_20:22:46] - "Average V: -0.0017155964970589"
+[INFO - 2016_08_27_20:22:53] - starting validation after 182096 steps
+[INFO - 2016_08_27_20:23:40] - "Validated @ 51761958"
+[INFO - 2016_08_27_20:23:40] - "Total Score: 14.89990234375"
+[INFO - 2016_08_27_20:23:40] - "Average Score: 14.89990234375"
+[INFO - 2016_08_27_20:23:41] - "Average V: 0.010803572565317"
+[INFO - 2016_08_27_20:23:47] - starting validation after 180445 steps
+[INFO - 2016_08_27_20:24:33] - "Validated @ 51941675"
+[INFO - 2016_08_27_20:24:33] - "Total Score: 2.2001953125"
+[INFO - 2016_08_27_20:24:33] - "Average Score: 2.2001953125"
+[INFO - 2016_08_27_20:24:34] - "Average V: 0.010697328716516"
+[INFO - 2016_08_27_20:24:41] - starting validation after 182987 steps
+[INFO - 2016_08_27_20:25:28] - "Validated @ 52124123"
+[INFO - 2016_08_27_20:25:28] - "Total Score: 28.2001953125"
+[INFO - 2016_08_27_20:25:28] - "Average Score: 28.2001953125"
+[INFO - 2016_08_27_20:25:29] - "Average V: -0.0037725125700235"
+[INFO - 2016_08_27_20:25:36] - starting validation after 182531 steps
+[INFO - 2016_08_27_20:26:23] - "Validated @ 52306630"
+[INFO - 2016_08_27_20:26:23] - "Total Score: -20.80029296875"
+[INFO - 2016_08_27_20:26:23] - "Average Score: -20.80029296875"
+[INFO - 2016_08_27_20:26:24] - "Average V: 0.0050985042154789"
+[INFO - 2016_08_27_20:26:31] - starting validation after 181976 steps
+[INFO - 2016_08_27_20:27:17] - "Validated @ 52487817"
+[INFO - 2016_08_27_20:27:17] - "Total Score: -4.80029296875"
+[INFO - 2016_08_27_20:27:17] - "Average Score: -4.80029296875"
+[INFO - 2016_08_27_20:27:18] - "Average V: -0.001249803096056"
+[INFO - 2016_08_27_20:27:25] - starting validation after 180895 steps
+[INFO - 2016_08_27_20:28:13] - "Validated @ 52672565"
+[INFO - 2016_08_27_20:28:13] - "Total Score: 60"
+[INFO - 2016_08_27_20:28:13] - "Average Score: 60"
+[INFO - 2016_08_27_20:28:14] - "Average V: 3.3673003315926e-05"
+[INFO - 2016_08_27_20:28:20] - starting validation after 181260 steps
+[INFO - 2016_08_27_20:29:06] - "Validated @ 52847960"
+[INFO - 2016_08_27_20:29:06] - "Total Score: 90"
+[INFO - 2016_08_27_20:29:06] - "Average Score: 90"
+[INFO - 2016_08_27_20:29:07] - "Average V: 0.00017032751441002"
+[INFO - 2016_08_27_20:29:15] - starting validation after 183056 steps
+[INFO - 2016_08_27_20:30:01] - "Validated @ 53034715"
+[INFO - 2016_08_27_20:30:01] - "Total Score: 50"
+[INFO - 2016_08_27_20:30:01] - "Average Score: 50"
+[INFO - 2016_08_27_20:30:02] - "Average V: 0.0019389660954475"
+[INFO - 2016_08_27_20:30:09] - starting validation after 183044 steps
+[INFO - 2016_08_27_20:30:55] - "Validated @ 53214978"
+[INFO - 2016_08_27_20:30:55] - "Total Score: 17.900390625"
+[INFO - 2016_08_27_20:30:55] - "Average Score: 17.900390625"
+[INFO - 2016_08_27_20:30:55] - "Average V: 0.01106004832685"
+[INFO - 2016_08_27_20:31:02] - starting validation after 180800 steps
+[INFO - 2016_08_27_20:31:49] - "Validated @ 53397419"
+[INFO - 2016_08_27_20:31:49] - "Total Score: 87.69970703125"
+[INFO - 2016_08_27_20:31:49] - "Average Score: 87.69970703125"
+[INFO - 2016_08_27_20:31:50] - "Average V: -0.00035756747424603"
+[INFO - 2016_08_27_20:31:57] - starting validation after 181935 steps
+[INFO - 2016_08_27_20:32:44] - "Validated @ 53581408"
+[INFO - 2016_08_27_20:32:44] - "Total Score: 4.099609375"
+[INFO - 2016_08_27_20:32:44] - "Average Score: 4.099609375"
+[INFO - 2016_08_27_20:32:44] - "Average V: 0.00017834141850471"
+[INFO - 2016_08_27_20:32:50] - starting validation after 180958 steps
+[INFO - 2016_08_27_20:33:37] - "Validated @ 53759335"
+[INFO - 2016_08_27_20:33:37] - "Total Score: 39.39990234375"
+[INFO - 2016_08_27_20:33:37] - "Average Score: 39.39990234375"
+[INFO - 2016_08_27_20:33:37] - "Average V: 0.0051934512406588"
+[INFO - 2016_08_27_20:33:44] - starting validation after 181046 steps
+[INFO - 2016_08_27_20:34:32] - "Validated @ 53942174"
+[INFO - 2016_08_27_20:34:32] - "Total Score: 130"
+[INFO - 2016_08_27_20:34:32] - "Average Score: 130"
+[INFO - 2016_08_27_20:34:32] - "Average V: 0.0092268512547016"
+[INFO - 2016_08_27_20:34:32] - "New best average score"
+[INFO - 2016_08_27_20:34:32] - "Saving weights"
+[INFO - 2016_08_27_20:34:39] - starting validation after 183330 steps
+[INFO - 2016_08_27_20:35:26] - "Validated @ 54125994"
+[INFO - 2016_08_27_20:35:26] - "Total Score: 30"
+[INFO - 2016_08_27_20:35:26] - "Average Score: 30"
+[INFO - 2016_08_27_20:35:27] - "Average V: 0.0072057962566614"
+[INFO - 2016_08_27_20:35:34] - starting validation after 182776 steps
+[INFO - 2016_08_27_20:36:21] - "Validated @ 54308393"
+[INFO - 2016_08_27_20:36:21] - "Total Score: 60.69970703125"
+[INFO - 2016_08_27_20:36:21] - "Average Score: 60.69970703125"
+[INFO - 2016_08_27_20:36:21] - "Average V: 0.010397463992238"
+[INFO - 2016_08_27_20:36:28] - starting validation after 183246 steps
+[INFO - 2016_08_27_20:37:15] - "Validated @ 54489269"
+[INFO - 2016_08_27_20:37:15] - "Total Score: -16.80029296875"
+[INFO - 2016_08_27_20:37:15] - "Average Score: -16.80029296875"
+[INFO - 2016_08_27_20:37:16] - "Average V: -0.003229929074645"
+[INFO - 2016_08_27_20:37:23] - starting validation after 180413 steps
+[INFO - 2016_08_27_20:38:10] - "Validated @ 54671818"
+[INFO - 2016_08_27_20:38:10] - "Total Score: -5.599609375"
+[INFO - 2016_08_27_20:38:10] - "Average Score: -5.599609375"
+[INFO - 2016_08_27_20:38:11] - "Average V: 0.0066842036992311"
+[INFO - 2016_08_27_20:38:18] - starting validation after 182769 steps
+[INFO - 2016_08_27_20:39:04] - "Validated @ 54851765"
+[INFO - 2016_08_27_20:39:04] - "Total Score: 14.80029296875"
+[INFO - 2016_08_27_20:39:04] - "Average Score: 14.80029296875"
+[INFO - 2016_08_27_20:39:04] - "Average V: -0.00217606985569"
+[INFO - 2016_08_27_20:39:12] - starting validation after 183626 steps
+[INFO - 2016_08_27_20:39:59] - "Validated @ 55036138"
+[INFO - 2016_08_27_20:39:59] - "Total Score: 43.599609375"
+[INFO - 2016_08_27_20:39:59] - "Average Score: 43.599609375"
+[INFO - 2016_08_27_20:40:00] - "Average V: 0.019583703905344"
+[INFO - 2016_08_27_20:40:07] - starting validation after 180682 steps
+[INFO - 2016_08_27_20:40:55] - "Validated @ 55220718"
+[INFO - 2016_08_27_20:40:55] - "Total Score: 0"
+[INFO - 2016_08_27_20:40:55] - "Average Score: 0"
+[INFO - 2016_08_27_20:40:56] - "Average V: 0.015737493351102"
+[INFO - 2016_08_27_20:41:02] - starting validation after 180850 steps
+[INFO - 2016_08_27_20:41:49] - "Validated @ 55400777"
+[INFO - 2016_08_27_20:41:49] - "Total Score: 5.5"
+[INFO - 2016_08_27_20:41:49] - "Average Score: 5.5"
+[INFO - 2016_08_27_20:41:49] - "Average V: 0.0098230041265488"
+[INFO - 2016_08_27_20:41:56] - starting validation after 183369 steps
+[INFO - 2016_08_27_20:42:43] - "Validated @ 55584945"
+[INFO - 2016_08_27_20:42:43] - "Total Score: 49.5"
+[INFO - 2016_08_27_20:42:43] - "Average Score: 49.5"
+[INFO - 2016_08_27_20:42:44] - "Average V: 0.0011913899928331"
+[INFO - 2016_08_27_20:42:50] - starting validation after 180432 steps
+[INFO - 2016_08_27_20:43:37] - "Validated @ 55766520"
+[INFO - 2016_08_27_20:43:37] - "Total Score: 100"
+[INFO - 2016_08_27_20:43:37] - "Average Score: 100"
+[INFO - 2016_08_27_20:43:38] - "Average V: 0.0067103002369404"
+[INFO - 2016_08_27_20:43:44] - starting validation after 182743 steps
+[INFO - 2016_08_27_20:44:30] - "Validated @ 55946035"
+[INFO - 2016_08_27_20:44:30] - "Total Score: 41.39990234375"
+[INFO - 2016_08_27_20:44:30] - "Average Score: 41.39990234375"
+[INFO - 2016_08_27_20:44:31] - "Average V: 0.011882395610213"
+[INFO - 2016_08_27_20:44:38] - starting validation after 182252 steps
+[INFO - 2016_08_27_20:45:24] - "Validated @ 56126409"
+[INFO - 2016_08_27_20:45:24] - "Total Score: -10.39990234375"
+[INFO - 2016_08_27_20:45:24] - "Average Score: -10.39990234375"
+[INFO - 2016_08_27_20:45:24] - "Average V: 0.0045690897852182"
+[INFO - 2016_08_27_20:45:32] - starting validation after 182524 steps
+[INFO - 2016_08_27_20:46:20] - "Validated @ 56310497"
+[INFO - 2016_08_27_20:46:20] - "Total Score: 55.30029296875"
+[INFO - 2016_08_27_20:46:20] - "Average Score: 55.30029296875"
+[INFO - 2016_08_27_20:46:21] - "Average V: 0.0017428657859564"
+[INFO - 2016_08_27_20:46:28] - starting validation after 182691 steps
+[INFO - 2016_08_27_20:47:15] - "Validated @ 56494451"
+[INFO - 2016_08_27_20:47:15] - "Total Score: 10"
+[INFO - 2016_08_27_20:47:15] - "Average Score: 10"
+[INFO - 2016_08_27_20:47:15] - "Average V: 0.017892006516457"
+[INFO - 2016_08_27_20:47:22] - starting validation after 183163 steps
+[INFO - 2016_08_27_20:48:08] - "Validated @ 56672474"
+[INFO - 2016_08_27_20:48:08] - "Total Score: 12.39990234375"
+[INFO - 2016_08_27_20:48:08] - "Average Score: 12.39990234375"
+[INFO - 2016_08_27_20:48:09] - "Average V: 0.0049511134177446"
+[INFO - 2016_08_27_20:48:17] - starting validation after 181766 steps
+[INFO - 2016_08_27_20:49:04] - "Validated @ 56859747"
+[INFO - 2016_08_27_20:49:04] - "Total Score: 9.5"
+[INFO - 2016_08_27_20:49:04] - "Average Score: 9.5"
+[INFO - 2016_08_27_20:49:05] - "Average V: 0.0056108973622322"
+[INFO - 2016_08_27_20:49:12] - starting validation after 183015 steps
+[INFO - 2016_08_27_20:49:59] - "Validated @ 57043696"
+[INFO - 2016_08_27_20:49:59] - "Total Score: 77"
+[INFO - 2016_08_27_20:49:59] - "Average Score: 77"
+[INFO - 2016_08_27_20:50:00] - "Average V: 0.0046986793577671"
+[INFO - 2016_08_27_20:50:06] - starting validation after 181589 steps
+[INFO - 2016_08_27_20:50:53] - "Validated @ 57223697"
+[INFO - 2016_08_27_20:50:53] - "Total Score: 40"
+[INFO - 2016_08_27_20:50:53] - "Average Score: 40"
+[INFO - 2016_08_27_20:50:53] - "Average V: -0.0024133512526751"
+[INFO - 2016_08_27_20:51:00] - starting validation after 182918 steps
+[INFO - 2016_08_27_20:51:48] - "Validated @ 57406563"
+[INFO - 2016_08_27_20:51:48] - "Total Score: 20"
+[INFO - 2016_08_27_20:51:48] - "Average Score: 20"
+[INFO - 2016_08_27_20:51:48] - "Average V: 0.0040973843187094"
+[INFO - 2016_08_27_20:51:55] - starting validation after 182995 steps
+[INFO - 2016_08_27_20:52:42] - "Validated @ 57590811"
+[INFO - 2016_08_27_20:52:42] - "Total Score: -14.89990234375"
+[INFO - 2016_08_27_20:52:42] - "Average Score: -14.89990234375"
+[INFO - 2016_08_27_20:52:43] - "Average V: 0.016622959092259"
+[INFO - 2016_08_27_20:52:49] - starting validation after 180178 steps
+[INFO - 2016_08_27_20:53:37] - "Validated @ 57771849"
+[INFO - 2016_08_27_20:53:37] - "Total Score: 30"
+[INFO - 2016_08_27_20:53:37] - "Average Score: 30"
+[INFO - 2016_08_27_20:53:37] - "Average V: 0.0028095939606428"
+[INFO - 2016_08_27_20:53:43] - starting validation after 181386 steps
+[INFO - 2016_08_27_20:54:31] - "Validated @ 57952154"
+[INFO - 2016_08_27_20:54:31] - "Total Score: 15.2998046875"
+[INFO - 2016_08_27_20:54:31] - "Average Score: 15.2998046875"
+[INFO - 2016_08_27_20:54:31] - "Average V: -0.0048659611344337"
+[INFO - 2016_08_27_20:54:37] - starting validation after 180272 steps
+[INFO - 2016_08_27_20:55:24] - "Validated @ 58133027"
+[INFO - 2016_08_27_20:55:24] - "Total Score: 10"
+[INFO - 2016_08_27_20:55:24] - "Average Score: 10"
+[INFO - 2016_08_27_20:55:25] - "Average V: 0.016514711380005"
+[INFO - 2016_08_27_20:55:31] - starting validation after 181631 steps
+[INFO - 2016_08_27_20:56:19] - "Validated @ 58316578"
+[INFO - 2016_08_27_20:56:19] - "Total Score: 25.5"
+[INFO - 2016_08_27_20:56:19] - "Average Score: 25.5"
+[INFO - 2016_08_27_20:56:20] - "Average V: 0.0025595781356096"
+[INFO - 2016_08_27_20:56:26] - starting validation after 183638 steps
+[INFO - 2016_08_27_20:57:13] - "Validated @ 58499400"
+[INFO - 2016_08_27_20:57:13] - "Total Score: 58.60009765625"
+[INFO - 2016_08_27_20:57:13] - "Average Score: 58.60009765625"
+[INFO - 2016_08_27_20:57:14] - "Average V: 0.0040229805409908"
+[INFO - 2016_08_27_20:57:20] - starting validation after 182259 steps
+[INFO - 2016_08_27_20:58:07] - "Validated @ 58679545"
+[INFO - 2016_08_27_20:58:07] - "Total Score: -12.39990234375"
+[INFO - 2016_08_27_20:58:07] - "Average Score: -12.39990234375"
+[INFO - 2016_08_27_20:58:08] - "Average V: 0.0062519744485617"
+[INFO - 2016_08_27_20:58:14] - starting validation after 180314 steps
+[INFO - 2016_08_27_20:59:01] - "Validated @ 58860707"
+[INFO - 2016_08_27_20:59:01] - "Total Score: 35.39990234375"
+[INFO - 2016_08_27_20:59:01] - "Average Score: 35.39990234375"
+[INFO - 2016_08_27_20:59:01] - "Average V: 0.01346448199451"
+[INFO - 2016_08_27_20:59:07] - starting validation after 180832 steps
+[INFO - 2016_08_27_20:59:54] - "Validated @ 59038454"
+[INFO - 2016_08_27_20:59:54] - "Total Score: 10"
+[INFO - 2016_08_27_20:59:54] - "Average Score: 10"
+[INFO - 2016_08_27_20:59:54] - "Average V: 0.0051433648616076"
+[INFO - 2016_08_27_21:00:01] - starting validation after 182121 steps
+[INFO - 2016_08_27_21:00:49] - "Validated @ 59223428"
+[INFO - 2016_08_27_21:00:49] - "Total Score: 40"
+[INFO - 2016_08_27_21:00:49] - "Average Score: 40"
+[INFO - 2016_08_27_21:00:49] - "Average V: -0.0006489275097847"
+[INFO - 2016_08_27_21:00:55] - starting validation after 180692 steps
+[INFO - 2016_08_27_21:01:43] - "Validated @ 59405897"
+[INFO - 2016_08_27_21:01:43] - "Total Score: 60"
+[INFO - 2016_08_27_21:01:43] - "Average Score: 60"
+[INFO - 2016_08_27_21:01:44] - "Average V: 0.0076412931829691"
+[INFO - 2016_08_27_21:01:50] - starting validation after 182668 steps
+[INFO - 2016_08_27_21:02:36] - "Validated @ 59585037"
+[INFO - 2016_08_27_21:02:36] - "Total Score: 10"
+[INFO - 2016_08_27_21:02:36] - "Average Score: 10"
+[INFO - 2016_08_27_21:02:37] - "Average V: 0.011761003062129"
+[INFO - 2016_08_27_21:02:44] - starting validation after 183090 steps
+[INFO - 2016_08_27_21:03:32] - "Validated @ 59770454"
+[INFO - 2016_08_27_21:03:32] - "Total Score: 66.7001953125"
+[INFO - 2016_08_27_21:03:32] - "Average Score: 66.7001953125"
+[INFO - 2016_08_27_21:03:33] - "Average V: 0.0041235256046057"
+[INFO - 2016_08_27_21:03:39] - starting validation after 180626 steps
+[INFO - 2016_08_27_21:04:25] - "Validated @ 59948308"
+[INFO - 2016_08_27_21:04:25] - "Total Score: 35.89990234375"
+[INFO - 2016_08_27_21:04:25] - "Average Score: 35.89990234375"
+[INFO - 2016_08_27_21:04:26] - "Average V: 0.0092559926211834"
+[INFO - 2016_08_27_21:04:33] - starting validation after 181825 steps
+[INFO - 2016_08_27_21:05:20] - "Validated @ 60132532"
+[INFO - 2016_08_27_21:05:20] - "Total Score: -14.39990234375"
+[INFO - 2016_08_27_21:05:20] - "Average Score: -14.39990234375"
+[INFO - 2016_08_27_21:05:21] - "Average V: 0.0084792764335871"
+[INFO - 2016_08_27_21:05:27] - starting validation after 180894 steps
+[INFO - 2016_08_27_21:06:14] - "Validated @ 60313071"
+[INFO - 2016_08_27_21:06:14] - "Total Score: -20.39990234375"
+[INFO - 2016_08_27_21:06:14] - "Average Score: -20.39990234375"
+[INFO - 2016_08_27_21:06:14] - "Average V: 0.01127474476397"
+[INFO - 2016_08_27_21:06:20] - starting validation after 181102 steps
+[INFO - 2016_08_27_21:07:07] - "Validated @ 60491895"
+[INFO - 2016_08_27_21:07:07] - "Total Score: 11.7001953125"
+[INFO - 2016_08_27_21:07:07] - "Average Score: 11.7001953125"
+[INFO - 2016_08_27_21:07:08] - "Average V: 0.0047616142630577"
+[INFO - 2016_08_27_21:07:15] - starting validation after 181098 steps
+[INFO - 2016_08_27_21:08:02] - "Validated @ 60675409"
+[INFO - 2016_08_27_21:08:02] - "Total Score: 64.89990234375"
+[INFO - 2016_08_27_21:08:02] - "Average Score: 64.89990234375"
+[INFO - 2016_08_27_21:08:02] - "Average V: 0.0027073912620544"
+[INFO - 2016_08_27_21:08:08] - starting validation after 180179 steps
+[INFO - 2016_08_27_21:08:56] - "Validated @ 60856992"
+[INFO - 2016_08_27_21:08:56] - "Total Score: 50"
+[INFO - 2016_08_27_21:08:56] - "Average Score: 50"
+[INFO - 2016_08_27_21:08:57] - "Average V: 0.0088264895379543"
+[INFO - 2016_08_27_21:09:03] - starting validation after 182426 steps
+[INFO - 2016_08_27_21:09:50] - "Validated @ 61040407"
+[INFO - 2016_08_27_21:09:50] - "Total Score: 58.5"
+[INFO - 2016_08_27_21:09:50] - "Average Score: 58.5"
+[INFO - 2016_08_27_21:09:51] - "Average V: -0.0053106864988804"
+[INFO - 2016_08_27_21:09:57] - starting validation after 183583 steps
+[INFO - 2016_08_27_21:10:44] - "Validated @ 61221580"
+[INFO - 2016_08_27_21:10:44] - "Total Score: 4.89990234375"
+[INFO - 2016_08_27_21:10:44] - "Average Score: 4.89990234375"
+[INFO - 2016_08_27_21:10:44] - "Average V: 0.0065503785014153"
+[INFO - 2016_08_27_21:10:50] - starting validation after 180211 steps
+[INFO - 2016_08_27_21:11:38] - "Validated @ 61403692"
+[INFO - 2016_08_27_21:11:38] - "Total Score: -15.2998046875"
+[INFO - 2016_08_27_21:11:38] - "Average Score: -15.2998046875"
+[INFO - 2016_08_27_21:11:38] - "Average V: 0.0018420670479536"
+[INFO - 2016_08_27_21:11:44] - starting validation after 183205 steps
+[INFO - 2016_08_27_21:12:31] - "Validated @ 61582129"
+[INFO - 2016_08_27_21:12:31] - "Total Score: -2.10009765625"
+[INFO - 2016_08_27_21:12:31] - "Average Score: -2.10009765625"
+[INFO - 2016_08_27_21:12:32] - "Average V: 0.0035902915298939"
+[INFO - 2016_08_27_21:12:39] - starting validation after 180771 steps
+[INFO - 2016_08_27_21:13:26] - "Validated @ 61766469"
+[INFO - 2016_08_27_21:13:26] - "Total Score: 34.89990234375"
+[INFO - 2016_08_27_21:13:26] - "Average Score: 34.89990234375"
+[INFO - 2016_08_27_21:13:27] - "Average V: -0.016777706176043"
+[INFO - 2016_08_27_21:13:33] - starting validation after 182340 steps
+[INFO - 2016_08_27_21:14:20] - "Validated @ 61946243"
+[INFO - 2016_08_27_21:14:20] - "Total Score: -9.30029296875"
+[INFO - 2016_08_27_21:14:20] - "Average Score: -9.30029296875"
+[INFO - 2016_08_27_21:14:20] - "Average V: -0.00031249356269836"
+[INFO - 2016_08_27_21:14:27] - starting validation after 182385 steps
+[INFO - 2016_08_27_21:15:14] - "Validated @ 62130846"
+[INFO - 2016_08_27_21:15:14] - "Total Score: 24.69970703125"
+[INFO - 2016_08_27_21:15:14] - "Average Score: 24.69970703125"
+[INFO - 2016_08_27_21:15:15] - "Average V: 0.002102958932519"
+[INFO - 2016_08_27_21:15:21] - starting validation after 181010 steps
+[INFO - 2016_08_27_21:16:08] - "Validated @ 62311234"
+[INFO - 2016_08_27_21:16:08] - "Total Score: 80.00048828125"
+[INFO - 2016_08_27_21:16:08] - "Average Score: 80.00048828125"
+[INFO - 2016_08_27_21:16:08] - "Average V: 0.002333922713995"
+[INFO - 2016_08_27_21:16:15] - starting validation after 183578 steps
+[INFO - 2016_08_27_21:17:02] - "Validated @ 62494725"
+[INFO - 2016_08_27_21:17:02] - "Total Score: 17.8994140625"
+[INFO - 2016_08_27_21:17:02] - "Average Score: 17.8994140625"
+[INFO - 2016_08_27_21:17:03] - "Average V: -0.0064887155890465"
+[INFO - 2016_08_27_21:17:10] - starting validation after 183471 steps
+[INFO - 2016_08_27_21:17:57] - "Validated @ 62675502"
+[INFO - 2016_08_27_21:17:57] - "Total Score: -2.2998046875"
+[INFO - 2016_08_27_21:17:57] - "Average Score: -2.2998046875"
+[INFO - 2016_08_27_21:17:57] - "Average V: -0.0041795510947704"
+[INFO - 2016_08_27_21:18:04] - starting validation after 180097 steps
+[INFO - 2016_08_27_21:18:50] - "Validated @ 62854188"
+[INFO - 2016_08_27_21:18:50] - "Total Score: 37.5"
+[INFO - 2016_08_27_21:18:50] - "Average Score: 37.5"
+[INFO - 2016_08_27_21:18:51] - "Average V: -0.0037396037727594"
+[INFO - 2016_08_27_21:18:59] - starting validation after 183043 steps
+[INFO - 2016_08_27_21:19:47] - "Validated @ 63040576"
+[INFO - 2016_08_27_21:19:47] - "Total Score: 22.2001953125"
+[INFO - 2016_08_27_21:19:47] - "Average Score: 22.2001953125"
+[INFO - 2016_08_27_21:19:47] - "Average V: 0.0053061946481466"
+[INFO - 2016_08_27_21:19:54] - starting validation after 182535 steps
+[INFO - 2016_08_27_21:20:40] - "Validated @ 63219746"
+[INFO - 2016_08_27_21:20:40] - "Total Score: -27.5"
+[INFO - 2016_08_27_21:20:40] - "Average Score: -27.5"
+[INFO - 2016_08_27_21:20:40] - "Average V: -0.0068271028548479"
+[INFO - 2016_08_27_21:20:48] - starting validation after 183054 steps
+[INFO - 2016_08_27_21:21:35] - "Validated @ 63407361"
+[INFO - 2016_08_27_21:21:35] - "Total Score: -5.900390625"
+[INFO - 2016_08_27_21:21:35] - "Average Score: -5.900390625"
+[INFO - 2016_08_27_21:21:36] - "Average V: -0.001579419106245"
+[INFO - 2016_08_27_21:21:42] - starting validation after 181052 steps
+[INFO - 2016_08_27_21:22:29] - "Validated @ 63587471"
+[INFO - 2016_08_27_21:22:29] - "Total Score: -16.099609375"
+[INFO - 2016_08_27_21:22:29] - "Average Score: -16.099609375"
+[INFO - 2016_08_27_21:22:29] - "Average V: -0.0022911680191755"
+[INFO - 2016_08_27_21:22:36] - starting validation after 183633 steps
+[INFO - 2016_08_27_21:23:24] - "Validated @ 63771474"
+[INFO - 2016_08_27_21:23:24] - "Total Score: 10"
+[INFO - 2016_08_27_21:23:24] - "Average Score: 10"
+[INFO - 2016_08_27_21:23:24] - "Average V: -0.0043627637624741"
+[INFO - 2016_08_27_21:23:30] - starting validation after 180080 steps
+[INFO - 2016_08_27_21:24:17] - "Validated @ 63950093"
+[INFO - 2016_08_27_21:24:17] - "Total Score: 25.2998046875"
+[INFO - 2016_08_27_21:24:17] - "Average Score: 25.2998046875"
+[INFO - 2016_08_27_21:24:17] - "Average V: -0.0041799760311842"
+[INFO - 2016_08_27_21:24:24] - starting validation after 182650 steps
+[INFO - 2016_08_27_21:25:12] - "Validated @ 64133755"
+[INFO - 2016_08_27_21:25:12] - "Total Score: 8.7001953125"
+[INFO - 2016_08_27_21:25:12] - "Average Score: 8.7001953125"
+[INFO - 2016_08_27_21:25:12] - "Average V: 0.0055644163042307"
+[INFO - 2016_08_27_21:25:19] - starting validation after 182289 steps
+[INFO - 2016_08_27_21:26:06] - "Validated @ 64314551"
+[INFO - 2016_08_27_21:26:06] - "Total Score: 17.3994140625"
+[INFO - 2016_08_27_21:26:06] - "Average Score: 17.3994140625"
+[INFO - 2016_08_27_21:26:07] - "Average V: -0.014427698753774"
+[INFO - 2016_08_27_21:26:14] - starting validation after 181574 steps
+[INFO - 2016_08_27_21:27:01] - "Validated @ 64498951"
+[INFO - 2016_08_27_21:27:01] - "Total Score: -2"
+[INFO - 2016_08_27_21:27:01] - "Average Score: -2"
+[INFO - 2016_08_27_21:27:01] - "Average V: -0.0072568375319242"
+[INFO - 2016_08_27_21:27:07] - starting validation after 180789 steps
+[INFO - 2016_08_27_21:27:54] - "Validated @ 64674867"
+[INFO - 2016_08_27_21:27:54] - "Total Score: -4.1005859375"
+[INFO - 2016_08_27_21:27:54] - "Average Score: -4.1005859375"
+[INFO - 2016_08_27_21:27:54] - "Average V: -0.013628118306398"
+[INFO - 2016_08_27_21:28:02] - starting validation after 182501 steps
+[INFO - 2016_08_27_21:28:49] - "Validated @ 64860477"
+[INFO - 2016_08_27_21:28:49] - "Total Score: 44.1005859375"
+[INFO - 2016_08_27_21:28:49] - "Average Score: 44.1005859375"
+[INFO - 2016_08_27_21:28:50] - "Average V: -0.012822121240199"
+[INFO - 2016_08_27_21:28:57] - starting validation after 183277 steps
+[INFO - 2016_08_27_21:29:45] - "Validated @ 65045517"
+[INFO - 2016_08_27_21:29:45] - "Total Score: 0"
+[INFO - 2016_08_27_21:29:45] - "Average Score: 0"
+[INFO - 2016_08_27_21:29:46] - "Average V: -0.0039864681139588"
+[INFO - 2016_08_27_21:29:52] - starting validation after 181013 steps
+[INFO - 2016_08_27_21:30:38] - "Validated @ 65226188"
+[INFO - 2016_08_27_21:30:38] - "Total Score: 2.69921875"
+[INFO - 2016_08_27_21:30:38] - "Average Score: 2.69921875"
+[INFO - 2016_08_27_21:30:39] - "Average V: 0.0075111207813025"
+[INFO - 2016_08_27_21:30:45] - starting validation after 181064 steps
+[INFO - 2016_08_27_21:31:32] - "Validated @ 65405264"
+[INFO - 2016_08_27_21:31:32] - "Total Score: 56.900390625"
+[INFO - 2016_08_27_21:31:32] - "Average Score: 56.900390625"
+[INFO - 2016_08_27_21:31:32] - "Average V: -0.010615101523697"
+[INFO - 2016_08_27_21:31:39] - starting validation after 182258 steps
+[INFO - 2016_08_27_21:32:26] - "Validated @ 65590258"
+[INFO - 2016_08_27_21:32:26] - "Total Score: 18.69921875"
+[INFO - 2016_08_27_21:32:26] - "Average Score: 18.69921875"
+[INFO - 2016_08_27_21:32:27] - "Average V: -0.0076038285940886"
+[INFO - 2016_08_27_21:32:33] - starting validation after 182315 steps
+[INFO - 2016_08_27_21:33:21] - "Validated @ 65769893"
+[INFO - 2016_08_27_21:33:21] - "Total Score: 40"
+[INFO - 2016_08_27_21:33:21] - "Average Score: 40"
+[INFO - 2016_08_27_21:33:21] - "Average V: -0.0031546341925859"
+[INFO - 2016_08_27_21:33:28] - starting validation after 182821 steps
+[INFO - 2016_08_27_21:34:15] - "Validated @ 65952799"
+[INFO - 2016_08_27_21:34:15] - "Total Score: 80"
+[INFO - 2016_08_27_21:34:15] - "Average Score: 80"
+[INFO - 2016_08_27_21:34:15] - "Average V: -0.010838099434972"
+[INFO - 2016_08_27_21:34:22] - starting validation after 181877 steps
+[INFO - 2016_08_27_21:35:10] - "Validated @ 66134718"
+[INFO - 2016_08_27_21:35:10] - "Total Score: 10"
+[INFO - 2016_08_27_21:35:10] - "Average Score: 10"
+[INFO - 2016_08_27_21:35:10] - "Average V: -0.0034045682698488"
+[INFO - 2016_08_27_21:35:17] - starting validation after 181771 steps
+[INFO - 2016_08_27_21:36:04] - "Validated @ 66314261"
+[INFO - 2016_08_27_21:36:04] - "Total Score: 54.7001953125"
+[INFO - 2016_08_27_21:36:04] - "Average Score: 54.7001953125"
+[INFO - 2016_08_27_21:36:05] - "Average V: -0.012401054561138"
+[INFO - 2016_08_27_21:36:12] - starting validation after 180083 steps
+[INFO - 2016_08_27_21:36:59] - "Validated @ 66497138"
+[INFO - 2016_08_27_21:36:59] - "Total Score: -5.099609375"
+[INFO - 2016_08_27_21:36:59] - "Average Score: -5.099609375"
+[INFO - 2016_08_27_21:36:59] - "Average V: -0.00061876218020916"
+[INFO - 2016_08_27_21:37:06] - starting validation after 183235 steps
+[INFO - 2016_08_27_21:37:54] - "Validated @ 66680929"
+[INFO - 2016_08_27_21:37:54] - "Total Score: 30"
+[INFO - 2016_08_27_21:37:54] - "Average Score: 30"
+[INFO - 2016_08_27_21:37:55] - "Average V: -0.0058936654180288"
+[INFO - 2016_08_27_21:38:02] - starting validation after 183433 steps
+[INFO - 2016_08_27_21:38:47] - "Validated @ 66860404"
+[INFO - 2016_08_27_21:38:47] - "Total Score: 30"
+[INFO - 2016_08_27_21:38:47] - "Average Score: 30"
+[INFO - 2016_08_27_21:38:47] - "Average V: -0.014876809507608"
+[INFO - 2016_08_27_21:38:55] - starting validation after 182793 steps
+[INFO - 2016_08_27_21:39:42] - "Validated @ 67045709"
+[INFO - 2016_08_27_21:39:42] - "Total Score: 30"
+[INFO - 2016_08_27_21:39:42] - "Average Score: 30"
+[INFO - 2016_08_27_21:39:43] - "Average V: -0.0079162946492434"
+[INFO - 2016_08_27_21:39:50] - starting validation after 181810 steps
+[INFO - 2016_08_27_21:40:37] - "Validated @ 67228964"
+[INFO - 2016_08_27_21:40:37] - "Total Score: 13.7998046875"
+[INFO - 2016_08_27_21:40:37] - "Average Score: 13.7998046875"
+[INFO - 2016_08_27_21:40:37] - "Average V: -0.010842721909285"
+[INFO - 2016_08_27_21:40:43] - starting validation after 180450 steps
+[INFO - 2016_08_27_21:41:28] - "Validated @ 67404330"
+[INFO - 2016_08_27_21:41:28] - "Total Score: 35.5"
+[INFO - 2016_08_27_21:41:28] - "Average Score: 35.5"
+[INFO - 2016_08_27_21:41:29] - "Average V: 0.0011077534109354"
+[INFO - 2016_08_27_21:41:37] - starting validation after 182058 steps
+[INFO - 2016_08_27_21:42:23] - "Validated @ 67590446"
+[INFO - 2016_08_27_21:42:23] - "Total Score: 40"
+[INFO - 2016_08_27_21:42:23] - "Average Score: 40"
+[INFO - 2016_08_27_21:42:24] - "Average V: 0.0023016418218613"
+[INFO - 2016_08_27_21:42:31] - starting validation after 183085 steps
+[INFO - 2016_08_27_21:43:18] - "Validated @ 67774030"
+[INFO - 2016_08_27_21:43:18] - "Total Score: 14.7998046875"
+[INFO - 2016_08_27_21:43:18] - "Average Score: 14.7998046875"
+[INFO - 2016_08_27_21:43:19] - "Average V: 0.0035403279066086"
+[INFO - 2016_08_27_21:43:26] - starting validation after 183211 steps
+[INFO - 2016_08_27_21:44:12] - "Validated @ 67957800"
+[INFO - 2016_08_27_21:44:12] - "Total Score: 1.1005859375"
+[INFO - 2016_08_27_21:44:12] - "Average Score: 1.1005859375"
+[INFO - 2016_08_27_21:44:13] - "Average V: 0.012457499355078"
+[INFO - 2016_08_27_21:44:19] - starting validation after 181251 steps
+[INFO - 2016_08_27_21:45:05] - "Validated @ 68138245"
+[INFO - 2016_08_27_21:45:05] - "Total Score: -11.19921875"
+[INFO - 2016_08_27_21:45:05] - "Average Score: -11.19921875"
+[INFO - 2016_08_27_21:45:06] - "Average V: 0.011412930548191"
+[INFO - 2016_08_27_21:45:12] - starting validation after 180637 steps
+[INFO - 2016_08_27_21:45:59] - "Validated @ 68318550"
+[INFO - 2016_08_27_21:45:59] - "Total Score: 45.6005859375"
+[INFO - 2016_08_27_21:45:59] - "Average Score: 45.6005859375"
+[INFO - 2016_08_27_21:46:00] - "Average V: -0.007822815746069"
+[INFO - 2016_08_27_21:46:07] - starting validation after 182365 steps
+[INFO - 2016_08_27_21:46:54] - "Validated @ 68502346"
+[INFO - 2016_08_27_21:46:54] - "Total Score: -1.30078125"
+[INFO - 2016_08_27_21:46:54] - "Average Score: -1.30078125"
+[INFO - 2016_08_27_21:46:55] - "Average V: 0.0011968495994806"
+[INFO - 2016_08_27_21:47:01] - starting validation after 180530 steps
+[INFO - 2016_08_27_21:47:48] - "Validated @ 68683213"
+[INFO - 2016_08_27_21:47:48] - "Total Score: 10.7001953125"
+[INFO - 2016_08_27_21:47:48] - "Average Score: 10.7001953125"
+[INFO - 2016_08_27_21:47:48] - "Average V: -0.0007315701842308"
+[INFO - 2016_08_27_21:47:54] - starting validation after 180600 steps
+[INFO - 2016_08_27_21:48:41] - "Validated @ 68861732"
+[INFO - 2016_08_27_21:48:41] - "Total Score: -4.3994140625"
+[INFO - 2016_08_27_21:48:41] - "Average Score: -4.3994140625"
+[INFO - 2016_08_27_21:48:42] - "Average V: 0.0033478462696075"
+[INFO - 2016_08_27_21:48:49] - starting validation after 182228 steps
+[INFO - 2016_08_27_21:49:36] - "Validated @ 69046493"
+[INFO - 2016_08_27_21:49:36] - "Total Score: 16.8994140625"
+[INFO - 2016_08_27_21:49:36] - "Average Score: 16.8994140625"
+[INFO - 2016_08_27_21:49:37] - "Average V: 0.00083347728848457"
+[INFO - 2016_08_27_21:49:43] - starting validation after 181193 steps
+[INFO - 2016_08_27_21:50:29] - "Validated @ 69223956"
+[INFO - 2016_08_27_21:50:29] - "Total Score: 9.2001953125"
+[INFO - 2016_08_27_21:50:29] - "Average Score: 9.2001953125"
+[INFO - 2016_08_27_21:50:30] - "Average V: 0.0040438902378082"
+[INFO - 2016_08_27_21:50:37] - starting validation after 181244 steps
+[INFO - 2016_08_27_21:51:24] - "Validated @ 69408865"
+[INFO - 2016_08_27_21:51:24] - "Total Score: 0.7001953125"
+[INFO - 2016_08_27_21:51:24] - "Average Score: 0.7001953125"
+[INFO - 2016_08_27_21:51:25] - "Average V: 0.0063468698263168"
+[INFO - 2016_08_27_21:51:31] - starting validation after 181860 steps
+[INFO - 2016_08_27_21:52:19] - "Validated @ 69592221"
+[INFO - 2016_08_27_21:52:19] - "Total Score: 30"
+[INFO - 2016_08_27_21:52:19] - "Average Score: 30"
+[INFO - 2016_08_27_21:52:20] - "Average V: -0.00069414448738098"
+[INFO - 2016_08_27_21:52:26] - starting validation after 183008 steps
+[INFO - 2016_08_27_21:53:11] - "Validated @ 69769027"
+[INFO - 2016_08_27_21:53:11] - "Total Score: 80"
+[INFO - 2016_08_27_21:53:11] - "Average Score: 80"
+[INFO - 2016_08_27_21:53:12] - "Average V: -0.0036964812576771"
+[INFO - 2016_08_27_21:53:20] - starting validation after 182542 steps
+[INFO - 2016_08_27_21:54:08] - "Validated @ 69956337"
+[INFO - 2016_08_27_21:54:08] - "Total Score: 104.900390625"
+[INFO - 2016_08_27_21:54:08] - "Average Score: 104.900390625"
+[INFO - 2016_08_27_21:54:09] - "Average V: -0.010944113358855"
+[INFO - 2016_08_27_21:54:15] - starting validation after 180941 steps
+[INFO - 2016_08_27_21:55:01] - "Validated @ 70134410"
+[INFO - 2016_08_27_21:55:01] - "Total Score: -18.6005859375"
+[INFO - 2016_08_27_21:55:01] - "Average Score: -18.6005859375"
+[INFO - 2016_08_27_21:55:02] - "Average V: 0.016632340937853"
+[INFO - 2016_08_27_21:55:09] - starting validation after 180637 steps
+[INFO - 2016_08_27_21:55:56] - "Validated @ 70317304"
+[INFO - 2016_08_27_21:55:56] - "Total Score: 3.7998046875"
+[INFO - 2016_08_27_21:55:56] - "Average Score: 3.7998046875"
+[INFO - 2016_08_27_21:55:57] - "Average V: 0.0016909752637148"
+[INFO - 2016_08_27_21:56:03] - starting validation after 180182 steps
+[INFO - 2016_08_27_21:56:50] - "Validated @ 70498296"
+[INFO - 2016_08_27_21:56:50] - "Total Score: 13.7001953125"
+[INFO - 2016_08_27_21:56:50] - "Average Score: 13.7001953125"
+[INFO - 2016_08_27_21:56:51] - "Average V: 0.0041697651743889"
+[INFO - 2016_08_27_21:56:57] - starting validation after 181061 steps
+[INFO - 2016_08_27_21:57:44] - "Validated @ 70678005"
+[INFO - 2016_08_27_21:57:44] - "Total Score: 45.7001953125"
+[INFO - 2016_08_27_21:57:44] - "Average Score: 45.7001953125"
+[INFO - 2016_08_27_21:57:45] - "Average V: 0.0057365625053644"
+[INFO - 2016_08_27_21:57:52] - starting validation after 182757 steps
+[INFO - 2016_08_27_21:58:38] - "Validated @ 70859898"
+[INFO - 2016_08_27_21:58:38] - "Total Score: 30"
+[INFO - 2016_08_27_21:58:38] - "Average Score: 30"
+[INFO - 2016_08_27_21:58:39] - "Average V: 0.0057374166101217"
+[INFO - 2016_08_27_21:58:46] - starting validation after 183142 steps
+[INFO - 2016_08_27_21:59:33] - "Validated @ 71045120"
+[INFO - 2016_08_27_21:59:33] - "Total Score: 80"
+[INFO - 2016_08_27_21:59:33] - "Average Score: 80"
+[INFO - 2016_08_27_21:59:34] - "Average V: -0.0022739506214857"
+[INFO - 2016_08_27_21:59:40] - starting validation after 181293 steps
+[INFO - 2016_08_27_22:00:26] - "Validated @ 71223252"
+[INFO - 2016_08_27_22:00:26] - "Total Score: 12.7998046875"
+[INFO - 2016_08_27_22:00:26] - "Average Score: 12.7998046875"
+[INFO - 2016_08_27_22:00:27] - "Average V: 0.004760617390275"
+[INFO - 2016_08_27_22:00:34] - starting validation after 181713 steps
+[INFO - 2016_08_27_22:01:21] - "Validated @ 71406697"
+[INFO - 2016_08_27_22:01:21] - "Total Score: 27.3994140625"
+[INFO - 2016_08_27_22:01:21] - "Average Score: 27.3994140625"
+[INFO - 2016_08_27_22:01:21] - "Average V: -0.0046960877925158"
+[INFO - 2016_08_27_22:01:28] - starting validation after 183210 steps
+[INFO - 2016_08_27_22:02:15] - "Validated @ 71586577"
+[INFO - 2016_08_27_22:02:15] - "Total Score: 20"
+[INFO - 2016_08_27_22:02:15] - "Average Score: 20"
+[INFO - 2016_08_27_22:02:15] - "Average V: 0.010503328800201"
+[INFO - 2016_08_27_22:02:23] - starting validation after 183318 steps
+[INFO - 2016_08_27_22:03:10] - "Validated @ 71771652"
+[INFO - 2016_08_27_22:03:10] - "Total Score: 97.7001953125"
+[INFO - 2016_08_27_22:03:10] - "Average Score: 97.7001953125"
+[INFO - 2016_08_27_22:03:10] - "Average V: 0.005468195065856"
+[INFO - 2016_08_27_22:03:17] - starting validation after 181105 steps
+[INFO - 2016_08_27_22:04:04] - "Validated @ 71954027"
+[INFO - 2016_08_27_22:04:04] - "Total Score: 54.599609375"
+[INFO - 2016_08_27_22:04:04] - "Average Score: 54.599609375"
+[INFO - 2016_08_27_22:04:05] - "Average V: 0.0033857494741678"
+[INFO - 2016_08_27_22:04:12] - starting validation after 183123 steps
+[INFO - 2016_08_27_22:04:59] - "Validated @ 72137800"
+[INFO - 2016_08_27_22:04:59] - "Total Score: 56.2001953125"
+[INFO - 2016_08_27_22:04:59] - "Average Score: 56.2001953125"
+[INFO - 2016_08_27_22:05:00] - "Average V: -0.0040430178791285"
+[INFO - 2016_08_27_22:05:06] - starting validation after 181195 steps
+[INFO - 2016_08_27_22:05:53] - "Validated @ 72316772"
+[INFO - 2016_08_27_22:05:53] - "Total Score: -4.8994140625"
+[INFO - 2016_08_27_22:05:53] - "Average Score: -4.8994140625"
+[INFO - 2016_08_27_22:05:53] - "Average V: 0.0070006315112114"
+[INFO - 2016_08_27_22:06:00] - starting validation after 181110 steps
+[INFO - 2016_08_27_22:06:47] - "Validated @ 72499883"
+[INFO - 2016_08_27_22:06:47] - "Total Score: -22.7998046875"
+[INFO - 2016_08_27_22:06:47] - "Average Score: -22.7998046875"
+[INFO - 2016_08_27_22:06:47] - "Average V: 0.0011529528796673"
+[INFO - 2016_08_27_22:06:53] - starting validation after 180297 steps
+[INFO - 2016_08_27_22:07:41] - "Validated @ 72679375"
+[INFO - 2016_08_27_22:07:41] - "Total Score: -4.400390625"
+[INFO - 2016_08_27_22:07:41] - "Average Score: -4.400390625"
+[INFO - 2016_08_27_22:07:41] - "Average V: 0.0093164291977882"
+[INFO - 2016_08_27_22:07:48] - starting validation after 183191 steps
+[INFO - 2016_08_27_22:08:36] - "Validated @ 72863929"
+[INFO - 2016_08_27_22:08:36] - "Total Score: 26.30078125"
+[INFO - 2016_08_27_22:08:36] - "Average Score: 26.30078125"
+[INFO - 2016_08_27_22:08:37] - "Average V: -0.0032362729161978"
+[INFO - 2016_08_27_22:08:43] - starting validation after 181121 steps
+[INFO - 2016_08_27_22:09:29] - "Validated @ 73041916"
+[INFO - 2016_08_27_22:09:29] - "Total Score: 0.7998046875"
+[INFO - 2016_08_27_22:09:29] - "Average Score: 0.7998046875"
+[INFO - 2016_08_27_22:09:29] - "Average V: 0.0040357502400875"
+[INFO - 2016_08_27_22:09:37] - starting validation after 183335 steps
+[INFO - 2016_08_27_22:10:24] - "Validated @ 73225933"
+[INFO - 2016_08_27_22:10:24] - "Total Score: 23.2998046875"
+[INFO - 2016_08_27_22:10:24] - "Average Score: 23.2998046875"
+[INFO - 2016_08_27_22:10:25] - "Average V: 0.012839816123247"
+[INFO - 2016_08_27_22:10:32] - starting validation after 181310 steps
+[INFO - 2016_08_27_22:11:19] - "Validated @ 73409758"
+[INFO - 2016_08_27_22:11:19] - "Total Score: 14.6005859375"
+[INFO - 2016_08_27_22:11:19] - "Average Score: 14.6005859375"
+[INFO - 2016_08_27_22:11:20] - "Average V: 0.0072060567885637"
+[INFO - 2016_08_27_22:11:26] - starting validation after 180531 steps
+[INFO - 2016_08_27_22:12:14] - "Validated @ 73590000"
+[INFO - 2016_08_27_22:12:14] - "Total Score: 34.3994140625"
+[INFO - 2016_08_27_22:12:14] - "Average Score: 34.3994140625"
+[INFO - 2016_08_27_22:12:15] - "Average V: 0.0074164777696133"
+[INFO - 2016_08_27_22:12:22] - starting validation after 182712 steps
+[INFO - 2016_08_27_22:13:09] - "Validated @ 73773680"
+[INFO - 2016_08_27_22:13:09] - "Total Score: 11.2998046875"
+[INFO - 2016_08_27_22:13:09] - "Average Score: 11.2998046875"
+[INFO - 2016_08_27_22:13:10] - "Average V: 0.0057123508453369"
+[INFO - 2016_08_27_22:13:16] - starting validation after 180450 steps
+[INFO - 2016_08_27_22:14:05] - "Validated @ 73957167"
+[INFO - 2016_08_27_22:14:05] - "Total Score: -4"
+[INFO - 2016_08_27_22:14:05] - "Average Score: -4"
+[INFO - 2016_08_27_22:14:06] - "Average V: 0.0025130076855421"
+[INFO - 2016_08_27_22:14:11] - starting validation after 180121 steps
+[INFO - 2016_08_27_22:14:59] - "Validated @ 74134072"
+[INFO - 2016_08_27_22:14:59] - "Total Score: 0.599609375"
+[INFO - 2016_08_27_22:14:59] - "Average Score: 0.599609375"
+[INFO - 2016_08_27_22:14:59] - "Average V: 0.0083416640907526"
+[INFO - 2016_08_27_22:15:05] - starting validation after 181141 steps
+[INFO - 2016_08_27_22:15:52] - "Validated @ 74311408"
+[INFO - 2016_08_27_22:15:52] - "Total Score: 1.19921875"
+[INFO - 2016_08_27_22:15:52] - "Average Score: 1.19921875"
+[INFO - 2016_08_27_22:15:53] - "Average V: 0.012003362715244"
+[INFO - 2016_08_27_22:16:00] - starting validation after 180760 steps
+[INFO - 2016_08_27_22:16:47] - "Validated @ 74494995"
+[INFO - 2016_08_27_22:16:47] - "Total Score: 57.2001953125"
+[INFO - 2016_08_27_22:16:47] - "Average Score: 57.2001953125"
+[INFO - 2016_08_27_22:16:47] - "Average V: 0.0052615863829851"
+[INFO - 2016_08_27_22:16:53] - starting validation after 180012 steps
+[INFO - 2016_08_27_22:17:40] - "Validated @ 74673339"
+[INFO - 2016_08_27_22:17:40] - "Total Score: 50"
+[INFO - 2016_08_27_22:17:40] - "Average Score: 50"
+[INFO - 2016_08_27_22:17:41] - "Average V: -0.0056601516157389"
+[INFO - 2016_08_27_22:17:48] - starting validation after 180782 steps
+[INFO - 2016_08_27_22:18:35] - "Validated @ 74854398"
+[INFO - 2016_08_27_22:18:35] - "Total Score: -21.2998046875"
+[INFO - 2016_08_27_22:18:35] - "Average Score: -21.2998046875"
+[INFO - 2016_08_27_22:18:36] - "Average V: -0.0022952657938004"
+[INFO - 2016_08_27_22:18:43] - starting validation after 182467 steps
+[INFO - 2016_08_27_22:19:30] - "Validated @ 75038145"
+[INFO - 2016_08_27_22:19:30] - "Total Score: 37.8994140625"
+[INFO - 2016_08_27_22:19:30] - "Average Score: 37.8994140625"
+[INFO - 2016_08_27_22:19:31] - "Average V: -0.0078086736649275"
+[INFO - 2016_08_27_22:19:37] - starting validation after 180159 steps
+[INFO - 2016_08_27_22:20:25] - "Validated @ 75218230"
+[INFO - 2016_08_27_22:20:25] - "Total Score: 68"
+[INFO - 2016_08_27_22:20:25] - "Average Score: 68"
+[INFO - 2016_08_27_22:20:25] - "Average V: 0.011802066028118"
+[INFO - 2016_08_27_22:20:32] - starting validation after 182978 steps
+[INFO - 2016_08_27_22:21:19] - "Validated @ 75401155"
+[INFO - 2016_08_27_22:21:19] - "Total Score: 2.5"
+[INFO - 2016_08_27_22:21:19] - "Average Score: 2.5"
+[INFO - 2016_08_27_22:21:20] - "Average V: -0.00082128182053566"
+[INFO - 2016_08_27_22:21:27] - starting validation after 183227 steps
+[INFO - 2016_08_27_22:22:14] - "Validated @ 75582537"
+[INFO - 2016_08_27_22:22:14] - "Total Score: -2.2001953125"
+[INFO - 2016_08_27_22:22:14] - "Average Score: -2.2001953125"
+[INFO - 2016_08_27_22:22:15] - "Average V: 0.008562676101923"
+[INFO - 2016_08_27_22:22:22] - starting validation after 180764 steps
+[INFO - 2016_08_27_22:23:10] - "Validated @ 75766225"
+[INFO - 2016_08_27_22:23:10] - "Total Score: 15.2001953125"
+[INFO - 2016_08_27_22:23:10] - "Average Score: 15.2001953125"
+[INFO - 2016_08_27_22:23:10] - "Average V: -0.0047118530571461"
+[INFO - 2016_08_27_22:23:17] - starting validation after 182746 steps
+[INFO - 2016_08_27_22:24:04] - "Validated @ 75947036"
+[INFO - 2016_08_27_22:24:04] - "Total Score: 20"
+[INFO - 2016_08_27_22:24:04] - "Average Score: 20"
+[INFO - 2016_08_27_22:24:05] - "Average V: 0.002647458344698"
+[INFO - 2016_08_27_22:24:12] - starting validation after 182386 steps
+[INFO - 2016_08_27_22:24:59] - "Validated @ 76129261"
+[INFO - 2016_08_27_22:24:59] - "Total Score: 50"
+[INFO - 2016_08_27_22:24:59] - "Average Score: 50"
+[INFO - 2016_08_27_22:25:00] - "Average V: -0.0079566763341427"
+[INFO - 2016_08_27_22:25:07] - starting validation after 181706 steps
+[INFO - 2016_08_27_22:25:54] - "Validated @ 76314819"
+[INFO - 2016_08_27_22:25:54] - "Total Score: 20"
+[INFO - 2016_08_27_22:25:54] - "Average Score: 20"
+[INFO - 2016_08_27_22:25:55] - "Average V: 0.00069772566854954"
+[INFO - 2016_08_27_22:26:01] - starting validation after 182258 steps
+[INFO - 2016_08_27_22:26:48] - "Validated @ 76494082"
+[INFO - 2016_08_27_22:26:48] - "Total Score: 33"
+[INFO - 2016_08_27_22:26:48] - "Average Score: 33"
+[INFO - 2016_08_27_22:26:49] - "Average V: -0.0021086504459381"
+[INFO - 2016_08_27_22:26:56] - starting validation after 182005 steps
+[INFO - 2016_08_27_22:27:42] - "Validated @ 76673978"
+[INFO - 2016_08_27_22:27:42] - "Total Score: 50"
+[INFO - 2016_08_27_22:27:42] - "Average Score: 50"
+[INFO - 2016_08_27_22:27:42] - "Average V: 0.010049093022943"
+[INFO - 2016_08_27_22:27:49] - starting validation after 180509 steps
+[INFO - 2016_08_27_22:28:37] - "Validated @ 76857081"
+[INFO - 2016_08_27_22:28:37] - "Total Score: 7.599609375"
+[INFO - 2016_08_27_22:28:37] - "Average Score: 7.599609375"
+[INFO - 2016_08_27_22:28:37] - "Average V: -0.0058885556906462"
+[INFO - 2016_08_27_22:28:43] - starting validation after 180815 steps
+[INFO - 2016_08_27_22:29:29] - "Validated @ 77033033"
+[INFO - 2016_08_27_22:29:29] - "Total Score: 18"
+[INFO - 2016_08_27_22:29:29] - "Average Score: 18"
+[INFO - 2016_08_27_22:29:30] - "Average V: -0.0039968459308147"
+[INFO - 2016_08_27_22:29:38] - starting validation after 182046 steps
+[INFO - 2016_08_27_22:30:25] - "Validated @ 77219877"
+[INFO - 2016_08_27_22:30:25] - "Total Score: 10"
+[INFO - 2016_08_27_22:30:25] - "Average Score: 10"
+[INFO - 2016_08_27_22:30:26] - "Average V: -0.00054260413348675"
+[INFO - 2016_08_27_22:30:32] - starting validation after 180104 steps
+[INFO - 2016_08_27_22:31:19] - "Validated @ 77398328"
+[INFO - 2016_08_27_22:31:19] - "Total Score: 37.099609375"
+[INFO - 2016_08_27_22:31:19] - "Average Score: 37.099609375"
+[INFO - 2016_08_27_22:31:20] - "Average V: 0.00067769427597523"
+[INFO - 2016_08_27_22:31:27] - starting validation after 181602 steps
+[INFO - 2016_08_27_22:32:13] - "Validated @ 77579604"
+[INFO - 2016_08_27_22:32:13] - "Total Score: -8.3994140625"
+[INFO - 2016_08_27_22:32:13] - "Average Score: -8.3994140625"
+[INFO - 2016_08_27_22:32:14] - "Average V: 0.0073001494109631"
+[INFO - 2016_08_27_22:32:21] - starting validation after 181998 steps
+[INFO - 2016_08_27_22:33:07] - "Validated @ 77759949"
+[INFO - 2016_08_27_22:33:07] - "Total Score: -13"
+[INFO - 2016_08_27_22:33:07] - "Average Score: -13"
+[INFO - 2016_08_27_22:33:08] - "Average V: 0.016436564415693"
+[INFO - 2016_08_27_22:33:16] - starting validation after 183607 steps
+[INFO - 2016_08_27_22:34:02] - "Validated @ 77943958"
+[INFO - 2016_08_27_22:34:02] - "Total Score: 14.5"
+[INFO - 2016_08_27_22:34:02] - "Average Score: 14.5"
+[INFO - 2016_08_27_22:34:03] - "Average V: 0.0068865097165108"
+[INFO - 2016_08_27_22:34:10] - starting validation after 180773 steps
+[INFO - 2016_08_27_22:34:56] - "Validated @ 78127069"
+[INFO - 2016_08_27_22:34:56] - "Total Score: 69.5"
+[INFO - 2016_08_27_22:34:56] - "Average Score: 69.5"
+[INFO - 2016_08_27_22:34:57] - "Average V: 0.007402267575264"
+[INFO - 2016_08_27_22:35:04] - starting validation after 183057 steps
+[INFO - 2016_08_27_22:35:51] - "Validated @ 78309066"
+[INFO - 2016_08_27_22:35:51] - "Total Score: -1.80078125"
+[INFO - 2016_08_27_22:35:51] - "Average Score: -1.80078125"
+[INFO - 2016_08_27_22:35:52] - "Average V: -0.0031654621958733"
+[INFO - 2016_08_27_22:35:59] - starting validation after 181723 steps
+[INFO - 2016_08_27_22:36:46] - "Validated @ 78491132"
+[INFO - 2016_08_27_22:36:46] - "Total Score: -10.599609375"
+[INFO - 2016_08_27_22:36:46] - "Average Score: -10.599609375"
+[INFO - 2016_08_27_22:36:47] - "Average V: 0.013928279876709"
+[INFO - 2016_08_27_22:36:54] - starting validation after 181948 steps
+[INFO - 2016_08_27_22:37:42] - "Validated @ 78675750"
+[INFO - 2016_08_27_22:37:42] - "Total Score: -17.5"
+[INFO - 2016_08_27_22:37:42] - "Average Score: -17.5"
+[INFO - 2016_08_27_22:37:42] - "Average V: 0.014383559003472"
+[INFO - 2016_08_27_22:37:48] - starting validation after 181150 steps
+[INFO - 2016_08_27_22:38:35] - "Validated @ 78854529"
+[INFO - 2016_08_27_22:38:35] - "Total Score: 1.099609375"
+[INFO - 2016_08_27_22:38:35] - "Average Score: 1.099609375"
+[INFO - 2016_08_27_22:38:36] - "Average V: 0.009835674226284"
+[INFO - 2016_08_27_22:38:43] - starting validation after 181382 steps
+[INFO - 2016_08_27_22:39:29] - "Validated @ 79036712"
+[INFO - 2016_08_27_22:39:29] - "Total Score: 45.6005859375"
+[INFO - 2016_08_27_22:39:29] - "Average Score: 45.6005859375"
+[INFO - 2016_08_27_22:39:30] - "Average V: 0.0053389070034027"
+[INFO - 2016_08_27_22:39:37] - starting validation after 182890 steps
+[INFO - 2016_08_27_22:40:24] - "Validated @ 79219527"
+[INFO - 2016_08_27_22:40:24] - "Total Score: 60"
+[INFO - 2016_08_27_22:40:24] - "Average Score: 60"
+[INFO - 2016_08_27_22:40:25] - "Average V: 0.011828040421009"
+[INFO - 2016_08_27_22:40:32] - starting validation after 183452 steps
+[INFO - 2016_08_27_22:41:19] - "Validated @ 79400600"
+[INFO - 2016_08_27_22:41:19] - "Total Score: 30"
+[INFO - 2016_08_27_22:41:19] - "Average Score: 30"
+[INFO - 2016_08_27_22:41:19] - "Average V: 0.013322031334043"
+[INFO - 2016_08_27_22:41:27] - starting validation after 183318 steps
+[INFO - 2016_08_27_22:42:14] - "Validated @ 79584740"
+[INFO - 2016_08_27_22:42:14] - "Total Score: 26.3994140625"
+[INFO - 2016_08_27_22:42:14] - "Average Score: 26.3994140625"
+[INFO - 2016_08_27_22:42:14] - "Average V: 0.014430683091283"
+[INFO - 2016_08_27_22:42:21] - starting validation after 181422 steps
+[INFO - 2016_08_27_22:43:08] - "Validated @ 79767954"
+[INFO - 2016_08_27_22:43:08] - "Total Score: -19.2998046875"
+[INFO - 2016_08_27_22:43:08] - "Average Score: -19.2998046875"
+[INFO - 2016_08_27_22:43:09] - "Average V: 0.0046817784458399"
+[INFO - 2016_08_27_22:43:15] - starting validation after 180004 steps
+[INFO - 2016_08_27_22:44:02] - "Validated @ 79946448"
+[INFO - 2016_08_27_22:44:02] - "Total Score: 6.3994140625"
+[INFO - 2016_08_27_22:44:02] - "Average Score: 6.3994140625"
+[INFO - 2016_08_27_22:44:02] - "Average V: 0.011206601589918"
+[INFO - 2016_08_27_22:44:09] - starting validation after 182902 steps
+[INFO - 2016_08_27_22:44:57] - "Validated @ 80130545"
+[INFO - 2016_08_27_22:44:57] - "Total Score: -11.19921875"
+[INFO - 2016_08_27_22:44:57] - "Average Score: -11.19921875"
+[INFO - 2016_08_27_22:44:57] - "Average V: 0.0051966525316238"
+[INFO - 2016_08_27_22:45:04] - starting validation after 182603 steps
+[INFO - 2016_08_27_22:45:52] - "Validated @ 80312918"
+[INFO - 2016_08_27_22:45:52] - "Total Score: 71.099609375"
+[INFO - 2016_08_27_22:45:52] - "Average Score: 71.099609375"
+[INFO - 2016_08_27_22:45:52] - "Average V: 0.012331047192216"
+[INFO - 2016_08_27_22:45:59] - starting validation after 183166 steps
+[INFO - 2016_08_27_22:46:46] - "Validated @ 80494738"
+[INFO - 2016_08_27_22:46:46] - "Total Score: 13.3994140625"
+[INFO - 2016_08_27_22:46:46] - "Average Score: 13.3994140625"
+[INFO - 2016_08_27_22:46:46] - "Average V: 0.0031562303602695"
+[INFO - 2016_08_27_22:46:53] - starting validation after 181512 steps
+[INFO - 2016_08_27_22:47:42] - "Validated @ 80678608"
+[INFO - 2016_08_27_22:47:42] - "Total Score: -2.7998046875"
+[INFO - 2016_08_27_22:47:42] - "Average Score: -2.7998046875"
+[INFO - 2016_08_27_22:47:42] - "Average V: 0.016908312410116"
+[INFO - 2016_08_27_22:47:48] - starting validation after 180330 steps
+[INFO - 2016_08_27_22:48:37] - "Validated @ 80861263"
+[INFO - 2016_08_27_22:48:37] - "Total Score: -4.5"
+[INFO - 2016_08_27_22:48:37] - "Average Score: -4.5"
+[INFO - 2016_08_27_22:48:37] - "Average V: 0.0063127668499947"
+[INFO - 2016_08_27_22:48:43] - starting validation after 182043 steps
+[INFO - 2016_08_27_22:49:31] - "Validated @ 81041141"
+[INFO - 2016_08_27_22:49:31] - "Total Score: 20"
+[INFO - 2016_08_27_22:49:31] - "Average Score: 20"
+[INFO - 2016_08_27_22:49:32] - "Average V: 0.011647366985679"
+[INFO - 2016_08_27_22:49:38] - starting validation after 180552 steps
+[INFO - 2016_08_27_22:50:25] - "Validated @ 81220952"
+[INFO - 2016_08_27_22:50:25] - "Total Score: 0.099609375"
+[INFO - 2016_08_27_22:50:25] - "Average Score: 0.099609375"
+[INFO - 2016_08_27_22:50:26] - "Average V: 0.0056804652363062"
+[INFO - 2016_08_27_22:50:33] - starting validation after 182936 steps
+[INFO - 2016_08_27_22:51:20] - "Validated @ 81405430"
+[INFO - 2016_08_27_22:51:20] - "Total Score: 66.7001953125"
+[INFO - 2016_08_27_22:51:20] - "Average Score: 66.7001953125"
+[INFO - 2016_08_27_22:51:21] - "Average V: 0.0023088934123516"
+[INFO - 2016_08_27_22:51:27] - starting validation after 181460 steps
+[INFO - 2016_08_27_22:52:14] - "Validated @ 81585001"
+[INFO - 2016_08_27_22:52:14] - "Total Score: 9.2001953125"
+[INFO - 2016_08_27_22:52:14] - "Average Score: 9.2001953125"
+[INFO - 2016_08_27_22:52:15] - "Average V: -0.0017821060121059"
+[INFO - 2016_08_27_22:52:22] - starting validation after 181565 steps
+[INFO - 2016_08_27_22:53:09] - "Validated @ 81767339"
+[INFO - 2016_08_27_22:53:09] - "Total Score: 50"
+[INFO - 2016_08_27_22:53:09] - "Average Score: 50"
+[INFO - 2016_08_27_22:53:10] - "Average V: 0.0094636554121971"
+[INFO - 2016_08_27_22:53:17] - starting validation after 182856 steps
+[INFO - 2016_08_27_22:54:04] - "Validated @ 81948936"
+[INFO - 2016_08_27_22:54:04] - "Total Score: 40"
+[INFO - 2016_08_27_22:54:04] - "Average Score: 40"
+[INFO - 2016_08_27_22:54:04] - "Average V: -0.0016612484455109"
+[INFO - 2016_08_27_22:54:11] - starting validation after 182090 steps
+[INFO - 2016_08_27_22:54:58] - "Validated @ 82132430"
+[INFO - 2016_08_27_22:54:58] - "Total Score: 15.2998046875"
+[INFO - 2016_08_27_22:54:58] - "Average Score: 15.2998046875"
+[INFO - 2016_08_27_22:54:59] - "Average V: 0.0022478802651167"
+[INFO - 2016_08_27_22:55:06] - starting validation after 183141 steps
+[INFO - 2016_08_27_22:55:54] - "Validated @ 82315760"
+[INFO - 2016_08_27_22:55:54] - "Total Score: 40"
+[INFO - 2016_08_27_22:55:54] - "Average Score: 40"
+[INFO - 2016_08_27_22:55:54] - "Average V: -0.003692742779851"
+[INFO - 2016_08_27_22:56:00] - starting validation after 180058 steps
+[INFO - 2016_08_27_22:56:48] - "Validated @ 82494631"
+[INFO - 2016_08_27_22:56:48] - "Total Score: 14.5"
+[INFO - 2016_08_27_22:56:48] - "Average Score: 14.5"
+[INFO - 2016_08_27_22:56:48] - "Average V: -0.00062010948359966"
+[INFO - 2016_08_27_22:56:55] - starting validation after 181752 steps
+[INFO - 2016_08_27_22:57:43] - "Validated @ 82680103"
+[INFO - 2016_08_27_22:57:43] - "Total Score: 14.8994140625"
+[INFO - 2016_08_27_22:57:43] - "Average Score: 14.8994140625"
+[INFO - 2016_08_27_22:57:44] - "Average V: -0.00080787147581577"
+[INFO - 2016_08_27_22:57:50] - starting validation after 182347 steps
+[INFO - 2016_08_27_22:58:36] - "Validated @ 82856027"
+[INFO - 2016_08_27_22:58:36] - "Total Score: 37"
+[INFO - 2016_08_27_22:58:36] - "Average Score: 37"
+[INFO - 2016_08_27_22:58:37] - "Average V: 0.0077631476521492"
+[INFO - 2016_08_27_22:58:45] - starting validation after 182754 steps
+[INFO - 2016_08_27_22:59:31] - "Validated @ 83040220"
+[INFO - 2016_08_27_22:59:31] - "Total Score: -3.5"
+[INFO - 2016_08_27_22:59:31] - "Average Score: -3.5"
+[INFO - 2016_08_27_22:59:32] - "Average V: 0.0014655667096376"
+[INFO - 2016_08_27_22:59:39] - starting validation after 180795 steps
+[INFO - 2016_08_27_23:00:27] - "Validated @ 83224391"
+[INFO - 2016_08_27_23:00:27] - "Total Score: -13.599609375"
+[INFO - 2016_08_27_23:00:27] - "Average Score: -13.599609375"
+[INFO - 2016_08_27_23:00:27] - "Average V: 0.0096972598582506"
+[INFO - 2016_08_27_23:00:33] - starting validation after 181340 steps
+[INFO - 2016_08_27_23:01:21] - "Validated @ 83408032"
+[INFO - 2016_08_27_23:01:21] - "Total Score: 14.5"
+[INFO - 2016_08_27_23:01:21] - "Average Score: 14.5"
+[INFO - 2016_08_27_23:01:22] - "Average V: -0.010612144544721"
+[INFO - 2016_08_27_23:01:28] - starting validation after 183218 steps
+[INFO - 2016_08_27_23:02:16] - "Validated @ 83591053"
+[INFO - 2016_08_27_23:02:16] - "Total Score: 25.5"
+[INFO - 2016_08_27_23:02:16] - "Average Score: 25.5"
+[INFO - 2016_08_27_23:02:17] - "Average V: 0.010153721407056"
+[INFO - 2016_08_27_23:02:23] - starting validation after 183494 steps
+[INFO - 2016_08_27_23:03:09] - "Validated @ 83771520"
+[INFO - 2016_08_27_23:03:09] - "Total Score: -16.5"
+[INFO - 2016_08_27_23:03:09] - "Average Score: -16.5"
+[INFO - 2016_08_27_23:03:10] - "Average V: -0.0016481617093086"
+[INFO - 2016_08_27_23:03:17] - starting validation after 183420 steps
+[INFO - 2016_08_27_23:04:05] - "Validated @ 83954947"
+[INFO - 2016_08_27_23:04:05] - "Total Score: -13.599609375"
+[INFO - 2016_08_27_23:04:05] - "Average Score: -13.599609375"
+[INFO - 2016_08_27_23:04:06] - "Average V: 0.0074586333781481"
+[INFO - 2016_08_27_23:04:13] - starting validation after 183074 steps
+[INFO - 2016_08_27_23:05:00] - "Validated @ 84135488"
+[INFO - 2016_08_27_23:05:00] - "Total Score: 2.19921875"
+[INFO - 2016_08_27_23:05:00] - "Average Score: 2.19921875"
+[INFO - 2016_08_27_23:05:00] - "Average V: 0.0021126612275839"
+[INFO - 2016_08_27_23:05:07] - starting validation after 181703 steps
+[INFO - 2016_08_27_23:05:54] - "Validated @ 84316607"
+[INFO - 2016_08_27_23:05:54] - "Total Score: 34.900390625"
+[INFO - 2016_08_27_23:05:54] - "Average Score: 34.900390625"
+[INFO - 2016_08_27_23:05:55] - "Average V: 0.0099585223197937"
+[INFO - 2016_08_27_23:06:02] - starting validation after 181908 steps
+[INFO - 2016_08_27_23:06:49] - "Validated @ 84502026"
+[INFO - 2016_08_27_23:06:49] - "Total Score: 34.7001953125"
+[INFO - 2016_08_27_23:06:49] - "Average Score: 34.7001953125"
+[INFO - 2016_08_27_23:06:50] - "Average V: 0.010435882359743"
+[INFO - 2016_08_27_23:06:56] - starting validation after 180521 steps
+[INFO - 2016_08_27_23:07:44] - "Validated @ 84683061"
+[INFO - 2016_08_27_23:07:44] - "Total Score: 55.7001953125"
+[INFO - 2016_08_27_23:07:44] - "Average Score: 55.7001953125"
+[INFO - 2016_08_27_23:07:45] - "Average V: 0.0055633216798306"
+[INFO - 2016_08_27_23:07:51] - starting validation after 181364 steps
+[INFO - 2016_08_27_23:08:39] - "Validated @ 84865799"
+[INFO - 2016_08_27_23:08:39] - "Total Score: 60"
+[INFO - 2016_08_27_23:08:39] - "Average Score: 60"
+[INFO - 2016_08_27_23:08:39] - "Average V: -0.0059920194000006"
+[INFO - 2016_08_27_23:08:45] - starting validation after 182609 steps
+[INFO - 2016_08_27_23:09:32] - "Validated @ 85044454"
+[INFO - 2016_08_27_23:09:32] - "Total Score: 10"
+[INFO - 2016_08_27_23:09:32] - "Average Score: 10"
+[INFO - 2016_08_27_23:09:32] - "Average V: 0.0088968869149685"
+[INFO - 2016_08_27_23:09:39] - starting validation after 182108 steps
+[INFO - 2016_08_27_23:10:26] - "Validated @ 85225970"
+[INFO - 2016_08_27_23:10:26] - "Total Score: -3.80078125"
+[INFO - 2016_08_27_23:10:26] - "Average Score: -3.80078125"
+[INFO - 2016_08_27_23:10:26] - "Average V: 0.0028462330698967"
+[INFO - 2016_08_27_23:10:33] - starting validation after 180948 steps
+[INFO - 2016_08_27_23:11:21] - "Validated @ 85407083"
+[INFO - 2016_08_27_23:11:21] - "Total Score: 4.900390625"
+[INFO - 2016_08_27_23:11:21] - "Average Score: 4.900390625"
+[INFO - 2016_08_27_23:11:22] - "Average V: 0.00039988546073437"
+[INFO - 2016_08_27_23:11:29] - starting validation after 181470 steps
+[INFO - 2016_08_27_23:12:16] - "Validated @ 85589771"
+[INFO - 2016_08_27_23:12:16] - "Total Score: 30"
+[INFO - 2016_08_27_23:12:16] - "Average Score: 30"
+[INFO - 2016_08_27_23:12:16] - "Average V: 0.0084496023207903"
+[INFO - 2016_08_27_23:12:23] - starting validation after 182171 steps
+[INFO - 2016_08_27_23:13:10] - "Validated @ 85770763"
+[INFO - 2016_08_27_23:13:10] - "Total Score: 48.5"
+[INFO - 2016_08_27_23:13:10] - "Average Score: 48.5"
+[INFO - 2016_08_27_23:13:10] - "Average V: 0.0029965728074312"
+[INFO - 2016_08_27_23:13:17] - starting validation after 182390 steps
+[INFO - 2016_08_27_23:14:04] - "Validated @ 85954184"
+[INFO - 2016_08_27_23:14:04] - "Total Score: 0"
+[INFO - 2016_08_27_23:14:04] - "Average Score: 0"
+[INFO - 2016_08_27_23:14:05] - "Average V: 0.0055954250693321"
+[INFO - 2016_08_27_23:14:12] - starting validation after 182826 steps
+[INFO - 2016_08_27_23:14:59] - "Validated @ 86137403"
+[INFO - 2016_08_27_23:14:59] - "Total Score: 4.5"
+[INFO - 2016_08_27_23:14:59] - "Average Score: 4.5"
+[INFO - 2016_08_27_23:14:59] - "Average V: 0.012824640184641"
+[INFO - 2016_08_27_23:15:06] - starting validation after 183225 steps
+[INFO - 2016_08_27_23:15:53] - "Validated @ 86317637"
+[INFO - 2016_08_27_23:15:53] - "Total Score: 34.8994140625"
+[INFO - 2016_08_27_23:15:53] - "Average Score: 34.8994140625"
+[ERROR - 2016_08_27_23:15:53] - cannot open </usr/bin/gnuplot -persist > /dev/null 2>&1> in mode  w.  This might be because eg the executable doesn't exist, but it could also be because you are out of memory. at /home/rholland/torch/pkg/torch/lib/TH/THDiskFile.c:751
+stack traceback:
+	[C]: at 0x7fdf2696e1e0
+	[C]: in function 'PipeFile'
+	...rholland/torch/install/share/lua/5.1/gnuplot/gnuplot.lua:134: in function 'getfigure'
+	...rholland/torch/install/share/lua/5.1/gnuplot/gnuplot.lua:747: in function 'filefigure'
+	...rholland/torch/install/share/lua/5.1/gnuplot/gnuplot.lua:765: in function 'pngfigure'
+	./async/ValidationAgent.lua:307: in function 'plotValidation'
+	./async/ValidationAgent.lua:251: in function 'validationStats'
+	./async/ValidationAgent.lua:166: in function <./async/ValidationAgent.lua:99>
+	[C]: in function 'xpcall'
+	./async/AsyncMaster.lua:201: in function <./async/AsyncMaster.lua:189>
+	[C]: in function 'xpcall'
+	...rholland/torch/install/share/lua/5.1/threads/threads.lua:234: in function 'callback'
+	...e/rholland/torch/install/share/lua/5.1/threads/queue.lua:65: in function <...e/rholland/torch/install/share/lua/5.1/threads/queue.lua:41>
+	[C]: in function 'pcall'
+	...e/rholland/torch/install/share/lua/5.1/threads/queue.lua:40: in function 'dojob'
+	[string "  local Queue = require 'threads.queue'..."]:15: in main chunk

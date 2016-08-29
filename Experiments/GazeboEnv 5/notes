@@ -1,0 +1,13 @@
+parameters:
+	gnome-terminal -e "bash -c \"$setup_command ; exec bash\""
+  th main.lua -threads $NUM_BOTS -zoom 4 -env async/SwarmbotGazebo-DQN/GazeboEnv -modelBody async/SwarmbotGazebo-DQN/SwarmbotModel -histLen 4 -async A3C -entropyBeta 0 -eta 0.0001 -bootstraps 0 -rewardClip 0 -hiddenSize 32 -doubleQ false -duel false -optimiser sharedRmsProp -steps 1000000000 -valFreq 180000 -valSteps 36000 -PALpha 0 "$@"
+
+Food: 90
+Bots: 12
+Time ~12 hours
+
+notes:
+Disabling statistics avoids crashing and there is no other known memory leak / decrease in speed!
+Validation agent continuing to do better since it teleports so much.
+Robots continually make backwards circles, not making use of their sensors. This is effective as it avoids spending time near walls (negative reward) and covers ground so chance of randomly stumbling on reward increases.
+Going to introduce constant health depletion which indirectly punishes being near walls and is also more lifelike. Also not going to spawn food near the edge to make those areas void of reward.

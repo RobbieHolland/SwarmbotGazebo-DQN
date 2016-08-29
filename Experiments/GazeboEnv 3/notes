@@ -1,0 +1,11 @@
+Parameters:
+  th main.lua -threads $NUM_BOTS -zoom 4 -env async/SwarmbotGazebo-DQN/GazeboEnv -modelBody async/SwarmbotGazebo-DQN/SwarmbotModel -histLen 4 -async A3C -entropyBeta 0 -eta 0.0001 -bootstraps 0 -rewardClip 0 -hiddenSize 32 -doubleQ false -duel false -optimiser sharedRmsProp -steps 1000000000 -valFreq 60000 -valSteps 40000 -PALpha 0 "$@"
+
+Bots: 12
+Food: 90
+Time: ? hours
+
+Notes:
+Exactly the same as run 2, gnuplot runs out of memory around ~450 epochs
+Need to fix the plotting (maybe plot every 10th, take an average or something)
+

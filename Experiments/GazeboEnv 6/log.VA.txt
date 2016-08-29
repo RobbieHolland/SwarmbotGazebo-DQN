@@ -1,0 +1,6 @@
+[INFO - 2016_08_30_00:00:07] - "Setting up Torch7"
+[INFO - 2016_08_30_00:00:07] - "creating ValidationAgent"
+[INFO - 2016_08_30_00:00:07] - "Setting up async/SwarmbotGazebo-DQN/GazeboEnv"
+[INFO - 2016_08_30_00:00:07] - "Setting up async/SwarmbotGazebo-DQN/SwarmbotModel"
+[INFO - 2016_08_30_00:00:08] - "ValidationAgent | filling ValMemory "
+[INFO - 2016_08_30_00:00:08] - "ValidationAgent | ValMemory filled"
