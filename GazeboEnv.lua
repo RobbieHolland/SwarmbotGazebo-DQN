@@ -153,7 +153,7 @@ function GazeboEnv:step(action)
 		ros.spinOnce()
 	end
 	self.updated = false
-action = 0
+
 	action_taken = torch.Tensor(2):zero()
 	if 		 action == 0 then
 		action_taken[1] = self.action_magnitude
