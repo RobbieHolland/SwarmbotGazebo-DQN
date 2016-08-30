@@ -182,7 +182,6 @@ function GazeboEnv:step(action)
 	end
 
 	--Wait for command buffer to send command
-
 	while not self.command_sent do
 		self.command_publisher:publish(self.command_message)
 		ros.spinOnce()

@@ -72,7 +72,7 @@ while not ros.isShuttingDown() do
 			swarmbots[i]:update_energy(-1/frequency)
 		--end
 	end
-	print('span')
+
 	ros.spinOnce()
 	ros.Duration(1/frequency):sleep()
 end

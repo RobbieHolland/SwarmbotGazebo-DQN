@@ -26,7 +26,6 @@ command_publishers = {}
 --Setup ros node and spinner (processes queued send and receive topics)
 spinner = ros.AsyncSpinner()
 nodehandle = ros.NodeHandle()
-x = nodehandle:advertise("/swarmbot" .. 1 .. "/cmd_vel", msgs.twist_spec, 100, false, connect_cb, disconnect_cb)
 
 --Subscribe to command topics advertised by environments
 for i=1, number_of_bots do
