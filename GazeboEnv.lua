@@ -29,9 +29,9 @@ function GazeboEnv:_init(opts)
 	self.min_reward = -1
 	self.max_reward = 100
 	self.energy_level = 0
-	self.action_magnitude = 6
+	self.action_magnitude = 10
 	self.brake_coefficient = 1
-	self.turning_coefficient = 0.1
+	self.turning_coefficient = 0.07
 	self.command_message = ros.Message(msgs.twist_spec)
 	self.current_observation = torch.Tensor(self.number_of_used_colour_channels, self.camera_size, self.number_of_cameras):zero()
 	self.frequency = opts.threads
@@ -80,14 +80,14 @@ function GazeboEnv:start()
 				= self.nodehandle:subscribe("/swarmbot" .. self.id .. "/energy_level", msgs.float_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
 		self.energy_subscriber:registerCallback(function(msg, header)
 			--Update current energy level
+			
 			self.energy_level = msg.data
 		end)
 		
 		--Configure subscriber to check if command has been sent by buffer
 		self.command_sent_subscriber 
-				= self.nodehandle:subscribe("/commands_sent", msgs.bool_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
+				= self.nodehandle:subscribe("/commands_sent" .. self.id, msgs.bool_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
 		self.command_sent_subscriber:registerCallback(function(msg, header)
-			print(self.id .. 'sees that command has been sent')
 			self.command_sent = msg.data
 		end)
 
@@ -117,11 +117,7 @@ function GazeboEnv:start()
 		--self.relocation_publisher = self.nodehandle:advertise("/gazebo/set_model_state", msgs.model_state_spec, 100, false, connect_cb, disconnect_cb)
 		--self.relocation_message = ros.Message(msgs.model_state_spec)
 
-		if __threadid == 0 then
-			--Only need to start the spinner once??????????????
-			self.spinner:start()
-		end
-
+		self.spinner:start()
 	end
 
 	print('[Robot ' .. self.id .. ' finished episode with ' .. self.energy_level .. ' energy]')
@@ -155,7 +151,7 @@ function GazeboEnv:step(action)
 	terminal = false
 
 	--Wait for Gazebo
-	while self.id == 1 and not self.updated do
+	while not self.updated do
 		ros.spinOnce()
 	end
 	self.updated = false
@@ -175,10 +171,9 @@ function GazeboEnv:step(action)
 		action_taken[2] = 0
 	end
 
-	--Parse action taken into ROS message and send to command buffer
+	--Parse action taken into ROS message
 	self.command_message.linear.x = action_taken[1];
 	self.command_message.angular.z = action_taken[2];
-	self.command_publisher:publish(self.command_message)
 
 	--Check if end of episode
 	if self.step_count >= self.number_steps_in_episode then
@@ -187,6 +182,7 @@ function GazeboEnv:step(action)
 	end
 
 	--Wait for command buffer to send command
+
 	while not self.command_sent do
 		self.command_publisher:publish(self.command_message)
 		ros.spinOnce()

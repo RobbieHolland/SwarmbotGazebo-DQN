@@ -26,6 +26,7 @@ command_publishers = {}
 --Setup ros node and spinner (processes queued send and receive topics)
 spinner = ros.AsyncSpinner()
 nodehandle = ros.NodeHandle()
+x = nodehandle:advertise("/swarmbot" .. 1 .. "/cmd_vel", msgs.twist_spec, 100, false, connect_cb, disconnect_cb)
 
 --Subscribe to command topics advertised by environments
 for i=1, number_of_bots do
@@ -35,7 +36,6 @@ for i=1, number_of_bots do
 
 	command_subscribers[i]:registerCallback(function(msg, header)
 		--Extract command action
-		print('Received command from ' .. i)
 		bots_commands[i] = msg
 		bots_received[i] = true
 	end)
@@ -44,7 +44,11 @@ end
 
 --Publish to topic that signifies if messages have been sent to robots
 commands_sent_msg = ros.Message(msgs.bool_spec)
-commands_sent_publisher = nodehandle:advertise("/commands_sent", msgs.bool_spec, 100, false, connect_cb, disconnect_cb)
+command_sent_publishers = {}
+for i=0, number_of_bots do
+	command_sent_publishers[i] = nodehandle:advertise("/commands_sent" .. i, msgs.bool_spec, 100, false, connect_cb, disconnect_cb)
+end
+
 
 function check_received(bots_received)
 	for i=1, number_of_bots do
@@ -60,6 +64,7 @@ while not ros.isShuttingDown() do
 	while not check_received(bots_received) do
 		--Check again
 		ros.spinOnce()
+		commands_sent_msg.data = false
 	end
 
 	--Send off all commands to robots
@@ -68,11 +73,12 @@ while not ros.isShuttingDown() do
 		bots_received[i] = false
 	end
 
-	print('command sent')
-
 	--Publish that commands have been sent
 	commands_sent_msg.data = true
-	commands_sent_publisher:publish(commands_sent_msg)
+	for i=0, number_of_bots do
+		command_sent_publishers[i]:publish(commands_sent_msg)
+	end
+	
 end
 
 
