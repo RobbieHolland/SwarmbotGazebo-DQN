@@ -29,9 +29,9 @@ function GazeboEnv:_init(opts)
 	self.min_reward = -1
 	self.max_reward = 100
 	self.energy_level = 0
-	self.action_magnitude = 1.25
-	self.brake_coefficient = 0.5
-	self.turning_coefficient = 0.125
+	self.action_magnitude = 6
+	self.brake_coefficient = 1
+	self.turning_coefficient = 0.1
 	self.command_message = ros.Message(msgs.twist_spec)
 	self.current_observation = torch.Tensor(self.number_of_used_colour_channels, self.camera_size, self.number_of_cameras):zero()
 	self.frequency = opts.threads
@@ -39,6 +39,7 @@ function GazeboEnv:_init(opts)
 	self.number_steps_in_episode = opts.valSteps --assuming 150 step/s for 180 seconds
 	self.updated = false
 	self.initialised = false
+	self.command_sent = false	
 
 	--Setup ros node and spinner (processes queued send and receive topics)
 	self.spinner = ros.AsyncSpinner()
@@ -71,13 +72,23 @@ function GazeboEnv:start()
 		self.model_name = 'swarmbot' .. self.id
 
 		--Configure robot control
-		self.command_publisher = self.nodehandle:advertise("/swarmbot" .. self.id .. "/cmd_vel", msgs.twist_spec, 100, false, connect_cb, disconnect_cb)
+		self.command_publisher 
+				= self.nodehandle:advertise("/swarmbot" .. self.id .. "/network_command", msgs.twist_spec, 100, false, connect_cb, disconnect_cb)
 
 		--Configure subscriber to receive robots current energy
-		self.energy_subscriber = self.nodehandle:subscribe("/swarmbot" .. self.id .. "/energy_level", msgs.float_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
+		self.energy_subscriber 
+				= self.nodehandle:subscribe("/swarmbot" .. self.id .. "/energy_level", msgs.float_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
 		self.energy_subscriber:registerCallback(function(msg, header)
-				--Update current energy level
-				self.energy_level = msg.data
+			--Update current energy level
+			self.energy_level = msg.data
+		end)
+		
+		--Configure subscriber to check if command has been sent by buffer
+		self.command_sent_subscriber 
+				= self.nodehandle:subscribe("/commands_sent", msgs.bool_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
+		self.command_sent_subscriber:registerCallback(function(msg, header)
+			print(self.id .. 'sees that command has been sent')
+			self.command_sent = msg.data
 		end)
 
 		--Configure sensors
@@ -107,7 +118,7 @@ function GazeboEnv:start()
 		--self.relocation_message = ros.Message(msgs.model_state_spec)
 
 		if __threadid == 0 then
-			--Only need to start the spinner once
+			--Only need to start the spinner once??????????????
 			self.spinner:start()
 		end
 
@@ -143,11 +154,6 @@ function GazeboEnv:step(action)
 	self.step_count = self.step_count + 1
 	terminal = false
 
-	--Calculate reward
-	old_energy = self.energy_level
-	ros.spinOnce()
-	reward = self.energy_level - old_energy
-
 	--Wait for Gazebo
 	while self.id == 1 and not self.updated do
 		ros.spinOnce()
@@ -160,16 +166,16 @@ function GazeboEnv:step(action)
 		action_taken[2] = 0
 	elseif action == 1 then
 		action_taken[1] = 0
-		action_taken[2] = self.turning_coefficient
+		action_taken[2] = self.action_magnitude * self.turning_coefficient
 	elseif action == 2 then
 		action_taken[1] = 0
-		action_taken[2] = -self.turning_coefficient
+		action_taken[2] = -self.action_magnitude * self.turning_coefficient
 	elseif action == 3 then
 		action_taken[1] = -self.action_magnitude * self.brake_coefficient
 		action_taken[2] = 0
 	end
 
-	--Parse action taken into ROS message and send to robot
+	--Parse action taken into ROS message and send to command buffer
 	self.command_message.linear.x = action_taken[1];
 	self.command_message.angular.z = action_taken[2];
 	self.command_publisher:publish(self.command_message)
@@ -179,6 +185,18 @@ function GazeboEnv:step(action)
 		terminal = true
 		self.step_count = 0
 	end
+
+	--Wait for command buffer to send command
+	while not self.command_sent do
+		self.command_publisher:publish(self.command_message)
+		ros.spinOnce()
+	end
+	self.command_sent = false
+
+	--Calculate reward
+	old_energy = self.energy_level
+	ros.spinOnce()
+	reward = self.energy_level - old_energy
 
   return reward, self.current_observation, terminal
 end
