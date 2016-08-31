@@ -29,15 +29,15 @@ function GazeboEnv:_init(opts)
 	self.min_reward = -1
 	self.max_reward = 100
 	self.energy_level = 0
-	self.action_magnitude = 10
+	self.action_magnitude = 7
 	self.brake_coefficient = 1
-	self.turning_coefficient = 0.07
+	self.turning_coefficient = 0.15
 	self.command_message = ros.Message(msgs.twist_spec)
 	self.current_observation = torch.Tensor(self.number_of_used_colour_channels, self.camera_size, self.number_of_cameras):zero()
 	self.frequency = opts.threads
 	self.step_count = 0
 	self.number_steps_in_episode = opts.valSteps --assuming 150 step/s for 180 seconds
-	self.updated = false
+	self.updated = {false, false}
 	self.initialised = false
 	self.command_sent = false	
 
@@ -74,6 +74,10 @@ function GazeboEnv:start()
 		--Configure robot control
 		self.command_publisher 
 				= self.nodehandle:advertise("/swarmbot" .. self.id .. "/network_command", msgs.twist_spec, 100, false, connect_cb, disconnect_cb)
+		if self:isValidationAgent() then
+			self.command_publisher 
+				= self.nodehandle:advertise("/swarmbot" .. self.id .. "/cmd_vel", msgs.twist_spec, 100, false, connect_cb, disconnect_cb)
+		end
 
 		--Configure subscriber to receive robots current energy
 		self.energy_subscriber 
@@ -102,7 +106,7 @@ function GazeboEnv:start()
 				sensor_input = torch.reshape(msg.data,msg.height*self.number_of_colour_channels*msg.width)
 				--Is there a way for torch.reshape to return a DoubleTensor?
 				sensor_input = (1/255) * sensor_input:double()
-				self.updated = true
+				self.updated[i] = true
 
 				--Colour channels
 				for c=1, self.number_of_used_colour_channels do
@@ -145,16 +149,21 @@ function GazeboEnv:relocate(new_position)
 	self.relocation_publisher:publish(m)
 end
 
+function GazeboEnv:isValidationAgent()
+	return self.id == 0
+end
+
 function GazeboEnv:step(action)
 	--Increment step counter
 	self.step_count = self.step_count + 1
 	terminal = false
 
-	--Wait for Gazebo
-	while not self.updated do
+	--Wait for Gazebo sensors to update
+	while not (self.updated[1] and self.updated[2]) do
 		ros.spinOnce()
 	end
-	self.updated = false
+	self.updated[1] = false
+	self.updated[2] = false
 
 	action_taken = torch.Tensor(2):zero()
 	if 		 action == 0 then
@@ -181,12 +190,17 @@ function GazeboEnv:step(action)
 		self.step_count = 0
 	end
 
-	--Wait for command buffer to send command
-	while not self.command_sent do
+	if not self:isValidationAgent() then
+		--Wait for command buffer to send command
+		while not self.command_sent do
+			self.command_publisher:publish(self.command_message)
+			ros.spinOnce()
+		end
+		self.command_sent = false
+	else
+		--Validation agent works separately
 		self.command_publisher:publish(self.command_message)
-		ros.spinOnce()
 	end
-	self.command_sent = false
 
 	--Calculate reward
 	old_energy = self.energy_level
