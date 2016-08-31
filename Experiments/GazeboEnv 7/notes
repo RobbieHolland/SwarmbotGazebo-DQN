@@ -1,0 +1,9 @@
+Parameters:
+  th main.lua -threads $NUM_BOTS -zoom 4 -env async/SwarmbotGazebo-DQN/GazeboEnv -modelBody async/SwarmbotGazebo-DQN/SwarmbotModel -histLen 4 -async A3C -entropyBeta 0 -eta 0.0001 -bootstraps 0 -rewardClip 0 -hiddenSize 32 -doubleQ false -duel false -optimiser sharedRmsProp -steps 600000000 -valFreq 180000 -valSteps 36000 -PALpha 0 "$@"
+
+Food: 100
+Bots: 12
+Time: ~20 hours
+
+Notes:
+Robots move too slowly to encounter enough rewards. Hopefully this is the last run with imperfect history and unsynched environment and Gazebo. Ran another instance of 'rewards' remotely causing the spike in score.

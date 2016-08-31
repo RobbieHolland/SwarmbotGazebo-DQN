@@ -1,0 +1,36 @@
+Visualise Call Stack:
+
+Agent:visualiseFilters() [Saves image]
+Model:getFilters()
+
+
+Information:
+env, modelBody, hiddenSize 32, histLen > 1, bootstraps 0, rewardClip 0, PAlpha 0, -eta (play with), steps (lower), EVAL OPTIONS, async a3c, entropyBeta 0/0.01? mryellow problems, 
+tau = how often update target (3/5000)
+add range sensors
+do some discretisation?
+
+Function call stack:
+Will be either 1. AsyncMaster or AsyncEvaluation
+
+AsyncMaster:
+2. Calls AsyncModel with opts 
+6. Creates a new policy net (which is actually q)
+7. Loads weights for policy net from file if can
+8. Target net is a clone of policy net, target weights cloned from actual weights
+9. self.controlPool = threads.Threads(1)
+10. Validation agent configured as threadid 9 in agent pool
+11. self.controlPool:synchronize()
+12. Uses number of threads (opt.threads) to make a new AsyncAgent for each thread
+
+AsycModel:
+3.14. Instantiates [unfortunately, a new] environment
+4.15. Calls Model with opts
+
+Model:
+5.16. Saves all options as variables
+
+AsyncAgent:
+13. Calls AsyncModel with opts [So my environment will probably use a Singleton pattern]
+17. Gets environment and model from AsyncModel
+18. Sets all options as variables

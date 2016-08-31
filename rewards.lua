@@ -1,19 +1,8 @@
 ros = require 'ros'
-ros.init('GazeboDQN_rewards')
-
 require 'torch'
 msgs = require 'async/SwarmbotGazebo-DQN/msgs'
 require 'async/SwarmbotGazebo-DQN/food'
 require 'async/SwarmbotGazebo-DQN/swarmbot'
-resp_ready = false
-
-function connect_cb(name, topic)
-  --print("subscriber connected: " .. name .. " (topic: '" .. topic .. "')")
-end
-
-function disconnect_cb(name, topic)
-  print("subscriber diconnected: " .. name .. " (topic: '" .. topic .. "')")
-end
 
 print('Handling Rewards...')
 
@@ -25,6 +14,7 @@ number_of_bots = arg[2]
 arena_width = 16
 
 --setup ros node and spinner (processes queued send and receive topics)
+ros.init('GazeboDQN_rewards')
 spinner = ros.AsyncSpinner()
 nodehandle = ros.NodeHandle()
 

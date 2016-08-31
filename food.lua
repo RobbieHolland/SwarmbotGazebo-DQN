@@ -1,14 +1,6 @@
 food = {}
 food.__index = food
 
-function connect_cb(name, topic)
-  --print("subscriber connected: " .. name .. " (topic: '" .. topic .. "')")
-end
-
-function disconnect_cb(name, topic)
-  print("subscriber diconnected: " .. name .. " (topic: '" .. topic .. "')")
-end
-
 function food.create(id, nodehandle, x, y, z, value)
   local fd = {}
   setmetatable(fd,food)
