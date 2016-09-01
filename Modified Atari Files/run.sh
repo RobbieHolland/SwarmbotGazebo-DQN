@@ -75,25 +75,34 @@ elif [ "$PAPER" == "async-a3c" ]; then
 
 #Swarm
 elif [ "$PAPER" == "demo-async-swarm" ]; then
-	#Load gazebo with arena world
-	gnome-terminal -e "bash -c \"roslaunch swarm_simulator soup.launch gui:=false ; exec bash\""
-	#Get number of food and number of bots to be used
-	NUM_FOOD=100
-	NUM_BOTS=$((12 - 1))
-	STAT_UPDATE_TIME=420
+	#Parameters
+	BUFFER="1"
+	NUM_FOOD=90
+	NUM_BOTS=$((12 - 1)) #[Number of bots including number of validation agents] - [Number of validation agents]
+	STAT_UPDATE_TIME=600
 	args=$NUM_FOOD
 	args="$args $NUM_BOTS"
+	#Load gazebo with arena world
+		gnome-terminal -e "bash -c \"roslaunch swarm_simulator soup.launch gui:=false ; exec bash\""
 	#Load models into the world
-	th async/SwarmbotGazebo-DQN/setup.lua $args
+		th async/SwarmbotGazebo-DQN/setup.lua $args
 	#Load program to allocate rewards
-	setup_command="th async/SwarmbotGazebo-DQN/rewards.lua "
-	setup_command="$setup_command $args"
-	gnome-terminal -e "bash -c \"$setup_command ; exec bash\""
-	stats_command="th async/SwarmbotGazebo-DQN/statistics.lua "
-	stats_command="$stats_command $STAT_UPDATE_TIME"
-	gnome-terminal -e "bash -c \"$stats_command ; exec bash\""
-  th main.lua -threads $NUM_BOTS -zoom 4 -env async/SwarmbotGazebo-DQN/GazeboEnv -modelBody async/SwarmbotGazebo-DQN/SwarmbotModel -histLen 4 -async A3C -entropyBeta 0 -eta 0.0001 -bootstraps 0 -rewardClip 0 -hiddenSize 32 -doubleQ false -duel false -optimiser sharedRmsProp -steps 600000000 -valFreq 180000 -valSteps 36000 -PALpha 0 "$@"
-	#-network experiments/GazeboEnv/best.weights.t7
+		setup_command="th async/SwarmbotGazebo-DQN/rewards.lua "
+		setup_command="$setup_command $args"
+		gnome-terminal -e "bash -c \"$setup_command ; exec bash\""
+	#Load the statistics program
+		stats_command="th async/SwarmbotGazebo-DQN/statistics.lua "
+		stats_command="$stats_command $STAT_UPDATE_TIME"
+		gnome-terminal -e "bash -c \"$stats_command ; exec bash\""
+	if [ "$BUFFER" == "1" ]
+	then #Load the command buffer
+		buffer_command="th async/SwarmbotGazebo-DQN/command_buffer.lua "
+		buffer_command="$buffer_command $NUM_BOTS"
+		gnome-terminal -e "bash -c \"$buffer_command ; exec bash\""
+	fi
+	#Run the Atari code
+  	th main.lua -threads $NUM_BOTS -zoom 4 -env async/SwarmbotGazebo-DQN/GazeboEnv -modelBody async/SwarmbotGazebo-DQN/SwarmbotModel -histLen 4 -async A3C -entropyBeta 0 -eta 0.0001 -bootstraps 0 -rewardClip 0 -hiddenSize 32 -doubleQ false -duel false -optimiser sharedRmsProp -steps 18000000 -valFreq 60000 -valSteps 8000 -PALpha 0 "$@"
+	#To load previous weights: -network experiments/GazeboEnv/<best or last>.weights.t7
 
 # Examples
 elif [ "$PAPER" == "demo-grid" ]; then
