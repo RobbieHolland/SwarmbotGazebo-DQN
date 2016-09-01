@@ -1,7 +1,7 @@
 swarmbot = {}
 swarmbot.__index = swarmbot
 
-function swarmbot.create(id, nodehandle, HUs, x, y, z)
+function swarmbot.create(id, nodehandle, frequency, x, y, z)
 	--Create object
   local sbot = {}
   setmetatable(sbot,swarmbot)
@@ -11,9 +11,11 @@ function swarmbot.create(id, nodehandle, HUs, x, y, z)
 	sbot.energy = 0
 	sbot.nodehandle = nodehandle
 	sbot.position = torch.Tensor(3):zero()
+	sbot.average_velocity = torch.Tensor(3):zero()
 	sbot.model_name = 'swarmbot' .. sbot.id
 	sbot.max_drive = 1.0
 	sbot.max_turn = 1.0
+	sbot.frequency = frequency
 
 	--Spawn swarmbot.sdf in gazebo
 	--os.execute('rosrun gazebo_ros spawn_model -x ' .. sbot.position[1] .. ' -y ' .. sbot.position[2] .. ' -z ' .. sbot.position[3] .. ' -file `rospack find 		      	--	          swarm_simulator`/sdf/swarm_robot_v2.sdf' .. ' -sdf -model swarmbot' .. sbot.id .. ' -robot_namespace swarmbot' .. sbot.id)
@@ -23,7 +25,7 @@ function swarmbot.create(id, nodehandle, HUs, x, y, z)
 	sbot.relocation_publisher = sbot.nodehandle:advertise("/gazebo/set_model_state", msgs.model_state_spec, 100, false, connect_cb, disconnect_cb)
 	--Publisher to publish robot's current energy level
 	sbot.energy_publisher = sbot.nodehandle:advertise("/swarmbot" .. sbot.id .. "/energy_level", msgs.float_spec, 100, false, connect_cb, disconnect_cb)
-	--Publisher to receive position updates
+	--Publisher to receive position updatess
 	sbot.odom_subscriber = sbot.nodehandle:subscribe("/swarmbot" .. sbot.id .. "/base_pose", msgs.odom_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
 
 	--Create messages
@@ -31,10 +33,16 @@ function swarmbot.create(id, nodehandle, HUs, x, y, z)
 	sbot.energy_level_message = ros.Message(msgs.float_spec)
 
   sbot.odom_subscriber:registerCallback(function(msg, header)
+		--Save old position
+		old_position = sbot.position:clone()
+
 		--Position published by robot is recorded
 		sbot.position[1] = msg.pose.pose.position.x
 		sbot.position[2] = msg.pose.pose.position.y
 		sbot.position[3] = msg.pose.pose.position.z
+
+		--Calculate average_velocity
+		sbot.average_velocity = frequency * (sbot.position - old_position)
   end)
 
   return sbot
@@ -44,6 +52,10 @@ function swarmbot.random_relocate(self, distance)
 	new_position = distance * (torch.rand(3) - 0.5)
 	new_position[3] = 0
 	self:relocate(new_position)
+end
+
+function swarmbot:upright()
+	self:relocate(self.position)
 end
 
 function swarmbot.relocate(self, new_position)

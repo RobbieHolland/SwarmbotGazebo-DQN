@@ -29,7 +29,7 @@ nodehandle = ros.NodeHandle()
 
 --Subscribe to command topics advertised by environments
 for i=1, number_of_bots do
-	command_subscribers[i] 
+	command_subscribers[i]
 				= nodehandle:subscribe("/swarmbot" .. i .. "/network_command", msgs.twist_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
 	command_publishers[i] = nodehandle:advertise("/swarmbot" .. i .. "/cmd_vel", msgs.twist_spec, 100, false, connect_cb, disconnect_cb)
 

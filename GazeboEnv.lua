@@ -27,9 +27,9 @@ function GazeboEnv:_init(opts)
 	self.number_of_cameras = 2
 	self.camera_size = 30
 	self.min_reward = -1
-	self.max_reward = 100
+	self.max_reward = 2000
 	self.energy_level = 0
-	self.action_magnitude = 7
+	self.action_magnitude = 0.5
 	self.brake_coefficient = 1
 	self.turning_coefficient = 0.15
 	self.command_message = ros.Message(msgs.twist_spec)
@@ -87,7 +87,12 @@ function GazeboEnv:start()
 			
 			self.energy_level = msg.data
 		end)
-		
+
+		--Configure topic to signify end of episode
+		self.episode_end_publisher = self.nodehandle:advertise("/episode_end", msgs.bool_spec, 100, false, connect_cb, disconnect_cb)
+		self.episode_end_message = ros.Message(msgs.bool_spec)
+		self.episode_end_message.data = true
+
 		--Configure subscriber to check if command has been sent by buffer
 		self.command_sent_subscriber 
 				= self.nodehandle:subscribe("/commands_sent" .. self.id, msgs.bool_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
@@ -117,15 +122,16 @@ function GazeboEnv:start()
 			end)
 		end
 
-		--Publisher to publish position updates
-		--self.relocation_publisher = self.nodehandle:advertise("/gazebo/set_model_state", msgs.model_state_spec, 100, false, connect_cb, disconnect_cb)
-		--self.relocation_message = ros.Message(msgs.model_state_spec)
-
-		self.spinner:start()
+		if self:isValidationAgent() then
+			self.spinner:start()
+		end
 	end
 
+	--Signify end of episode
+	if self.id == 1 then
+		self.episode_end_publisher:publish(self.episode_end_message)
+	end
 	print('[Robot ' .. self.id .. ' finished episode with ' .. self.energy_level .. ' energy]')
-	--self:random_relocate(self.arena_width)
 
 	--Return first observation
   return self.current_observation
@@ -158,7 +164,7 @@ function GazeboEnv:step(action)
 	self.step_count = self.step_count + 1
 	terminal = false
 
-	--Wait for Gazebo sensors to update
+	--Wait for Gazebo sensors to update (Ensures a meaningfull history)
 	while not (self.updated[1] and self.updated[2]) do
 		ros.spinOnce()
 	end
@@ -190,17 +196,12 @@ function GazeboEnv:step(action)
 		self.step_count = 0
 	end
 
-	if not self:isValidationAgent() then
-		--Wait for command buffer to send command
-		while not self.command_sent do
-			self.command_publisher:publish(self.command_message)
-			ros.spinOnce()
-		end
-		self.command_sent = false
-	else
-		--Validation agent works separately
+	--Wait for command buffer to send command
+	while not self.command_sent do
 		self.command_publisher:publish(self.command_message)
+		ros.spinOnce()
 	end
+	self.command_sent = false
 
 	--Calculate reward
 	old_energy = self.energy_level
