@@ -22,7 +22,6 @@ frequency = 10
 eat_distance = 0.4
 number_of_food = arg[1]
 number_of_bots = arg[2]
-upright_timer = arg[3]
 arena_width = 16
 
 --setup ros node and spinner (processes queued send and receive topics)
@@ -33,7 +32,7 @@ nodehandle = ros.NodeHandle()
 foods = {}
 for i=1, number_of_food do
 	--Create new food
-	foods[i] = food.create(i, nodehandle, 0, 0, 1, 500)
+	foods[i] = food.create(i, nodehandle, 0, 0, 1, 100)
 end
 
 --Create swarmbots
@@ -59,7 +58,7 @@ end
 episode_end_subscriber = nodehandle:subscribe("/episode_end", msgs.bool_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
 episode_end_subscriber:registerCallback(function(msg, header)
 	for i=0, number_of_bots do
-		swarmbots[i]:upright()
+		swarmbots[i]:random_relocate(arena_width)
 		ros.Duration(0.05):sleep()
 	end
 end)
@@ -78,16 +77,22 @@ while not ros.isShuttingDown() do
 
 	--Constant health depletion
 	for i=0, number_of_bots do
+
 		--Penalty for being near edge of arena
 		if torch.abs(swarmbots[i].position[1]) > arena_width / 2 or torch.abs(swarmbots[i].position[2]) > arena_width / 2 then
-			swarmbots[i]:update_energy(-1/frequency)
+			swarmbots[i]:update_energy(-5/frequency)
+		else
+			swarmbots[i]:update_energy(0.5/frequency)
 		end
+
 		--Loss of life penalty
 		swarmbots[i]:update_energy(-1/frequency)
+
 		--Reward for moving forwards
-		if swarmbots[i].average_velocity[1] > 0 then
-			swarmbots[i]:update_energy(2/frequency)
+		if swarmbots[i].average_velocity[1] > 1e-1 then
+			swarmbots[i]:update_energy(0.5/frequency)
 		end
+		
 	end
 
 	ros.spinOnce()

@@ -1,0 +1,12 @@
+Parameters:
+  	th main.lua -threads $NUM_BOTS -zoom 4 -env async/SwarmbotGazebo-DQN/GazeboEnv -modelBody async/SwarmbotGazebo-DQN/SwarmbotModel -histLen 4 -async A3C -entropyBeta 0 -eta 0.0001 -bootstraps 0 -rewardClip 0 -hiddenSize 32 -doubleQ false -duel false -optimiser sharedRmsProp -steps 18000000 -valFreq 60000 -valSteps 8000 -PALpha 0 "$@"
+
+Food: 90
+Bots: 12
+Time: ~40 hours (but ran for 3 days?)
+
+Notes:
+Gave agents reward for going forwards but they all end up in corner. Negative reward near wall + no food near wall not enough to beat quick reward of going forwards.
+rostopic echo /swarmbot1/cmd_vel shows almost entirely forward command.
+Need to try a simpler task first.
+Uprighted each episode.

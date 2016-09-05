@@ -1,0 +1,25 @@
+[INFO - 2016_09_02_08:24:49] - "Setting up Torch7"
+[INFO - 2016_09_02_08:24:49] - "Setting up async/SwarmbotGazebo-DQN/GazeboEnv"
+[INFO - 2016_09_02_08:24:49] - "Setting up async/SwarmbotGazebo-DQN/SwarmbotModel"
+[INFO - 2016_09_02_08:24:49] - nn.Sequential {
+  [input -> (1) -> (2) -> (3) -> (4) -> (5) -> output]
+  (1): nn.Sequential {
+    [input -> (1) -> (2) -> (3) -> output]
+    (1): nn.View(12, 1, 60)
+    (2): nn.SpatialConvolution(12 -> 16, 3x1)
+    (3): nn.ReLU
+  }
+  (2): nn.View(928)
+  (3): nn.Linear(928 -> 32)
+  (4): nn.ReLU
+  (5): nn.ConcatTable {
+    input
+      |`-> (1): nn.Linear(32 -> 1)
+      |`-> (2): nn.Sequential {
+      |      [input -> (1) -> (2) -> output]
+      |      (1): nn.Linear(32 -> 4)
+      |      (2): nn.SoftMax
+      |    }
+       ... -> output
+  }
+}

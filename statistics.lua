@@ -3,22 +3,22 @@ require 'torch'
 msgs = require 'async/SwarmbotGazebo-DQN/msgs'
 local gnuplot = require 'gnuplot'
 
---setup ros node and spinner (processes queued send and receive topics)
-ros.init('GazeboDQN_statistics')
-spinner = ros.AsyncSpinner()
-nodehandle = ros.NodeHandle()
-print('Handling Statistics...')
-
 update_time = tonumber(arg[1])
+agent_id = tonumber(arg[2])
 energy = 0
 
-	--Configure subscriber to receive robots current energy
-	energy_subscriber = nodehandle:subscribe("/swarmbot" .. 0 .. "/energy_level", msgs.float_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
-	energy_subscriber:registerCallback(function(msg, header)
-			--Update current energy level
-			energy = msg.data
-	end)
+--setup ros node and spinner (processes queued send and receive topics)
+ros.init('GazeboDQN_statistics' .. agent_id)
+spinner = ros.AsyncSpinner()
+nodehandle = ros.NodeHandle()
+print('Handling Statistics for agent ' .. agent_id .. ' ...')
 
+--Configure subscriber to receive robots current energy
+energy_subscriber = nodehandle:subscribe("/swarmbot" .. agent_id .. "/energy_level", msgs.float_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
+energy_subscriber:registerCallback(function(msg, header)
+		--Update current energy level
+		energy = msg.data
+end)
 
 --For now hard coded to only one agent
 epoch_count = 0
@@ -37,7 +37,7 @@ while not ros.isShuttingDown() do
 
 	epoch_indices = torch.linspace(1, epoch_count, epoch_count)
 
-  gnuplot.pngfigure(paths.concat('experiments', 'GazeboEnv', 'stat_scores.png'))
+  gnuplot.pngfigure(paths.concat('experiments', 'GazeboEnv', 'agent_ ' .. agent_id .. '_scores_.png'))
 	gnuplot.plot('Energy', epoch_indices, torch.Tensor(energy_chart), '-')
 	gnuplot.xlabel('Epoch')
 	gnuplot.ylabel('Energy')

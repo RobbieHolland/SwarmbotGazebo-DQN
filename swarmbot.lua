@@ -51,19 +51,24 @@ end
 function swarmbot.random_relocate(self, distance)
 	new_position = distance * (torch.rand(3) - 0.5)
 	new_position[3] = 0
-	self:relocate(new_position)
+	new_orientation = torch.rand(3)
+	self:relocate(new_position, new_orientation)
 end
 
 function swarmbot:upright()
 	self:relocate(self.position)
 end
 
-function swarmbot.relocate(self, new_position)
+function swarmbot.relocate(self, new_position, new_orientation)
 	m = self.relocation_message
 	m.model_name = self.model_name
 	m.pose.position.x = new_position[1]
 	m.pose.position.y = new_position[2]
 	m.pose.position.z = new_position[3]
+
+	--Only randomly rotate on z axis (but with Quaternions)
+	m.pose.orientation.x = new_orientation[1]
+	m.pose.orientation.y = new_orientation[2]
 
 	self.relocation_publisher:publish(m)
 	self.position = new_position
