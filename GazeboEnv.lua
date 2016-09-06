@@ -29,8 +29,8 @@ function GazeboEnv:_init(opts)
 	self.min_reward = -1
 	self.max_reward = 2000
 	self.energy_level = 0
-	self.action_magnitude = 0.5
-	self.brake_coefficient = 1
+	self.action_magnitude = 4
+	self.brake_coefficient = 0.65
 	self.turning_coefficient = 0.15
 	self.command_message = ros.Message(msgs.twist_spec)
 	self.current_observation = torch.Tensor(self.number_of_used_colour_channels, self.camera_size, self.number_of_cameras):zero()
@@ -53,7 +53,7 @@ end
 
 --4 actions required 0:[Both wheels forwards] 1:[Right Wheel forward only] 2:[Left wheel forward only] 3:[Both wheels backwards]
 function GazeboEnv:getActionSpec()
-  return {'int', 1, {0, 3}}
+  return {'int', 1, {0, 2}}
 end
 
 --Min and max reward - Apparently not used for A3C
@@ -168,9 +168,18 @@ function GazeboEnv:step(action)
 	while not (self.updated[1] and self.updated[2]) do
 		ros.spinOnce()
 	end
+
 	self.updated[1] = false
 	self.updated[2] = false
 
+	--FOR TESTING
+--[[
+	x = torch.rand(1)
+	if x[1] < 0.5 then
+		action = 0
+	end
+--]]
+action = 0
 	action_taken = torch.Tensor(2):zero()
 	if 		 action == 0 then
 		action_taken[1] = self.action_magnitude
@@ -181,9 +190,6 @@ function GazeboEnv:step(action)
 	elseif action == 2 then
 		action_taken[1] = 0
 		action_taken[2] = -self.action_magnitude * self.turning_coefficient
-	elseif action == 3 then
-		action_taken[1] = -self.action_magnitude * self.brake_coefficient
-		action_taken[2] = 0
 	end
 
 	--Parse action taken into ROS message

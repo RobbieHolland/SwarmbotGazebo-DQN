@@ -63,6 +63,12 @@ episode_end_subscriber:registerCallback(function(msg, header)
 	end
 end)
 
+--Relocate swarmbots
+for i=0, number_of_bots do
+	--Advertise a max_speed indicator - true when over max speed
+	--GazeboEnv checks latest spin of the max_speed indicator: if over the limit and sending forward command will nullify the command
+end
+
 while not ros.isShuttingDown() do
 	--Check if any food is eaten
 	for i=0, number_of_bots do
@@ -78,20 +84,8 @@ while not ros.isShuttingDown() do
 	--Constant health depletion
 	for i=0, number_of_bots do
 
-		--Penalty for being near edge of arena
-		if torch.abs(swarmbots[i].position[1]) > arena_width / 2 or torch.abs(swarmbots[i].position[2]) > arena_width / 2 then
-			swarmbots[i]:update_energy(-5/frequency)
-		else
-			swarmbots[i]:update_energy(0.5/frequency)
-		end
-
-		--Loss of life penalty
-		swarmbots[i]:update_energy(-1/frequency)
-
 		--Reward for moving forwards
-		if swarmbots[i].average_velocity[1] > 1e-1 then
-			swarmbots[i]:update_energy(0.5/frequency)
-		end
+		swarmbots[i]:update_energy(swarmbots[i].average_velocity:norm())
 		
 	end
 
