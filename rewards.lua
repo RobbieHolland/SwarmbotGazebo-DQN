@@ -63,12 +63,6 @@ episode_end_subscriber:registerCallback(function(msg, header)
 	end
 end)
 
---Relocate swarmbots
-for i=0, number_of_bots do
-	--Advertise a max_speed indicator - true when over max speed
-	--GazeboEnv checks latest spin of the max_speed indicator: if over the limit and sending forward command will nullify the command
-end
-
 while not ros.isShuttingDown() do
 	--Check if any food is eaten
 	for i=0, number_of_bots do

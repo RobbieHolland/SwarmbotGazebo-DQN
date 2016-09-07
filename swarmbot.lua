@@ -8,6 +8,7 @@ function swarmbot.create(id, nodehandle, frequency, x, y, z)
 
 	--Assign variables
 	sbot.id = id
+	sbot.speed_limit = 1.5
 	sbot.energy = 0
 	sbot.nodehandle = nodehandle
 	sbot.position = torch.Tensor(3):zero()
@@ -26,11 +27,16 @@ function swarmbot.create(id, nodehandle, frequency, x, y, z)
 	--Publisher to publish robot's current energy level
 	sbot.energy_publisher = sbot.nodehandle:advertise("/swarmbot" .. sbot.id .. "/energy_level", msgs.float_spec, 100, false, connect_cb, disconnect_cb)
 	--Publisher to receive position updatess
-	sbot.odom_subscriber = sbot.nodehandle:subscribe("/swarmbot" .. sbot.id .. "/base_pose", msgs.odom_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
+	sbot.odom_subscriber 
+		= sbot.nodehandle:subscribe("/swarmbot" .. sbot.id .. "/base_pose", msgs.odom_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
+	--Publisher to indicate if over speed limit
+	sbot.speed_limit_publisher 
+		= sbot.nodehandle:advertise("/swarmbot" .. sbot.id .. "/speed_limit_indicator", msgs.bool_spec, 100, false, connect_cb, disconnect_cb)
 
 	--Create messages
 	sbot.relocation_message = ros.Message(msgs.model_state_spec)
 	sbot.energy_level_message = ros.Message(msgs.float_spec)
+	sbot.speed_limit_message = ros.Message(msgs.bool_spec)
 
   sbot.odom_subscriber:registerCallback(function(msg, header)
 		--Save old position
@@ -43,6 +49,8 @@ function swarmbot.create(id, nodehandle, frequency, x, y, z)
 
 		--Calculate average_velocity
 		sbot.average_velocity = frequency * (sbot.position - old_position)
+		sbot.speed_limit_message.data = sbot.average_velocity:norm() > sbot.speed_limit
+		sbot.speed_limit_publisher:publish(sbot.speed_limit_message)
   end)
 
   return sbot

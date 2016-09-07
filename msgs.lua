@@ -12,5 +12,7 @@ msgs.twist_spec = ros.MsgSpec('geometry_msgs/Twist')
 msgs.odom_spec = ros.MsgSpec('nav_msgs/Odometry')
 msgs.model_state_spec = ros.MsgSpec('gazebo_msgs/ModelState')
 msgs.bool_spec = ros.MsgSpec('std_msgs/Bool')
+msgs.laser_spec = ros.MsgSpec('sensor_msgs/LaserScan')
+
 
 return msgs
