@@ -3,11 +3,11 @@ ros = require 'ros'
 ros.init('GazeboDQN_Env')
 local classic = require 'classic'
 msgs = require 'async/SwarmbotGazebo-DQN/msgs'
+srvs = require 'async/SwarmbotGazebo-DQN/srvs'
 local GazeboEnv, super = classic.class('GazeboEnv', Env)
-resp_ready = false
 
 function connect_cb(name, topic)
-  --print("subscriber connected: " .. name .. " (topic: '" .. topic .. "')")
+  print("subscriber connected: " .. name .. " (topic: '" .. topic .. "')")
 end
 
 
@@ -21,6 +21,7 @@ function GazeboEnv:_init(opts)
   opts = opts or {}
 
   --Constants
+	self.old_energy = 0
 	self.arena_width = 15
 	self.number_colour_channels = 3
 	self.number_channels = 4
@@ -28,8 +29,8 @@ function GazeboEnv:_init(opts)
 	self.camera_size = 30
 	self.min_reward = -5
 	self.max_reward = 2000
-	self.energy_level = 0
-	self.action_magnitude = 4
+	self.energy = 0
+	self.action_magnitude = 40
 	self.brake_coefficient = 0.65
 	self.turning_coefficient = 0.3
 	self.command_message = ros.Message(msgs.twist_spec)
@@ -43,7 +44,6 @@ function GazeboEnv:_init(opts)
 	self.breaking_speed_limit = false
 
 	--Setup ros node and spinner (processes queued send and receive topics)
-	self.spinner = ros.AsyncSpinner()
 	self.nodehandle = ros.NodeHandle()
 end
 
@@ -65,7 +65,7 @@ end
 --Starts GazeboEnv and spawns all models? Or is that done by individual agents?
 function GazeboEnv:start()
 
-	if not self.initialised then 
+	if not self.initialised then
 		self.initialised = true
 
 		--Setup agent's ID (identical to ID of thread)
@@ -80,19 +80,15 @@ function GazeboEnv:start()
 				= self.nodehandle:advertise("/swarmbot" .. self.id .. "/cmd_vel", msgs.twist_spec, 100, false, connect_cb, disconnect_cb)
 		end
 
-		--Configure subscriber to receive robots current energy
-		self.energy_subscriber 
-				= self.nodehandle:subscribe("/swarmbot" .. self.id .. "/energy_level", msgs.float_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
-		self.energy_subscriber:registerCallback(function(msg, header)
-			--Update current energy level
-			
-			self.energy_level = msg.data
-		end)
-
 		--Configure topic to signify end of episode
 		self.episode_end_publisher = self.nodehandle:advertise("/episode_end", msgs.bool_spec, 100, false, connect_cb, disconnect_cb)
 		self.episode_end_message = ros.Message(msgs.bool_spec)
 		self.episode_end_message.data = true
+
+		--Configure service caller to get energy of robot
+		energy_request_service = self.nodehandle:serviceClient('/energy_request', srvs.energy_request_spec)
+		energy_request_message = energy_request_service:createRequest()
+		energy_request_message.id = self.id
 
 		--Configure subscriber to check if command has been sent by buffer
 		self.command_sent_subscriber 
@@ -109,7 +105,7 @@ function GazeboEnv:start()
 		end)
 
 		--Configure sensors
-		--Colour sensors
+			--Colour sensors
 			self.camera_input_subscribers = {}
 			for i=1, self.number_of_cameras do
 				self.camera_input_subscribers[i] 
@@ -131,7 +127,7 @@ function GazeboEnv:start()
 				end)
 			end
 
-		--Range sensor
+			--Range sensor
 			self.laser_input_subscriber 
 				= self.nodehandle:subscribe("/swarmbot" .. self.id .. "/scan_sensor", msgs.laser_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
 			self.laser_input_subscriber:registerCallback(function(msg, header)
@@ -144,29 +140,30 @@ function GazeboEnv:start()
 					count = i % self.camera_size
 					count = count + 1
 				end
+
+				self.updated[3] = true
 			end)
 
-		if self:isValidationAgent() then
+		if not ros.isStarted() then
+			self.spinner = ros.AsyncSpinner()
 			self.spinner:start()
 		end
+	end
 
-end
 	--Signify end of episode
 	if self.id == 1 then
 		self.episode_end_publisher:publish(self.episode_end_message)
 	end
-	print('[Robot ' .. self.id .. ' finished episode with ' .. self.energy_level .. ' energy]')
+	print('[Robot ' .. self.id .. ' finished episode with ' .. self.energy .. ' energy]')
 
 	--Return first observation
   return self.current_observation
 end
 
 function GazeboEnv:random_relocate(distance)
-
 	new_position = distance * (torch.rand(3) - 0.5)
 	new_position[3] = 0
 	self:relocate(new_position)
-
 end
 
 function GazeboEnv:relocate(new_position)
@@ -183,23 +180,7 @@ function GazeboEnv:isValidationAgent()
 	return self.id == 0
 end
 
-function GazeboEnv:step(action)
-	--Increment step counter
-	self.step_count = self.step_count + 1
-	terminal = false
-
-	--Wait for Gazebo sensors to update (Ensures a meaningfull history)
-	while not (self.updated[1] and self.updated[2]) do
-		ros.spinOnce()
-	end
-
-	self.updated[1] = false
-	self.updated[2] = false
-
-	--FOR TESTING
-
-	x = torch.rand(1)
-action = 0
+function GazeboEnv:parse_action(action)
 	action_taken = torch.Tensor(2):zero()
 	if 		 action == 0 and not (self.breaking_speed_limit == 1) then
 		action_taken[1] = self.action_magnitude
@@ -212,7 +193,24 @@ action = 0
 		action_taken[2] = -self.action_magnitude * self.turning_coefficient
 	end
 
-	--Parse action taken into ROS message
+	return action_taken
+end
+
+function GazeboEnv:step(action)
+	--Increment step counter
+	self.step_count = self.step_count + 1
+	terminal = false	
+
+	--Wait for Gazebo sensors to update (Ensures a meaningfull history)
+	while not (self.updated[1] and self.updated[2] and self.updated[3]) do
+		ros.spinOnce()
+	end
+	self.updated[1] = false
+	self.updated[2] = false
+	self.updated[3] = false
+
+	--Parse action given by DQN
+	action_taken = self:parse_action(action)
 	self.command_message.linear.x = action_taken[1];
 	self.command_message.angular.z = action_taken[2];
 
@@ -229,15 +227,12 @@ action = 0
 	end
 	self.command_sent = false
 
-	--Calculate reward
-	old_energy = self.energy_level
-	ros.spinOnce()
-	reward = self.energy_level - old_energy
---[[
-	if self.id == 1 then
-		print(self.current_observation[1])
-	end
---]]
+	--Calculate reward as result of action
+	self.old_energy = self.energy
+	response = energy_request_service:call(energy_request_message)
+	self.energy = response.data
+	reward = self.energy - self.old_energy
+
   return reward, self.current_observation, terminal
 end
 

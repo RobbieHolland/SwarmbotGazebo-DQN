@@ -1,27 +1,26 @@
---Setup
 ros = require 'ros'
 ros.init('GazeboDQN_rewards')
-print('Handling Rewards...')
 
 require 'torch'
-srvs = require 'async/SwarmbotGazebo-DQN/srvs'
 msgs = require 'async/SwarmbotGazebo-DQN/msgs'
 require 'async/SwarmbotGazebo-DQN/food'
 require 'async/SwarmbotGazebo-DQN/swarmbot'
-
---Flags
+resp_ready = false
 initialised = false
 updated = false
 
 function connect_cb(name, topic)
-  print("subscriber connected: " .. name .. " (topic: '" .. topic .. "')")
+  --print("subscriber connected: " .. name .. " (topic: '" .. topic .. "')")
 end
 
 function disconnect_cb(name, topic)
   print("subscriber diconnected: " .. name .. " (topic: '" .. topic .. "')")
 end
 
+print('Handling Rewards...')
+
 --Constants
+frequency = 10
 eat_distance = 0.4
 number_of_food = arg[1]
 number_of_bots = arg[2]
@@ -36,17 +35,25 @@ foods = {}
 for i=1, number_of_food do
 	--Create new food
 	foods[i] = food.create(i, nodehandle, 0, 0, 1, 100)
-	ros.Duration(0.05):sleep()
-	foods[i]:random_relocate(arena_width)
 end
 
 --Create swarmbots
 swarmbots = {}
 for i=0, number_of_bots do
 	--Create new swarmbot
-	swarmbots[i] = swarmbot.create(i, nodehandle, 0, 0, 1)
+	swarmbots[i] = swarmbot.create(i, nodehandle, frequency, 0, 0, 1)
+end
+
+--Relocate food
+for i=1, number_of_food do
+	foods[i]:random_relocate(arena_width)
 	ros.Duration(0.05):sleep()
+end
+
+--Relocate swarmbots
+for i=0, number_of_bots do
 	swarmbots[i]:random_relocate(arena_width)
+	ros.Duration(0.05):sleep()
 end
 
 --Setup subscriber for end of episode
@@ -57,40 +64,6 @@ episode_end_subscriber:registerCallback(function(msg, header)
 		ros.Duration(0.05):sleep()
 	end
 end)
-
-function calculate_energy(id)
-	while not updated do
-		ros.spinOnce()
-	end
-	updated = false
-
-	--Food rewards
-	for j=1, number_of_food do
-		if (torch.abs(torch.dist(swarmbots[id].position, foods[j].position)) < eat_distance) then
-			foods[j]:random_relocate(arena_width)
-			swarmbots[id]:consume(foods[j])
-		end
-	end
-
-	--Movement reward
-	swarmbots[id]:add_energy(swarmbots[id].speed)
-
-	--Crash penalty
-	if swarmbots[id].speed / swarmbots[id].previous_speed < 0.2 and swarmbots[id].previous_speed > swarmbots[id].speed_limit / 2 then
-		if i == 1 then
-			print('Crash')
-		end
-	end
-end
-
---Energy service
-function energy_service_handler(request, response, header)
-	calculate_energy(request.id)
-	response.data = swarmbots[request.id].energy
-  return true
-end
-service_queue = ros.CallbackQueue()
-server = nodehandle:advertiseService('/energy_request', srvs.energy_request_spec, energy_service_handler, service_queue)
 
 function table_invert(t)
    local s={}
@@ -141,12 +114,41 @@ model_state_subscriber:registerCallback(function(msg, header)
 	updated = true
 end)
 
-while ros.ok() do
-  if not service_queue:isEmpty() then
-    service_queue:callAvailable()
-  end
-  ros.spinOnce()
-end
 
-server:shutdown()
-ros.shutdown()
+
+while not ros.isShuttingDown() do
+
+	--Check if all positions have been updated
+	while not updated do
+		ros.spinOnce()
+	end
+	updated = false
+
+	--Reset update flags
+	for i=0, number_of_bots do
+		swarmbots[i].position_updated = false
+	end
+
+	--Check if any food is eaten
+	for i=0, number_of_bots do
+		for j=1, number_of_food do
+			if (torch.abs(torch.dist(swarmbots[i].position, foods[j].position)) < eat_distance) then
+				foods[j]:random_relocate(arena_width)
+				swarmbots[i]:consume(foods[j])
+			end
+		end
+	end
+
+	--Reward for moving forwards
+	for i=0, number_of_bots do
+		swarmbots[i]:add_energy(swarmbots[i].speed)
+
+		if swarmbots[i].speed / swarmbots[i].previous_speed < 0.2 and swarmbots[i].previous_speed > swarmbots[i].speed_limit / 2 then
+			if i == 1 then
+				print('Crash')
+			end
+		end
+	end
+ros.Duration(1/100):sleep()
+	ros.spinOnce()
+end

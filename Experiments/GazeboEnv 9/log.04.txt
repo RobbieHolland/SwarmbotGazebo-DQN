@@ -1,0 +1,26 @@
+[INFO - 2016_09_06_10:13:27] - "Setting up Torch7"
+[INFO - 2016_09_06_10:13:30] - "Setting up async/SwarmbotGazebo-DQN/GazeboEnv"
+[INFO - 2016_09_06_10:13:30] - "creating A3CAgent"
+[INFO - 2016_09_06_10:13:31] - A3CAgent starting | steps=727272
+[INFO - 2016_09_06_10:41:46] - A3CAgent | step=10000 | 1.38% | speed=5/sec | η=0.00009863
+[INFO - 2016_09_06_11:09:47] - A3CAgent | step=20000 | 2.75% | speed=5/sec | η=0.00009725
+[INFO - 2016_09_06_11:37:28] - A3CAgent | step=30000 | 4.13% | speed=6/sec | η=0.00009588
+[INFO - 2016_09_06_12:05:35] - A3CAgent | step=40000 | 5.50% | speed=5/sec | η=0.00009450
+[INFO - 2016_09_06_12:33:34] - A3CAgent | step=50000 | 6.88% | speed=5/sec | η=0.00009313
+[INFO - 2016_09_06_13:01:49] - A3CAgent | step=60000 | 8.25% | speed=5/sec | η=0.00009175
+[INFO - 2016_09_06_13:30:01] - A3CAgent | step=70000 | 9.63% | speed=5/sec | η=0.00009038
+[INFO - 2016_09_06_13:58:03] - A3CAgent | step=80000 | 11.00% | speed=5/sec | η=0.00008900
+[INFO - 2016_09_06_14:26:11] - A3CAgent | step=90000 | 12.38% | speed=5/sec | η=0.00008763
+[INFO - 2016_09_06_14:54:24] - A3CAgent | step=100000 | 13.75% | speed=5/sec | η=0.00008625
+[INFO - 2016_09_06_15:22:30] - A3CAgent | step=110000 | 15.13% | speed=5/sec | η=0.00008488
+[INFO - 2016_09_06_15:50:39] - A3CAgent | step=120000 | 16.50% | speed=5/sec | η=0.00008350
+[INFO - 2016_09_06_16:18:55] - A3CAgent | step=130000 | 17.88% | speed=5/sec | η=0.00008213
+[INFO - 2016_09_06_16:47:08] - A3CAgent | step=140000 | 19.25% | speed=5/sec | η=0.00008075
+[INFO - 2016_09_06_17:15:30] - A3CAgent | step=150000 | 20.63% | speed=5/sec | η=0.00007938
+[INFO - 2016_09_06_17:43:45] - A3CAgent | step=160000 | 22.00% | speed=5/sec | η=0.00007800
+[INFO - 2016_09_06_18:11:56] - A3CAgent | step=170000 | 23.38% | speed=5/sec | η=0.00007663
+[INFO - 2016_09_06_18:40:14] - A3CAgent | step=180000 | 24.75% | speed=5/sec | η=0.00007525
+[INFO - 2016_09_06_19:08:31] - A3CAgent | step=190000 | 26.13% | speed=5/sec | η=0.00007388
+[INFO - 2016_09_06_19:36:39] - A3CAgent | step=200000 | 27.50% | speed=5/sec | η=0.00007250
+[INFO - 2016_09_06_20:04:48] - A3CAgent | step=210000 | 28.88% | speed=5/sec | η=0.00007113
+[INFO - 2016_09_06_20:33:06] - A3CAgent | step=220000 | 30.25% | speed=5/sec | η=0.00006975
