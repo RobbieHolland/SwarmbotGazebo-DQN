@@ -9,7 +9,7 @@ function swarmbot.create(id, nodehandle, x, y, z)
 	--Assign variables
 	sbot.id = id
 	sbot.model_id = 0
-	sbot.speed_limit = 1.2
+	sbot.speed_limit = 1.25
 	sbot.energy = 0
 	sbot.nodehandle = nodehandle
 	sbot.position = torch.Tensor(3):zero()
@@ -34,7 +34,16 @@ end
 
 function swarmbot.random_relocate(self, distance)
 	new_position = distance * (torch.rand(3) - 0.5)
-	new_position[3] = 0
+	new_position[3] = 1
+	
+	--To avoid spawning inside walls
+	if torch.abs(new_position[1]) < 1 then
+		new_position[1] = new_position[1] + 2
+	end
+	if torch.abs(new_position[2]) < 1 then
+		new_position[2] = new_position[1] + 2
+	end
+
 	new_orientation = 2 * (torch.rand(1) - 0.5)
 	self:relocate(new_position, new_orientation)
 end

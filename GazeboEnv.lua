@@ -25,12 +25,13 @@ function GazeboEnv:_init(opts)
 	self.arena_width = 15
 	self.number_colour_channels = 3
 	self.number_channels = 4
+	self.laser_scan_range = 4
 	self.number_of_cameras = 2
 	self.camera_size = 30
 	self.min_reward = -5
 	self.max_reward = 2000
 	self.energy = 0
-	self.action_magnitude = 40
+	self.action_magnitude = 5
 	self.brake_coefficient = 0.65
 	self.turning_coefficient = 0.3
 	self.command_message = ros.Message(msgs.twist_spec)
@@ -135,7 +136,7 @@ function GazeboEnv:start()
 				count = 1
 				for i=1, self.camera_size * self.number_of_cameras do
 					j = torch.ceil(i / self.camera_size)
-					self.current_observation[4][count][j] = msg.ranges[1 + self.camera_size * self.number_of_cameras - i]
+					self.current_observation[4][count][j] = msg.ranges[1 + self.camera_size * self.number_of_cameras - i] / self.laser_scan_range
 
 					count = i % self.camera_size
 					count = count + 1
