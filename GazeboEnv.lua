@@ -31,9 +31,8 @@ function GazeboEnv:_init(opts)
 	self.min_reward = -5
 	self.max_reward = 2000
 	self.energy = 0
-	self.action_magnitude = 5
-	self.brake_coefficient = 0.65
-	self.turning_coefficient = 0.3
+	self.forward_speed = 1.25
+	self.angular_speed = 0.65
 	self.command_message = ros.Message(msgs.twist_spec)
 	self.current_observation = torch.Tensor(self.number_channels, self.camera_size, self.number_of_cameras):zero()
 	self.frequency = opts.threads
@@ -42,7 +41,6 @@ function GazeboEnv:_init(opts)
 	self.updated = {false, false, false}
 	self.initialised = false
 	self.command_sent = false	
-	self.breaking_speed_limit = false
 
 	--Setup ros node and spinner (processes queued send and receive topics)
 	self.nodehandle = ros.NodeHandle()
@@ -68,7 +66,7 @@ function GazeboEnv:start()
 
 	if not self.initialised then
 		self.initialised = true
-
+		ros.Duration(4):sleep()
 		--Setup agent's ID (identical to ID of thread)
 		self.id = __threadid
 		self.model_name = 'swarmbot' .. self.id
@@ -81,28 +79,26 @@ function GazeboEnv:start()
 				= self.nodehandle:advertise("/swarmbot" .. self.id .. "/cmd_vel", msgs.twist_spec, 100, false, connect_cb, disconnect_cb)
 		end
 
-		--Configure topic to signify end of episode
-		self.episode_end_publisher = self.nodehandle:advertise("/episode_end", msgs.bool_spec, 100, false, connect_cb, disconnect_cb)
-		self.episode_end_message = ros.Message(msgs.bool_spec)
-		self.episode_end_message.data = true
+		--Configure service caller to relocate at end of episode
+		random_relocate_request_service = self.nodehandle:serviceClient('/random_relocate_request', srvs.data_request_spec)
+		random_relocate_message = random_relocate_request_service:createRequest()
+		random_relocate_message.id = self.id
 
 		--Configure service caller to get energy of robot
-		energy_request_service = self.nodehandle:serviceClient('/energy_request', srvs.energy_request_spec)
+		energy_request_service = self.nodehandle:serviceClient('/energy_request', srvs.data_request_spec)
 		energy_request_message = energy_request_service:createRequest()
 		energy_request_message.id = self.id
+
+		--Configure service caller to get speed of robot
+		speed_request_service = self.nodehandle:serviceClient('/speed_request', srvs.data_request_spec)
+		speed_request_message = speed_request_service:createRequest()
+		speed_request_message.id = self.id
 
 		--Configure subscriber to check if command has been sent by buffer
 		self.command_sent_subscriber 
 				= self.nodehandle:subscribe("/commands_sent" .. self.id, msgs.bool_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
 		self.command_sent_subscriber:registerCallback(function(msg, header)
 			self.command_sent = msg.data
-		end)
-
-		--Configure subscriber to check if robot is breaking speed limit
-		self.speed_limit_subscriber 
-				= self.nodehandle:subscribe("/swarmbot" .. self.id .. "/speed_limit_indicator", msgs.bool_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
-		self.speed_limit_subscriber:registerCallback(function(msg, header)
-			self.breaking_speed_limit = msg.data
 		end)
 
 		--Configure sensors
@@ -151,11 +147,8 @@ function GazeboEnv:start()
 		end
 	end
 
-	--Signify end of episode
-	if self.id == 1 then
-		self.episode_end_publisher:publish(self.episode_end_message)
-	end
 	print('[Robot ' .. self.id .. ' finished episode with ' .. self.energy .. ' energy]')
+	random_relocate_request_service:call(energy_request_message)
 
 	--Return first observation
   return self.current_observation
@@ -182,16 +175,18 @@ function GazeboEnv:isValidationAgent()
 end
 
 function GazeboEnv:parse_action(action)
+	--self.current_speed = speed_request_service:call(speed_request_message).data
+
 	action_taken = torch.Tensor(2):zero()
-	if 		 action == 0 and not (self.breaking_speed_limit == 1) then
-		action_taken[1] = self.action_magnitude
+	if 		 action == 0 then
+		action_taken[1] = self.forward_speed
 		action_taken[2] = 0
 	elseif action == 1 then
-		action_taken[1] = 0
-		action_taken[2] = self.action_magnitude * self.turning_coefficient
+		action_taken[1] = 0--self.forward_speed
+		action_taken[2] = self.angular_speed
 	elseif action == 2 then
-		action_taken[1] = 0
-		action_taken[2] = -self.action_magnitude * self.turning_coefficient
+		action_taken[1] = 0--self.forward_speed
+		action_taken[2] = -self.angular_speed
 	end
 
 	return action_taken

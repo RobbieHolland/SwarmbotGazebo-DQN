@@ -1,0 +1,17 @@
+Parameters:
+  	th main.lua -threads $NUM_BOTS -zoom 4 -env async/SwarmbotGazebo-DQN/GazeboEnv -modelBody async/SwarmbotGazebo-DQN/SwarmbotModel -histLen 4 -async A3C -entropyBeta 0 -eta 0.0001 -bootstraps 0 -rewardClip 0 -hiddenSize 512 -doubleQ false -duel false -optimiser sharedRmsProp -steps 8000000 -valFreq 501 -valSteps 4000 -PALpha 0 "$@"
+
+Food: 2
+Bots: 2
+Time: ~26 hours
+
+Notes:
+Massive rework of reward allocation:
+	- Reward norm of speed
+	- Reward food
+Simplification of problem:
+	- No food
+Sensors:
+	- Added 180 degree range sensor of 60 samples at front, so it now has RGBD
+And tweaking of actions resulted in success for the first time! Robots learned a definite policy of turn left if near a wall, go forwards if near nothing.
+Next experiment changes actions so that a robot cannot turn on the spot so they will definitely get stuck on the wall - hopefully this will promote wall avoidance behaviour rather than crash correction behaviour.

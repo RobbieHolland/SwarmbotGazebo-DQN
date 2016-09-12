@@ -31,6 +31,15 @@ end
 --Calculates a new random position for the object within a square boundary
 function food.random_relocate(self, distance)
 	new_position = distance * (torch.rand(3) - 0.5)
+
+	--To avoid spawning inside walls
+	if torch.abs(new_position[1]) < 1 then
+		new_position[1] = new_position[1] + 2
+	end
+	if torch.abs(new_position[2]) < 1 then
+		new_position[2] = new_position[1] + 2
+	end
+
 	--Set spawn height to 1
 	new_position[3] = 1
 	self:relocate(new_position)

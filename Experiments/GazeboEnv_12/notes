@@ -1,0 +1,10 @@
+Parameters:
+  	th main.lua -threads $NUM_BOTS -zoom 4 -env async/SwarmbotGazebo-DQN/GazeboEnv -modelBody async/SwarmbotGazebo-DQN/SwarmbotModel -histLen 4 -async A3C -entropyBeta 0 -eta 0.0001 -bootstraps 0 -rewardClip 0 -hiddenSize 512 -doubleQ false -duel false -optimiser sharedRmsProp -steps 4000000 -valFreq 1000 -valSteps 8000 -PALpha 0 "$@"
+
+Food: 0
+Bots: 2
+Time: ~5 hours
+
+Notes:
+Attempting to evolve wall avoidance behaviour, didn't happen. Had added a small reward for choosing forwards to discourage just going in circles but after a while the only chosen command was forwards.
+Can't flat reward actions with no repercussions (like -200 crash etc..)

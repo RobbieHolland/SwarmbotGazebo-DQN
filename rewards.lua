@@ -30,6 +30,7 @@ arena_width = 16
 --setup ros node and spinner (processes queued send and receive topics)
 spinner = ros.AsyncSpinner()
 nodehandle = ros.NodeHandle()
+service_queue = ros.CallbackQueue()
 
 --Create food
 foods = {}
@@ -49,15 +50,21 @@ for i=0, number_of_bots do
 	swarmbots[i]:random_relocate(arena_width)
 end
 
---Setup subscriber for end of episode
-episode_end_subscriber = nodehandle:subscribe("/episode_end", msgs.bool_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
-episode_end_subscriber:registerCallback(function(msg, header)
-	for i=0, number_of_bots do
-		swarmbots[i]:random_relocate(arena_width)
-		ros.Duration(0.05):sleep()
-	end
-end)
+--Relocate service
+function random_relocate_service_handler(request, response, header)
+	swarmbots[request.id]:random_relocate(arena_width)
+  return true
+end
+server_energy = nodehandle:advertiseService('/random_relocate_request', srvs.data_request_spec, random_relocate_service_handler, service_queue)
 
+--Speed request service
+function speed_request_service_handler(request, response, header)
+	response.data = swarmbots[request.id].speed
+  return true
+end
+server_speed = nodehandle:advertiseService('/speed_request', srvs.data_request_spec, speed_request_service_handler, service_queue)
+
+--Calculates current energy of swarmbots[id]
 function calculate_energy(id)
 	while not updated do
 		ros.spinOnce()
@@ -74,13 +81,6 @@ function calculate_energy(id)
 
 	--Movement reward
 	swarmbots[id]:add_energy(swarmbots[id].speed)
-
-	--Crash penalty
-	if swarmbots[id].speed / swarmbots[id].previous_speed < 0.2 and swarmbots[id].previous_speed > swarmbots[id].speed_limit / 2 then
-		if i == 1 then
-			print('Crash')
-		end
-	end
 end
 
 --Energy service
@@ -89,8 +89,7 @@ function energy_service_handler(request, response, header)
 	response.data = swarmbots[request.id].energy
   return true
 end
-service_queue = ros.CallbackQueue()
-server = nodehandle:advertiseService('/energy_request', srvs.energy_request_spec, energy_service_handler, service_queue)
+server_relocate = nodehandle:advertiseService('/energy_request', srvs.data_request_spec, energy_service_handler, service_queue)
 
 function table_invert(t)
    local s={}
@@ -125,11 +124,8 @@ model_state_subscriber:registerCallback(function(msg, header)
 		swarmbots[i].position[2] = msg.pose[swarmbots[i].model_id].position.y
 		swarmbots[i].position[3] = msg.pose[swarmbots[i].model_id].position.z
 
-		--Flag if over speed limit
-		swarmbots[i].previous_speed = swarmbots[i].speed
+		--Calculate speed for reward
 		swarmbots[i].speed = swarmbots[i].velocity:norm()
-		swarmbots[i].speed_limit_message.data = swarmbots[i].speed > swarmbots[i].speed_limit
-		swarmbots[i].speed_limit_publisher:publish(swarmbots[i].speed_limit_message)
 	end
 
 	for i=1, number_of_food do
@@ -148,5 +144,7 @@ while ros.ok() do
   ros.spinOnce()
 end
 
-server:shutdown()
+server_energy:shutdown()
+server_relocate:shutdown()
+server_speed:shutdown()
 ros.shutdown()

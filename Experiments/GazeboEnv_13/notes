@@ -1,0 +1,12 @@
+Parameters:
+  	th main.lua -threads $NUM_BOTS -zoom 4 -env async/SwarmbotGazebo-DQN/GazeboEnv -modelBody async/SwarmbotGazebo-DQN/SwarmbotModel -histLen 4 -async A3C -entropyBeta 0 -eta 0.0001 -bootstraps 0 -rewardClip 0 -hiddenSize 512 -doubleQ false -duel false -optimiser sharedRmsProp -steps 4000000 -valFreq 1000 -valSteps 8000 -PALpha 0 "$@"
+
+Food: 0
+Bots: 2
+Time: ~19 hours
+Time: ~24 hours
+
+Notes:
+Went back to turning with target velocity 0. 
+Analysis of graph: Very quickly turning at wall develops and is drastic improvement. Once that becomes policy improvement still happens but much slower, no better strategy is found. Spike drops in score are likely when robot hits wall and rides up it slightly so one of the wheels is no longer in contact with the ground. Make the robot heavier?
+Perhaps it will learn to avoid riding up the wall.

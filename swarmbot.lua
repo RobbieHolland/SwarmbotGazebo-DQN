@@ -9,7 +9,6 @@ function swarmbot.create(id, nodehandle, x, y, z)
 	--Assign variables
 	sbot.id = id
 	sbot.model_id = 0
-	sbot.speed_limit = 1.25
 	sbot.energy = 0
 	sbot.nodehandle = nodehandle
 	sbot.position = torch.Tensor(3):zero()
@@ -21,13 +20,9 @@ function swarmbot.create(id, nodehandle, x, y, z)
 
 	--Publisher to publish position updates
 	sbot.relocation_publisher = sbot.nodehandle:advertise("/gazebo/set_model_state", msgs.model_state_spec, 100, false, connect_cb, disconnect_cb)
-	--Publisher to indicate if over speed limit
-	sbot.speed_limit_publisher
-		= sbot.nodehandle:advertise("/swarmbot" .. sbot.id .. "/speed_limit_indicator", msgs.bool_spec, 100, false, connect_cb, disconnect_cb)
 
 	--Create messages
 	sbot.relocation_message = ros.Message(msgs.model_state_spec)
-	sbot.speed_limit_message = ros.Message(msgs.bool_spec)
 
   return sbot
 end
