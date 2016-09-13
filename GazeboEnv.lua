@@ -201,7 +201,7 @@ end
 function GazeboEnv:step(action)
 	--Increment step counter
 	self.step_count = self.step_count + 1
-	terminal = false	
+	terminal = false
 
 	--Wait for Gazebo sensors to update (Ensures a meaningfull history)
 	while not (self.updated[1] and self.updated[2] and self.updated[3]) do

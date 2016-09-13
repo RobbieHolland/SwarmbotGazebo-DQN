@@ -15,6 +15,7 @@ msgs.model_state_spec = ros.MsgSpec('gazebo_msgs/ModelState')
 msgs.model_states_spec = ros.MsgSpec('gazebo_msgs/ModelStates')
 msgs.bool_spec = ros.MsgSpec('std_msgs/Bool')
 msgs.laser_spec = ros.MsgSpec('sensor_msgs/LaserScan')
+msgs.contacts_spec = ros.MsgSpec('gazebo_msgs/ContactsState')
 
 
 return msgs

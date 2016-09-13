@@ -11,7 +11,7 @@ require 'async/SwarmbotGazebo-DQN/swarmbot'
 
 --Flags
 initialised = false
-updated = false
+velocity_updated = false
 
 function connect_cb(name, topic)
   print("subscriber connected: " .. name .. " (topic: '" .. topic .. "')")
@@ -66,21 +66,18 @@ server_speed = nodehandle:advertiseService('/speed_request', srvs.data_request_s
 
 --Calculates current energy of swarmbots[id]
 function calculate_energy(id)
-	while not updated do
+	while not velocity_updated do
 		ros.spinOnce()
 	end
-	updated = false
-
-	--Food rewards
-	for j=1, number_of_food do
-		if (torch.abs(torch.dist(swarmbots[id].position, foods[j].position)) < eat_distance) then
-			foods[j]:random_relocate(arena_width)
-			swarmbots[id]:consume(foods[j])
-		end
-	end
+	velocity_updated = false
 
 	--Movement reward
 	swarmbots[id]:add_energy(swarmbots[id].speed)
+
+	while not swarmbots[id].collision_updated do
+		ros.spinOnce()
+	end
+	swarmbots[id].collision_updated = false
 end
 
 --Energy service
@@ -134,7 +131,7 @@ model_state_subscriber:registerCallback(function(msg, header)
 		foods[i].position[3] = msg.pose[foods[i].model_id].position.z
 	end
 
-	updated = true
+	velocity_updated = true
 end)
 
 while ros.ok() do
