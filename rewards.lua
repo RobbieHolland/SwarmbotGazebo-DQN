@@ -36,7 +36,7 @@ service_queue = ros.CallbackQueue()
 foods = {}
 for i=1, number_of_food do
 	--Create new food
-	foods[i] = food.create(i, nodehandle, 0, 0, 1, 100)
+	foods[i] = food.create(i, nodehandle, 0, 0, 1, 200)
 	ros.Duration(0.05):sleep()
 	foods[i]:random_relocate(arena_width)
 end

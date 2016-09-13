@@ -1,0 +1,11 @@
+Parameters:
+  	th main.lua -threads $NUM_BOTS -zoom 4 -env async/SwarmbotGazebo-DQN/GazeboEnv -modelBody async/SwarmbotGazebo-DQN/SwarmbotModel -histLen 4 -async A3C -entropyBeta 0 -eta 0.0001 -bootstraps 0 -rewardClip 0 -hiddenSize 512 -doubleQ false -duel false -optimiser sharedRmsProp -steps 800000 -valFreq 501 -valSteps 1600 -PALpha 0 "$@"
+
+Food: 0
+Bots: 2
+Time: ~22 hours
+
+Notes:
+Ran exact same setup as with GazeboEnv_13 - perhaps it would have worked if I left it long enough.
+However, robots could no longer just learn to turn when near things, as food gives reward. I did see evidence of turning while near things policy but it was taking time to develop.
+In _13 and _10 robots only turned when they were stationary on the wall, I saw no evidence of turning when approaching a wall which would have been a better strategy. To test this I have added 2 new commands - turn left move forward, turn right move forward (so 5 commands). Next experiment will be test of this.

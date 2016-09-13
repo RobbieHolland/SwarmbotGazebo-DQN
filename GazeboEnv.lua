@@ -53,7 +53,7 @@ end
 
 --4 actions required 0:[Both wheels forwards] 1:[Right Wheel forward only] 2:[Left wheel forward only] 3:[Both wheels backwards]
 function GazeboEnv:getActionSpec()
-  return {'int', 1, {0, 2}}
+  return {'int', 1, {0, 4}}
 end
 
 --Min and max reward - Apparently not used for A3C
@@ -182,10 +182,16 @@ function GazeboEnv:parse_action(action)
 		action_taken[1] = self.forward_speed
 		action_taken[2] = 0
 	elseif action == 1 then
-		action_taken[1] = 0--self.forward_speed
+		action_taken[1] = self.forward_speed
 		action_taken[2] = self.angular_speed
 	elseif action == 2 then
-		action_taken[1] = 0--self.forward_speed
+		action_taken[1] = self.forward_speed
+		action_taken[2] = -self.angular_speed
+	elseif action == 3 then
+		action_taken[1] = 0
+		action_taken[2] = self.angular_speed
+	elseif action == 4 then
+		action_taken[1] = 0
 		action_taken[2] = -self.angular_speed
 	end
 

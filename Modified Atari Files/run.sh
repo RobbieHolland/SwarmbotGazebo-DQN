@@ -77,7 +77,7 @@ elif [ "$PAPER" == "async-a3c" ]; then
 elif [ "$PAPER" == "demo-async-swarm" ]; then
 	#Parameters
 	BUFFER="1"
-	NUM_FOOD=2
+	NUM_FOOD=0
 	NUM_BOTS=$((2 - 1)) #[Number of bots including number of validation agents] - [Number of validation agents]
 	STAT_UPDATE_TIME=320
 	args=$NUM_FOOD
@@ -90,14 +90,14 @@ elif [ "$PAPER" == "demo-async-swarm" ]; then
 		setup_command="th async/SwarmbotGazebo-DQN/rewards.lua "
 		setup_command="$setup_command $args"
 		gnome-terminal -e "bash -c \"$setup_command ; exec bash\""
-	#Load the statistics program
-		base_command="th async/SwarmbotGazebo-DQN/statistics.lua "
-		agent_id=0
-		stats_command="$base_command $STAT_UPDATE_TIME $agent_id"
-		gnome-terminal -e "bash -c \"$stats_command ; exec bash\""
-		agent_id=1
-		stats_command="$base_command $STAT_UPDATE_TIME $agent_id"
-		gnome-terminal -e "bash -c \"$stats_command ; exec bash\""
+		#Load the statistics program
+		#	base_command="th async/SwarmbotGazebo-DQN/statistics.lua "
+		#	agent_id=0
+		#	stats_command="$base_command $STAT_UPDATE_TIME $agent_id"
+		#	gnome-terminal -e "bash -c \"$stats_command ; exec bash\""
+		#	agent_id=1
+		#	stats_command="$base_command $STAT_UPDATE_TIME $agent_id"
+		#	gnome-terminal -e "bash -c \"$stats_command ; exec bash\""
 	if [ "$BUFFER" == "1" ]
 	then #Load the command buffer
 		buffer_command="th async/SwarmbotGazebo-DQN/command_buffer.lua "
@@ -105,8 +105,8 @@ elif [ "$PAPER" == "demo-async-swarm" ]; then
 		gnome-terminal -e "bash -c \"$buffer_command ; exec bash\""
 	fi
 	#Run the Atari code
-  	th main.lua -threads $NUM_BOTS -zoom 4 -env async/SwarmbotGazebo-DQN/GazeboEnv -modelBody async/SwarmbotGazebo-DQN/SwarmbotModel -histLen 4 -async A3C -entropyBeta 0 -eta 0.0001 -bootstraps 0 -rewardClip 0 -hiddenSize 512 -doubleQ false -duel false -optimiser sharedRmsProp -steps 8000000 -valFreq 27000 -valSteps 4000 -PALpha 0 "$@"
-	#To load previous weights: -network experiments/GazeboEnv/<best or last>.weights.t7
+  	th main.lua -threads $NUM_BOTS -zoom 4 -env async/SwarmbotGazebo-DQN/GazeboEnv -modelBody async/SwarmbotGazebo-DQN/SwarmbotModel -histLen 4 -async A3C -entropyBeta 0 -eta 0.0001 -bootstraps 0 -rewardClip 0 -hiddenSize 512 -doubleQ false -duel false -optimiser sharedRmsProp -steps 4000000 -valFreq 1000 -valSteps 8000 -PALpha 0 "$@"
+	#To load previous weights: -network async/SwarmbotGazebo-DQN/Experiments/GazeboEnv_10-Worked/Weights/last.weights.t7
 
 # Examples
 elif [ "$PAPER" == "demo-grid" ]; then
