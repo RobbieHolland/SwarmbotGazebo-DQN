@@ -68,7 +68,7 @@ function GazeboEnv:start()
 		self.initialised = true
 		ros.Duration(4):sleep()
 		--Setup agent's ID (identical to ID of thread)
-		self.id = __threadid
+		self.id = __threadid or 0
 		self.model_name = 'swarmbot' .. self.id
 
 		--Configure robot control

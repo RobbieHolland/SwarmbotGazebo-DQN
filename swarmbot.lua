@@ -16,6 +16,7 @@ function swarmbot.create(id, nodehandle, x, y, z)
 	sbot.previous_speed = 1
 	sbot.velocity = torch.Tensor(3):zero()
 	sbot.model_name = 'swarmbot' .. sbot.id
+	sbot.orientation = 0
 	sbot.position_updated = false
 	sbot.collision_updated = false
 
@@ -86,8 +87,10 @@ function swarmbot.relocate(self, new_position, new_orientation)
 end
 
 function swarmbot:consume(food)
-	food:random_relocate(arena_width)
-	self:add_energy(food.value)
+	if food.edible then
+		food:random_relocate(arena_width)
+		self:add_energy(food.value)
+	end
 end
 
 function swarmbot:add_energy(value)

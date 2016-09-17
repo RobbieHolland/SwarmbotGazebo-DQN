@@ -1,0 +1,9 @@
+Parameters:
+  	th main.lua -threads $NUM_BOTS -zoom 4 -env async/SwarmbotGazebo-DQN/GazeboEnv -modelBody async/SwarmbotGazebo-DQN/SwarmbotModel -histLen 4 -async A3C -entropyBeta 0 -eta 0.0001 -bootstraps 0 -rewardClip 0 -hiddenSize 512 -doubleQ false -duel false -optimiser sharedRmsProp -steps 2250000 -valFreq 1500 -valSteps 3000 -PALpha 0 "$@"
+
+Food: 60
+Bots: 2
+Time: ~?? hours
+
+Notes:
+Got really excited about increase in score. Have realised that it is likely due to fact that simulation has slowed down so has more time per episode...

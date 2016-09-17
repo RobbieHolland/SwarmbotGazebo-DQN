@@ -1,0 +1,9 @@
+Parameters:
+  	th main.lua -threads $NUM_BOTS -zoom 4 -env async/SwarmbotGazebo-DQN/GazeboEnv -modelBody async/SwarmbotGazebo-DQN/SwarmbotModel -histLen 4 -async A3C -entropyBeta 0 -eta 0.0001 -bootstraps 0 -rewardClip 0 -hiddenSize 512 -doubleQ false -duel false -optimiser sharedRmsProp -steps 800000 -valFreq 501 -valSteps 1600 -PALpha 0 "$@"
+
+Food: 0
+Bots: 2
+Time: ~24 hours
+
+Notes:
+Tested 5 commands, so took slightly longer to find first solution (3000). From there on proceeded to increase slowly until drop at end (?). No massive improvement due to more available actions.

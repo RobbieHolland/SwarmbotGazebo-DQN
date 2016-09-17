@@ -1,0 +1,10 @@
+Parameters:
+  	th main.lua -threads $NUM_BOTS -zoom 4 -env async/SwarmbotGazebo-DQN/GazeboEnv -modelBody async/SwarmbotGazebo-DQN/SwarmbotModel -histLen 4 -async A3C -entropyBeta 0 -eta 0.0001 -bootstraps 0 -rewardClip 0 -hiddenSize 512 -doubleQ false -duel false -optimiser sharedRmsProp -steps 700000 -valFreq 501 -valSteps 1000 -PALpha 0 "$@"
+
+Food: 0
+Bots: 2
+Time: ~34 hours
+
+Notes:
+5 commands with no walls, two robots and food that surrounds them as they move. Didn't get a chance to check their behaviour and still unsure why low scores are acheived.
+Going to run the same setup but for 3x as long, going to further lower weight of food, going to add mouth part to robot.

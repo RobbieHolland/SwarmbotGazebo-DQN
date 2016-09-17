@@ -1,0 +1,10 @@
+Parameters:
+	th main.lua -zoom 4 -async A3C -entropyBeta 0.001 -eta 0.0007 -momentum 0.99 -bootstraps 0 -rewardclip 0 -batchSize 5 -hiddenSize 32 -doubleQ false -duel false -optimiser adam -steps 15000000 -tau 4 -memSize 20000 -epsilonSteps 10000 -valFreq 10000 -valSteps 6000 -bootstraps 0 -PALpha 0 "$@"
+
+Food: 60
+Bots: 2
+Time: ~?? hours
+
+Notes:
+Computer wasn't logged in when I returned, but there was a big lightning storm the night before. Need to find way to continue learning where I started.
+Scores were looking good.
