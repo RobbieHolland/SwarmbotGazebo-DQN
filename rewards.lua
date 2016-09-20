@@ -38,7 +38,7 @@ service_queue = ros.CallbackQueue()
 foods = {}
 for i=1, number_of_food do
 	--Create new food
-	foods[i] = food.create(i, nodehandle, 0, 0, 1, 200)
+	foods[i] = food.create(i, nodehandle, 0, 0, 1, 1)
 	ros.Duration(0.05):sleep()
 	foods[i]:random_relocate(arena_width)
 end
@@ -68,13 +68,16 @@ server_speed = nodehandle:advertiseService('/speed_request', srvs.data_request_s
 
 --Calculates current energy of swarmbots[id]
 function calculate_energy(id)
+	--[[
 	while not velocity_updated do
 		ros.spinOnce()
 	end
 	velocity_updated = false
+	
 
 	--Movement reward
 	swarmbots[id]:add_energy(swarmbots[id].speed)
+	--]]
 
 	while not swarmbots[id].collision_updated do
 		ros.spinOnce()
@@ -98,12 +101,14 @@ function table_invert(t)
    return s
 end
 
+model_states_initialised = false
 --Updates velocities of models
-model_state_subscriber = nodehandle:subscribe("/gazebo/model_states", msgs.model_states_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
+model_state_subscriber = nodehandle:subscribe("/throttled_model_states", msgs.model_states_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
 model_state_subscriber:registerCallback(function(msg, header)
-	if not initialised then
-		index_lookup = table_invert(msg.name)
 
+	if not model_states_initialised then
+		index_lookup = table_invert(msg.name)
+		print('ho')
 		for i=0, number_of_bots do
 			swarmbots[i].model_id = index_lookup[swarmbots[i].model_name]
 		end
@@ -112,7 +117,7 @@ model_state_subscriber:registerCallback(function(msg, header)
 			foods[i].model_id = index_lookup[foods[i].model_name]
 		end
 	end
-	initialised = true
+	model_states_initialised = true
 
 	for i=0, number_of_bots do
 		swarmbots[i].velocity[1] = msg.twist[swarmbots[i].model_id].values.linear.x
@@ -125,7 +130,7 @@ model_state_subscriber:registerCallback(function(msg, header)
 		swarmbots[i].orientation = msg.pose[swarmbots[i].model_id].orientation.z
 
 		--Calculate speed for reward
-		swarmbots[i].speed = swarmbots[i].velocity:norm()
+		--swarmbots[i].speed = swarmbots[i].velocity:norm()
 	end
 
 	for i=1, number_of_food do
@@ -136,6 +141,7 @@ model_state_subscriber:registerCallback(function(msg, header)
 
 	velocity_updated = true
 end)
+
 
 if 		 mode == 0 then --Normal mode
 	while ros.ok() do

@@ -21,6 +21,7 @@ function GazeboEnv:_init(opts)
   opts = opts or {}
 
   --Constants
+	self.episode_time = 180
 	self.old_energy = 0
 	self.arena_width = 15
 	self.number_colour_channels = 3
@@ -28,19 +29,19 @@ function GazeboEnv:_init(opts)
 	self.laser_scan_range = 4
 	self.number_of_cameras = 2
 	self.camera_size = 30
-	self.min_reward = -5
-	self.max_reward = 2000
+	self.min_reward = 0
+	self.max_reward = 3
 	self.energy = 0
 	self.forward_speed = 1.25
 	self.angular_speed = 0.65
 	self.command_message = ros.Message(msgs.twist_spec)
 	self.current_observation = torch.Tensor(self.number_channels, self.camera_size, self.number_of_cameras):zero()
-	self.frequency = opts.threads
 	self.step_count = 0
 	self.number_steps_in_episode = opts.valSteps --assuming 150 step/s for 180 seconds
 	self.updated = {false, false, false}
 	self.initialised = false
-	self.command_sent = false	
+	self.command_sent = false
+	self.current_time = 0
 
 	--Setup ros node and spinner (processes queued send and receive topics)
 	self.nodehandle = ros.NodeHandle()
@@ -66,6 +67,7 @@ function GazeboEnv:start()
 
 	if not self.initialised then
 		self.initialised = true
+		--Wait for services to be setup or crash
 		ros.Duration(4):sleep()
 		--Setup agent's ID (identical to ID of thread)
 		self.id = __threadid or 0
@@ -78,6 +80,12 @@ function GazeboEnv:start()
 			self.command_publisher 
 				= self.nodehandle:advertise("/swarmbot" .. self.id .. "/cmd_vel", msgs.twist_spec, 100, false, connect_cb, disconnect_cb)
 		end
+
+		--Setup timer for epoch terminal timing
+		self.clock_subscriber = self.nodehandle:subscribe("/clock", msgs.clock_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
+		self.clock_subscriber:registerCallback(function(msg, header)
+			self.current_time = msg.clock:toSec()
+		end)
 
 		--Configure service caller to relocate at end of episode
 		random_relocate_request_service = self.nodehandle:serviceClient('/random_relocate_request', srvs.data_request_spec)
@@ -149,6 +157,7 @@ function GazeboEnv:start()
 
 	print('[Robot ' .. self.id .. ' finished episode with ' .. self.energy .. ' energy]')
 	random_relocate_request_service:call(energy_request_message)
+	self.start_time = self.current_time
 
 	--Return first observation
   return self.current_observation
@@ -217,10 +226,7 @@ function GazeboEnv:step(action)
 	self.command_message.angular.z = action_taken[2];
 
 	--Check if end of episode
-	if self.step_count >= self.number_steps_in_episode then
-		terminal = true
-		self.step_count = 0
-	end
+	terminal = self.current_time - self.start_time > self.episode_time
 
 	--Wait for command buffer to send command
 	while not self.command_sent do
