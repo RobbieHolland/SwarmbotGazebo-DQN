@@ -41,6 +41,7 @@ function GazeboEnv:_init(opts)
 	self.updated = {false, false, false}
 	self.initialised = false
 	self.command_sent = false	
+	self.time_stepped = false
 
 	--Setup ros node and spinner (processes queued send and receive topics)
 	self.nodehandle = ros.NodeHandle()
@@ -99,6 +100,13 @@ function GazeboEnv:start()
 				= self.nodehandle:subscribe("/commands_sent" .. self.id, msgs.bool_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
 		self.command_sent_subscriber:registerCallback(function(msg, header)
 			self.command_sent = msg.data
+		end)
+
+		--Configure subscriber to check if reward time is finished
+		self.command_sent_subscriber 
+				= self.nodehandle:subscribe("/time_stepped" .. self.id, msgs.bool_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
+		self.command_sent_subscriber:registerCallback(function(msg, header)
+			self.time_stepped = msg.data
 		end)
 
 		--Configure sensors
@@ -204,12 +212,14 @@ function GazeboEnv:step(action)
 	terminal = false
 
 	--Wait for Gazebo sensors to update (Ensures a meaningfull history)
+	--[[
 	while not (self.updated[1] and self.updated[2] and self.updated[3]) do
 		ros.spinOnce()
 	end
 	self.updated[1] = false
 	self.updated[2] = false
 	self.updated[3] = false
+	--]]
 
 	--Parse action given by DQN
 	action_taken = self:parse_action(action)
@@ -228,6 +238,12 @@ function GazeboEnv:step(action)
 		ros.spinOnce()
 	end
 	self.command_sent = false
+
+	--Wait for time step for reward
+	while not self.time_stepped do
+		ros.spinOnce()
+	end
+	self.time_stepped = false
 
 	--Calculate reward as result of action
 	self.old_energy = self.energy

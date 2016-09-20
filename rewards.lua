@@ -68,18 +68,22 @@ server_speed = nodehandle:advertiseService('/speed_request', srvs.data_request_s
 
 --Calculates current energy of swarmbots[id]
 function calculate_energy(id)
+	--[[
 	while not velocity_updated do
 		ros.spinOnce()
 	end
 	velocity_updated = false
+	--]]
 
 	--Movement reward
 	swarmbots[id]:add_energy(swarmbots[id].speed)
 
+	--[[
 	while not swarmbots[id].collision_updated do
 		ros.spinOnce()
 	end
 	swarmbots[id].collision_updated = false
+	--]]
 end
 
 --Energy service
