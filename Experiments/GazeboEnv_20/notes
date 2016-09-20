@@ -1,0 +1,12 @@
+Parameters:
+  	th main.lua -threads $NUM_BOTS -zoom 4 -env async/SwarmbotGazebo-DQN/GazeboEnv -modelBody async/SwarmbotGazebo-DQN/SwarmbotModel -histLen 4 -async A3C -entropyBeta 0 -eta 0.0001 -bootstraps 0 -rewardClip 0 -hiddenSize 512 -doubleQ false -duel false -optimiser sharedRmsProp -steps 1750000 -valFreq 501 -valSteps 2955 -PALpha 0 "$@"
+
+	REWARD_TIME=0.1
+
+Food: 0
+Bots: 2
+Time: ~22 hours
+
+Notes:
+Though new cycle system worked exactly the same as with the walls problem, it behaved very strangely on the food problem. It looked at the start as though it were getting better only then to converge on only using forward-right command. Even swarmbot1 which should be making some random actions occasionally chose exclusively forward-right and the sim was only 30% done.
+Perhaps it was because the history was not perfect.
