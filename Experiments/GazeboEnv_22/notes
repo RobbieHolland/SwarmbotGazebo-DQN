@@ -1,0 +1,10 @@
+Parameters:
+  	th main.lua -threads $NUM_BOTS -zoom 4 -env async/SwarmbotGazebo-DQN/GazeboEnv -modelBody async/SwarmbotGazebo-DQN/SwarmbotModel -histLen 4 -async A3C -entropyBeta 0 -eta 0.0001 -bootstraps 0 -rewardClip 0 -hiddenSize 512 -doubleQ false -duel false -optimiser sharedRmsProp -steps 6000000 -valFreq 1000 -valSteps 12000 -PALpha 0 "$@"
+
+Food: 60
+Bots: 2
+Time: ~28 hours
+
+Notes:
+Back to continuous since perfect history is more important than consistent reward allocation/time. Have removed speed reward since this would mess up scoring and will be pointless when I remove the 'left' and 'right' commands.
+Sparse rewards led to no improvement.

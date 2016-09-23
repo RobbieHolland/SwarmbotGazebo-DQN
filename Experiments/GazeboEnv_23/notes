@@ -1,0 +1,16 @@
+Parameters:
+  	th main.lua -threads $NUM_BOTS -zoom 4 -env async/SwarmbotGazebo-DQN/GazeboEnv -modelBody async/SwarmbotGazebo-DQN/SwarmbotModel -histLen 4 -async A3C -entropyBeta 0 -eta 0.0001 -bootstraps 0 -rewardClip 0 -hiddenSize 512 -doubleQ false -duel false -optimiser sharedRmsProp -steps 6000000 -valFreq 1000 -valSteps 12000 -PALpha 0 "$@"
+
+Food: 60
+Bots: 2
+Time: ~48 hours
+
+Notes:
+Reduced sensor range to 2 and ran for longer with no improvement.
+Going to try:
+1. Check timestamps of sensors
+2. Add reward for how green the pixels are
+3. Only use one camera with a 90 degree fov
+4. Remove the 'right' and 'left' commands so only 'forward', 'forward-right' and 'forward-left' remain
+5. Spawn food infront of the robot? Will be a pain to implement
+6. Try with SpatialConvolution on Kai's PC, and with just linear on my PC

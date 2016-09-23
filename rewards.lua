@@ -23,7 +23,7 @@ end
 
 --Constants
 eat_distance = 0.4
-sensor_range = 4
+sensor_range = 2
 number_of_food = arg[1]
 number_of_bots = arg[2]
 mode = tonumber(arg[3])
@@ -156,7 +156,7 @@ if 		 mode == 0 then --Normal mode
 		ros.spinOnce()
 	end
 elseif mode == 1 then --Training mode
-	training_range = 6
+	training_range = 4.5
 
 	while ros.ok() do
 		if not service_queue:isEmpty() then

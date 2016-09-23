@@ -1,0 +1,12 @@
+Parameters:
+  	th main.lua -threads $NUM_BOTS -zoom 4 -env async/SwarmbotGazebo-DQN/GazeboEnv -modelBody async/SwarmbotGazebo-DQN/SwarmbotModel -histLen 4 -async A3C -entropyBeta 0 -eta 0.0001 -bootstraps 0 -rewardClip 0 -hiddenSize 512 -doubleQ false -duel false -optimiser sharedRmsProp -steps 600000 -valFreq 501 -valSteps 1000 -PALpha 0 "$@"
+
+	REWARD_TIME=0.3
+
+Food: 60
+Bots: 2
+Time: ~22 hours
+
+Notes:
+Very similar to _20, consulted with Anil and Kai and updated sensors are essential. This run saw more updated sensors than _20 which is why it did slightly better but they ultimately ended in the same way.
+For next experiment will be fixing episode time, removing speed reward and have throttled /gazebo/model_states which was causing a massive drop in speed.

@@ -26,7 +26,7 @@ function GazeboEnv:_init(opts)
 	self.arena_width = 15
 	self.number_colour_channels = 3
 	self.number_channels = 4
-	self.laser_scan_range = 4
+	self.laser_scan_range = 2
 	self.number_of_cameras = 2
 	self.camera_size = 30
 	self.min_reward = 0
@@ -42,6 +42,7 @@ function GazeboEnv:_init(opts)
 	self.initialised = false
 	self.command_sent = false
 	self.current_time = 0
+	self.latest_sensor_updates = {0, 0, 0}
 
 	--Setup ros node and spinner (processes queued send and receive topics)
 	self.nodehandle = ros.NodeHandle()
@@ -122,6 +123,7 @@ function GazeboEnv:start()
 					--Is there a way for torch.reshape to return a DoubleTensor?
 					sensor_input = (1/255) * sensor_input:double()
 					self.updated[i] = true
+					self.latest_sensor_updates[i] = os.clock()
 
 					--Colour channels
 					for c=1, self.number_colour_channels do
@@ -147,6 +149,7 @@ function GazeboEnv:start()
 				end
 
 				self.updated[3] = true
+				self.latest_sensor_updates[3] = os.clock()
 			end)
 
 		if not ros.isStarted() then
@@ -220,6 +223,10 @@ function GazeboEnv:step(action)
 	self.updated[2] = false
 	self.updated[3] = false
 
+	if self.id == 1 then
+	print('Sensor updates - 1: ' .. self.latest_sensor_updates[1] .. ', 2: ' .. self.latest_sensor_updates[2] .. ', 3: ' .. self.latest_sensor_updates[3])
+	end
+
 	--Parse action given by DQN
 	action_taken = self:parse_action(action)
 	self.command_message.linear.x = action_taken[1];
@@ -234,6 +241,10 @@ function GazeboEnv:step(action)
 		ros.spinOnce()
 	end
 	self.command_sent = false
+
+	if self.id == 1 then
+	print('Command was sent at: ' .. os.clock())
+	end
 
 	--Calculate reward as result of action
 	self.old_energy = self.energy
