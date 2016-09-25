@@ -4,6 +4,7 @@ ros.init('GazeboDQN_Env')
 local classic = require 'classic'
 msgs = require 'async/SwarmbotGazebo-DQN/msgs'
 srvs = require 'async/SwarmbotGazebo-DQN/srvs'
+util = require 'async/SwarmbotGazebo-DQN/util'
 local GazeboEnv, super = classic.class('GazeboEnv', Env)
 
 function connect_cb(name, topic)
@@ -20,29 +21,31 @@ function GazeboEnv:_init(opts)
 
   opts = opts or {}
 
-  --Constants
-	self.episode_time = 180
+  --Constants and variables
+	self.episode_time = 300
 	self.old_energy = 0
-	self.arena_width = 15
+	self.arena_width = 16
 	self.number_colour_channels = 3
 	self.number_channels = 4
 	self.laser_scan_range = 2
-	self.number_of_cameras = 2
+	self.number_of_cameras = 1
 	self.camera_size = 30
 	self.min_reward = 0
 	self.max_reward = 3
 	self.energy = 0
-	self.forward_speed = 1.25
-	self.angular_speed = 0.65
+	self.forward_speed = 0.5
+	self.angular_speed = 0.75
 	self.command_message = ros.Message(msgs.twist_spec)
 	self.current_observation = torch.Tensor(self.number_channels, self.camera_size, self.number_of_cameras):zero()
 	self.step_count = 0
 	self.number_steps_in_episode = opts.valSteps --assuming 150 step/s for 180 seconds
+	self.number_of_sensors = 2
 	self.updated = {false, false, false}
 	self.initialised = false
 	self.command_sent = false
 	self.current_time = 0
 	self.latest_sensor_updates = {0, 0, 0}
+	self.scan_sensor_index = 2
 
 	--Setup ros node and spinner (processes queued send and receive topics)
 	self.nodehandle = ros.NodeHandle()
@@ -55,7 +58,7 @@ end
 
 --4 actions required 0:[Both wheels forwards] 1:[Right Wheel forward only] 2:[Left wheel forward only] 3:[Both wheels backwards]
 function GazeboEnv:getActionSpec()
-  return {'int', 1, {0, 4}}
+  return {'int', 1, {0, 2}}
 end
 
 --Min and max reward - Apparently not used for A3C
@@ -148,8 +151,8 @@ function GazeboEnv:start()
 					count = count + 1
 				end
 
-				self.updated[3] = true
-				self.latest_sensor_updates[3] = os.clock()
+				self.updated[self.scan_sensor_index] = true
+				self.latest_sensor_updates[self.scan_sensor_index] = os.clock()
 			end)
 
 		if not ros.isStarted() then
@@ -164,22 +167,6 @@ function GazeboEnv:start()
 
 	--Return first observation
   return self.current_observation
-end
-
-function GazeboEnv:random_relocate(distance)
-	new_position = distance * (torch.rand(3) - 0.5)
-	new_position[3] = 0
-	self:relocate(new_position)
-end
-
-function GazeboEnv:relocate(new_position)
-	m = self.relocation_message
-	m.model_name = self.model_name
-	m.pose.position.x = new_position[1]
-	m.pose.position.y = new_position[2]
-	m.pose.position.z = new_position[3]
-
-	self.relocation_publisher:publish(m)
 end
 
 function GazeboEnv:isValidationAgent()
@@ -199,6 +186,8 @@ function GazeboEnv:parse_action(action)
 	elseif action == 2 then
 		action_taken[1] = self.forward_speed
 		action_taken[2] = -self.angular_speed
+	end
+	--[[
 	elseif action == 3 then
 		action_taken[1] = 0
 		action_taken[2] = self.angular_speed
@@ -206,7 +195,7 @@ function GazeboEnv:parse_action(action)
 		action_taken[1] = 0
 		action_taken[2] = -self.angular_speed
 	end
-
+	--]]
 	return action_taken
 end
 
@@ -216,16 +205,18 @@ function GazeboEnv:step(action)
 	terminal = false
 
 	--Wait for Gazebo sensors to update (Ensures a meaningfull history)
-	while not (self.updated[1] and self.updated[2] and self.updated[3]) do
+	while not util.check_received(self.updated, self.number_of_sensors) do
 		ros.spinOnce()
 	end
-	self.updated[1] = false
-	self.updated[2] = false
-	self.updated[3] = false
-
-	if self.id == 1 then
-	print('Sensor updates - 1: ' .. self.latest_sensor_updates[1] .. ', 2: ' .. self.latest_sensor_updates[2] .. ', 3: ' .. self.latest_sensor_updates[3])
+	for i=1, self.number_of_sensors do
+		self.updated[i] = false
 	end
+
+	--[[
+	if self.id == 1 then
+		print('Sensor updates - 1: ' .. self.latest_sensor_updates[1] .. ', 2: ' .. self.latest_sensor_updates[2] .. ', 3: ' .. self.latest_sensor_updates[3])
+	end
+	--]]
 
 	--Parse action given by DQN
 	action_taken = self:parse_action(action)
@@ -242,15 +233,20 @@ function GazeboEnv:step(action)
 	end
 	self.command_sent = false
 
+	ros.Duration(0.01):sleep()
+	--[[
 	if self.id == 1 then
-	print('Command was sent at: ' .. os.clock())
+		print('Command was sent at: ' .. os.clock())
 	end
+	-]]
 
 	--Calculate reward as result of action
 	self.old_energy = self.energy
 	response = energy_request_service:call(energy_request_message)
 	self.energy = response.data
 	reward = self.energy - self.old_energy
+		--Add green pixel reward
+		reward = reward + self.current_observation[2]:sum() / self.camera_size
 
   return reward, self.current_observation, terminal
 end

@@ -1,0 +1,71 @@
+{------------Tests with 1 camera, 1 laser, green pixel reward------------}
+
+Action code
+a: Turn Right
+b: Turn Left
+c: Forward
+
+When there was no food
+a: 152, b: 35, c: 8
+a: 205, b: 48, c: 42
+
+When food was placed to right of Robot1
+a: 42, b: 8, c: 3	
+a: 78, b: 2, c: 4	
+a: 69, b: 6, c: 3
+a: 1968, b: 103, c: 2	
+
+When food was placed to left of Robot1
+a: 45, b: 25, c: 13	
+a: 13, b: 15, c: 8	
+a: 13, b: 13, c: 7
+a: 79, b: 91, c: 27	
+a: 30, b: 25, c: 11
+a: 18, b: 18, c: 2
+a: 1062, b: 1178, c: 1004
+
+Number of actions taken by robots in time interval of x secondsd
+Validation Agent: 34047
+Robot1: 1004	
+
+{------------TimeStamp Samples with 2 cameras, 1 laser-------------}
+Sensor updates - 1: 9.937598, 2: 9.935853, 3: 9.940095
+Command was sent at: 9.945118
+Sensor updates - 1: 9.941823, 2: 9.94436, 3: 9.945098
+Command was sent at: 9.96015
+Sensor updates - 1: 9.958743, 2: 9.95831, 3: 9.960125
+Command was sent at: 9.973255
+Sensor updates - 1: 9.967864, 2: 9.967057, 3: 9.973165
+Command was sent at: 9.984722
+Sensor updates - 1: 9.982535, 2: 9.982073, 3: 9.984676
+Command was sent at: 9.994752
+Sensor updates - 1: 9.99366, 2: 9.993386, 3: 9.994656
+Command was sent at: 9.997768
+Sensor updates - 1: 9.99717, 2: 10.000712, 3: 10.001382
+Command was sent at: 10.001484
+Sensor updates - 1: 10.016963, 2: 10.017268, 3: 10.015062
+Command was sent at: 10.01968
+Sensor updates - 1: 10.023137, 2: 10.022793, 3: 10.019634
+Command was sent at: 10.023362
+Sensor updates - 1: 10.026667, 2: 10.025816, 3: 10.028317
+Command was sent at: 10.028927
+Sensor updates - 1: 10.043923, 2: 10.042713, 3: 10.047838
+Command was sent at: 10.048035
+Sensor updates - 1: 10.059233, 2: 10.056966, 3: 10.061145
+Command was sent at: 10.063778
+Sensor updates - 1: 10.080207, 2: 10.078223, 3: 10.08759
+Command was sent at: 10.087697
+Sensor updates - 1: 10.092217, 2: 10.094157, 3: 10.092929
+Command was sent at: 10.095643
+Sensor updates - 1: 10.111191, 2: 10.109203, 3: 10.120198
+Command was sent at: 10.120629
+Sensor updates - 1: 10.129779, 2: 10.12954, 3: 10.131275
+Command was sent at: 10.132519
+Sensor updates - 1: 10.135104, 2: 10.145019, 3: 10.145755
+Command was sent at: 10.145797
+Sensor updates - 1: 10.15366, 2: 10.151956, 3: 10.15654
+Command was sent at: 10.160393
+Sensor updates - 1: 10.159831, 2: 10.158468, 3: 10.16033
+Command was sent at: 10.165093
+Sensor updates - 1: 10.164029, 2: 10.163822, 3: 10.164961
+Command was sent at: 10.174872

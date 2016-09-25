@@ -12,7 +12,7 @@ function Body:_init(opts)
   self.stateSpec = opts.stateSpec
 	self.hiddenSize = opts.hiddenSize
 	self.number_of_channels_used = 4
-	self.number_of_cameras = 2
+	self.number_of_cameras = 1
 	self.pixels_per_camera = 30
 
 end

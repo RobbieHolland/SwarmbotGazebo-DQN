@@ -1,5 +1,5 @@
 ros = require 'ros'
-ros.init('GazeboDQN_d')
+ros.init('GazeboDQN_de')
 
 
 require 'torch'
@@ -40,18 +40,32 @@ end
 spinner = ros.AsyncSpinner()
 nodehandle = ros.NodeHandle()
 
---Updates velocities of models
-model_state_subscriber = nodehandle:subscribe("/gazebo/model_states", msgs.model_states_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
-model_state_subscriber:registerCallback(function(msg, header)
-	velocity = torch.Tensor(3):zero()
+a = 0
+b = 0
+c = 0
+d = 0
+e = 0
+updated = false
 
-	velocity[1] = msg.twist[4].values.angular.x
-	velocity[2] = msg.twist[4].values.angular.y
-	velocity[3] = msg.twist[4].values.angular.z
-
-	print(velocity)
+model_estate_subscriber = nodehandle:subscribe("/swarmbot1/cmd_vel", msgs.twist_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
+model_estate_subscriber:registerCallback(function(msg, header)
+	if msg.angular.z > 0 then
+		a = a + 1
+	end
+	if msg.angular.z < 0 then
+		b = b + 1
+	end
+	if msg.angular.z == 0 then
+		c = c + 1
+	end
+	d = d + 1
+updated = true
 end)
 
 while not ros.isShuttingDown() do
 	ros.spinOnce()
+	if updated then
+	print('a: ' .. a .. ', b: ' .. b .. ', c: ' .. c)
+	end
+	updated = false
 end

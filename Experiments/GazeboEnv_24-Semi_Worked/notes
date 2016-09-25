@@ -1,0 +1,20 @@
+Parameters:
+  	th main.lua -threads $NUM_BOTS -zoom 4 -env async/SwarmbotGazebo-DQN/GazeboEnv -modelBody async/SwarmbotGazebo-DQN/SwarmbotModel -histLen 4 -async A3C -entropyBeta 0 -eta 0.0001 -bootstraps 0 -rewardClip 0 -hiddenSize 512 -doubleQ false -duel false -optimiser sharedRmsProp -steps 6000000 -valFreq 1000 -valSteps 12000 -PALpha 0 "$@"
+
+Food: 40
+Bots: 2
+Time: ~27 hours
+
+Notes:
+Small improvement at start, followed by no obvious improvement.
+Changes described in previous run were made.
+However ran some tests by placing blocks in different areas of it's vision and discovered that it had learned a very promising policy (check test_results). However there was still a very strong bias towards going right so circles occurred.
+If I removed the bias and gave the robots better control this learned policy would work nicely.
+
+Problem 1: Environment
+Circles is not a terrible strategy as the food is distributed in a circle area around the robot.
+Possible solution: Make the food worth 1 second of full green camera (so number of steps per second) - otherwise eating the food might actually reduce the reward. Perhaps make the food more sparse so that the circle strategy is less effective (it has to be more precise in its movements).
+
+Problem 2: Robot Control
+Even if a robot wants to turn left I'm not sure it can overcome current velocity fast enough.
+Possible solution: Make the robots go slower so that they have much smaller turning circles

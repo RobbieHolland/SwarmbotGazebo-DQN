@@ -38,7 +38,7 @@ service_queue = ros.CallbackQueue()
 foods = {}
 for i=1, number_of_food do
 	--Create new food
-	foods[i] = food.create(i, nodehandle, 0, 0, 1, 1)
+	foods[i] = food.create(i, nodehandle, 0, 0, 1, 50)
 	ros.Duration(0.05):sleep()
 	foods[i]:random_relocate(arena_width)
 end
@@ -57,7 +57,7 @@ function random_relocate_service_handler(request, response, header)
 	swarmbots[request.id]:random_relocate(arena_width)
   return true
 end
-server_energy = nodehandle:advertiseService('/random_relocate_request', srvs.data_request_spec, random_relocate_service_handler, service_queue)
+server_relocate = nodehandle:advertiseService('/random_relocate_request', srvs.data_request_spec, random_relocate_service_handler, service_queue)
 
 --Speed request service
 function speed_request_service_handler(request, response, header)
@@ -91,7 +91,7 @@ function energy_service_handler(request, response, header)
 	response.data = swarmbots[request.id].energy
   return true
 end
-server_relocate = nodehandle:advertiseService('/energy_request', srvs.data_request_spec, energy_service_handler, service_queue)
+server_energy = nodehandle:advertiseService('/energy_request', srvs.data_request_spec, energy_service_handler, service_queue)
 
 function table_invert(t)
    local s={}
@@ -108,7 +108,6 @@ model_state_subscriber:registerCallback(function(msg, header)
 
 	if not model_states_initialised then
 		index_lookup = table_invert(msg.name)
-		print('ho')
 		for i=0, number_of_bots do
 			swarmbots[i].model_id = index_lookup[swarmbots[i].model_name]
 		end

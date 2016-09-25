@@ -2,6 +2,7 @@
 ros = require 'ros'
 ros.init('command_buffer')
 msgs = require 'async/SwarmbotGazebo-DQN/msgs'
+util = require 'async/SwarmbotGazebo-DQN/util'
 resp_ready = false
 
 function connect_cb(name, topic)
@@ -49,18 +50,9 @@ for i=0, number_of_bots do
 end
 
 
-function check_received(bots_received)
-	for i=1, number_of_bots do
-		if not bots_received[i] then
-			return false
-		end
-	end
-	return true
-end
-
 while not ros.isShuttingDown() do
 	--Keep spinning until all messages have been received
-	while not check_received(bots_received) do
+	while not util.check_received(bots_received, number_of_bots) do
 		--Check again
 		ros.spinOnce()
 		commands_sent_msg.data = false

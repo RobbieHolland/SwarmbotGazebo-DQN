@@ -74,8 +74,8 @@ end
 function swarmbot.relocate(self, new_position, new_orientation)
 	m = self.relocation_message
 	m.model_name = self.model_name
-	m.pose.position.x = new_position[1]
-	m.pose.position.y = new_position[2]
+	m.pose.position.x = math.pow(-1, self.id) * 10--new_position[1]
+	m.pose.position.y = math.pow(-1, self.id) * 10--new_position[2]
 	m.pose.position.z = new_position[3]
 
 	--Only randomly rotate on z axis (but with Quaternions)
