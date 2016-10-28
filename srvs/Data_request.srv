@@ -1,5 +1,0 @@
-int8 id
----
-bool success   # indicate successful run of triggered service
-float32 data # informational, e.g. for error messages
-

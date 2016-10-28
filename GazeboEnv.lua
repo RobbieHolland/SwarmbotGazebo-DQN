@@ -34,7 +34,7 @@ function GazeboEnv:_init(opts)
 	self.max_reward = 3
 	self.energy = 0
 	self.forward_speed = 0.5
-	self.angular_speed = 0.75
+	self.angular_speed = 0.6
 	self.command_message = ros.Message(msgs.twist_spec)
 	self.current_observation = torch.Tensor(self.number_channels, self.camera_size, self.number_of_cameras):zero()
 	self.step_count = 0
