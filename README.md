@@ -7,7 +7,7 @@ SwarmbotGazebo-DQN
 - Insert the following into `run.sh` of Atari:
 
 ```sh
-\#Swarm  
+#Swarm  
 elif [ "$PAPER" == "demo-async-swarm" ]; then  
 	#Load gazebo with arena world  
 	gnome-terminal -e "bash -c \"roslaunch swarm_simulator soup.launch gui:=false ; exec bash\""  
