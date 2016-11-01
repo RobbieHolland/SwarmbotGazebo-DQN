@@ -4,10 +4,10 @@ ros.init('GazeboDQN_rewards')
 print('Handling Rewards...')
 
 require 'torch'
-srvs = require 'async/SwarmbotGazebo-DQN/srvs'
-msgs = require 'async/SwarmbotGazebo-DQN/msgs'
-require 'async/SwarmbotGazebo-DQN/food'
-require 'async/SwarmbotGazebo-DQN/swarmbot'
+srvs = require 'srvs'
+msgs = require 'msgs'
+require 'food'
+require 'swarmbot'
 
 --Flags
 initialised = false

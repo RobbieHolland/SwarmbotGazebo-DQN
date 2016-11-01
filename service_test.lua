@@ -7,8 +7,8 @@ ros = require 'ros'
 
 ros.init('advertiseService_demo')
 nh = ros.NodeHandle()
-srvs = require 'async/SwarmbotGazebo-DQN/srvs'
-msgs = require 'async/SwarmbotGazebo-DQN/msgs'
+srvs = require 'srvs'
+msgs = require 'msgs'
 
 service_queue = ros.CallbackQueue()
 print(srvs.energy_request_spec)

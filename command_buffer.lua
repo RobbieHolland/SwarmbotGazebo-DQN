@@ -1,8 +1,8 @@
 --ROS conenctions
 ros = require 'ros'
 ros.init('command_buffer')
-msgs = require 'async/SwarmbotGazebo-DQN/msgs'
-util = require 'async/SwarmbotGazebo-DQN/util'
+msgs = require 'msgs'
+util = require 'swarm_util'
 resp_ready = false
 
 function connect_cb(name, topic)

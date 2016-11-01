@@ -2,9 +2,9 @@
 ros = require 'ros'
 ros.init('GazeboDQN_Env')
 local classic = require 'classic'
-msgs = require 'async/SwarmbotGazebo-DQN/msgs'
-srvs = require 'async/SwarmbotGazebo-DQN/srvs'
-util = require 'async/SwarmbotGazebo-DQN/util'
+msgs = require 'msgs'
+srvs = require 'srvs'
+util = require 'swarm_util'
 local GazeboEnv, super = classic.class('GazeboEnv', Env)
 
 function connect_cb(name, topic)
