@@ -1,6 +1,6 @@
 ros = require 'ros'
 require 'torch'
-msgs = require 'async/SwarmbotGazebo-DQN/msgs'
+msgs = require 'msgs'
 local gnuplot = require 'gnuplot'
 
 update_time = tonumber(arg[1])
