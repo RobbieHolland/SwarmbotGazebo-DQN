@@ -1,4 +1,4 @@
---ROS conenctions
+--ROS connections
 ros = require 'ros'
 ros.init('command_buffer')
 msgs = require 'msgs'

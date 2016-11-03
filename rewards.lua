@@ -1,3 +1,6 @@
+-- Provides services (energy, swarmbot reallocation, speeds) and 
+-- continulously reallocate food too far from robot
+
 --Setup
 ros = require 'ros'
 ros.init('GazeboDQN_rewards')
