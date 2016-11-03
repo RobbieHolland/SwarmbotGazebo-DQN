@@ -1,13 +1,17 @@
 swarmbot = {}
 swarmbot.__index = swarmbot
 
-function swarmbot.create(id, nodehandle, x, y, z, typebot)
+function swarmbot.create(id, nodehandle, x, y, z, value, typebot)
 	--Create object with positions. typebot is optional argument for model name
+	-- Value refer to a cost of contact. Can be 0 for swarmbot, should be negative for predators
   local sbot = {}
   setmetatable(sbot,swarmbot)
 
 	-- Default typebot: swarmbot. Replacements: predator prey
 	if not typebot then typebot = 'swarmbot' end
+
+	-- Default value: -10 for predators, 0 for swarmbots (check below for activations)
+	if not value  then value = (typebot = 'predator') and -10 or 0 end
 
 	--Assign variables
 	sbot.id = id
@@ -18,11 +22,12 @@ function swarmbot.create(id, nodehandle, x, y, z, typebot)
 	sbot.speed = 1
 	sbot.previous_speed = 1
 	sbot.velocity = torch.Tensor(3):zero()
-  sbot.typebot = typebot
+	sbot.typebot = typebot
 	sbot.model_name = typebot .. sbot.id
 	sbot.orientation = 0
 	sbot.position_updated = false
 	sbot.collision_updated = false
+	sbot.value = value
 
 	--Publisher to publish position updates
 	sbot.relocation_publisher = sbot.nodehandle:advertise("/gazebo/set_model_state", msgs.model_state_spec, 100, false, connect_cb, disconnect_cb)
@@ -35,12 +40,11 @@ function swarmbot.create(id, nodehandle, x, y, z, typebot)
 		--If either of the names matches a 'food' name then swarmbot eats the food
 		for key,value in pairs(msg.states) do
 			local string = msg.states[key].collision2_name
-			local colliding_object_1, link1_name = msg.states[key].collision1_name:match("([^,]+)::([^,]+)::([^,]+)")
-			local colliding_object_2, link2_name = msg.states[key].collision2_name:match("([^,]+)::([^,]+)::([^,]+)")
-			local type_obj[1], id_obj[1] = colliding_object_1:match("([a-zA-Z]*)([0-9]*)")
-			local type_obj[2], id_obj[2] = colliding_object_2:match("([a-zA-Z]*)([0-9]*)")
+			local colliding_object[1], link_name[1] = msg.states[key].collision1_name:match("([^,]+)::([^,]+)::([^,]+)")
+			local colliding_object[2], link_name[2] = msg.states[key].collision2_name:match("([^,]+)::([^,]+)::([^,]+)")
 			for i=1, 2 do
-				
+				local type_obj[i], id_obj[i] = colliding_object[i]:match("([a-zA-Z]*)([0-9]*)")
+
 				-- Consume food when touching it
 				(type_obj[i] == 'food') and	sbot:consume(foods[tonumber(id_obj[i])])
 				
@@ -94,7 +98,7 @@ function swarmbot.relocate(self, new_position, new_orientation)
 end
 
 function swarmbot:touched_predator(predator)
-
+	self:add_energy(- predator.value)
 end
 
 function swarmbot:consume(food)

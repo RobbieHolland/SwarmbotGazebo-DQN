@@ -51,8 +51,8 @@ local function create_models(type_model, num)
 	-- Lookup table to create models
 	local lookup = {
 		food     = function (i) return food.create(i, nodehandle, 0, 0, 1, 50) end, 
-		swarmbot = function (i) return swarmbot.create(i, nodehandle, 0, 0, 1, "swarmbot") end,
-		predator = function (i) return swarmbot.create(i, nodehandle, 0, 0, 1, "predator") end
+		swarmbot = function (i) return swarmbot.create(i, nodehandle, 0, 0, 1, -5, "swarmbot") end,
+		predator = function (i) return swarmbot.create(i, nodehandle, 0, 0, 1, -20, "predator") end
 	}
 
 	-- Test the type_model is implemented in lookup table
