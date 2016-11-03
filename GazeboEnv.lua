@@ -87,9 +87,7 @@ function GazeboEnv:start()
 
 		--Setup timer for epoch terminal timing
 		self.clock_subscriber = self.nodehandle:subscribe("/clock", msgs.clock_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
-		self.clock_subscriber:registerCallback(function(msg, header)
-			self.current_time = msg.clock:toSec()
-		end)
+		self.clock_subscriber:registerCallback(function(msg, header) self.current_time = msg.clock:toSec() end)
 
 		--Configure service caller to relocate at end of episode
 		random_relocate_request_service = self.nodehandle:serviceClient('/random_relocate_request', srvs.data_request_spec)

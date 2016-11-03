@@ -1,10 +1,13 @@
 swarmbot = {}
 swarmbot.__index = swarmbot
 
-function swarmbot.create(id, nodehandle, x, y, z)
-	--Create object
+function swarmbot.create(id, nodehandle, x, y, z, typebot)
+	--Create object with positions. typebot is optional argument for model name
   local sbot = {}
   setmetatable(sbot,swarmbot)
+
+	-- Default typebot: swarmbot. Replacements: predator prey
+	if not typebot then typebot = 'swarmbot' end
 
 	--Assign variables
 	sbot.id = id
@@ -15,7 +18,8 @@ function swarmbot.create(id, nodehandle, x, y, z)
 	sbot.speed = 1
 	sbot.previous_speed = 1
 	sbot.velocity = torch.Tensor(3):zero()
-	sbot.model_name = 'swarmbot' .. sbot.id
+  sbot.typebot = typebot
+	sbot.model_name = typebot .. sbot.id
 	sbot.orientation = 0
 	sbot.position_updated = false
 	sbot.collision_updated = false
@@ -25,7 +29,7 @@ function swarmbot.create(id, nodehandle, x, y, z)
 
 	--Updates whether robot is colliding with object
 	model_state_subscriber 
-		= nodehandle:subscribe("/swarmbot" .. sbot.id .. "/collision_indicator", msgs.contacts_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
+		= nodehandle:subscribe("/" .. typebot .. sbot.id .. "/collision_indicator", msgs.contacts_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
 	model_state_subscriber:registerCallback(function(msg, header)
 		--For each collision check the names of both objects
 		--If either of the names matches a 'food' name then swarmbot eats the food
