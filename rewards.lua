@@ -45,7 +45,10 @@ nodehandle = ros.NodeHandle()
 service_queue = ros.CallbackQueue()
 
 local function create_models(type_model, num)
-	-- Create num models of type type_model
+	-- Create num models of type type_model if at least one asked
+ 	if num < 1 then return {} end
+
+	-- Lookup table to create models
 	local lookup = {
 		food     = function (i) return food.create(i, nodehandle, 0, 0, 1, 50) end, 
 		swarmbot = function (i) return swarmbot.create(i, nodehandle, 0, 0, 1, "swarmbot") end,
