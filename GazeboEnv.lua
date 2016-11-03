@@ -117,9 +117,8 @@ function GazeboEnv:start()
 			--Colour sensors
 			self.camera_input_subscribers = {}
 			for i=1, self.number_of_cameras do
-				self.camera_input_subscribers[i] 
-				= self.nodehandle:subscribe("/swarmbot" .. self.id .. "/front_colour_sensor_" .. i .. "/image_raw", 
-																			msgs.image_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
+				bot_imageraw = "/swarmbot" .. self.id .. "/front_colour_sensor_" .. i .. "/image_raw"
+				self.camera_input_subscribers[i] = self.nodehandle:subscribe(bot_imageraw, msgs.image_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
 				self.camera_input_subscribers[i]:registerCallback(function(msg, header)
 					--input is taken from msg published by swarmbot
 					sensor_input = torch.reshape(msg.data,msg.height*self.number_colour_channels*msg.width)
@@ -138,8 +137,8 @@ function GazeboEnv:start()
 			end
 
 			--Range sensor
-			self.laser_input_subscriber 
-				= self.nodehandle:subscribe("/swarmbot" .. self.id .. "/scan_sensor", msgs.laser_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
+			bot_scan = "/swarmbot" .. self.id .. "/scan_sensor"
+			self.laser_input_subscriber = self.nodehandle:subscribe(bot_scan, msgs.laser_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
 			self.laser_input_subscriber:registerCallback(function(msg, header)
 				--input is taken from msg published by swarmbot
 				count = 1
