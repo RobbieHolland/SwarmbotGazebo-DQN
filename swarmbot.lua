@@ -34,16 +34,19 @@ function swarmbot.create(id, nodehandle, x, y, z, typebot)
 		--For each collision check the names of both objects
 		--If either of the names matches a 'food' name then swarmbot eats the food
 		for key,value in pairs(msg.states) do
-			string = msg.states[key].collision2_name
-			colliding_object_1, link1_name = msg.states[key].collision1_name:match("([^,]+)::([^,]+)::([^,]+)")
-			colliding_object_2, link2_name = msg.states[key].collision2_name:match("([^,]+)::([^,]+)::([^,]+)")
-			type_1, id_1 = colliding_object_1:match("([a-zA-Z]*)([0-9]*)")
-			type_2, id_2 = colliding_object_2:match("([a-zA-Z]*)([0-9]*)")
-			if type_1 == 'food' then
-				sbot:consume(foods[tonumber(id_1)])
-			end
-			if type_2 == 'food' then
-				sbot:consume(foods[tonumber(id_2)])
+			local string = msg.states[key].collision2_name
+			local colliding_object_1, link1_name = msg.states[key].collision1_name:match("([^,]+)::([^,]+)::([^,]+)")
+			local colliding_object_2, link2_name = msg.states[key].collision2_name:match("([^,]+)::([^,]+)::([^,]+)")
+			local type_obj[1], id_obj[1] = colliding_object_1:match("([a-zA-Z]*)([0-9]*)")
+			local type_obj[2], id_obj[2] = colliding_object_2:match("([a-zA-Z]*)([0-9]*)")
+			for i=1, 2 do
+				
+				-- Consume food when touching it
+				(type_obj[i] == 'food') and	sbot:consume(foods[tonumber(id_obj[i])])
+				
+				-- Lose energy when touching a predator
+				(type_obj[i] == 'predator') and sbot:touched_predator(predators[tonumber(id_obj[i])])
+				
 			end
 		end
 		sbot.collision_updated = true
@@ -88,6 +91,10 @@ function swarmbot.relocate(self, new_position, new_orientation)
 	
 	self.relocation_publisher:publish(m)
 	self.position = new_position
+end
+
+function swarmbot:touched_predator(predator)
+
 end
 
 function swarmbot:consume(food)
