@@ -138,9 +138,9 @@ function SGDQN_add_model_id(res_i, type_model, num, index_lookup)
 	setmetatable(res, {__index = res_i}) -- overloads res_i
 	local i0 = assert(SWARMBOT_GAZEBO_init_i[type_model], "Wrong type model:" .. type_model)	
 	for i=i0, num do
-		--print("DEBUGRewards_Refresh, type_model=" .. type_model .. ", i=" .. i .. ", model_name=" .. res[i].model_name)
+		print("DEBUGRewards_Refresh, type_model=" .. type_model .. ", i=" .. i .. ", model_name=" .. res[i].model_name)
 		res[i].model_id = index_lookup[res[i].model_name]
-		--print("DEBUGRewards_Refresh, res[i].model_id=" .. res[i].model_id)
+		print("DEBUGRewards_Refresh, res[i].model_id=" .. res[i].model_id)
 	end
 	return res
 end
@@ -150,6 +150,11 @@ function SGDQN_add_infos_msgs(res, type_model, num, msg)
 	local i0 = assert(SWARMBOT_GAZEBO_init_i[type_model], "Wrong type model:" .. type_model)
 	for i=i0, num do
 	-- print("i=" .. i .. ", type_model=" .. type_model .. ", res[i].model_id=" .. res[i].model_id )
+			print("i=" .. i ..",type_model=" .. type_model)
+			print("res[i].model_id=")
+			print(res[i].model_id)
+			print("msg.pose[res[i].model_id].position=")
+			print(msg.pose[res[i].model_id].position)
 		if type_model == "food" then
 			res[i].position[1] = msg.pose[res[i].model_id].position.x
 			res[i].position[2] = msg.pose[res[i].model_id].position.y

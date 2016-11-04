@@ -16,12 +16,18 @@ function disconnect_cb(name, topic)
   print("subscriber diconnected: " .. name .. " (topic: '" .. topic .. "')")
 end
 
+-- Type of agents (to be over-written by different environments, such as GazeboEnvPred)
+function GazeboEnv:type_agent()
+	return "swarmbot"
+end
+
 --Constructor
 function GazeboEnv:_init(opts)
 
   opts = opts or {}
 
   --Constants and variables
+	self.type_bot = self.type_agent() or "swarmbot" -- default: swarmbot
 	self.episode_time = 300
 	self.old_energy = 0
 	self.arena_width = 16
@@ -75,14 +81,14 @@ function GazeboEnv:start()
 		ros.Duration(4):sleep()
 		--Setup agent's ID (identical to ID of thread)
 		self.id = __threadid or 0
-		self.model_name = 'swarmbot' .. self.id
+		self.model_name = self.type_bot .. self.id
 
 		--Configure robot control
 		self.command_publisher 
-				= self.nodehandle:advertise("/swarmbot" .. self.id .. "/network_command", msgs.twist_spec, 100, false, connect_cb, disconnect_cb)
+				= self.nodehandle:advertise("/" .. self.type_bot .. self.id .. "/network_command", msgs.twist_spec, 100, false, connect_cb, disconnect_cb)
 		if self:isValidationAgent() then
 			self.command_publisher 
-				= self.nodehandle:advertise("/swarmbot" .. self.id .. "/cmd_vel", msgs.twist_spec, 100, false, connect_cb, disconnect_cb)
+				= self.nodehandle:advertise("/" .. self.type_bot .. self.id .. "/cmd_vel", msgs.twist_spec, 100, false, connect_cb, disconnect_cb)
 		end
 
 		--Setup timer for epoch terminal timing
@@ -115,7 +121,7 @@ function GazeboEnv:start()
 			--Colour sensors
 			self.camera_input_subscribers = {}
 			for i=1, self.number_of_cameras do
-				bot_imageraw = "/swarmbot" .. self.id .. "/front_colour_sensor_" .. i .. "/image_raw"
+				bot_imageraw = "/" .. self.type_bot .. self.id .. "/front_colour_sensor_" .. i .. "/image_raw"
 				self.camera_input_subscribers[i] = self.nodehandle:subscribe(bot_imageraw, msgs.image_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
 				self.camera_input_subscribers[i]:registerCallback(function(msg, header)
 					--input is taken from msg published by swarmbot
@@ -135,7 +141,7 @@ function GazeboEnv:start()
 			end
 
 			--Range sensor
-			bot_scan = "/swarmbot" .. self.id .. "/scan_sensor"
+			bot_scan = "/" .. self.type_bot .. self.id .. "/scan_sensor"
 			self.laser_input_subscriber = self.nodehandle:subscribe(bot_scan, msgs.laser_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
 			self.laser_input_subscriber:registerCallback(function(msg, header)
 				--input is taken from msg published by swarmbot
@@ -158,7 +164,7 @@ function GazeboEnv:start()
 		end
 	end
 
-	print('[Robot ' .. self.id .. ' finished episode with ' .. self.energy .. ' energy]')
+	print('[Robot ' .. self.type_bot .. self.id .. ' finished episode with ' .. self.energy .. ' energy]')
 	random_relocate_request_service:call(energy_request_message)
 	self.start_time = self.current_time
 
