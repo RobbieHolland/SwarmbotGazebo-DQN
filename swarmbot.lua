@@ -11,7 +11,7 @@ function swarmbot.create(id, nodehandle, x, y, z, value, typebot)
 	if not typebot then typebot = 'swarmbot' end
 
 	-- Default value: -10 for predators, 0 for swarmbots (check below for activations)
-	if not value  then value = (typebot = 'predator') and -10 or 0 end
+	if not value then value = (typebot == 'predator') and -10 or 0 end
 
 	--Assign variables
 	sbot.id = id
