@@ -98,7 +98,7 @@ function swarmbot.relocate(self, new_position, new_orientation)
 end
 
 function swarmbot:touched_predator(predator)
-	self:add_energy(- predator.value)
+	self:add_energy(predator.value)
 end
 
 function swarmbot:consume(food)
