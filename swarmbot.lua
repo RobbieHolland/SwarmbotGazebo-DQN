@@ -38,10 +38,12 @@ function swarmbot.create(id, nodehandle, x, y, z, value, typebot)
 	model_state_subscriber:registerCallback(function(msg, header)
 		--For each collision check the names of both objects
 		--If either of the names matches a 'food' name then swarmbot eats the food
+		local colliding_object = {}
+		local link_name = {}
 		for key,value in pairs(msg.states) do
 			local string = msg.states[key].collision2_name
-			local colliding_object[1], link_name[1] = msg.states[key].collision1_name:match("([^,]+)::([^,]+)::([^,]+)")
-			local colliding_object[2], link_name[2] = msg.states[key].collision2_name:match("([^,]+)::([^,]+)::([^,]+)")
+			colliding_object[1], link_name[1] = msg.states[key].collision1_name:match("([^,]+)::([^,]+)::([^,]+)")
+			colliding_object[2], link_name[2] = msg.states[key].collision2_name:match("([^,]+)::([^,]+)::([^,]+)")
 			for i=1, 2 do
 				local type_obj[i], id_obj[i] = colliding_object[i]:match("([a-zA-Z]*)([0-9]*)")
 
