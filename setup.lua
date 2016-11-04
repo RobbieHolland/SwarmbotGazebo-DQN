@@ -18,9 +18,9 @@ local function spawn_model(type_spawn, pos, i)
 	local rgsp = 'rosrun gazebo_ros spawn_model -x ' .. pos[1] .. ' -y ' .. pos[2] .. ' -z ' .. pos[3]
   local rgsp_pSdf = rgsp ..' -file `rospack find swarm_simulator`/sdf/'
 	local look_up = {
-		food 	   = rgsp_pSdf .. 'food.sdf' .. ' -sdf -model food' 	.. i .. ' -robot_namespace food' .. i,
+		food     = rgsp_pSdf .. 'food.sdf' .. ' -sdf -model food' .. i .. ' -robot_namespace food' .. i,
 		swarmbot = rgsp_pSdf .. 'swarm_robot_v2.sdf' .. ' -sdf -model swarmbot' .. i .. ' -robot_namespace swarmbot' .. i,
-		predator = rgsp_pSdf .. 'swarm_robot_v2_predator.sdf' .. 	' -sdf -model predator' .. i .. ' -robot_namespace predator' .. i
+		predator = rgsp_pSdf .. 'swarm_robot_v2_predator.sdf' ..  ' -sdf -model predator' .. i .. ' -robot_namespace predator' .. i
 	} 
 	-- Lookup and check type_spawn is implemented
 	local spawn_text = assert(look_up[type_spawn], "Type " .. type_spawn .. " not implemented in lookup table")
