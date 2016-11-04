@@ -7,11 +7,11 @@ function swarmbot.create(id, nodehandle, x, y, z, value, typebot)
   local sbot = {}
   setmetatable(sbot,swarmbot)
 
-	-- Default typebot: swarmbot. Replacements: predator prey
-	if not typebot then typebot = 'swarmbot' end
+	-- Default typebot: swarmbot. Replacements: predator prey. Short circuit logic notations
+	local typebot = typebot or 'swarmbot' 
 
 	-- Default value: -10 for predators, 0 for swarmbots (check below for activations)
-	if not value then value = (typebot == 'predator') and -10 or 0 end
+	local value = value or (typebot == 'predator' and -10 or 0)
 
 	--Assign variables
 	sbot.id = id
@@ -40,18 +40,20 @@ function swarmbot.create(id, nodehandle, x, y, z, value, typebot)
 		--If either of the names matches a 'food' name then swarmbot eats the food
 		local colliding_object = {}
 		local link_name = {}
+		local type_obj = {}
+		local id_obj = {}
 		for key,value in pairs(msg.states) do
 			local string = msg.states[key].collision2_name
 			colliding_object[1], link_name[1] = msg.states[key].collision1_name:match("([^,]+)::([^,]+)::([^,]+)")
 			colliding_object[2], link_name[2] = msg.states[key].collision2_name:match("([^,]+)::([^,]+)::([^,]+)")
 			for i=1, 2 do
-				local type_obj[i], id_obj[i] = colliding_object[i]:match("([a-zA-Z]*)([0-9]*)")
+				type_obj[i], id_obj[i] = colliding_object[i]:match("([a-zA-Z]*)([0-9]*)")
 
 				-- Consume food when touching it
-				(type_obj[i] == 'food') and	sbot:consume(foods[tonumber(id_obj[i])])
+				if type_obj[i] == 'food'     then sbot:consume(foods[tonumber(id_obj[i])]) end
 				
 				-- Lose energy when touching a predator
-				(type_obj[i] == 'predator') and sbot:touched_predator(predators[tonumber(id_obj[i])])
+				if type_obj[i] == 'predator' then sbot:touched_predator(predators[tonumber(id_obj[i])]) end
 				
 			end
 		end

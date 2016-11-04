@@ -46,7 +46,7 @@ service_queue = ros.CallbackQueue()
 
 local function create_models(type_model, num)
 	-- Create num models of type type_model if at least one asked
- 	if num < 1 then return {} end
+ 	if tonumber(num) < 1 then return {} end
 
 	-- Lookup table to create models
 	local lookup = {
