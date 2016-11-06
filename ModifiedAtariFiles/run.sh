@@ -84,10 +84,13 @@ elif [ "$PAPER" == "demo-async-swarm" ]; then
   #  exit 1
   #fi
 
+  pathToAtari="/root/torch-ros-gazebo/Atari"
   case $HOME in 
-    /Users/pmaal) pathToSwarmDqn="/Users/pmaal/Dropbox/Nottingham/repos/phd/torch-ros-gazebo/SwarmbotGazebo-DQN";;
+    /Users/pmaal) pathToSwarmDqn="/root/torch-ros-gazebo/SwarmbotGazebo-DQN";;
+                                #"/Users/pmaal/Dropbox/Nottingham/repos/phd/torch-ros-gazebo/SwarmbotGazebo-DQN";;
     /home/kai)    pathToSwarmDqn="/home/kai/SwarmbotGazebo-DQN";;
     /root)        pathToSwarmDqn="/root/torch-ros-gazebo/SwarmbotGazebo-DQN";;
+    *)            echo "Match HOME!" && exit 1
 	esac
   
   #Parameters
@@ -103,6 +106,52 @@ elif [ "$PAPER" == "demo-async-swarm" ]; then
     printf "\n --- $2\n $1\n"
   }
 
+  function exec_in_screen {
+    # Execute given string in screen window
+    screen_name="$1"
+    stringToExecScreen="$2"
+    screen -S "$screen_name" -X stuff "${stringToExecScreen}$(echo -ne '\r')" 
+  }
+
+  function open_in_screen {
+    # Launch a SGDQN session if there is none. Use setup_docker.sh to launch container if needed.
+    #  To enter a screen:   screen -x SGDQN
+    #  To detach from it:   c-a d  # (c- is control key+)
+    #  To kill it:          screen -X -S SGDQN quit
+    stringToExec=$1
+    window_name=$2 
+    screen_name="SGDQN_${window_name}"
+    container_name="levity_torchcontainer"
+    if [ -z "`screen -ls | grep "$screen_name"`" ]; then 
+      screen -d -m -S $screen_name
+    fi
+    if [ -z "`docker ps | grep "$container_name"`" ]; then 
+      sh ../setup_docker.sh
+    fi
+    # In screen window, enter the container. If already in container, error message (add ;exit after second command otherwise)
+    echo "screen -x $screen_name # to look at this process"
+    exec_in_screen "$screen_name" "docker exec -it $container_name bash" 
+    # In screen window now in container, execute code
+    exec_in_screen "$screen_name" "cd $pathToAtari; $stringToExec" 
+
+  }
+
+  function open_in_gnome {
+    # Open in new terminal window with gnome-terminal
+    gnome-terminal -t "$2" -e "bash -c \"$1 ; exec bash\""
+  }
+
+  function exec_in_new_window {
+    # Alternative solutions to launch command in a new window, depending on the computer setup
+    stringToExec=$1
+    comment=$2
+    case $HOME in
+      /Users/pmaal)   fun="open_in_screen";;
+      *)              fun="open_in_gnome";;
+    esac
+    $fun "$stringToExec" "$comment"
+  }
+
 	function exec_in_win { 
     # Execute code (string $2) in new or current terminal ($1)
     win=$1
@@ -112,7 +161,7 @@ elif [ "$PAPER" == "demo-async-swarm" ]; then
     # Launch in current terminal or in a new one and script continues running
     case $win in 
       cur) $stringToExec ;;
-      new) gnome-terminal -t "$comment" -e "bash -c \"$stringToExec ; exec bash\"";;
+      new) exec_in_new_window "$stringToExec" "$comment" ;; # Depends on the computer
       *) echo "" && exit 1;;
     esac
 		
@@ -130,10 +179,13 @@ elif [ "$PAPER" == "demo-async-swarm" ]; then
 
 	# exec_in_win "new" "roslaunch swarm_simulator soup_plus.launch gui:=false"
 	# exec_in_win "new" "roslaunch swarm_simulator soup_plus_single.launch gui:=false"
-	exec_in_win "new" "roslaunch swarm_simulator soup_black.launch gui:=false"	"#Load gazebo with arena world"
-	exec_in_win "cur" "th $pathToSwarmDqn/setup.lua $args" 											"#Load models into the world"
-	exec_in_win "new" "th $pathToSwarmDqn/positions.lua" 	 											"#Throttle position updates"
-	exec_in_win "new" "th $pathToSwarmDqn/rewards.lua $MODE $args" 							"#Load program to allocate rewards"
+	exec_in_win "new" "roslaunch swarm_simulator soup_black.launch gui:=false"	"Load_gazebo_with_arena_world"
+	exec_in_win "new" "th $pathToSwarmDqn/setup.lua $args" 											"Load_models_into_the_world"
+  # the above should be in current window to setup things. Complex if sent to docker by screen, so just sleep 15 for now
+  echo "sleep 15..." 
+  sleep 15 # should be replaced by a server request...
+	exec_in_win "new" "th $pathToSwarmDqn/positions.lua" 	 											"Throttle_position_updates"
+	exec_in_win "new" "th $pathToSwarmDqn/rewards.lua $MODE $args" 							"Load_program_to_allocate_rewards"
 	
 	#Load the statistics program
 	#	base_command="th async/SwarmbotGazebo-DQN/statistics.lua "
@@ -144,11 +196,11 @@ elif [ "$PAPER" == "demo-async-swarm" ]; then
 	#	exec_in_win "new" "$base_command $STAT_UPDATE_TIME $agent_id"
 	
 	if [ "$BUFFER" == "1" ]; then 
-		exec_in_win "new" "th $pathToSwarmDqn/command_buffer.lua $NUM_BOTS $NUM_PRED" "#Load command buffer"
+		exec_in_win "new" "th $pathToSwarmDqn/command_buffer.lua $NUM_BOTS $NUM_PRED" "Load_command_buffer"
 	fi
 
-	exec_in_win "new" "`run_environment $NUM_BOTS GazeboEnv $@`" 					       "#Run GazeboEnv in Atari"
-	exec_in_win "new" "`run_environment $NUM_PRED GazeboEnvPred $@`"             "#Run GazeboEnvPred in Atari" 
+	exec_in_win "new" "`run_environment $NUM_BOTS GazeboEnv $@`" 					       "Run_GazeboEnv_in_Atari"
+	exec_in_win "new" "`run_environment $NUM_PRED GazeboEnvPred $@`"             "Run_GazeboEnvPred_in_Atari" 
 
 	#To load previous weights: -network async/SwarmbotGazebo-DQN/Experiments/GazeboEnv_10-Worked/Weights/last.weights.t7
 	# -network GazeboEnv/last.weights.t7 -mode eval -_id GazeboEnv
