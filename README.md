@@ -1,24 +1,20 @@
 SwarmbotGazebo-DQN
 ================
-- Simulating multiple agents of a swarm in Gazebo 2.2.3 (http://gazebosim.org/) on ROS Indigo (http://wiki.ros.org/indigo) using 'rlenvs' and 'Atari' repositories from https://github.com/Kaixhin/Atari for the DQN.
 
-- Clone this project into Atari/async of Atari and then add the following to run.sh:
+INSTALL
 
-- Insert the following into run.sh of Atari:
+- Simulating multiple agents of a swarm in Gazebo 2.2.3 (http://gazebosim.org/) on ROS Indigo (http://wiki.ros.org/indigo) using 'rlenvs' and 'Atari' repositories from https://github.com/Kaixhin/Atari for the Deep-Q-Network (DQN). 
 
-\#Swarm  
-elif [ "$PAPER" == "demo-async-swarm" ]; then  
-	#Load gazebo with arena world  
-	gnome-terminal -e "bash -c \"roslaunch swarm_simulator soup.launch gui:=false ; exec bash\""  
-	#Get number of food and number of bots to be used  
-	NUM_FOOD=2  
-	NUM_BOTS=$((3 - 1))  
-	args=$NUM_FOOD  
-	args="$args $NUM_BOTS"  
-	#Load models into the world  
-	th async/SwarmbotGazebo-DQN/setup.lua $args  
-	#Load program to allocate rewards  
-	setup_command="th async/SwarmbotGazebo-DQN/rewards.lua "  
-	setup\_command="$setup_command $args"  
-	gnome-terminal -e "bash -c \"$setup_command ; exec bash\""  
-  th main.lua -threads $NUM_BOTS -zoom 4 -env async/SwarmbotGazebo-DQN/GazeboEnv -modelBody async/SwarmbotGazebo-DQN/SwarmbotModel -histLen 4 -async A3C -entropyBeta 0.001 -eta 0.0007 -momentum 0.99 -bootstraps 0 -rewardClip 0 -batchSize 5 -hiddenSize 32 -doubleQ false -duel false -optimiser adam -steps 1000000000 -tau 7250 -memSize 20000 -epsilonSteps 10000 -valFreq 60000 -valSteps 40000 -bootstraps 0 -PALpha 0 "$@"  
+- Clone this project in a folder that your LUA_PATH can access. If you do not know what this means, read the following to understand how to setup environment variables: [get ref].
+
+- Add in Atari/run.sh the `elif [ "$PAPER" == "demo-async-swarm" ]; then` statement you can find in ModifiedAtariFiles/run.sh (or simply replace Atari/run.sh with this file).
+
+DEPENDENCIES
+
+- Install all dependencies for 'Atari' and 'rlenvs'
+- gnome-terminal
+
+RUN
+
+- Run from repos folder
+	`Atari/run.sh demo-async-swarm`

@@ -1,13 +1,16 @@
+-- Provides services (energy, swarmbot reallocation, speeds) and 
+-- continulously reallocate food too far from robot
+
 --Setup
 ros = require 'ros'
 ros.init('GazeboDQN_rewards')
 print('Handling Rewards...')
 
 require 'torch'
-srvs = require 'async/SwarmbotGazebo-DQN/srvs'
-msgs = require 'async/SwarmbotGazebo-DQN/msgs'
-require 'async/SwarmbotGazebo-DQN/food'
-require 'async/SwarmbotGazebo-DQN/swarmbot'
+srvs = require 'srvs'
+msgs = require 'msgs'
+require 'food'
+require 'swarmbot'
 
 --Flags
 initialised = false
@@ -24,33 +27,60 @@ end
 --Constants
 eat_distance = 0.4
 sensor_range = 2
-number_of_food = arg[1]
-number_of_bots = arg[2]
-mode = tonumber(arg[3])
+mode = tonumber(arg[1])
+number_of_food = arg[2]
+number_of_bots = arg[3]
+number_of_pred = arg[4]
 arena_width = 16
+
+SWARMBOT_GAZEBO_init_i = { -- Different initial value to account for one more swarmbot
+	food = 1,
+	swarmbot = 0,
+  predator = 0
+}
 
 --setup ros node and spinner (processes queued send and receive topics)
 spinner = ros.AsyncSpinner()
 nodehandle = ros.NodeHandle()
 service_queue = ros.CallbackQueue()
 
---Create food
-foods = {}
-for i=1, number_of_food do
-	--Create new food
-	foods[i] = food.create(i, nodehandle, 0, 0, 1, 50)
-	ros.Duration(0.05):sleep()
-	foods[i]:random_relocate(arena_width)
+local function create_models(type_model, num)
+	-- Create num models of type type_model if at least one asked
+ 	if tonumber(num) < 1 then return {} end
+
+	-- Lookup table to create models
+	local lookup = {
+		food     = function (i) return food.create(i, nodehandle, 0, 0, 1, 50) end, 
+		swarmbot = function (i) return swarmbot.create(i, nodehandle, 0, 0, 1, -5, "swarmbot") end,
+		predator = function (i) return swarmbot.create(i, nodehandle, 0, 0, 1, -20, "predator") end
+	}
+
+	-- Test the type_model is implemented in lookup table
+	local fun = assert(lookup[type_model], "lookup[ " .. type_model .. " ] not implemented yet")
+ 	local i0  = assert(SWARMBOT_GAZEBO_init_i[type_model], "init_i[ " .. type_model .. " ] not implemented yet")
+
+	--Create new food/bot/... in loop
+	local res = {} 
+	for i=i0, num do
+		res[i] = fun(i)
+		ros.Duration(0.05):sleep()
+		res[i]:random_relocate(arena_width)
+	end
+	return res
 end
 
---Create swarmbots
-swarmbots = {}
-for i=0, number_of_bots do
-	--Create new swarmbot
-	swarmbots[i] = swarmbot.create(i, nodehandle, 0, 0, 1)
-	ros.Duration(0.05):sleep()
-	swarmbots[i]:random_relocate(arena_width)
+--Create food and swarmbots
+foods     = create_models("food",     number_of_food)
+swarmbots = create_models("swarmbot", number_of_bots)
+predators = create_models("predator", number_of_pred)
+
+
+--[[
+print("swarmbots in rewards.lua")
+for key, val in pairs(swarmbots) do 
+   print(key, val)
 end
+--]]
 
 --Relocate service
 function random_relocate_service_handler(request, response, header)
@@ -101,42 +131,70 @@ function table_invert(t)
    return s
 end
 
+-- Functions to make the initialisation easier to generalise
+function SGDQN_add_model_id(res_i, type_model, num, index_lookup)
+	-- Refresh model_id's of all elements of type 
+	local res = {}
+	setmetatable(res, {__index = res_i}) -- overloads res_i
+	local i0 = assert(SWARMBOT_GAZEBO_init_i[type_model], "Wrong type model:" .. type_model)	
+	for i=i0, num do
+		print("DEBUGRewards_Refresh, type_model=" .. type_model .. ", i=" .. i .. ", model_name=" .. res[i].model_name)
+		res[i].model_id = index_lookup[res[i].model_name]
+		print("DEBUGRewards_Refresh, res[i].model_id=" .. res[i].model_id)
+	end
+	return res
+end
+
+
+function SGDQN_add_infos_msgs(res, type_model, num, msg)
+	local i0 = assert(SWARMBOT_GAZEBO_init_i[type_model], "Wrong type model:" .. type_model)
+	for i=i0, num do
+	-- print("i=" .. i .. ", type_model=" .. type_model .. ", res[i].model_id=" .. res[i].model_id )
+			print("i=" .. i ..",type_model=" .. type_model)
+			print("res[i].model_id=")
+			print(res[i].model_id)
+			print("msg.pose[res[i].model_id].position=")
+			print(msg.pose[res[i].model_id].position)
+		if type_model == "food" then
+			res[i].position[1] = msg.pose[res[i].model_id].position.x
+			res[i].position[2] = msg.pose[res[i].model_id].position.y
+			res[i].position[3] = msg.pose[res[i].model_id].position.z
+		elseif type_model == "swarmbot" or type_model == "predator" then
+			res[i].velocity[1] = msg.twist[res[i].model_id].values.linear.x	
+			res[i].velocity[2] = msg.twist[res[i].model_id].values.linear.y
+			res[i].velocity[3] = msg.twist[res[i].model_id].values.linear.z	
+			res[i].position[1] = msg.pose[res[i].model_id].position.x	
+			res[i].position[2] = msg.pose[res[i].model_id].position.y	
+			res[i].position[3] = msg.pose[res[i].model_id].position.z
+			res[i].orientation = msg.pose[res[i].model_id].orientation.z
+			--Calculate speed for reward
+			--res[i].speed = res[i].velocity:norm()
+		else 
+			error("Wrong type model, not implemented in loop:" .. type_model)
+		end
+	end
+	return res
+end
+
 model_states_initialised = false
 --Updates velocities of models
 model_state_subscriber = nodehandle:subscribe("/throttled_model_states", msgs.model_states_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
 model_state_subscriber:registerCallback(function(msg, header)
 
 	if not model_states_initialised then
+    -- Refresh model_id's by inverting the table
 		index_lookup = table_invert(msg.name)
-		for i=0, number_of_bots do
-			swarmbots[i].model_id = index_lookup[swarmbots[i].model_name]
-		end
+		foods     = SGDQN_add_model_id(foods,     "food",     number_of_food, index_lookup)
+		swarmbots = SGDQN_add_model_id(swarmbots, "swarmbot", number_of_bots, index_lookup)
+		predators = SGDQN_add_model_id(predators, "predator", number_of_pred, index_lookup)
 
-		for i=1, number_of_food do
-			foods[i].model_id = index_lookup[foods[i].model_name]
-		end
+		
 	end
 	model_states_initialised = true
 
-	for i=0, number_of_bots do
-		swarmbots[i].velocity[1] = msg.twist[swarmbots[i].model_id].values.linear.x
-		swarmbots[i].velocity[2] = msg.twist[swarmbots[i].model_id].values.linear.y
-		swarmbots[i].velocity[3] = msg.twist[swarmbots[i].model_id].values.linear.z
-
-		swarmbots[i].position[1] = msg.pose[swarmbots[i].model_id].position.x
-		swarmbots[i].position[2] = msg.pose[swarmbots[i].model_id].position.y
-		swarmbots[i].position[3] = msg.pose[swarmbots[i].model_id].position.z
-		swarmbots[i].orientation = msg.pose[swarmbots[i].model_id].orientation.z
-
-		--Calculate speed for reward
-		--swarmbots[i].speed = swarmbots[i].velocity:norm()
-	end
-
-	for i=1, number_of_food do
-		foods[i].position[1] = msg.pose[foods[i].model_id].position.x
-		foods[i].position[2] = msg.pose[foods[i].model_id].position.y
-		foods[i].position[3] = msg.pose[foods[i].model_id].position.z
-	end
+	foods     = SGDQN_add_infos_msgs(foods,     "food",     number_of_food, msg)
+	swarmbots = SGDQN_add_infos_msgs(swarmbots, "swarmbot", number_of_bots, msg)
+	predators = SGDQN_add_infos_msgs(predators, "predator", number_of_pred, msg)
 
 	velocity_updated = true
 end)

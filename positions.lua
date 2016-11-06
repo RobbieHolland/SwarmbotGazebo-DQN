@@ -4,7 +4,7 @@ ros.init('GazeboDQN_positions')
 print('Handling Positions...')
 
 require 'torch'
-msgs = require 'async/SwarmbotGazebo-DQN/msgs'
+msgs = require 'msgs'
 
 function connect_cb(name, topic)
   print("subscriber connected: " .. name .. " (topic: '" .. topic .. "')")
