@@ -5,7 +5,8 @@ local classic = require 'classic'
 msgs = require 'msgs'
 srvs = require 'srvs'
 util = require 'swarm_util'
-local GazeboEnv, super = classic.class('GazeboEnv', Env)
+local rlenvs = require 'rlenvs'
+local GazeboEnv, super = classic.class('GazeboEnv', rlenvs.Env)
 
 function connect_cb(name, topic)
   print("subscriber connected: " .. name .. " (topic: '" .. topic .. "')")
