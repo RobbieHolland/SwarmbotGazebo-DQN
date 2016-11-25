@@ -72,6 +72,9 @@ elif [ "$PAPER" == "async-nstep" ]; then
   th main.lua -env rlenvs.Atari -modelBody models.Atari2013 -hiddenSize 256 -game $GAME -height 84 -width 84 -colorSpace y -async NStepQ -bootstraps 0 -batchSize 5 -momentum 0.99 -rmsEpsilon 0.1 -steps 80000000 -duel false -tau 40000 -optimiser sharedRmsProp -epsilonSteps 4000000 -doubleQ false -PALpha 0 -eta 0.0007 -gradClip 0 "$@"
 elif [ "$PAPER" == "async-a3c" ]; then
   th main.lua -env rlenvs.Atari -modelBody models.Atari2013 -hiddenSize 256 -game $GAME -height 84 -width 84 -colorSpace y -async A3C -bootstraps 0 -batchSize 5 -momentum 0.99 -rmsEpsilon 0.1 -steps 80000000 -duel false -tau 40000 -optimiser sharedRmsProp -epsilonSteps 4000000 -doubleQ false -PALpha 0 -eta 0.0007 -gradClip 0 "$@"
+elif [ "$PAPER" == "demo-grid" ]; then
+  # GridWorld
+	th main.lua -zoom 4 -async A3C -entropyBeta 0.001 -eta 0.0007 -momentum 0.99 -bootstraps 0 -rewardclip 0 -batchSize 5 -hiddenSize 32 -doubleQ false -duel false -optimiser adam -steps 15000000 -tau 4 -memSize 20000 -epsilonSteps 10000 -valFreq 501 -valSteps 500 -bootstraps 0 -PALpha 0 "$@"
 
 #Swarm
 elif [ "$PAPER" == "demo-async-swarm" ]; then
@@ -91,15 +94,15 @@ elif [ "$PAPER" == "demo-async-swarm" ]; then
         /home/kai)    pathToSwarmDqn="/home/kai/SwarmbotGazebo-DQN";;
         /root)        pathToSwarmDqn="/root/torch-ros-gazebo/SwarmbotGazebo-DQN";;
         *)            echo "Match HOME!" && exit 1
-	esac
+	  esac
   
-    #Parameters
-	BUFFER="1"
-	MODE=1
-	NUM_FOOD=2 #40
-	NUM_BOTS=$((2 - 1)) #[Number of bots including number of validation agents] - [Number of validation agents]
-    NUM_PRED=$((2 - 1)) #[Number of predators including valitator] - [Number of validation agents]
-	args="$NUM_FOOD $NUM_BOTS $NUM_PRED"
+			#Parameters
+		BUFFER="1"
+		MODE=1
+		NUM_FOOD=2 #40
+		NUM_BOTS=$((2 - 1)) #[Number of bots including number of validation agents] - [Number of validation agents]
+			NUM_PRED=$((2 - 1)) #[Number of predators including valitator] - [Number of validation agents]
+		args="$NUM_FOOD $NUM_BOTS $NUM_PRED"
 
     function nice_display { 
         # Nice display of the arguments
@@ -152,60 +155,48 @@ elif [ "$PAPER" == "demo-async-swarm" ]; then
         $fun "$stringToExec" "$window_name"
     }
 
-	function exec_in_win { 
-        # Execute code (string $2) in new or current terminal ($1)
-        win=$1
-        stringToExec=$2
-        comment=$3
-        nice_display "$stringToExec" "$comment"
-        # Launch in current terminal or in a new one and script continues running
-        case $win in 
-            cur) $stringToExec ;;
-            wai) $stringToExec && echo "sleep 20" && sleep 20 ;;
-            new) exec_in_new_window "$stringToExec" "$comment" ;; # Depends on the computer
-            *) echo "Option not recognised in exec_in_win" && exit 1;;
-        esac
-	}
+		function exec_in_win { 
+		      # Execute code (string $2) in new or current terminal ($1)
+		      win=$1
+		      stringToExec=$2
+		      comment=$3
+		      nice_display "$stringToExec" "$comment"
+		      # Launch in current terminal or in a new one and script continues running
+		      case $win in 
+		          cur) $stringToExec ;;
+		          wai) $stringToExec && echo "sleep 20" && sleep 20 ;;
+		          new) exec_in_new_window "$stringToExec" "$comment" ;; # Depends on the computer
+		          *) echo "Option not recognised in exec_in_win" && exit 1;;
+		      esac
+		}
 	
-	function run_environment { 	
-        # Runs a given number of bots ($1) in given environment ($2)
-		NumThreads=$1
-		GazeboEnv=$2			
-		# Shifts used to preserve the original "$@" way of writing the calls.
-		shift			
-		shift
- 		echo "th main.lua -threads $NumThreads -zoom 4 -env $GazeboEnv -modelBody SwarmbotModel -histLen 4 -async A3C -entropyBeta 0 -eta 0.0001 -bootstraps 0 -rewardClip 0 -hiddenSize 512 -doubleQ false -duel false -optimiser sharedRmsProp -steps 6750000 -valFreq 501 -valSteps 12000 -PALpha 0 $@"
-	}
+		function run_environment { 	
+		      # Runs a given number of bots ($1) in given environment ($2)
+			NumThreads=$1
+			GazeboEnv=$2			
+			# Shifts used to preserve the original "$@" way of writing the calls.
+			shift			
+			shift
+	 		echo "th main.lua -threads $NumThreads -zoom 4 -env $GazeboEnv -modelBody SwarmbotModel -histLen 4 -async A3C -entropyBeta 0 -eta 0.0001 -bootstraps 0 -rewardClip 0 -hiddenSize 512 -doubleQ false -duel false -optimiser sharedRmsProp -steps 6750000 -valFreq 501 -valSteps 12000 -PALpha 0 $@"
+		}
 
     # Instead of 'wai', setup.lua should be in current window (cur) to setup things. Complex if sent to docker by screen, so just sleep 15 for now
-	#launch="soup_plus.launch" launch="soup_plus_single.launch" launch="soup_black"
-    exec_in_win  "new"  "roslaunch swarm_simulator soup_black.launch gui:=false"  "Load gazebo with arena world"
-	exec_in_win  "wai"  "th $pathToSwarmDqn/setup.lua $args"  "Load models into the world"
-	exec_in_win  "new"  "th $pathToSwarmDqn/positions.lua"  "Throttle position updates"
-	exec_in_win  "new"  "th $pathToSwarmDqn/rewards.lua $MODE $args"  "Load program to allocate rewards"
+		#launch="soup_plus.launch" launch="soup_plus_single.launch" launch="soup_black"
+	  exec_in_win  "new"  "roslaunch swarm_simulator soup_black.launch gui:=false"  "Load gazebo with arena world"
+		exec_in_win  "wai"  "th $pathToSwarmDqn/setup.lua $args"  "Load models into the world"
+		exec_in_win  "new"  "th $pathToSwarmDqn/positions.lua"  "Throttle position updates"
+		exec_in_win  "new"  "th $pathToSwarmDqn/rewards.lua $MODE $args"  "Load program to allocate rewards"
 	
-	# Load the statistics program
-	# base_command="th async/SwarmbotGazebo-DQN/statistics.lua "
-    # STAT_UPDATE_TIME=320
-	# agent_id=0
-	# exec_in_win "new" "$base_command $STAT_UPDATE_TIME $agent_id"
-	# agent_id=1
-	# exec_in_win "new" "$base_command $STAT_UPDATE_TIME $agent_id"
-	
-	if [ "$BUFFER" == "1" ]; then 
-		exec_in_win  "new"  "th $pathToSwarmDqn/command_buffer.lua $NUM_BOTS $NUM_PRED"  "Load command buffer"
-	fi
+		if [ "$BUFFER" == "1" ]; then 
+			exec_in_win  "new"  "th $pathToSwarmDqn/command_buffer.lua $NUM_BOTS $NUM_PRED"  "Load command buffer"
+		fi
 
-	exec_in_win  "new"  "`run_environment $NUM_BOTS GazeboEnv $@`"  "Run GazeboEnv in Atari"
-	exec_in_win  "new"  "`run_environment $NUM_PRED GazeboEnvPred $@`"  "Run GazeboEnvPred in Atari" 
+		exec_in_win  "new"  "`run_environment $NUM_BOTS GazeboEnv $@`"  "Run GazeboEnv in Atari"
+		exec_in_win  "new"  "`run_environment $NUM_PRED GazeboEnvPred $@`"  "Run GazeboEnvPred in Atari" 
 
-	#To load previous weights: -network async/SwarmbotGazebo-DQN/Experiments/GazeboEnv_10-Worked/Weights/last.weights.t7
-	# -network GazeboEnv/last.weights.t7 -mode eval -_id GazeboEnv
+		#To load previous weights: -network async/SwarmbotGazebo-DQN/Experiments/GazeboEnv_10-Worked/Weights/last.weights.t7
+		# -network GazeboEnv/last.weights.t7 -mode eval -_id GazeboEnv
 
-# Examples
-elif [ "$PAPER" == "demo-grid" ]; then
-  # GridWorld
-	th main.lua -zoom 4 -async A3C -entropyBeta 0.001 -eta 0.0007 -momentum 0.99 -bootstraps 0 -rewardclip 0 -batchSize 5 -hiddenSize 32 -doubleQ false -duel false -optimiser adam -steps 15000000 -tau 4 -memSize 20000 -epsilonSteps 10000 -valFreq 501 -valSteps 500 -bootstraps 0 -PALpha 0 "$@"
 else
   echo "Invalid options"
 fi
