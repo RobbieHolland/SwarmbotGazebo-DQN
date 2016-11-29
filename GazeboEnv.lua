@@ -70,7 +70,7 @@ end
 
 --Min and max reward - Apparently not used for A3C
 function GazeboEnv:getRewardSpec()
-  return self.min_reward, self.max_reward 
+  return self.min_reward, self.max_reward
 end
 
 --Starts GazeboEnv and spawns all models? Or is that done by individual agents?
@@ -85,12 +85,12 @@ function GazeboEnv:start()
 		self.model_name = self.type_bot .. self.id
 
 		--Configure robot control
-		self.command_publisher 
-				= self.nodehandle:advertise("/" .. self.type_bot .. self.id .. "/network_command", msgs.twist_spec, 100, false, connect_cb, disconnect_cb)
-		if self:isValidationAgent() then
-			self.command_publisher 
-				= self.nodehandle:advertise("/" .. self.type_bot .. self.id .. "/cmd_vel", msgs.twist_spec, 100, false, connect_cb, disconnect_cb)
+    command_destination = "/network_command"
+    if self:isValidationAgent() then
+			command_destination = "/cmd_vel"
 		end
+		self.command_publisher
+				= self.nodehandle:advertise("/" .. self.type_bot .. self.id .. command_destination, msgs.twist_spec, 100, false, connect_cb, disconnect_cb)
 
 		--Setup timer for epoch terminal timing
 		self.clock_subscriber = self.nodehandle:subscribe("/clock", msgs.clock_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
@@ -112,8 +112,8 @@ function GazeboEnv:start()
 		speed_request_message.id = self.id
 
 		--Configure subscriber to check if command has been sent by buffer
-		self.command_sent_subscriber 
-				= self.nodehandle:subscribe("/commands_sent" .. self.id, msgs.bool_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
+		self.command_sent_subscriber
+				= self.nodehandle:subscribe("/swarmbot" .. self.id .. "/commands_sent", msgs.bool_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
 		self.command_sent_subscriber:registerCallback(function(msg, header)
 			self.command_sent = msg.data
 		end)
@@ -207,10 +207,11 @@ function GazeboEnv:step(action)
 	--Increment step counter
 	self.step_count = self.step_count + 1
 	terminal = false
-
+  print('Step0')
 	--Wait for Gazebo sensors to update (Ensures a meaningfull history)
 	while not util.check_received(self.updated, self.number_of_sensors) do
 		ros.spinOnce()
+		print('Step1')
 	end
 	for i=1, self.number_of_sensors do
 		self.updated[i] = false
@@ -233,6 +234,7 @@ function GazeboEnv:step(action)
 	--Wait for command buffer to send command
 	while not self.command_sent do
 		self.command_publisher:publish(self.command_message)
+    print('Step2')
 		ros.spinOnce()
 	end
 	self.command_sent = false

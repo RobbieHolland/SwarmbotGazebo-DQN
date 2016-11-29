@@ -1,4 +1,4 @@
--- Provides services (energy, swarmbot reallocation, speeds) and 
+-- Provides services (energy, swarmbot reallocation, speeds) and
 -- continulously reallocate food too far from robot
 
 --Setup
@@ -34,7 +34,7 @@ number_of_pred = arg[4]
 arena_width = 16
 
 SWARMBOT_GAZEBO_init_i = { -- Different initial value to account for one more swarmbot
-	food = 1,
+	food = 0,
 	swarmbot = 0,
   predator = 0
 }
@@ -50,7 +50,7 @@ local function create_models(type_model, num)
 
 	-- Lookup table to create models
 	local lookup = {
-		food     = function (i) return food.create(i, nodehandle, 0, 0, 1, 50) end, 
+		food     = function (i) return food.create(i, nodehandle, 0, 0, 1, 50) end,
 		swarmbot = function (i) return swarmbot.create(i, nodehandle, 0, 0, 1, -5, "swarmbot") end,
 		predator = function (i) return swarmbot.create(i, nodehandle, 0, 0, 1, -20, "predator") end
 	}
@@ -60,8 +60,8 @@ local function create_models(type_model, num)
  	local i0  = assert(SWARMBOT_GAZEBO_init_i[type_model], "init_i[ " .. type_model .. " ] not implemented yet")
 
 	--Create new food/bot/... in loop
-	local res = {} 
-	for i=i0, num do
+	local res = {}
+	for i=i0, num-1 do
 		res[i] = fun(i)
 		ros.Duration(0.05):sleep()
 		res[i]:random_relocate(arena_width)
@@ -73,14 +73,6 @@ end
 foods     = create_models("food",     number_of_food)
 swarmbots = create_models("swarmbot", number_of_bots)
 predators = create_models("predator", number_of_pred)
-
-
---[[
-print("swarmbots in rewards.lua")
-for key, val in pairs(swarmbots) do 
-   print(key, val)
-end
---]]
 
 --Relocate service
 function random_relocate_service_handler(request, response, header)
@@ -98,17 +90,7 @@ server_speed = nodehandle:advertiseService('/speed_request', srvs.data_request_s
 
 --Calculates current energy of swarmbots[id]
 function calculate_energy(id)
-	--[[
-	while not velocity_updated do
-		ros.spinOnce()
-	end
-	velocity_updated = false
-	
-
-	--Movement reward
-	swarmbots[id]:add_energy(swarmbots[id].speed)
-	--]]
-
+	--Collisions reward energy if the colliding object is food
 	while not swarmbots[id].collision_updated do
 		ros.spinOnce()
 	end
@@ -133,14 +115,15 @@ end
 
 -- Functions to make the initialisation easier to generalise
 function SGDQN_add_model_id(res_i, type_model, num, index_lookup)
-	-- Refresh model_id's of all elements of type 
+	-- Refresh model_id's of all elements of type
 	local res = {}
 	setmetatable(res, {__index = res_i}) -- overloads res_i
-	local i0 = assert(SWARMBOT_GAZEBO_init_i[type_model], "Wrong type model:" .. type_model)	
-	for i=i0, num do
-		print("DEBUGRewards_Refresh, type_model=" .. type_model .. ", i=" .. i .. ", model_name=" .. res[i].model_name)
+	local i0 = assert(SWARMBOT_GAZEBO_init_i[type_model], "Wrong type model:" .. type_model)
+
+	for i=i0, num-1 do
+		--print("DEBUGRewards_Refresh, type_model=" .. type_model .. ", i=" .. i .. ", model_name=" .. res[i].model_name)
 		res[i].model_id = index_lookup[res[i].model_name]
-		print("DEBUGRewards_Refresh, res[i].model_id=" .. res[i].model_id)
+		--print("DEBUGRewards_Refresh, res[i].model_id=" .. res[i].model_id)
 	end
 	return res
 end
@@ -160,16 +143,16 @@ function SGDQN_add_infos_msgs(res, type_model, num, msg)
 			res[i].position[2] = msg.pose[res[i].model_id].position.y
 			res[i].position[3] = msg.pose[res[i].model_id].position.z
 		elseif type_model == "swarmbot" or type_model == "predator" then
-			res[i].velocity[1] = msg.twist[res[i].model_id].values.linear.x	
+			res[i].velocity[1] = msg.twist[res[i].model_id].values.linear.x
 			res[i].velocity[2] = msg.twist[res[i].model_id].values.linear.y
-			res[i].velocity[3] = msg.twist[res[i].model_id].values.linear.z	
-			res[i].position[1] = msg.pose[res[i].model_id].position.x	
-			res[i].position[2] = msg.pose[res[i].model_id].position.y	
+			res[i].velocity[3] = msg.twist[res[i].model_id].values.linear.z
+			res[i].position[1] = msg.pose[res[i].model_id].position.x
+			res[i].position[2] = msg.pose[res[i].model_id].position.y
 			res[i].position[3] = msg.pose[res[i].model_id].position.z
 			res[i].orientation = msg.pose[res[i].model_id].orientation.z
 			--Calculate speed for reward
 			--res[i].speed = res[i].velocity:norm()
-		else 
+		else
 			error("Wrong type model, not implemented in loop:" .. type_model)
 		end
 	end
@@ -188,13 +171,13 @@ model_state_subscriber:registerCallback(function(msg, header)
 		swarmbots = SGDQN_add_model_id(swarmbots, "swarmbot", number_of_bots, index_lookup)
 		predators = SGDQN_add_model_id(predators, "predator", number_of_pred, index_lookup)
 
-		
+
 	end
 	model_states_initialised = true
 
-	foods     = SGDQN_add_infos_msgs(foods,     "food",     number_of_food, msg)
-	swarmbots = SGDQN_add_infos_msgs(swarmbots, "swarmbot", number_of_bots, msg)
-	predators = SGDQN_add_infos_msgs(predators, "predator", number_of_pred, msg)
+	--foods     = SGDQN_add_infos_msgs(foods,     "food",     number_of_food, msg)
+	--swarmbots = SGDQN_add_infos_msgs(swarmbots, "swarmbot", number_of_bots, msg)
+	--predators = SGDQN_add_infos_msgs(predators, "predator", number_of_pred, msg)
 
 	velocity_updated = true
 end)
@@ -220,14 +203,14 @@ elseif mode == 1 then --Training mode
 		  service_queue:callAvailable()
 		end
 
-		for i=1, number_of_food do
+		for i=0, number_of_food-1 do
 			if not foods[i].edible then
 				foods[i].edible = os.clock() - foods[i].immunity_start_time > foods[i].immunity_duration
 			end
 		end
 
-		for i=0, number_of_bots do
-			for j=1, number_of_food do
+		for i=0, number_of_bots-1 do
+			for j=0, number_of_food-1 do
 				assigned_bot_id = j % (number_of_bots + 1)
 				if torch.dist(swarmbots[assigned_bot_id].position, foods[j].position) > training_range then
 					alpha = (torch.uniform() - 0.5) * 2 * math.pi
@@ -245,6 +228,7 @@ elseif mode == 1 then --Training mode
 	end
 end
 
+--Shutdown ROS services
 server_energy:shutdown()
 server_relocate:shutdown()
 server_speed:shutdown()

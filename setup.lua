@@ -21,7 +21,7 @@ local function spawn_model(type_spawn, pos, i)
 		food     = rgsp_pSdf .. 'food.sdf' .. ' -sdf -model food' .. i .. ' -robot_namespace food' .. i,
 		swarmbot = rgsp_pSdf .. 'swarm_robot_v2.sdf' .. ' -sdf -model swarmbot' .. i .. ' -robot_namespace swarmbot' .. i,
 		predator = rgsp_pSdf .. 'swarm_robot_v2_predator.sdf' ..  ' -sdf -model predator' .. i .. ' -robot_namespace predator' .. i
-	} 
+	}
 	-- Lookup and check type_spawn is implemented
 	local spawn_text = assert(look_up[type_spawn], "Type " .. type_spawn .. " not implemented in lookup table")
 	os.execute(spawn_text)
@@ -33,17 +33,17 @@ local function spawn_all(type_spawn, num)
 	-- Spawn num models of type type_spawn, save code in lookup table spawn_texts
 	local spawn_texts = {}
 	local init_i = {
- 		food = 1,
+ 		food = 0,
 		swarmbot = 0,
 		predator = 0
 	}
 	-- Check nil num and initial index
-	if not num then return spawn_texts end 
+	if not num then return spawn_texts end
 	local i0 = assert(init_i[type_spawn], "init_i[" .. type_spawn .."] not implemented")
- 	--Create in loop		
+ 	--Create in loop
 	local position
-	for i=i0, num do
-		position = arena_width * (torch.rand(3) - 0.5) 
+	for i=i0, num-1 do
+		position = arena_width * (torch.rand(3) - 0.5)
 		position[3] = 1
 		--Create new food/bot
 		spawn_texts[type_spawn .. i] = spawn_model(type_spawn, position, i)
@@ -54,16 +54,13 @@ end
 
 local function print_results(res) -- for debugging
 	print("DEBUGsetup_print_results")
-	for  key, val in pairs(res) do 
+	for  key, val in pairs(res) do
 		 print(key, val)
 	end
 end
 
 
 -- Spawning all food, bots, predators
-local result_food = spawn_all("food",     number_of_food) 
-local result_bots = spawn_all("swarmbot", number_of_bots) 
-local result_pred = spawn_all("predator", number_of_pred) 
-
-
-
+local result_food = spawn_all("food",     number_of_food)
+local result_bots = spawn_all("swarmbot", number_of_bots)
+local result_pred = spawn_all("predator", number_of_pred)

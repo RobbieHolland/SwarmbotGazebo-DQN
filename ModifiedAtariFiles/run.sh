@@ -83,28 +83,28 @@ elif [ "$PAPER" == "demo-async-swarm" ]; then
     #pathToSwarmDqn=`echo $LUA_PATH | sed "s#\(.*\);\(.*\)$nameFolder/?.lua\(.*\)#\2$nameFolder#"`
     #if [ -z $pathToSwarmDqn ]; then
     #  echo "Atari/run.sh not able to find the path to your $nameFolder. "
-    #  echo "Please enter it manually in variable pathToSwarmDqn or update \$LUA_PATH (see README)."  
+    #  echo "Please enter it manually in variable pathToSwarmDqn or update \$LUA_PATH (see README)."
     #  exit 1
     #fi
 
     pathToAtari="/root/torch-ros-gazebo/Atari"
-    case $HOME in 
+    case $HOME in
         /Users/pmaal) pathToSwarmDqn="/root/torch-ros-gazebo/SwarmbotGazebo-DQN";;
                                 #"/Users/pmaal/Dropbox/Nottingham/repos/phd/torch-ros-gazebo/SwarmbotGazebo-DQN";;
         /home/kai)    pathToSwarmDqn="/home/kai/SwarmbotGazebo-DQN";;
         /root)        pathToSwarmDqn="/root/torch-ros-gazebo/SwarmbotGazebo-DQN";;
         *)            echo "Match HOME!" && exit 1
 	  esac
-  
-			#Parameters
+
+		#Parameters
 		BUFFER="1"
 		MODE=1
 		NUM_FOOD=2 #40
-		NUM_BOTS=$((2 - 1)) #[Number of bots including number of validation agents] - [Number of validation agents]
-			NUM_PRED=$((2 - 1)) #[Number of predators including valitator] - [Number of validation agents]
+		NUM_BOTS=$((2)) #[Number of bots including number of validation agents]
+		NUM_PRED=$((0)) #[Number of predators including valitator]
 		args="$NUM_FOOD $NUM_BOTS $NUM_PRED"
 
-    function nice_display { 
+    function nice_display {
         # Nice display of the arguments
         printf "\n --- $2\n $1\n"
     }
@@ -113,7 +113,7 @@ elif [ "$PAPER" == "demo-async-swarm" ]; then
         # Execute given string in screen window
         screen_name="$1"
         stringToExecScreen="$2"
-        screen -S "$screen_name" -X stuff "${stringToExecScreen}$(echo -ne '\r')" 
+        screen -S "$screen_name" -X stuff "${stringToExecScreen}$(echo -ne '\r')"
     }
 
     function open_in_screen {
@@ -125,17 +125,17 @@ elif [ "$PAPER" == "demo-async-swarm" ]; then
         window_name=$2
         screen_name="SGDQN_${window_name}"
         container_name="levity_torchcontainer"
-        if [ -z "`screen -ls | grep "$screen_name"`" ]; then 
+        if [ -z "`screen -ls | grep "$screen_name"`" ]; then
             screen -d -m -S $screen_name
         fi
-        if [ -z "`docker ps | grep "$container_name"`" ]; then 
+        if [ -z "`docker ps | grep "$container_name"`" ]; then
             sh ../setup_docker.sh
         fi
         # In screen window, enter the container. If already in container, error message (add ;exit after second command otherwise)
         echo "screen -x $screen_name # to look at this process"
-        exec_in_screen "$screen_name" "docker exec -it $container_name bash" 
+        exec_in_screen "$screen_name" "docker exec -it $container_name bash"
         # In screen window now in container, execute code
-        exec_in_screen "$screen_name" "cd $pathToAtari; $stringToExec" 
+        exec_in_screen "$screen_name" "cd $pathToAtari; $stringToExec"
     }
 
     function open_in_gnome {
@@ -147,7 +147,7 @@ elif [ "$PAPER" == "demo-async-swarm" ]; then
         # Alternative solutions to launch command in a new window, depending on the computer setup
         stringToExec=$1
         comment=$2
-        window_name=`echo "$comment" | sed "s/  */_/g"` 
+        window_name=`echo "$comment" | sed "s/  */_/g"`
         case $HOME in
             /Users/pmaal)   fun="open_in_screen";;
             *)              fun="open_in_gnome";;
@@ -155,27 +155,27 @@ elif [ "$PAPER" == "demo-async-swarm" ]; then
         $fun "$stringToExec" "$window_name"
     }
 
-		function exec_in_win { 
+		function exec_in_win {
 		      # Execute code (string $2) in new or current terminal ($1)
 		      win=$1
 		      stringToExec=$2
 		      comment=$3
 		      nice_display "$stringToExec" "$comment"
 		      # Launch in current terminal or in a new one and script continues running
-		      case $win in 
+		      case $win in
 		          cur) $stringToExec ;;
-		          wai) $stringToExec && echo "sleep 20" && sleep 20 ;;
+		          wai) $stringToExec && echo "sleep 2" && sleep 2 ;;
 		          new) exec_in_new_window "$stringToExec" "$comment" ;; # Depends on the computer
 		          *) echo "Option not recognised in exec_in_win" && exit 1;;
 		      esac
 		}
-	
-		function run_environment { 	
+
+		function run_environment {
 		      # Runs a given number of bots ($1) in given environment ($2)
 			NumThreads=$1
-			GazeboEnv=$2			
+			GazeboEnv=$2
 			# Shifts used to preserve the original "$@" way of writing the calls.
-			shift			
+			shift
 			shift
 	 		echo "th main.lua -threads $NumThreads -zoom 4 -env $GazeboEnv -modelBody SwarmbotModel -histLen 4 -async A3C -entropyBeta 0 -eta 0.0001 -bootstraps 0 -rewardClip 0 -hiddenSize 512 -doubleQ false -duel false -optimiser sharedRmsProp -steps 6750000 -valFreq 501 -valSteps 12000 -PALpha 0 $@"
 		}
@@ -186,13 +186,14 @@ elif [ "$PAPER" == "demo-async-swarm" ]; then
 		exec_in_win  "wai"  "th $pathToSwarmDqn/setup.lua $args"  "Load models into the world"
 		exec_in_win  "new"  "th $pathToSwarmDqn/positions.lua"  "Throttle position updates"
 		exec_in_win  "new"  "th $pathToSwarmDqn/rewards.lua $MODE $args"  "Load program to allocate rewards"
-	
-		if [ "$BUFFER" == "1" ]; then 
+
+		if [ "$BUFFER" == "1" ]; then
 			exec_in_win  "new"  "th $pathToSwarmDqn/command_buffer.lua $NUM_BOTS $NUM_PRED"  "Load command buffer"
 		fi
 
-		exec_in_win  "new"  "`run_environment $NUM_BOTS GazeboEnv $@`"  "Run GazeboEnv in Atari"
-		exec_in_win  "new"  "`run_environment $NUM_PRED GazeboEnvPred $@`"  "Run GazeboEnvPred in Atari" 
+    NumBotsForEnvironment=$(($NUM_BOTS-1))
+		exec_in_win  "new"  "`run_environment $NumBotsForEnvironment GazeboEnv $@`"  "Run GazeboEnv in Atari"
+		#exec_in_win  "new"  "`run_environment $NUM_PRED GazeboEnvPred $@`"  "Run GazeboEnvPred in Atari"
 
 		#To load previous weights: -network async/SwarmbotGazebo-DQN/Experiments/GazeboEnv_10-Worked/Weights/last.weights.t7
 		# -network GazeboEnv/last.weights.t7 -mode eval -_id GazeboEnv
