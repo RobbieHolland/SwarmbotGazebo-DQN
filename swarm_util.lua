@@ -9,4 +9,9 @@ function util.check_received(received, n)
 	return true
 end
 
+function append(table, element)
+	table[#table + 1] = element
+	return table
+end
+
 return util
