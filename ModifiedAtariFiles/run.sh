@@ -100,7 +100,7 @@ elif [ "$PAPER" == "demo-async-swarm" ]; then
 		BUFFER="1"
 		MODE=1
 		NUM_FOOD=2 #40
-		NUM_BOTS=$((2)) #[Number of bots including number of validation agents]
+		NUM_BOTS=$((3)) #[Number of bots including number of validation agents]
 		NUM_PRED=$((0)) #[Number of predators including valitator]
 		args="$NUM_FOOD $NUM_BOTS $NUM_PRED"
 
@@ -164,7 +164,7 @@ elif [ "$PAPER" == "demo-async-swarm" ]; then
 		      # Launch in current terminal or in a new one and script continues running
 		      case $win in
 		          cur) $stringToExec ;;
-		          wai) $stringToExec && echo "sleep 2" && sleep 2 ;;
+		          wai) $stringToExec && echo "sleep 0.5" && sleep 0.5 ;;
 		          new) exec_in_new_window "$stringToExec" "$comment" ;; # Depends on the computer
 		          *) echo "Option not recognised in exec_in_win" && exit 1;;
 		      esac
@@ -188,7 +188,7 @@ elif [ "$PAPER" == "demo-async-swarm" ]; then
 		exec_in_win  "new"  "th $pathToSwarmDqn/rewards.lua $MODE $args"  "Load program to allocate rewards"
 
 		if [ "$BUFFER" == "1" ]; then
-			exec_in_win  "new"  "th $pathToSwarmDqn/command_buffer.lua $NUM_BOTS $NUM_PRED"  "Load command buffer"
+			exec_in_win  "new"  "th $pathToSwarmDqn/buffers/command_buffer.lua $NUM_BOTS $NUM_PRED"  "Load command buffer"
 		fi
 
     NumBotsForEnvironment=$(($NUM_BOTS-1))

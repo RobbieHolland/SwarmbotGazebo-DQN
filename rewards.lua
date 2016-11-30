@@ -7,8 +7,8 @@ ros.init('GazeboDQN_rewards')
 print('Handling Rewards...')
 
 require 'torch'
-srvs = require 'srvs'
-msgs = require 'msgs'
+srvs = require 'srvs/srvs'
+msgs = require 'msgs/msgs'
 require 'food'
 require 'swarmbot'
 
