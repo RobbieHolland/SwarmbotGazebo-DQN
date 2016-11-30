@@ -25,7 +25,7 @@ Theory
 ---
 
 #### Abstract
-Attempting to transfer techniques for learning Deep Q Networks trained to play Atari games to learn accurately simulated 3D robots completing asynchronous tasks. Gazebo with ROS Indigo provides a realistic robot simulator used to train networks that work in physical robots to an extent that the divide between simulation and reality will allow.
+Transferring techniques for learning Deep Q Networks trained to play 2D Atari games to learn accurately simulated 3D robots performing asynchronous tasks. Gazebo with ROS Indigo provides a realistic robot simulator used to train networks. Learnt behaviours work in physical robots to the extent that the divide between simulation and reality permits.
 
 #### Objectives
 
@@ -40,4 +40,4 @@ Attempting to transfer techniques for learning Deep Q Networks trained to play A
     1. Use real time sensor information as input to a neural network that outputs commands
     2. Optimise robot's neural network
         1. Genetic Algorithm with Fitness Proportionate Selection
-        2. Reinforcement Learning using Deep Q Networks 
+        2. Reinforcement Learning using Deep Q Networks
