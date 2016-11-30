@@ -86,9 +86,6 @@ function GazeboEnv:start()
 
 		--Configure robot control
     command_destination = "/network_command"
-    if self:isValidationAgent() then
-			command_destination = "/cmd_vel"
-		end
 		self.command_publisher
 				= self.nodehandle:advertise("/" .. self.type_bot .. self.id .. command_destination, msgs.twist_spec, 100, false, connect_cb, disconnect_cb)
 
@@ -115,6 +112,7 @@ function GazeboEnv:start()
 		self.command_sent_subscriber
 				= self.nodehandle:subscribe("/swarmbot" .. self.id .. "/commands_sent", msgs.bool_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
 		self.command_sent_subscriber:registerCallback(function(msg, header)
+      print(self.id .. 'Agent receiving command to buffer / robot')
 			self.command_sent = msg.data
 		end)
 
@@ -234,7 +232,7 @@ function GazeboEnv:step(action)
 	--Wait for command buffer to send command
 	while not self.command_sent do
 		self.command_publisher:publish(self.command_message)
-    print('Step2')
+    print(self.id .. 'Agent sending command to buffer / robot')
 		ros.spinOnce()
 	end
 	self.command_sent = false
