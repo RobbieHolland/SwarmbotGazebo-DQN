@@ -1,6 +1,8 @@
 buffer = {}
 buffer.__index = buffer
 
+util = require 'swarm_util'
+
 function buffer.create(type_agent, n)
   local bffr = {}
   setmetatable(bffr, buffer)
@@ -43,12 +45,46 @@ function buffer:subsc_publish()
 	end
 end
 
---Publish to topic that signifies if messages have been sent to robots
-
+--Publishes to topic that signifies if messages have been sent to robots
 function buffer:create_command_sent_publishers()
   for i=0, self.n-1 do
   	self.command_sent_publishers[i] = nodehandle:advertise("/swarmbot" .. i .. "/commands_sent", msgs.bool_spec, 100, false, connect_cb, disconnect_cb)
   end
+end
+
+--Check if all robots using buffer have sent their commands_sent
+function buffer:check_commands_received()
+  return util.check_received(self.network_commands_received, #self.network_commands_received)
+end
+
+--Send off all commands received from networks simulatenously to physical robots
+function buffer:publish_commands()
+  if #self.command_publishers > 0 then
+    self.command_publishers[0]:publish(self.commands[0])
+  end
+
+  for i=1, #self.command_publishers do
+		self.command_publishers[i]:publish(self.commands[i])
+		self.network_commands_received[i] = false
+	end
+end
+
+--Publish to topic that signifies if messages have been sent to robots
+function buffer:notify_agents_commands_sent()
+  --Publish that commands have been sent
+	self.commands_sent_msg.data = true
+
+  --Must notify validation agent that commands have been sent so that it
+  --is synchronised with other robots
+  --However the other robots should not wait for validation agent to give
+  --commands since it becomes dormant between validation sessions
+  if self.n > 0 then
+    self.command_sent_publishers[0]:publish(self.commands_sent_msg)
+  end
+
+	for i=1, #self.command_publishers do
+		self.command_sent_publishers[i]:publish(self.commands_sent_msg)
+	end
 end
 
 return buffer
