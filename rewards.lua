@@ -11,18 +11,11 @@ srvs = require 'srvs/srvs'
 msgs = require 'msgs/msgs'
 require 'food'
 require 'swarmbot'
+require 'swarm_util'
 
 --Flags
 initialised = false
 velocity_updated = false
-
-function connect_cb(name, topic)
-  print("subscriber connected: " .. name .. " (topic: '" .. topic .. "')")
-end
-
-function disconnect_cb(name, topic)
-  print("subscriber diconnected: " .. name .. " (topic: '" .. topic .. "')")
-end
 
 --Constants
 eat_distance = 0.4

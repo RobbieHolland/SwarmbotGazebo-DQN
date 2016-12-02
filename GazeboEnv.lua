@@ -8,15 +8,6 @@ util = require 'swarm_util'
 local rlenvs = require 'rlenvs'
 local GazeboEnv, super = classic.class('GazeboEnv', rlenvs.Env)
 
-function connect_cb(name, topic)
-  print("subscriber connected: " .. name .. " (topic: '" .. topic .. "')")
-end
-
-
-function disconnect_cb(name, topic)
-  print("subscriber diconnected: " .. name .. " (topic: '" .. topic .. "')")
-end
-
 -- Type of agents (to be over-written by different environments, such as GazeboEnvPred)
 function GazeboEnv:type_agent()
 	return "swarmbot"
@@ -112,7 +103,6 @@ function GazeboEnv:start()
 		self.command_sent_subscriber
 				= self.nodehandle:subscribe("/swarmbot" .. self.id .. "/commands_sent", msgs.bool_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
 		self.command_sent_subscriber:registerCallback(function(msg, header)
-      print(self.id .. 'Agent receiving command to buffer / robot')
 			self.command_sent = msg.data
 		end)
 
@@ -205,11 +195,10 @@ function GazeboEnv:step(action)
 	--Increment step counter
 	self.step_count = self.step_count + 1
 	terminal = false
-  print('Step0')
+
 	--Wait for Gazebo sensors to update (Ensures a meaningfull history)
 	while not util.check_received(self.updated, self.number_of_sensors) do
 		ros.spinOnce()
-		print('Step1')
 	end
 	for i=1, self.number_of_sensors do
 		self.updated[i] = false
@@ -232,7 +221,6 @@ function GazeboEnv:step(action)
 	--Wait for command buffer to send command
 	while not self.command_sent do
 		self.command_publisher:publish(self.command_message)
-    print(self.id .. 'Agent sending command to buffer / robot')
 		ros.spinOnce()
 	end
 	self.command_sent = false

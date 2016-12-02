@@ -5,21 +5,14 @@ print('Handling Positions...')
 
 require 'torch'
 msgs = require 'msgs'
-
-function connect_cb(name, topic)
-  print("subscriber connected: " .. name .. " (topic: '" .. topic .. "')")
-end
-
-function disconnect_cb(name, topic)
-  print("subscriber diconnected: " .. name .. " (topic: '" .. topic .. "')")
-end
+require 'swarm_util'
 
 --setup ros node and spinner (processes queued send and receive topics)
 spinner = ros.AsyncSpinner()
 nodehandle = ros.NodeHandle()
 
 --Publish model states
-position_publisher 
+position_publisher
 		= nodehandle:advertise("/throttled_model_states", msgs.model_states_spec, 100, false, connect_cb, disconnect_cb)
 
 latest_message = msgs.model_states_spec

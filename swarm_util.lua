@@ -14,4 +14,12 @@ function append(table, element)
 	return table
 end
 
+function connect_cb(name, topic)
+  print("subscriber connected: " .. name .. " (topic: '" .. topic .. "')")
+end
+
+function disconnect_cb(name, topic)
+  print("subscriber diconnected: " .. name .. " (topic: '" .. topic .. "')")
+end
+
 return util

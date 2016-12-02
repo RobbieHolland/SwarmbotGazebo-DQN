@@ -12,13 +12,7 @@ resp_ready = false
 spinner = ros.AsyncSpinner()
 nodehandle = ros.NodeHandle()
 
-function connect_cb(name, topic)
-  print("subscriber connected: " .. name .. " (topic: '" .. topic .. "')")
-end
 
-function disconnect_cb(name, topic)
-  print("subscriber diconnected: " .. name .. " (topic: '" .. topic .. "')")
-end
 
 --Variables
 number_of_bots = tonumber(arg[1])
