@@ -20,11 +20,11 @@ velocity_updated = false
 --Constants
 eat_distance = 0.4
 sensor_range = 2
-mode = tonumber(arg[1])
+mode  = tonumber(arg[1])
 number_of_food = arg[2]
 number_of_bots = arg[3]
 number_of_pred = arg[4]
-arena_width = 16
+arena_width    = tonumber(arg[5])
 
 SWARMBOT_GAZEBO_init_i = { -- Different initial value to account for one more swarmbot
 	food = 0,

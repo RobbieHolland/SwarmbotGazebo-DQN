@@ -4,14 +4,11 @@ require("torch")
 number_of_food = arg[1]
 number_of_bots = arg[2]
 number_of_pred = arg[3]
+arena_width    = tonumber(arg[4])
 
 -- Declarations
 foods = {}
 swarmbots = {}
-
-
---PARAMETERISE THIS LATER
-arena_width = 16
 
 local function spawn_model(type_spawn, pos, i)
 	-- Spawn model of type type_spawn at position pos with index i. Returns spawn code

@@ -102,6 +102,7 @@ elif [ "$PAPER" == "demo-async-swarm" ]; then
 		NUM_FOOD=2 #40
 		NUM_BOTS=$((3)) #[Number of bots including number of validation agents]
 		NUM_PRED=$((0)) #[Number of predators including valitator]
+    ARENA_WIDTH=$((16))
 		args="$NUM_FOOD $NUM_BOTS $NUM_PRED"
 
     function nice_display {
@@ -183,9 +184,9 @@ elif [ "$PAPER" == "demo-async-swarm" ]; then
     # Instead of 'wai', setup.lua should be in current window (cur) to setup things. Complex if sent to docker by screen, so just sleep 15 for now
 		#launch="soup_plus.launch" launch="soup_plus_single.launch" launch="soup_black"
 	  exec_in_win  "new"  "roslaunch swarm_simulator soup_black.launch gui:=false"  "Load gazebo with arena world"
-		exec_in_win  "wai"  "th $pathToSwarmDqn/setup.lua $args"  "Load models into the world"
+		exec_in_win  "wai"  "th $pathToSwarmDqn/setup.lua $args $ARENA_WIDTH"  "Load models into the world"
 		exec_in_win  "new"  "th $pathToSwarmDqn/positions.lua"  "Throttle position updates"
-		exec_in_win  "new"  "th $pathToSwarmDqn/rewards.lua $MODE $args"  "Load program to allocate rewards"
+		exec_in_win  "new"  "th $pathToSwarmDqn/rewards.lua $MODE $args $ARENA_WIDTH"  "Load program to allocate rewards"
 
 		if [ "$BUFFER" == "1" ]; then
 			exec_in_win  "new"  "th $pathToSwarmDqn/buffers/command_buffer.lua $NUM_BOTS $NUM_PRED"  "Load command buffer"
