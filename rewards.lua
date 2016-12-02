@@ -124,18 +124,19 @@ end
 
 function SGDQN_add_infos_msgs(res, type_model, num, msg)
 	local i0 = assert(SWARMBOT_GAZEBO_init_i[type_model], "Wrong type model:" .. type_model)
-	for i=i0, num do
+	for i=i0, num-1 do
 	-- print("i=" .. i .. ", type_model=" .. type_model .. ", res[i].model_id=" .. res[i].model_id )
 			print("i=" .. i ..",type_model=" .. type_model)
 			print("res[i].model_id=")
+			print("iii" ..i)
 			print(res[i].model_id)
 			print("msg.pose[res[i].model_id].position=")
 			print(msg.pose[res[i].model_id].position)
-		if type_model == "food" then
+		if (type_model == "food") then
 			res[i].position[1] = msg.pose[res[i].model_id].position.x
 			res[i].position[2] = msg.pose[res[i].model_id].position.y
 			res[i].position[3] = msg.pose[res[i].model_id].position.z
-		elseif type_model == "swarmbot" or type_model == "predator" then
+		elseif (type_model == "swarmbot") or (type_model == "predator") then
 			res[i].velocity[1] = msg.twist[res[i].model_id].values.linear.x
 			res[i].velocity[2] = msg.twist[res[i].model_id].values.linear.y
 			res[i].velocity[3] = msg.twist[res[i].model_id].values.linear.z
@@ -168,9 +169,9 @@ model_state_subscriber:registerCallback(function(msg, header)
 	end
 	model_states_initialised = true
 
-	--foods     = SGDQN_add_infos_msgs(foods,     "food",     number_of_food, msg)
-	--swarmbots = SGDQN_add_infos_msgs(swarmbots, "swarmbot", number_of_bots, msg)
-	--predators = SGDQN_add_infos_msgs(predators, "predator", number_of_pred, msg)
+	foods     = SGDQN_add_infos_msgs(foods,     "food",     number_of_food, msg)
+	swarmbots = SGDQN_add_infos_msgs(swarmbots, "swarmbot", number_of_bots, msg)
+	predators = SGDQN_add_infos_msgs(predators, "predator", number_of_pred, msg)
 
 	velocity_updated = true
 end)
@@ -202,18 +203,18 @@ elseif mode == 1 then --Training mode
 			end
 		end
 
-		for i=0, number_of_bots-1 do
-			for j=0, number_of_food-1 do
-				assigned_bot_id = j % (number_of_bots + 1)
-				if torch.dist(swarmbots[assigned_bot_id].position, foods[j].position) > training_range then
-					alpha = (torch.uniform() - 0.5) * 2 * math.pi
-					r = torch.uniform() * (training_range - sensor_range) + sensor_range
-					new_position = swarmbots[assigned_bot_id].position:clone()
-					new_position[1] = new_position[1] + r * math.cos(alpha)
-					new_position[2] = new_position[2] + r * math.sin(alpha)
-					new_position[3] = 1
-					foods[j]:relocate(new_position)
-				end
+		for j=0, number_of_food-1 do
+			assigned_bot_id = j % (number_of_bots)
+			print(torch.dist(swarmbots[assigned_bot_id].position, foods[j].position))
+			if torch.dist(swarmbots[assigned_bot_id].position, foods[j].position) > training_range then
+				
+				alpha = (torch.uniform() - 0.5) * 2 * math.pi
+				r = torch.uniform() * (training_range - sensor_range) + sensor_range
+				new_position = swarmbots[assigned_bot_id].position:clone()
+				new_position[1] = new_position[1] + r * math.cos(alpha)
+				new_position[2] = new_position[2] + r * math.sin(alpha)
+				new_position[3] = 1
+				foods[j]:relocate(new_position)
 			end
 		end
 

@@ -21,7 +21,6 @@ function GazeboEnv:_init(opts)
   --Constants and variables
 	self.type_bot = self.type_agent() or "swarmbot" -- default: swarmbot
 	self.episode_time = 300
-	self.old_energy = 0
 	self.arena_width = 16
 	self.number_colour_channels = 3
 	self.number_channels = 4
@@ -82,7 +81,9 @@ function GazeboEnv:start()
 
 		--Setup timer for epoch terminal timing
 		self.clock_subscriber = self.nodehandle:subscribe("/clock", msgs.clock_spec, 100, { 'udp', 'tcp' }, { tcp_nodelay = true })
-		self.clock_subscriber:registerCallback(function(msg, header) self.current_time = msg.clock:toSec() end)
+		self.clock_subscriber:registerCallback(function(msg, header)
+      self.current_time = msg.clock:toSec()
+    end)
 
 		--Configure service caller to relocate at end of episode
 		random_relocate_request_service = self.nodehandle:serviceClient('/random_relocate_request', srvs.data_request_spec)
@@ -226,17 +227,12 @@ function GazeboEnv:step(action)
 	self.command_sent = false
 
 	ros.Duration(0.01):sleep()
-	--[[
-	if self.id == 1 then
-		print('Command was sent at: ' .. os.clock())
-	end
-	-]]
 
 	--Calculate reward as result of action
-	self.old_energy = self.energy
+	old_energy = self.energy
 	response = energy_request_service:call(energy_request_message)
 	self.energy = response.data
-	reward = self.energy - self.old_energy
+	reward = self.energy - old_energy
 		--Add green pixel reward
 		reward = reward + self.current_observation[2]:sum() / self.camera_size
 
