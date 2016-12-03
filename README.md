@@ -75,3 +75,64 @@ The swarmbots are acting asynchronously and on different threads but typical RL 
 
 ####Network Design - [SwarmbotModel.lua](https://github.com/RobbieHolland/SwarmbotGazebo-DQN/blob/continuous/SwarmbotModel.lua)
 SwarmbotModel.lua provides a method 'createBody' that is used by the Atari code. It returns a Torch Neural Network - I've been experimenting with simple Linear modules and CNN modules. This is the network that will be trained and validated.
+
+# **Training**
+---
+Note that this project is still in progress. Currently I am attempting to translate successes found in simpler tasks to more complex tasks. The results given in this section are those most up to date at the date of writing.
+
+### Genetic Algorithms
+Initially I attempted to learn the swarm robots using genetic algorithms. I used roulette wheel selection to allocate genes from the old generation of robots to the new generation.
+
+This approach was flawed, as explained in the following analysis.
+
+1. Population Size - Since Gazebo is an accurate simulator of real robots processing a robot is resource intensive. For Physics to work as intended the real time factor should be as close to 1.0 as possible, which constrains the number of robots to roughly 10.
+Therefore the search space of the fitness function covered by the robots was not well covered so all useful traits would have to come by mutation.
+A small population size means that the population quickly converges on an a local maximum. I used 'fitness proportionate selection' to pass on weights which meant that the median robot was identical to the best robot in a short number of generations.
+2. Since real time factor needs to be close to 1.0 there is no way to speed up the simulation so that enough mutations can occur in a reasonable time.
+3. At the start of a new generation robots and rewards are randomly placed and oriented so the problem changes each time; this is so that the robots have good general intelligence. This also means that a good trait will not necessarily make its way into the gene pool of the next generation.
+4. The robots' neural networks have inputs of size 4x4x30 with the last layer holding 512 nodes to an output of size 3, corresponding to 3 actions. Genetic algorithms are typically used for smaller networks.
+
+### Deep Q Networks and Reinforcement Learning
+A more appropriate method for learning is Reinforcement Learning, especially as I am trying to learn behaviours that involve maximising the cumulative reward of an epoch. RL can be seen as a more active approach to learning; adjusting the network in the loss space with a meaningful direction - whereas GAs randomly choose directions and see what works.
+RL can be combined with Q function, or an action-value function. When given a state of the environment (for example, sensory input) this function will output an action which is then performed. After the action is complete a new environmental state is reached and the consequential reward is given. The reward can act as an error value and thus can be used to correct the network with back propagation.
+The creator of the code base I used to build the network [explains this in more detail](http://torch.ch/blog/2016/04/30/dueling_dqn.html).
+
+# **Results**
+---
+As with the Training section the results described here are the most up to date for each learning technique. Each task is presented in chronological order of attempt.
+
+### Genetic Algorithms
+#### **Task**: Maximise food consumption
+##### **Environment**: 16 robots and 80 food in an Infinite space
+As previously discussed Genetic Algorithms produced unsatisfactory results. I attempted to keep the problem simple by allowing the robots to have the same starting positions and orientations. This environmental decision, in combination with the effect of gene pool convergence to a local optima, actually led to a decline in score.
+
+![Results](http://i.imgur.com/lBxGW2U.png)
+### Deep Q Networks and Reinforcement Learning
+#### **Task**: Maximise speed
+##### **Environment**: 2 robots in a Walled arena
+In this scenario two robots (one validation robot for statistics, one robot for learning) attempt to maximise their speed. Since the strategy of moving forwards could be learned without sensory input I make the robots move forward by default with options to turn left or right and go straight. The results were as follows:
+
+![2 robots with walls - E15](http://i.imgur.com/C1F4GGp.png)
+
+It takes roughly 100 epochs to learn the strategy of turning away from walls on approach so as not to stop moving. Once this strategy is learned there is no other obvious strategy for improvement since the task is simple.
+
+Anomaly analysis:
+
+ - The large spikes in score at around 120 epochs was likely due to a simulation bug by which the robot interacted with another object in such a way that a large force was created. 
+ - The frequent loss of score is due to robots tipping over due to speeding.
+
+
+
+#### **Task**: Maximise food consumption
+##### **Environment**: 2 robots and 40 food in an Infinite space
+In this scenario two robots (one validation robot for statistics, one robot for learning) attempt to maximise the food they consume. 
+One concept I had learned over the previous experiments was that continuous feedback (i.e. a non zero reward on most steps) led to better results. Consequently, I also rewarded the robot on how much of it's camera was taken up by food to reward moving towards food, comsumption of which would result in a much higher final reward. This sort of half-way reward measure is crucial in tackling problems where rewards can be sparse. Consuming some food in orders of magnitude more steps makes food consumption a sparse problem.
+
+![2 robots 40 food](http://i.imgur.com/NKjzbT7.png)
+
+Unlike maximising speed in a walled environment this task can be more refinely completed so the score increase takes a more linear trend. The generality of the task results in frequent drops, but this does not explain the sustained drop in score from 170-190 epochs. I observed this phenomenon in another, earlier, experiment.
+
+![Drop](http://i.imgur.com/tWVaJ30.jpg)
+(TODO: Upload actual image)
+
+Currently, I suspect these drops to be a bug since performance before the drop is resumed afterwards. I do not think that they are the result of explorative learning since a failed explorative attempt would not persist over a number of epochs.
