@@ -1,0 +1,17 @@
+[INFO - 2016_11_03_10:55:12] - "Setting up Torch7"
+[INFO - 2016_11_03_10:55:12] - "Setting up GazeboEnv"
+[INFO - 2016_11_03_10:55:13] - "creating A3CAgent"
+[INFO - 2016_11_03_10:55:13] - A3CAgent starting | steps=1687500
+[ERROR - 2016_11_03_10:55:18] - /home/kai/SwarmbotGazebo-DQN/GazeboEnv.lua:245: attempt to index global 'response' (a nil value)
+stack traceback:
+	/home/kai/SwarmbotGazebo-DQN/GazeboEnv.lua:245: in function 'step'
+	/home/kai/Atari/async/AsyncAgent.lua:81: in function 'takeAction'
+	/home/kai/Atari/async/A3CAgent.lua:58: in function </home/kai/Atari/async/A3CAgent.lua:35>
+	[C]: in function 'xpcall'
+	/home/kai/Atari/async/AsyncMaster.lua:215: in function </home/kai/Atari/async/AsyncMaster.lua:214>
+	[C]: in function 'xpcall'
+	/home/kai/torch/install/share/lua/5.1/threads/threads.lua:234: in function 'callback'
+	/home/kai/torch/install/share/lua/5.1/threads/queue.lua:65: in function </home/kai/torch/install/share/lua/5.1/threads/queue.lua:41>
+	[C]: in function 'pcall'
+	/home/kai/torch/install/share/lua/5.1/threads/queue.lua:40: in function 'dojob'
+	[string "  local Queue = require 'threads.queue'..."]:15: in main chunk

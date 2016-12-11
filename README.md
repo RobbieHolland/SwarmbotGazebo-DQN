@@ -99,7 +99,7 @@ The creator of the code base I used to build the network [explains this in more 
 
 # **Results**
 ---
-As with the Training section the results described here are the most up to date for each learning technique. Each task is presented in chronological order of attempt.
+As with the Training section the results described here are the most up to date for each learning technique. Each task is presented in chronological order of attempt. Note that changes in reward allocation mean comparisons in scores between experiments is meaningless.
 
 ### Genetic Algorithms
 #### **Task**: Maximise food consumption
@@ -132,7 +132,6 @@ One concept I had learned over the previous experiments was that continuous feed
 
 Unlike maximising speed in a walled environment this task can be more refinely completed so the score increase takes a more linear trend. The generality of the task results in frequent drops, but this does not explain the sustained drop in score from 170-190 epochs. I observed this phenomenon in another, earlier, experiment.
 
-![Drop](http://i.imgur.com/tWVaJ30.jpg)
-(TODO: Upload actual image)
+![Score drop phenomenon](http://i.imgur.com/VYw0qun.png)
 
 Currently, I suspect these drops to be a bug since performance before the drop is resumed afterwards. I do not think that they are the result of explorative learning since a failed explorative attempt would not persist over a number of epochs.

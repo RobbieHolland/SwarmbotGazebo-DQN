@@ -1,0 +1,4 @@
+[INFO - 2016_11_04_08:21:54] - "Setting up Torch7"
+[INFO - 2016_11_04_08:21:55] - "Setting up GazeboEnv"
+[INFO - 2016_11_04_08:21:55] - "creating A3CAgent"
+[INFO - 2016_11_04_08:21:55] - A3CAgent starting | steps=2250000
