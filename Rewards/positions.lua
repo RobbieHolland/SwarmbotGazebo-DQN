@@ -4,7 +4,7 @@ ros.init('GazeboDQN_positions')
 print('Handling Positions...')
 
 require 'torch'
-msgs = require 'msgs'
+msgs = require 'ROS_specifications/msgs'
 require 'swarm_util'
 
 --setup ros node and spinner (processes queued send and receive topics)

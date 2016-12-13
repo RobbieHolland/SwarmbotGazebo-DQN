@@ -6,9 +6,9 @@ ros.init('command_buffer')
 resp_ready = false
 
 --Imports
-msgs = require 'msgs'
+msgs = require 'ROS_specifications/msgs'
 util = require 'swarm_util'
-buffer = require 'buffers/buffer'
+buffer = require 'Buffers/buffer'
 
 --Setup ros node and spinner (processes queued send and receive topics)
 spinner = ros.AsyncSpinner()

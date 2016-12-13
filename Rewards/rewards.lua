@@ -7,10 +7,10 @@ ros.init('GazeboDQN_rewards')
 print('Handling Rewards...')
 
 require 'torch'
-srvs = require 'srvs/srvs'
-msgs = require 'msgs/msgs'
-require 'food'
-require 'swarmbot'
+srvs = require 'ROS_specifications/srvs'
+msgs = require 'ROS_specifications/msgs'
+require 'Rewards/food'
+require 'Rewards/swarmbot'
 require 'swarm_util'
 
 --Flags
@@ -125,13 +125,6 @@ end
 function SGDQN_add_infos_msgs(res, type_model, num, msg)
 	local i0 = assert(SWARMBOT_GAZEBO_init_i[type_model], "Wrong type model:" .. type_model)
 	for i=i0, num-1 do
-	-- print("i=" .. i .. ", type_model=" .. type_model .. ", res[i].model_id=" .. res[i].model_id )
-			print("i=" .. i ..",type_model=" .. type_model)
-			print("res[i].model_id=")
-			print("iii" ..i)
-			print(res[i].model_id)
-			print("msg.pose[res[i].model_id].position=")
-			print(msg.pose[res[i].model_id].position)
 		if (type_model == "food") then
 			res[i].position[1] = msg.pose[res[i].model_id].position.x
 			res[i].position[2] = msg.pose[res[i].model_id].position.y
@@ -140,10 +133,10 @@ function SGDQN_add_infos_msgs(res, type_model, num, msg)
 			res[i].velocity[1] = msg.twist[res[i].model_id].values.linear.x
 			res[i].velocity[2] = msg.twist[res[i].model_id].values.linear.y
 			res[i].velocity[3] = msg.twist[res[i].model_id].values.linear.z
-			res[i].position[1] = msg.pose[res[i].model_id].position.x
-			res[i].position[2] = msg.pose[res[i].model_id].position.y
-			res[i].position[3] = msg.pose[res[i].model_id].position.z
-			res[i].orientation = msg.pose[res[i].model_id].orientation.z
+			res[i].position[1] = msg.pose [res[i].model_id].position.x
+			res[i].position[2] = msg.pose [res[i].model_id].position.y
+			res[i].position[3] = msg.pose [res[i].model_id].position.z
+			res[i].orientation = msg.pose [res[i].model_id].orientation.z
 			--Calculate speed for reward
 			--res[i].speed = res[i].velocity:norm()
 		else
@@ -205,7 +198,6 @@ elseif mode == 1 then --Training mode
 
 		for j=0, number_of_food-1 do
 			assigned_bot_id = j % (number_of_bots)
-			print(torch.dist(swarmbots[assigned_bot_id].position, foods[j].position))
 			if torch.dist(swarmbots[assigned_bot_id].position, foods[j].position) > training_range then
 				
 				alpha = (torch.uniform() - 0.5) * 2 * math.pi

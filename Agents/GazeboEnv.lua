@@ -2,8 +2,8 @@
 ros = require 'ros'
 ros.init('GazeboDQN_Env')
 local classic = require 'classic'
-msgs = require 'msgs'
-srvs = require 'srvs'
+msgs = require 'ROS_specifications/msgs'
+srvs = require 'ROS_specifications/srvs'
 util = require 'swarm_util'
 local rlenvs = require 'rlenvs'
 local GazeboEnv, super = classic.class('GazeboEnv', rlenvs.Env)
