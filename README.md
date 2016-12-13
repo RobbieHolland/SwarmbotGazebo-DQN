@@ -64,7 +64,7 @@ At the front of each robot is a mouth part, or bumper, which acts as a collision
 
 | Tables        | Are           | Cool  |
 | ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
+| <img src="http://i.imgur.com/IjTXonz.png" height="200">      | <img src="http://i.imgur.com/kotaFuC.png" height="200"> | $1600 |
 | col 2 is      | centered      |   $12 |
 | zebra stripes | are neat      |    $1 |
 
