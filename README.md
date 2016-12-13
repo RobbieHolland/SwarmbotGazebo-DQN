@@ -52,18 +52,15 @@ ROS offers two different coding formats for robot design: SDF and URDF. While UR
 As Gazebo is as close to real life as possible it is important to have a well built robot that offers stability and fine motor control while remaining simple and scalable. My basic 'swarmbot' can be built using [this tutorial](http://gazebosim.org/tutorials?tut=build_robot).
 
 Gazebo offers a wide variety of sensors that can be placed on robots. I am using one RGB camera and one scan sensor, each with 90 degree field of view. Since I set both to have the same range and resolution, I can represent the state in RGBD. Plugins in the SDF file then publish the sensory input to ROS topics which I can subscribe to and read in Lua using Torch-ROS. [My basic 'swarmbot' with sensors and plugins attached](https://github.com/RobbieHolland/swarm-gazebo-simulator/blob/master/sdf/swarm_robot_v2.sdf).
- <center>
- **Two robots. One is sensing three food blocks while the other sees nothing.**
- <img src="http://i.imgur.com/AwFvLFu.png" width="568">
-</center> 
+
+| Two robots - one is sensing three food blocks while the other sees nothing  |
+| ------------- |
+|  <img src="http://i.imgur.com/AwFvLFu.png" width="568">  |
 
 At the front of each robot is a mouth part, or bumper, which acts as a collision sensor. When this link collides with something, I can detect what type of object it is and allocate rewards accordingly.
-| Top  | Bottom |
-| ------------- | ------------- |
-| <img src="http://i.imgur.com/IjTXonz.png" height="200">  | <img src="http://i.imgur.com/kotaFuC.png" height="200">
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
+| Top           | Bottom        |
+| ------------- |:-------------:|
 | <img src="http://i.imgur.com/IjTXonz.png" height="200">      | <img src="http://i.imgur.com/kotaFuC.png" height="200"> |
 
 
