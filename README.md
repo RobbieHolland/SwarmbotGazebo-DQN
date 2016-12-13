@@ -7,7 +7,7 @@
 1. Simulating multiple agents of a swarm in [Gazebo 2.2.3](http://gazebosim.org/) on [ROS Indigo](http://wiki.ros.org/indigo) using [rlenvs](https://github.com/Kaixhin/rlenvs) and [Atari](https://github.com/Kaixhin/Atari) repositories for the Deep-Q-Network (DQN).
 2. Clone this project in a folder that your LUA_PATH can access.
 3. Clone the [swarmbot-gazebo ROS Package](https://github.com/RobbieHolland/swarm-gazebo-simulator) which contains the robots and training worlds.
-4. Add in Atari/run.sh the `elif [ "$PAPER" == "demo-async-swarm" ]; then` statement you can find in ModifiedAtariFiles/run.sh (or simply replace Atari/run.sh with this file).
+4. Replace 'Atari/run.sh' with 'SwarmbotGazebo-DQN/ModifiedAtariFiles/run.sh'.
 
 #### DEPENDENCIES
 
@@ -52,7 +52,14 @@ ROS offers two different coding formats for robot design: SDF and URDF. While UR
 As Gazebo is as close to real life as possible it is important to have a well built robot that offers stability and fine motor control while remaining simple and scalable. My basic 'swarmbot' can be built using [this tutorial](http://gazebosim.org/tutorials?tut=build_robot).
 
 Gazebo offers a wide variety of sensors that can be placed on robots. I am using one RGB camera and one scan sensor, each with 90 degree field of view. Since I set both to have the same range and resolution, I can represent the state in RGBD. Plugins in the SDF file then publish the sensory input to ROS topics which I can subscribe to and read in Lua using Torch-ROS. [My basic 'swarmbot' with sensors and plugins attached](https://github.com/RobbieHolland/swarm-gazebo-simulator/blob/master/sdf/swarm_robot_v2.sdf).
+| Two robots. One is sensing three food blocks while the other sees nothing  |
+| ------------- | ------------- |
+| <img src="http://i.imgur.com/AwFvLFu.png" width="568">
+
 At the front of each robot is a mouth part, or bumper, which acts as a collision sensor. When this link collides with something, I can detect what type of object it is and allocate rewards accordingly.
+| Top  | Bottom |
+| ------------- | ------------- |
+| <img src="http://i.imgur.com/IjTXonz.png" height="200">  | <img src="http://i.imgur.com/kotaFuC.png" height="200">
 
 #### Virtual Environment Design
 In training I divided the overall task into different problems which required different worlds. I can change the environment the swarmbots inhabit by creating different world files in my ROS package.
@@ -135,3 +142,4 @@ Unlike maximising speed in a walled environment this task can be more refinely c
 ![Score drop phenomenon](http://i.imgur.com/VYw0qun.png)
 
 Currently, I suspect these drops to be a bug since performance before the drop is resumed afterwards. I do not think that they are the result of explorative learning since a failed explorative attempt would not persist over a number of epochs.
+
