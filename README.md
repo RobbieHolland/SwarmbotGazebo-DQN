@@ -64,9 +64,7 @@ At the front of each robot is a mouth part, or bumper, which acts as a collision
 
 | Tables        | Are           | Cool  |
 | ------------- |:-------------:| -----:|
-| <img src="http://i.imgur.com/IjTXonz.png" height="200">      | <img src="http://i.imgur.com/kotaFuC.png" height="200"> | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+| <img src="http://i.imgur.com/IjTXonz.png" height="200">      | <img src="http://i.imgur.com/kotaFuC.png" height="200"> |
 
 
 #### Virtual Environment Design
@@ -120,7 +118,7 @@ As with the Training section the results described here are the most up to date 
 #### **Task**: Maximise food consumption
 ##### **Environment**: 16 robots and 80 food in an Infinite space
 As previously discussed Genetic Algorithms produced unsatisfactory results. I attempted to keep the problem simple by allowing the robots to have the same starting positions and orientations. This environmental decision, in combination with the effect of gene pool convergence to a local optima, actually led to a decline in score.
-<img src="http://i.imgur.com/lBxGW2U.png" height="400">
+<img src="http://i.imgur.com/lBxGW2U.png" height="450">
 ### Deep Q Networks and Reinforcement Learning
 #### **Task**: Maximise speed
 ##### **Environment**: 2 robots in a Walled arena
