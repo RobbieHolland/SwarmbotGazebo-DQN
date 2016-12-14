@@ -18,7 +18,7 @@
 		#Parameters
 		BUFFER="1"
 		MODE=1 #0: Spawns food inside arena_width, 1: Spawns food subsets around their designated robots
-		NUM_FOOD=3
+		NUM_FOOD=$((60))
 		NUM_BOTS=$((2)) #[Number of bots including number of validation agents]
 		NUM_PRED=$((0)) #[Number of predators including valitator]
     ARENA_WIDTH=$((16))
@@ -122,4 +122,3 @@
 
 		#To load previous weights: -network async/SwarmbotGazebo-DQN/Experiments/GazeboEnv_10-Worked/Weights/last.weights.t7
 		# -network GazeboEnv/last.weights.t7 -mode eval -_id GazeboEnv
-
