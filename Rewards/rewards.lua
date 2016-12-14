@@ -18,7 +18,6 @@ initialised = false
 velocity_updated = false
 
 --Constants
-eat_distance = 0.4
 sensor_range = 2
 mode  = tonumber(arg[1])
 number_of_food = arg[2]
@@ -183,7 +182,7 @@ if 		 mode == 0 then --Normal mode
 		ros.spinOnce()
 	end
 elseif mode == 1 then --Training mode
-	training_range = 4.5
+	training_range = sensor_range + 1
 
 	while ros.ok() do
 		if not service_queue:isEmpty() then
@@ -199,7 +198,7 @@ elseif mode == 1 then --Training mode
 		for j=0, number_of_food-1 do
 			assigned_bot_id = j % (number_of_bots)
 			if torch.dist(swarmbots[assigned_bot_id].position, foods[j].position) > training_range then
-				
+
 				alpha = (torch.uniform() - 0.5) * 2 * math.pi
 				r = torch.uniform() * (training_range - sensor_range) + sensor_range
 				new_position = swarmbots[assigned_bot_id].position:clone()

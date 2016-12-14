@@ -1,0 +1,28 @@
+Achieve reliable performance with:
+1. 2 robots and food - Currently doing this
+2. 2 robots and food and walls
+3. 2+ robots and food and walls
+4. 2+ robots and predators and food and walls
+
+Potential Issues:
+1. To approach problem of low entropy starting configurations:
+In Model.lua use "policy:add(nn.Linear(self.hiddenSize, self.m):init('weight', nninit.uniform, -3e-3, 3e-3))"
+
+2. View current entropy with:
+A3CAgent:progress(steps)
+https://en.wikipedia.org/wiki/Entropy_(information_theory)
+
+3. Fix issue of only one agent subscribing to gazebo clock
+
+4. The drops in performance are due to choosing right predominantly over left and circling. I don't know why
+right is chosen over left but the circling may be a temporarily good strategy since it keeps the robot viewing
+the food for longer.
+Really need to work on finding the vector the current robot is pointing and use that to make a cone.
+Find out when food items leave the cone and put them back in the cone.
+This will encourage forward moving behaviour which can then be refined to turning into food.
+Also less food will be required for the same observations.
+
+I just reduced spawning range so food spawns in a tighter circle. This may further promote circling.
+
+Really to do 2 robot, walls and food ASAP since the circling strategy here will be inefficient.
+Will likely need to reward for speed, green view and food.
