@@ -1,0 +1,5 @@
+[INFO - 2016_12_14_11:37:48] - "Setting up Torch7"
+[INFO - 2016_12_14_11:37:48] - "creating ValidationAgent"
+[INFO - 2016_12_14_11:37:48] - "Setting up Agents/GazeboEnv"
+[INFO - 2016_12_14_11:37:48] - "Setting up NetworkModels/SwarmbotModel"
+[INFO - 2016_12_14_11:37:49] - "ValidationAgent | filling ValMemory "
