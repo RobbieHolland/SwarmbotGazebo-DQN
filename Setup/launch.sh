@@ -10,7 +10,7 @@
     pathToAtari="/root/torch-ros-gazebo/Atari"
     case $HOME in
         /Users/pmaal) pathToSwarmDqn="/root/torch-ros-gazebo/SwarmbotGazebo-DQN";;
-        /home/kai)    pathToSwarmDqn="/home/kai/SwarmbotGazebo-DQN";;
+        /home/rh2515) pathToSwarmDqn="home/rh2515/SwarmbotGazebo-DQN";;
         /root)        pathToSwarmDqn="/root/torch-ros-gazebo/SwarmbotGazebo-DQN";;
         *)            echo "Match HOME!" && exit 1
 	  esac
